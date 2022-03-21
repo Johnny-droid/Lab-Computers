@@ -36,10 +36,12 @@ void (timer_int_handler)() {
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   /* To be implemented by the students */
   
-  uint8_t readControl = TIMER_RB_CMD | BIT(timer+1) | TIMER_RB_COUNT_;
+  uint8_t readControl = TIMER_RB_CMD | TIMER_RB_COUNT_ | BIT(timer+1);
+
   if (sys_outb(TIMER_CTRL, readControl) != OK) {
-      return -1;
+      return 1;
   }
+
   int ret;
   switch (timer)
   {
@@ -69,16 +71,40 @@ int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field fiel
     break;
   case tsf_initial:
     conf.byte = st;
-    conf.in_mode = 14 & st;
+
+    if ((st & TIMER_LSB) != 0  &&  (st & TIMER_MSB) != 0) {
+      conf.in_mode = MSB_after_LSB;
+    } else if ((st & TIMER_MSB) != 0) {
+      conf.in_mode = MSB_only;
+    } else if ((st & TIMER_LSB) != 0) {
+      conf.in_mode = LSB_only;
+    } else if ((st & TIMER_LSB_MSB) == 0) {
+      conf.in_mode = INVAL_val;
+    }
+
     break;
   case tsf_mode:
     conf.byte = st;
-    conf.count_mode = 3;
+    //conf.count_mode = 3;
+
+    if ((st & BIT(2)) != 0  &&  (st & BIT(1)) != 0) {  // check if it's Square wave generator
+      conf.count_mode = 3;
+    } else if ((st & TIMER_RATE_GEN) != 0) {  // check if it's a rate generator
+      conf.count_mode = 2;
+    }
     break;
+
   case tsf_base:
     conf.byte = st;
-    conf.bcd = st & 1;
+    //conf.bcd = false;
+
+    if ((st & TIMER_BCD) != 0) {
+      conf.bcd = true;
+    } else {
+      conf.bcd = false;
+    }
     break;
+
   default:
     return 1;
   }
