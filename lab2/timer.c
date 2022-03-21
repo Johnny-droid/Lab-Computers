@@ -9,9 +9,62 @@
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  // So first we need to get the 4 least significant bits, because we don't want
+  // to change the configuration of the time, only the frequency. So, we need to get
+  // the configuration that is already implemented
 
-  return 1;
+  uint8_t st = 0;
+  if (timer_get_conf(timer, &st) != OK) {
+    return 1;
+  }
+
+  uint8_t lsb = 0, msb = 0; 
+  uint16_t valueCounter = (uint16_t) TIMER_FREQ / freq; 
+  util_get_LSB(valueCounter, &lsb);
+  util_get_MSB(valueCounter, &msb);
+
+  uint8_t controlWord = st & 15; //preserve the 4 ls bits
+  // Now we need to define the timer in the control word
+  //Pode ser feito de maneira muito mais eficiente com shift penso eu, mas por agora não é a minha preocupação
+  if (timer == 0) {controlWord |= TIMER_SEL0;}
+  else if (timer == 1) {controlWord |= TIMER_SEL1;}
+  else if (timer == 2) {controlWord |= TIMER_SEL2;}
+  else {return 1;}
+
+  //Define the Initialization Mode of the control word
+  if (msb == 0) {controlWord |= TIMER_LSB;}
+  else {controlWord |= TIMER_LSB_MSB;}
+
+
+  if (sys_outb(TIMER_CTRL, controlWord) != OK) {
+    return 1;
+  }
+
+  int ret1 = 1, ret2 = 1;
+  switch (timer) {
+    case 0:
+      ret1 = sys_outb(TIMER_0, lsb);
+      if (msb != 0) {
+        ret2 = sys_outb(TIMER_0, msb);
+      }
+      break;
+    case 1:
+      ret1 = sys_outb(TIMER_1, lsb);
+      if (msb != 0) {
+        ret2 = sys_outb(TIMER_1, msb);
+      }
+      break;
+    case 2:
+      ret1 = sys_outb(TIMER_2, lsb);
+      if (msb != 0) {
+        ret2 = sys_outb(TIMER_2, msb);
+      }
+      break;
+    default:
+      return 1;
+  }
+
+  return ret1 & ret2;
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
@@ -85,18 +138,17 @@ int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field fiel
     break;
   case tsf_mode:
     conf.byte = st;
-    //conf.count_mode = 3;
 
-    if ((st & BIT(2)) != 0  &&  (st & BIT(1)) != 0) {  // check if it's Square wave generator
-      conf.count_mode = 3;
-    } else if ((st & TIMER_RATE_GEN) != 0) {  // check if it's a rate generator
-      conf.count_mode = 2;
-    }
+    if (((st & BIT(3)) == 0) && ((st & BIT(2)) == 0) && ((st & BIT(1)) == 0)) {conf.count_mode = 0;}
+    else if (((st & BIT(3)) == 0) && ((st & BIT(2)) == 0) && ((st & BIT(1)) == 1)) {conf.count_mode = 1;}
+    else if (((st & BIT(2)) == 1) && ((st & BIT(1)) == 0)) {conf.count_mode = 2;}  // check if it's a Rate generator
+    else if (((st & BIT(2)) == 1)  &&  ((st & BIT(1)) == 1)) {conf.count_mode = 3;}  // check if it's Square wave generator 
+    else if (((st & BIT(3)) == 1) && ((st & BIT(2)) == 0) && ((st & BIT(1)) == 0)) {conf.count_mode = 4;} 
+    else {conf.count_mode = 5;}
     break;
 
   case tsf_base:
     conf.byte = st;
-    //conf.bcd = false;
 
     if ((st & TIMER_BCD) != 0) {
       conf.bcd = true;
