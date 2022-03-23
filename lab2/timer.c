@@ -19,11 +19,11 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   }
 
   uint8_t lsb = 0, msb = 0; 
-  uint16_t valueCounter = (uint16_t) TIMER_FREQ / freq; 
+  uint16_t valueCounter = (uint16_t) (TIMER_FREQ / freq); 
   util_get_LSB(valueCounter, &lsb);
   util_get_MSB(valueCounter, &msb);
 
-  uint8_t controlWord = st & 15; //preserve the 4 ls bits
+  uint8_t controlWord = st & 0x0f; //preserve the 4 ls bits
   // Now we need to define the timer in the control word
   //Pode ser feito de maneira muito mais eficiente com shift penso eu, mas por agora não é a minha preocupação
   if (timer == 0) {controlWord |= TIMER_SEL0;}
@@ -32,8 +32,7 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   else {return 1;}
 
   //Define the Initialization Mode of the control word
-  if (msb == 0) {controlWord |= TIMER_LSB;}
-  else {controlWord |= TIMER_LSB_MSB;}
+  controlWord |= TIMER_LSB_MSB;
 
 
   if (sys_outb(TIMER_CTRL, controlWord) != OK) {
@@ -41,30 +40,13 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   }
 
   int ret1 = 1, ret2 = 1;
-  switch (timer) {
-    case 0:
-      ret1 = sys_outb(TIMER_0, lsb);
-      if (msb != 0) {
-        ret2 = sys_outb(TIMER_0, msb);
-      }
-      break;
-    case 1:
-      ret1 = sys_outb(TIMER_1, lsb);
-      if (msb != 0) {
-        ret2 = sys_outb(TIMER_1, msb);
-      }
-      break;
-    case 2:
-      ret1 = sys_outb(TIMER_2, lsb);
-      if (msb != 0) {
-        ret2 = sys_outb(TIMER_2, msb);
-      }
-      break;
-    default:
-      return 1;
-  }
 
-  return ret1 & ret2;
+  int port = TIMER_0 + timer;
+
+  ret1 = sys_outb(port, lsb);
+  ret2 = sys_outb(port, msb);
+
+  return ret1 | ret2;
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
