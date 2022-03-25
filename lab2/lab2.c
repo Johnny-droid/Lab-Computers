@@ -46,13 +46,19 @@ int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
 
 int(timer_test_int)(uint8_t time) {
   /* To be implemented by the students */
-  /*
+
+  uint8_t bit_no;
+  timer_subscribe_int(&bit_no);
+
+  int counter = 0;
   int ipc_status;
   message msg;
+  uint32_t irq_set = BIT(bit_no);
+  int r;
   
-  
-  while( 1 ) { // You may want to use a different condition
+  while( counter/60 < time ) { // You may want to use a different condition
     // Get a request message.
+    
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
       printf("driver_receive failed with: %d", r);
       continue;
@@ -63,6 +69,8 @@ int(timer_test_int)(uint8_t time) {
         case HARDWARE: // hardware interrupt notification		               
           if (msg.m_notify.interrupts & irq_set) { //subscribed interrupt                  
            // process it
+            timer_int_handler();
+            counter++;
           }
           break;
 
@@ -71,7 +79,9 @@ int(timer_test_int)(uint8_t time) {
       }
     }
     
- }
- */
+  }
+  
+  timer_unsubscribe_int();
+
   return 0;
 }

@@ -5,10 +5,10 @@
 
 #include "i8254.h"
 
-
+int global_hook_id = 0;
+int global_counter = 0;
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
-  /* To be implemented by the students */
   // So first we need to get the 4 least significant bits, because we don't want
   // to change the configuration of the time, only the frequency. So, we need to get
   // the configuration that is already implemented
@@ -50,22 +50,18 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
-  /* To be implemented by the students */
-  int hook_id = BIT(*bit_no);
-  sys_irqsetpolicy(0, IRQ_REENABLE, &hook_id);
-  return hook_id;
+  int res = sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &global_hook_id);
+  *bit_no = TIMER0_IRQ;
+  return res;
 }
 
 int (timer_unsubscribe_int)() {
-  /* To be implemented by the students */
-  //sys_irqrmpolicy()
-
-  return 1;
+  return sys_irqrmpolicy(&global_hook_id);
 }
 
 void (timer_int_handler)() {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  global_counter++;  
+  if(global_counter % 60 == 0) timer_print_elapsed_time();
 }
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
