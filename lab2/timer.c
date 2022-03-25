@@ -50,15 +50,15 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
-    /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  /* To be implemented by the students */
+  int hook_id = BIT(*bit_no);
+  sys_irqsetpolicy(0, IRQ_REENABLE, &hook_id);
+  return hook_id;
 }
 
 int (timer_unsubscribe_int)() {
   /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  //sys_irqrmpolicy()
 
   return 1;
 }
