@@ -1,6 +1,9 @@
 #include <lcom/lcf.h>
+#include "keyboard.h"
+
 #include <stdint.h>
 #include "i8042.h"
+
 
 /** Prints the input scancode. (Already implemented in the LCF)
  * Parameters
@@ -22,9 +25,17 @@
  * All communication with other code must be done via global variables, static if possible.
  */
 void (kbc_ih)(void) {
-
+    printf("Hey");
 }
 
 
+int (kbc_subscribe_int)(uint8_t *bit_no) {
+  int res = sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &global_hook_id);
+  //*bit_no = KBC_IRQ;
+  return res;
+}
 
+int (kbc_unsubscribe_int)() {
+  return sys_irqrmpolicy(&global_hook_id);
+}
 

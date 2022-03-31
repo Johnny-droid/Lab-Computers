@@ -1,7 +1,10 @@
 #include <lcom/lcf.h>
 #include <lcom/lab3.h>
-#include <stdbool.h>
-#include <stdint.h>
+
+#include "keyboard.h"
+
+
+int global_hook_id;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -35,7 +38,23 @@ int main(int argc, char *argv[]) {
  */
 int(kbd_test_scan)() {
   /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  //Subscribe to the interrupts
+  //uint8_t bit_no;
+  //global_hook_id = 0;
+  //int res = kbc_subscribe_int(&bit_no);
+
+  /*
+  int ipc_status;
+  message msg;
+  uint32_t irq_set = BIT(bit_no);
+  int r;
+  */
+
+
+
+
+  //unsubscribe
+  //kbc_unsubscribe_int();
 
   return 1;
 }
