@@ -27,6 +27,12 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
+
+/**
+ * Tests reading of scancodes via KBD interrupts.
+ * Displays the scancodes received from the keyboard using interrupts.
+ * Exits upon release of the ESC key
+ */
 int(kbd_test_scan)() {
   /* To be completed by the students */
   printf("%s is not yet implemented!\n", __func__);
@@ -34,6 +40,12 @@ int(kbd_test_scan)() {
   return 1;
 }
 
+
+/**
+ * Tests reading of scancodes via polling.
+ * Displays the scancodes received from the keyboard using polling.
+ * Exits upon release of the ESC key
+ */
 int(kbd_test_poll)() {
   /* To be completed by the students */
   printf("%s is not yet implemented!\n", __func__);
@@ -41,6 +53,11 @@ int(kbd_test_poll)() {
   return 1;
 }
 
+
+/**
+ * Tests handling of more than one interrupt.
+ * Similar to kbd_test_scan() except that it should terminate also if no scancodes are received for n seconds
+ */
 int(kbd_test_timed_scan)(uint8_t n) {
   /* To be completed by the students */
   printf("%s is not yet implemented!\n", __func__);
