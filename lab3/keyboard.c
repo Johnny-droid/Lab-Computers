@@ -1,9 +1,10 @@
 #include <lcom/lcf.h>
-#include "keyboard.h"
 
 #include <stdint.h>
 #include "i8042.h"
 
+int global_hook_id;
+bool flag_cycle_ESC;
 
 /** Prints the input scancode. (Already implemented in the LCF)
  * Parameters
@@ -17,6 +18,20 @@
 // Prints the no. of sys_inb() calls (Already implemented in the LCF): cnt Number of sys_inb() calls
 // int kbd_print_no_sysinb	(uint32_t cnt)	
 
+int (kbc_communication_error)() {
+  uint8_t status_reg = 0;
+  util_sys_inb(KBC_STAT_REG, &status_reg);
+  if ((status_reg & KBC_STAT_CHECK) == OK) && (status_reg & BIT(0))) return 0;
+  return 1;
+}
+
+uint8_t (kbc_read_output_buffer)(){
+  uint8_t scan_code;
+  util_sys_inb(KBC_OUT_BUF, &scan_code);
+  return scan_code;
+}
+
+
 
 /**
  * Handles keyboard interrupts (C implementation)
@@ -25,13 +40,35 @@
  * All communication with other code must be done via global variables, static if possible.
  */
 void (kbc_ih)(void) {
-    printf("Hey");
+
+ // if (kbc_communication_error() != OK) return;
+
+
+  uint8_t scan_code, size = 1;
+  uint8_t arr[2];
+  scan_code=kbc_read_output_buffer();
+
+  if (scan_code == KBC_SCANCODE_2B) {
+    arr[1] = scan_code;
+    size++;
+    while (scan_code == KBC_SCANCODE_2B ) {
+      scan_code = kbc_read_output_buffer(); 
+    }
+  }
+
+  arr[0] = scan_code;
+  if (scan_code == ESC_BREAK) {
+    flag_cycle_ESC = false;
+    return;
+  }
+
+  kbd_print_scancode(scan_code & BIT(7),size,arr);
 }
 
 
 int (kbc_subscribe_int)(uint8_t *bit_no) {
+  *bit_no = KBC_IRQ;
   int res = sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &global_hook_id);
-  //*bit_no = KBC_IRQ;
   return res;
 }
 

@@ -5,8 +5,12 @@
 
 extern int global_hook_id;
 
+int (kbc_communication_error)();
 int(kbc_subscribe_int)(uint8_t *bit_no);
 int(kbc_unsubscribe_int)();
+uint8_t (kbc_read_output_buffer)();
+
+
 
 #endif
 
