@@ -8,6 +8,7 @@
 
 extern int global_hook_id;
 extern bool flag_cycle_ESC;
+extern int g_counter;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -40,25 +41,22 @@ int main(int argc, char *argv[]) {
  * Exits upon release of the ESC key
  */
 int(kbd_test_scan)() {
-  /* To be completed by the students */
-  //Subscribe to the interrupts
   uint8_t bit_no=1;
 
   global_hook_id = KBC_IRQ; 
 
   kbc_subscribe_int(&bit_no);
 
-  int counter = 0;
+  g_counter = 0;
   int ipc_status;
   message msg;
   uint32_t irq_set = BIT(bit_no);
-  int r;
+  int r = 0;
   flag_cycle_ESC = true;
 
 
    while(flag_cycle_ESC) { // You may want to use a different condition
     // Get a request message.
-
 
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
       printf("driver_receive failed with: %d", r);
@@ -72,7 +70,6 @@ int(kbd_test_scan)() {
           if (msg.m_notify.interrupts & irq_set) { //subscribed interrupt                  
            // process it
             kbc_ih();
-            counter++;
           }
           break;
 
@@ -89,7 +86,7 @@ int(kbd_test_scan)() {
   kbc_unsubscribe_int();
 
 
-  return kbd_print_no_sysinb(counter);
+  return kbd_print_no_sysinb(g_counter);
 }
 
 
@@ -99,11 +96,25 @@ int(kbd_test_scan)() {
  * Exits upon release of the ESC key
  */
 int(kbd_test_poll)() {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  g_counter = 0;
+  /*
+  int ipc_status;
+  message msg;
+  int r;
+  flag_cycle_ESC = true;
 
-  
-  return 1;
+
+  while(flag_cycle_ESC) { 
+    kbc_ih();
+
+    
+  }
+  */
+
+
+
+
+  return kbd_print_no_sysinb(g_counter);
 }
 
 

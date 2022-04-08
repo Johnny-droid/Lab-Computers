@@ -5,6 +5,7 @@
 
 int global_hook_id;
 bool flag_cycle_ESC;
+int g_counter;
 
 /** Prints the input scancode. (Already implemented in the LCF)
  * Parameters
@@ -51,7 +52,7 @@ void (kbc_ih)(void) {
 
   if (kbc_output_buf_full() != OK) return;
 
-
+  g_counter++;
   uint8_t scan_code, size = 1;
   uint8_t* arr = (uint8_t*) malloc(2 * sizeof(uint8_t));
   scan_code=kbc_read_output_buffer();
@@ -68,10 +69,7 @@ void (kbc_ih)(void) {
 
   if (kbc_communication_error() != OK) return;
 
-  if (scan_code == ESC_BREAK) {
-    flag_cycle_ESC = false;
-    return;
-  }
+  if (scan_code == ESC_BREAK) flag_cycle_ESC = false;
 
   kbd_print_scancode(!(scan_code & BIT(7)),size,arr);
   free(arr);
