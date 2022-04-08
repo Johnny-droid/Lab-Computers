@@ -21,7 +21,15 @@ bool flag_cycle_ESC;
 int (kbc_communication_error)() {
   uint8_t status_reg = 0;
   util_sys_inb(KBC_STAT_REG, &status_reg);
-  if ((status_reg & KBC_STAT_CHECK) == OK) && (status_reg & BIT(0))) return 0;
+  //printf("Status reg inside comm error: %x\n ", status_reg & KBC_STAT_CHECK);
+  if ((status_reg & KBC_STAT_CHECK) == OK) return 0; 
+  return 1;
+}
+
+int (kbc_output_buf_full)() {
+  uint8_t status_reg = 0;
+  util_sys_inb(KBC_STAT_REG, &status_reg);
+  if (status_reg & KBC_OUT_BUF_FULL) return 0; 
   return 1;
 }
 
@@ -41,11 +49,11 @@ uint8_t (kbc_read_output_buffer)(){
  */
 void (kbc_ih)(void) {
 
- // if (kbc_communication_error() != OK) return;
+  if (kbc_output_buf_full() != OK) return;
 
 
   uint8_t scan_code, size = 1;
-  uint8_t arr[2];
+  uint8_t* arr = (uint8_t*) malloc(2 * sizeof(uint8_t));
   scan_code=kbc_read_output_buffer();
 
   if (scan_code == KBC_SCANCODE_2B) {
@@ -57,12 +65,16 @@ void (kbc_ih)(void) {
   }
 
   arr[0] = scan_code;
+
+  if (kbc_communication_error() != OK) return;
+
   if (scan_code == ESC_BREAK) {
     flag_cycle_ESC = false;
     return;
   }
 
-  kbd_print_scancode(scan_code & BIT(7),size,arr);
+  kbd_print_scancode(!(scan_code & BIT(7)),size,arr);
+  free(arr);
 }
 
 
