@@ -4,11 +4,14 @@
 #include "keyboard.h"
 #include "../lab2/utils.c"
 #include "i8042.h"
+#include "../lab2/timer.c"
 
 
-extern int global_hook_id;
+
 extern bool flag_cycle_ESC;
 extern int g_counter;
+extern bool TWO_BYTES;
+
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -43,7 +46,6 @@ int main(int argc, char *argv[]) {
 int(kbd_test_scan)() {
   uint8_t bit_no=1;
 
-  global_hook_id = KBC_IRQ; 
 
   kbc_subscribe_int(&bit_no);
 
@@ -53,6 +55,7 @@ int(kbd_test_scan)() {
   uint32_t irq_set = BIT(bit_no);
   int r = 0;
   flag_cycle_ESC = true;
+  TWO_BYTES=false;
 
 
    while(flag_cycle_ESC) { // You may want to use a different condition
@@ -62,7 +65,6 @@ int(kbd_test_scan)() {
       printf("driver_receive failed with: %d", r);
       continue;
     }
-
 
     if (is_ipc_notify(ipc_status)) { // received notification 
       switch (_ENDPOINT_P(msg.m_source)) {
@@ -76,16 +78,11 @@ int(kbd_test_scan)() {
         default:
           break; // no other notifications expected: do nothing
       }
-    }
-
-    
+    } 
   }
-
 
   //unsubscribe
   kbc_unsubscribe_int();
-
-
   return kbd_print_no_sysinb(g_counter);
 }
 
@@ -123,8 +120,51 @@ int(kbd_test_poll)() {
  * Similar to kbd_test_scan() except that it should terminate also if no scancodes are received for n seconds
  */
 int(kbd_test_timed_scan)(uint8_t n) {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  uint8_t bit_no_KBC=1;
+  uint8_t bit_no_TIMER=0;
 
-  return 1;
+  kbc_subscribe_int(&bit_no_KBC);
+  timer_subscribe_int(&bit_no_TIMER);
+
+  g_counter = 0;
+  int ipc_status;
+  message msg;
+  uint32_t irq_set = BIT(bit_no_KBC);
+  uint32_t timer0_int_bit = BIT(bit_no_TIMER);
+  int r = 0;
+  flag_cycle_ESC = true;
+  TWO_BYTES=false;
+  int counter = 0;
+
+   while(flag_cycle_ESC && counter/60 < n) { // You may want to use a different condition
+    // Get a request message.
+
+    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+
+    if (is_ipc_notify(ipc_status)) { // received notification 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE: // hardware interrupt notification		               
+          if (msg.m_notify.interrupts & irq_set) { //subscribed interrupt                  
+           // process it
+            kbc_ih();
+            counter=0;
+          }
+          if (msg.m_notify.interrupts & timer0_int_bit) { // Timer0 int?
+            /* process Timer0 interrupt request */
+            counter++;
+          }
+          break;
+        default:
+          break; // no other notifications expected: do nothing
+      }
+    } 
+  }
+
+  //unsubscribe
+  timer_unsubscribe_int();
+  kbc_unsubscribe_int();
+  return kbd_print_no_sysinb(g_counter);
 }

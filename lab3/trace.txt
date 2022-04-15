@@ -1,321 +1,1065 @@
 @lcflib.a:2019, lcf_start
-  kbd_test_scan()
-  @keyboard.c:81, kbc_subscribe_int
-    sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &global_hook_id)
-  > sys_irqsetpolicy(1, 3, addr: 0x8249140 [1])
-  < sys_irqsetpolicy(1, 3, addr: 0x8249140 [10]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+  kbd_test_timed_scan(n)
+> kbd_test_timed_scan(3)
+  @keyboard.c:85, kbc_subscribe_int
+    sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &kbc_hook_id)
+  > sys_irqsetpolicy(1, 3, addr: 0x822cf30 [1])
+  < sys_irqsetpolicy(1, 3, addr: 0x822cf30 [10]) -> (ret: 0)
+  @lab3.c:127, kbd_test_timed_scan
+    timer_subscribe_int(&bit_no_TIMER)
+  > timer_subscribe_int(addr: 0xeffff73a [0])
+    @./../lab2/timer.c:53, timer_subscribe_int
+      sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &global_hook_id)
+    > sys_irqsetpolicy(0, 1, addr: 0x822dba8 [0])
+    < sys_irqsetpolicy(0, 1, addr: 0x822dba8 [11]) -> (ret: 0)
+  < timer_subscribe_int(addr: 0xeffff73a [0]) -> (ret: 0)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
+  @lab3.c:152, kbd_test_timed_scan
     kbc_ih()
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
+    > sys_inb(0x64, addr: 0xeffff5e8)
+    < sys_inb(0x64, addr: 0xeffff5e8 [0x1d = 0b00011101])
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0x12 = 0b00010010])
+    > sys_inb(0x60, addr: 0xeffff5e8)
+    < sys_inb(0x60, addr: 0xeffff5e8 [0x16 = 0b00010110])
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
+    > sys_inb(0x64, addr: 0xeffff5e8)
+    < sys_inb(0x64, addr: 0xeffff5e8 [0x1d = 0b00011101])
+    @keyboard.c:78, kbc_ih
       kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Makecode: 0x12"
-    < kbd_print_scancode(true, 1, addr: 0x824b280 [0x12]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+      "Makecode: 0x16"
+    < kbd_print_scancode(true, 1, addr: 0x824b280 [0x16]) -> (ret: 0)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000011]>)
+  @lab3.c:152, kbd_test_timed_scan
     kbc_ih()
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
+    > sys_inb(0x64, addr: 0xeffff5e8)
+    < sys_inb(0x64, addr: 0xeffff5e8 [0x1d = 0b00011101])
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0x20 = 0b00100000])
+    > sys_inb(0x60, addr: 0xeffff5e8)
+    < sys_inb(0x60, addr: 0xeffff5e8 [0x24 = 0b00100100])
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
+    > sys_inb(0x64, addr: 0xeffff5e8)
+    < sys_inb(0x64, addr: 0xeffff5e8 [0x1d = 0b00011101])
+    @keyboard.c:78, kbc_ih
       kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Makecode: 0x20"
-    < kbd_print_scancode(true, 1, addr: 0x824b280 [0x20]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+      "Makecode: 0x24"
+    < kbd_print_scancode(true, 1, addr: 0x824b280 [0x24]) -> (ret: 0)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000011]>)
+  @lab3.c:152, kbd_test_timed_scan
     kbc_ih()
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
+    > sys_inb(0x64, addr: 0xeffff5e8)
+    < sys_inb(0x64, addr: 0xeffff5e8 [0x1d = 0b00011101])
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0x21 = 0b00100001])
+    > sys_inb(0x60, addr: 0xeffff5e8)
+    < sys_inb(0x60, addr: 0xeffff5e8 [0xa4 = 0b10100100])
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
+    > sys_inb(0x64, addr: 0xeffff5e8)
+    < sys_inb(0x64, addr: 0xeffff5e8 [0x1d = 0b00011101])
+    @keyboard.c:78, kbc_ih
       kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Makecode: 0x21"
-    < kbd_print_scancode(true, 1, addr: 0x824b280 [0x21]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+      "Breakcode: 0xa4"
+    < kbd_print_scancode(false, 1, addr: 0x824b280 [0xa4]) -> (ret: 0)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000011]>)
+  @lab3.c:152, kbd_test_timed_scan
     kbc_ih()
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
+    > sys_inb(0x64, addr: 0xeffff5e8)
+    < sys_inb(0x64, addr: 0xeffff5e8 [0x1d = 0b00011101])
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0xa0 = 0b10100000])
+    > sys_inb(0x60, addr: 0xeffff5e8)
+    < sys_inb(0x60, addr: 0xeffff5e8 [0x96 = 0b10010110])
     @./../lab2/utils.c:20, util_sys_inb
       sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
+    > sys_inb(0x64, addr: 0xeffff5e8)
+    < sys_inb(0x64, addr: 0xeffff5e8 [0x1c = 0b00011100])
+    @keyboard.c:78, kbc_ih
       kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Breakcode: 0xa0"
-    < kbd_print_scancode(false, 1, addr: 0x824b280 [0xa0]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+      "Breakcode: 0x96"
+    < kbd_print_scancode(false, 1, addr: 0x824b280 [0x96]) -> (ret: 0)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
-    kbc_ih()
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0x92 = 0b10010010])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
-      kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Breakcode: 0x92"
-    < kbd_print_scancode(false, 1, addr: 0x824b280 [0x92]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
-    kbc_ih()
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0x1e = 0b00011110])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
-      kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Makecode: 0x1e"
-    < kbd_print_scancode(true, 1, addr: 0x824b280 [0x1e]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
-    kbc_ih()
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0x12 = 0b00010010])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
-      kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Makecode: 0x12"
-    < kbd_print_scancode(true, 1, addr: 0x824b280 [0x12]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
-    kbc_ih()
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0xa1 = 0b10100001])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
-      kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Breakcode: 0xa1"
-    < kbd_print_scancode(false, 1, addr: 0x824b280 [0xa1]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
-    kbc_ih()
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0x21 = 0b00100001])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
-      kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Makecode: 0x21"
-    < kbd_print_scancode(true, 1, addr: 0x824b280 [0x21]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
-    kbc_ih()
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0x9e = 0b10011110])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
-      kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Breakcode: 0x9e"
-    < kbd_print_scancode(false, 1, addr: 0x824b280 [0x9e]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
-    kbc_ih()
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0x92 = 0b10010010])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
-      kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Breakcode: 0x92"
-    < kbd_print_scancode(false, 1, addr: 0x824b280 [0x92]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
-    kbc_ih()
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0xa1 = 0b10100001])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
-      kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Breakcode: 0xa1"
-    < kbd_print_scancode(false, 1, addr: 0x824b280 [0xa1]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
-    kbc_ih()
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0x01 = 0b00000001])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
-      kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Makecode: 0x01"
-    < kbd_print_scancode(true, 1, addr: 0x824b280 [0x01]) -> (ret: 0)
-  @lab3.c:61, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
     driver_receive(ANY, &msg, &ipc_status)
-  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff754)
-  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
-  @lab3.c:72, kbd_test_scan
-    kbc_ih()
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1d = 0b00011101])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x60, addr: 0xeffff610)
-    < sys_inb(0x60, addr: 0xeffff610 [0x81 = 0b10000001])
-    @./../lab2/utils.c:20, util_sys_inb
-      sys_inb(port, &sol)
-    > sys_inb(0x64, addr: 0xeffff610)
-    < sys_inb(0x64, addr: 0xeffff610 [0x1c = 0b00011100])
-    @keyboard.c:74, kbc_ih
-      kbd_print_scancode(!(scan_code & BIT(7)), size, arr)
-      "Breakcode: 0x81"
-    < kbd_print_scancode(false, 1, addr: 0x824b280 [0x81]) -> (ret: 0)
-  @keyboard.c:86, kbc_unsubscribe_int
-    sys_irqrmpolicy(&global_hook_id)
-  > sys_irqrmpolicy(addr: 0x8249140 [10])
-  < sys_irqrmpolicy(addr: 0x8249140 [10]) -> (ret: 0)
-  @lab3.c:89, kbd_test_scan
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:142, kbd_test_timed_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6f0, addr: 0xeffff734)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab3.c:167, kbd_test_timed_scan
+    timer_unsubscribe_int()
+    @./../lab2/timer.c:59, timer_unsubscribe_int
+      sys_irqrmpolicy(&global_hook_id)
+    > sys_irqrmpolicy(addr: 0x822dba8 [11])
+    < sys_irqrmpolicy(addr: 0x822dba8 [11]) -> (ret: 0)
+  @keyboard.c:90, kbc_unsubscribe_int
+    sys_irqrmpolicy(&kbc_hook_id)
+  > sys_irqrmpolicy(addr: 0x822cf30 [10])
+  < sys_irqrmpolicy(addr: 0x822cf30 [10]) -> (ret: 0)
+  @lab3.c:169, kbd_test_timed_scan
     kbd_print_no_sysinb(g_counter)
-    "sys_inb_calls: 14"
+    "sys_inb_calls: 4"
+< kbd_test_timed_scan(3) -> (ret: 0)

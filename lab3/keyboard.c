@@ -3,9 +3,10 @@
 #include <stdint.h>
 #include "i8042.h"
 
-int global_hook_id;
+int kbc_hook_id = 1;
 bool flag_cycle_ESC;
 int g_counter;
+bool TWO_BYTES;
 
 /** Prints the input scancode. (Already implemented in the LCF)
  * Parameters
@@ -56,18 +57,21 @@ void (kbc_ih)(void) {
   uint8_t scan_code, size = 1;
   uint8_t* arr = (uint8_t*) malloc(2 * sizeof(uint8_t));
   scan_code=kbc_read_output_buffer();
+    
+  if (kbc_communication_error() != OK) return;
 
   if (scan_code == KBC_SCANCODE_2B) {
-    arr[1] = scan_code;
+    TWO_BYTES = true;
+    return;
+  }
+
+  if (TWO_BYTES == true){
     size++;
-    while (scan_code == KBC_SCANCODE_2B ) {
-      scan_code = kbc_read_output_buffer(); 
-    }
+    arr[1] = KBC_SCANCODE_2B;
+    TWO_BYTES = false;
   }
 
   arr[0] = scan_code;
-
-  if (kbc_communication_error() != OK) return;
 
   if (scan_code == ESC_BREAK) flag_cycle_ESC = false;
 
@@ -78,11 +82,11 @@ void (kbc_ih)(void) {
 
 int (kbc_subscribe_int)(uint8_t *bit_no) {
   *bit_no = KBC_IRQ;
-  int res = sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &global_hook_id);
+  int res = sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &kbc_hook_id);
   return res;
 }
 
 int (kbc_unsubscribe_int)() {
-  return sys_irqrmpolicy(&global_hook_id);
+  return sys_irqrmpolicy(&kbc_hook_id);
 }
 
