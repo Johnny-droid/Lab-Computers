@@ -23,6 +23,7 @@ bool TWO_BYTES;
 int (kbc_communication_error)() {
   uint8_t status_reg = 0;
   util_sys_inb(KBC_STAT_REG, &status_reg);
+  g_counter++;
   //printf("Status reg inside comm error: %x\n ", status_reg & KBC_STAT_CHECK);
   if ((status_reg & KBC_STAT_CHECK) == OK) return 0; 
   return 1;
@@ -31,16 +32,63 @@ int (kbc_communication_error)() {
 int (kbc_output_buf_full)() {
   uint8_t status_reg = 0;
   util_sys_inb(KBC_STAT_REG, &status_reg);
+  g_counter++;
   if (status_reg & KBC_OUT_BUF_FULL) return 0; 
+  return 1;
+}
+
+int (kbc_intput_buf_full)() {
+  uint8_t status_reg = 0;
+  util_sys_inb(KBC_STAT_REG, &status_reg);
+  g_counter++;
+  if (status_reg & KBC_IN_BUF_FULL) return 0; 
   return 1;
 }
 
 uint8_t (kbc_read_output_buffer)(){
   uint8_t scan_code;
   util_sys_inb(KBC_OUT_BUF, &scan_code);
+  g_counter++;
   return scan_code;
 }
 
+uint8_t (read_command_byte)() {
+  int counterCycles = 0;
+  uint8_t comm = 0;
+
+  while (counterCycles < 10000) {
+    if (kbc_intput_buf_full() != OK) {
+      sys_outb(KBC_STAT_REG, KBC_READ_CMD_BYTE); 
+      break;
+    }
+  }
+  
+  util_sys_inb(KBC_OUT_BUF, &comm);
+  return comm;
+}
+
+void (write_command_byte)(uint8_t command_byte) {
+  int counterCycles = 0;
+  
+  while (counterCycles < 10000) {
+    if (kbc_intput_buf_full() != OK) {
+      sys_outb(KBC_STAT_REG, KBC_WRITE_CMD_BYTE); 
+      break;
+    }
+  }
+
+  sys_outb(KBC_OUT_BUF, command_byte);
+}
+
+
+
+void (enable_interrupts)() {
+  uint8_t command_byte = 0;
+  
+  command_byte = read_command_byte();
+  write_command_byte(command_byte | KBC_COMMAND_ENABLE_INTERRUPTS);
+  
+}
 
 
 /**
@@ -53,13 +101,13 @@ void (kbc_ih)(void) {
 
   if (kbc_output_buf_full() != OK) return;
 
-  g_counter++;
+  
   uint8_t scan_code, size = 1;
   uint8_t* arr = (uint8_t*) malloc(2 * sizeof(uint8_t));
   scan_code=kbc_read_output_buffer();
-    
+  g_counter++;
   if (kbc_communication_error() != OK) return;
-
+  g_counter++;
   if (scan_code == KBC_SCANCODE_2B) {
     TWO_BYTES = true;
     return;

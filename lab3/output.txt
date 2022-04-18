@@ -1,5 +1,0 @@
-Makecode: 0x16
-Makecode: 0x24
-Breakcode: 0xa4
-Breakcode: 0x96
-sys_inb_calls: 4

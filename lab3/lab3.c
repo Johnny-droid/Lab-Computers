@@ -94,23 +94,13 @@ int(kbd_test_scan)() {
  */
 int(kbd_test_poll)() {
   g_counter = 0;
-  /*
-  int ipc_status;
-  message msg;
-  int r;
+
   flag_cycle_ESC = true;
-
-
   while(flag_cycle_ESC) { 
     kbc_ih();
-
-    
   }
-  */
-
-
-
-
+  
+  enable_interrupts();
   return kbd_print_no_sysinb(g_counter);
 }
 
