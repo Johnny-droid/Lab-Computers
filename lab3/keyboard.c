@@ -64,6 +64,7 @@ uint8_t (read_command_byte)() {
   }
   
   util_sys_inb(KBC_OUT_BUF, &comm);
+  g_counter++;
   return comm;
 }
 
@@ -105,9 +106,9 @@ void (kbc_ih)(void) {
   uint8_t scan_code, size = 1;
   uint8_t* arr = (uint8_t*) malloc(2 * sizeof(uint8_t));
   scan_code=kbc_read_output_buffer();
-  g_counter++;
+
   if (kbc_communication_error() != OK) return;
-  g_counter++;
+
   if (scan_code == KBC_SCANCODE_2B) {
     TWO_BYTES = true;
     return;

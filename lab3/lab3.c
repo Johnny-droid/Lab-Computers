@@ -6,8 +6,6 @@
 #include "i8042.h"
 #include "../lab2/timer.c"
 
-
-
 extern bool flag_cycle_ESC;
 extern int g_counter;
 extern bool TWO_BYTES;
