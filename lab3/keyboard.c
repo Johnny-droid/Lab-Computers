@@ -4,9 +4,10 @@
 #include "i8042.h"
 
 int kbc_hook_id = 1;
-bool flag_cycle_ESC;
-int g_counter;
-bool TWO_BYTES;
+bool flagESC;
+bool flag2Bytes;
+int counter_sys_in;
+
 
 /** Prints the input scancode. (Already implemented in the LCF)
  * Parameters
@@ -20,35 +21,42 @@ bool TWO_BYTES;
 // Prints the no. of sys_inb() calls (Already implemented in the LCF): cnt Number of sys_inb() calls
 // int kbd_print_no_sysinb	(uint32_t cnt)	
 
-int (kbc_communication_error)() {
-  uint8_t status_reg = 0;
-  util_sys_inb(KBC_STAT_REG, &status_reg);
-  g_counter++;
-  //printf("Status reg inside comm error: %x\n ", status_reg & KBC_STAT_CHECK);
-  if ((status_reg & KBC_STAT_CHECK) == OK) return 0; 
-  return 1;
+bool (kbc_communication_error)() {
+  uint8_t st = 0;
+  counter_sys_in++;
+  if (util_sys_inb(KBC_STAT_REG, &st) != OK) {
+    return true;
+  }
+
+  if ( (st & KBC_STAT_CHECK) == 0) return false;
+  return true;
+
 }
 
-int (kbc_output_buf_full)() {
-  uint8_t status_reg = 0;
-  util_sys_inb(KBC_STAT_REG, &status_reg);
-  g_counter++;
-  if (status_reg & KBC_OUT_BUF_FULL) return 0; 
-  return 1;
+bool (kbc_output_buf_full)() {
+  uint8_t st = 0;
+  counter_sys_in++;
+  if (util_sys_inb(KBC_STAT_REG, &st) != OK) {
+    return true;
+  }
+
+  if ( (st & KBC_OUT_BUF_FULL) != 0) return true;
+  return false;
+
 }
 
-int (kbc_intput_buf_full)() {
+bool (kbc_intput_buf_full)() {
   uint8_t status_reg = 0;
   util_sys_inb(KBC_STAT_REG, &status_reg);
-  g_counter++;
-  if (status_reg & KBC_IN_BUF_FULL) return 0; 
-  return 1;
+  counter_sys_in++;
+  if (status_reg & KBC_IN_BUF_FULL) return true; 
+  return false;
 }
 
-uint8_t (kbc_read_output_buffer)(){
+uint8_t (kbc_read_output_buffer)() {
   uint8_t scan_code;
   util_sys_inb(KBC_OUT_BUF, &scan_code);
-  g_counter++;
+  counter_sys_in++;
   return scan_code;
 }
 
@@ -56,23 +64,25 @@ uint8_t (read_command_byte)() {
   int counterCycles = 0;
   uint8_t comm = 0;
 
-  while (counterCycles < 10000) {
-    if (kbc_intput_buf_full() != OK) {
-      sys_outb(KBC_STAT_REG, KBC_READ_CMD_BYTE); 
+  while (counterCycles < 100000) {
+    if (!kbc_intput_buf_full()) {
+      sys_outb(KBC_STAT_REG, KBC_READ_CMD_BYTE);
+      counterCycles++;
       break;
     }
   }
   
   util_sys_inb(KBC_OUT_BUF, &comm);
-  g_counter++;
+  counter_sys_in++;
   return comm;
 }
 
 void (write_command_byte)(uint8_t command_byte) {
   int counterCycles = 0;
   
-  while (counterCycles < 10000) {
-    if (kbc_intput_buf_full() != OK) {
+  while (counterCycles < 100000) {
+    counterCycles++;
+    if (!kbc_intput_buf_full()) {
       sys_outb(KBC_STAT_REG, KBC_WRITE_CMD_BYTE); 
       break;
     }
@@ -99,40 +109,39 @@ void (enable_interrupts)() {
  * All communication with other code must be done via global variables, static if possible.
  */
 void (kbc_ih)(void) {
+  if (!kbc_output_buf_full()) return;
 
-  if (kbc_output_buf_full() != OK) return;
+  uint8_t scanCode = kbc_read_output_buffer();
 
-  
-  uint8_t scan_code, size = 1;
-  uint8_t* arr = (uint8_t*) malloc(2 * sizeof(uint8_t));
-  scan_code=kbc_read_output_buffer();
+  if (kbc_communication_error()) return;
 
-  if (kbc_communication_error() != OK) return;
-
-  if (scan_code == KBC_SCANCODE_2B) {
-    TWO_BYTES = true;
+  if (scanCode == KBC_SCANCODE_2B) {
+    flag2Bytes = true;
     return;
   }
 
-  if (TWO_BYTES == true){
-    size++;
+  uint8_t arr[2];
+  uint8_t size;
+
+  if (flag2Bytes) {
     arr[1] = KBC_SCANCODE_2B;
-    TWO_BYTES = false;
+    size = 2;
+    flag2Bytes = false;
+  } else {
+    size = 1;
   }
 
-  arr[0] = scan_code;
+  arr[0] = scanCode;
+  bool make = ( (scanCode & MAKE_SCAN_CODE) == 0 );
+  kbd_print_scancode(make, size, arr);
+  if (scanCode == ESC_BREAK) flagESC = false;
 
-  if (scan_code == ESC_BREAK) flag_cycle_ESC = false;
-
-  kbd_print_scancode(!(scan_code & BIT(7)),size,arr);
-  free(arr);
 }
 
 
 int (kbc_subscribe_int)(uint8_t *bit_no) {
   *bit_no = KBC_IRQ;
-  int res = sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &kbc_hook_id);
-  return res;
+  return sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &kbc_hook_id);
 }
 
 int (kbc_unsubscribe_int)() {
