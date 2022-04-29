@@ -6,10 +6,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "macros.h"
-#include <lcom/timer.h>
+#include "keyboard2.h"
 
 
 bool (setGraphics)(uint16_t mode);
+int(kbd_scan)();
 
 #endif
 

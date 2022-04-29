@@ -36,23 +36,49 @@ int main(int argc, char *argv[]) {
 }
 
 int(video_test_init)(uint16_t mode, uint8_t delay) {
-  
+
   if (!setGraphics(mode)) return 1;
-
-  timer_int_handler();
-  delay_seconds(delay);
-
+  sleep(delay);
   vg_exit();
   return 0;
 }
  
-int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
-                          uint16_t width, uint16_t height, uint32_t color) {
-  /* To be completed */
-  printf("%s(0x%03X, %u, %u, %u, %u, 0x%08x): under construction\n",
-         __func__, mode, x, y, width, height, color);
+int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
+  // set mode and save the information of the mode
+  /*
+  get the information of the mode and then set the mode (to get the information of the mode you can use a function already implemented, and get the information from the struct)
+  use the information to map to the vram
+  save bit offset and how many bits for each of the RGB (maybe save the whole struct)
+  */
 
-  return 1;
+
+
+
+
+
+  int r;
+  struct minix_mem_range mr; // physical memory range
+  unsigned int vram_base; // VRAM’s physical addresss
+  unsigned int vram_size; // VRAM’s size, but you can use the frame-buffer size, instead
+  uint32_t *video_mem; // frame-buffer VM address
+
+  // Allow memory mapping
+ 
+  mr.mr_base = (phys_bytes) vram_base;
+  mr.mr_limit = mr.mr_base + vram_size;
+
+  if( OK != (r = sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr))) panic("sys_privctl (ADD_MEM) failed: %d\n", r);
+  
+  // Map memory
+  
+  video_mem = (uint32_t *) vm_map_phys(SELF, (void *)mr.mr_base, vram_size);
+  
+  if(video_mem == MAP_FAILED) panic("couldn’t map video memory");
+
+
+
+  return 0;
+  
 }
 
 int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {

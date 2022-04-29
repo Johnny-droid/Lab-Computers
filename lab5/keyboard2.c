@@ -1,5 +1,5 @@
 #include <lcom/lcf.h>
-#include "keyboard.h"
+#include "keyboard2.h"
 #include <stdint.h>
 #include "i8042.h"
 
@@ -121,21 +121,12 @@ void (kbc_ih)(void) {
     return;
   }
 
-  uint8_t arr[2];
-  uint8_t size;
-
   if (flag2Bytes) {
-    arr[1] = KBC_SCANCODE_2B;
-    size = 2;
     flag2Bytes = false;
-  } else {
-    size = 1;
   }
 
-  arr[0] = scanCode;
 
   if (scanCode == ESC_BREAK) flagESC = false;
-
 }
 
 
@@ -148,31 +139,3 @@ int (kbc_unsubscribe_int)() {
   return sys_irqrmpolicy(&kbc_hook_id);
 }
 
-void (kbc_ih_no_print)(void) {
-  if (!kbc_output_buf_full()) return;
-
-  uint8_t scanCode = kbc_read_output_buffer();
-
-  if (kbc_communication_error()) return;
-
-  if (scanCode == KBC_SCANCODE_2B) {
-    flag2Bytes = true;
-    return;
-  }
-
-  uint8_t arr[2];
-  uint8_t size;
-
-  if (flag2Bytes) {
-    arr[1] = KBC_SCANCODE_2B;
-    size = 2;
-    flag2Bytes = false;
-  } else {
-    size = 1;
-  }
-
-  arr[0] = scanCode;
-  
-  if (scanCode == ESC_BREAK) flagESC = false;
-
-}
