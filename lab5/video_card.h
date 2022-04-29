@@ -5,8 +5,11 @@
 #include <lcom/lcf.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "macros.h"
+#include <lcom/timer.h>
 
-int (vg_exit1)();
+
+bool (setGraphics)(uint16_t mode);
 
 #endif
 

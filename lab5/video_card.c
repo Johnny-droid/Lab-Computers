@@ -1,17 +1,17 @@
 #include "video_card.h"
 
-int (vg_exit1)() {
-    reg86_t reg86;
-    reg86.intno = 0x10;
-    reg86.ah = 0x00;
-    reg86.al = 0x03;
-    
-    if( sys_int86(&reg86) != OK ) {
-        printf("vg_exit(): sys_int86() failed \n");
-        return 1;
+
+bool (setGraphics)(uint16_t mode) {
+    reg86_t r86;
+    memset(&r86, 0, sizeof(r86));
+    r86.ax = (VBE_SET_MODE_AH << 8) | VBE_SET_MODE_AL;       // VBE call, function 02 -- set VBE mode
+    r86.bx = BIT(14) | mode;                                 // set bit 14: linear framebuffer
+    r86.intno = BIOS_SERVICE_VIDEO_CARD;
+
+    if( sys_int86(&r86) != OK ) {
+        printf("set_vbe_mode: sys_int86() failed \n");
+        return false;
     }
-    return 0;
+    return true;
 }
-
-
 

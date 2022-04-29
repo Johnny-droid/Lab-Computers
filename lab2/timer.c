@@ -8,6 +8,7 @@
 int timer_global_counter;
 int timer_hook_id;
 
+
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   printf("Timer: %d\n", timer);
   uint8_t st = 0;
@@ -52,7 +53,7 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
   /* To be implemented by the students */
-  *bit_no = TIMER0_IRQ;
+  *bit_no = timer_hook_id = TIMER0_IRQ;
   return sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &timer_hook_id);
 }
 
@@ -133,3 +134,43 @@ int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field fiel
 
   return 0;
 }
+
+
+
+void (delay_seconds)(uint8_t seconds) {
+  uint8_t bit_no;
+  timer_subscribe_int(&bit_no);
+
+  int r;
+  uint8_t counter_seconds = 0;
+  int ipc_status;
+  message msg;
+  timer_global_counter = 0;
+  uint32_t irq_set = BIT(bit_no);
+
+  while( counter_seconds < seconds ) { /* You may want to use a different condition */
+    /* Get a request message. */
+    if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) { 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE: /* hardware interrupt notification */
+          if (msg.m_notify.interrupts & irq_set) { 
+            timer_int_handler();
+            if (timer_global_counter % 60 == 0) {
+              timer_print_elapsed_time();
+              counter_seconds++;
+            }
+          }
+          break;
+        default:
+          break; 
+      }
+    }
+  }
+  timer_unsubscribe_int();
+}
+
+

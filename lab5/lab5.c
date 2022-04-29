@@ -2,6 +2,7 @@
 #include <lcom/lcf.h>
 
 #include <lcom/lab5.h>
+#include <lcom/timer.h>
 
 #include <stdint.h>
 #include <stdio.h>
@@ -35,11 +36,14 @@ int main(int argc, char *argv[]) {
 }
 
 int(video_test_init)(uint16_t mode, uint8_t delay) {
-  /* To be completed */
-  printf("%s(0x%03x, %u): under construction\n", __func__, mode, delay);
+  
+  if (!setGraphics(mode)) return 1;
+
+  timer_int_handler();
+  delay_seconds(delay);
 
   vg_exit();
-  return 1;
+  return 0;
 }
  
 int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
