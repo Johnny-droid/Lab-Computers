@@ -39,7 +39,7 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
 
   if (!setGraphics(mode)) return 1;
   sleep(delay);
-  vg_exit();
+  if (vg_exit() != OK) return 1;
   return 0;
 }
  
@@ -50,6 +50,9 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y, uint16_t width,
   use the information to map to the vram
   save bit offset and how many bits for each of the RGB (maybe save the whole struct)
   */
+  vg_vbe_contr_info_t mode_info;
+  
+  if (vbe_get_mode_info(mode, &mode_info) != OK) return 1;
 
 
 
@@ -63,6 +66,7 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y, uint16_t width,
   uint32_t *video_mem; // frame-buffer VM address
 
   // Allow memory mapping
+  /* Use VBE function 0x01 to initialize vram_base and vram_size */
  
   mr.mr_base = (phys_bytes) vram_base;
   mr.mr_limit = mr.mr_base + vram_size;
