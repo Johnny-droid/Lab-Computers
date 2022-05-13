@@ -6,10 +6,9 @@
 #include "i8042.h"
 #include "../lab2/timer.c"
 
-extern bool flag_cycle_ESC;
-extern int g_counter;
-extern bool TWO_BYTES;
-
+extern int counter_sys_in;
+extern bool flag2Bytes;
+extern bool flagESC;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -42,21 +41,18 @@ int main(int argc, char *argv[]) {
  * Exits upon release of the ESC key
  */
 int(kbd_test_scan)() {
-  uint8_t bit_no=1;
-
+  uint8_t bit_no;
 
   kbc_subscribe_int(&bit_no);
 
-  g_counter = 0;
-  int ipc_status;
-  message msg;
+  int ipc_status, r= 0;
   uint32_t irq_set = BIT(bit_no);
-  int r = 0;
-  flag_cycle_ESC = true;
-  TWO_BYTES=false;
+  message msg;
+  flagESC = true;
+  flag2Bytes = false;
+  counter_sys_in = 0;
 
-
-   while(flag_cycle_ESC) { // You may want to use a different condition
+   while(flagESC) { // You may want to use a different condition
     // Get a request message.
 
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
@@ -81,7 +77,7 @@ int(kbd_test_scan)() {
 
   //unsubscribe
   kbc_unsubscribe_int();
-  return kbd_print_no_sysinb(g_counter);
+  return kbd_print_no_sysinb(counter_sys_in);
 }
 
 
@@ -91,15 +87,15 @@ int(kbd_test_scan)() {
  * Exits upon release of the ESC key
  */
 int(kbd_test_poll)() {
-  g_counter = 0;
+  counter_sys_in = 0;
 
-  flag_cycle_ESC = true;
-  while(flag_cycle_ESC) { 
+  flagESC = true;
+  while(flagESC) { 
     kbc_ih();
   }
   
   enable_interrupts();
-  return kbd_print_no_sysinb(g_counter);
+  return kbd_print_no_sysinb(counter_sys_in);
 }
 
 
@@ -114,17 +110,18 @@ int(kbd_test_timed_scan)(uint8_t n) {
   kbc_subscribe_int(&bit_no_KBC);
   timer_subscribe_int(&bit_no_TIMER);
 
-  g_counter = 0;
+  
   int ipc_status;
   message msg;
   uint32_t irq_set = BIT(bit_no_KBC);
   uint32_t timer0_int_bit = BIT(bit_no_TIMER);
   int r = 0;
-  flag_cycle_ESC = true;
-  TWO_BYTES=false;
+  flagESC = true;
+  flag2Bytes = false;
+  counter_sys_in = 0;
   int counter = 0;
 
-   while(flag_cycle_ESC && counter/60 < n) { // You may want to use a different condition
+   while(flagESC && counter/60 < n) { // You may want to use a different condition
     // Get a request message.
 
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
@@ -154,5 +151,5 @@ int(kbd_test_timed_scan)(uint8_t n) {
   //unsubscribe
   timer_unsubscribe_int();
   kbc_unsubscribe_int();
-  return kbd_print_no_sysinb(g_counter);
+  return kbd_print_no_sysinb(counter_sys_in);
 }

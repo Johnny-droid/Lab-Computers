@@ -1,3 +1,121 @@
+// IMPORTANT: you must include the following line in all your C files
+#include <lcom/lcf.h>
+
+#include <lcom/lab5.h>
+#include <lcom/timer.h>
+
+#include <stdint.h>
+#include <stdio.h>
+
+#include "macros.h"
+#include "video_card.h"
+
+
+int main(int argc, char *argv[]) {
+  // sets the language of LCF messages (can be either EN-US or PT-PT)
+  lcf_set_language("EN-US");
+
+  // enables to log function invocations that are being "wrapped" by LCF
+  // [comment this out if you don't want/need it]
+  lcf_trace_calls("/home/lcom/labs/lab5/trace.txt");
+
+  // enables to save the output of printf function calls on a file
+  // [comment this out if you don't want/need it]
+  lcf_log_output("/home/lcom/labs/lab5/output.txt");
+
+  // handles control over to LCF
+  // [LCF handles command line arguments and invokes the right function]
+  if (lcf_start(argc, argv))
+    return 1;
+
+  // LCF clean up tasks
+  // [must be the last statement before return]
+  lcf_cleanup();
+
+  return 0;
+}
+
+int(video_test_init)(uint16_t mode, uint8_t delay) {
+
+  if (!setGraphics(mode)) return 1;
+  sleep(delay);
+  if (vg_exit() != OK) return 1;
+  return 0;
+}
+ 
+int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
+  // set mode and save the information of the mode
+  /*
+  get the information of the mode and then set the mode (to get the information of the mode you can use a function already implemented, and get the information from the struct)
+  use the information to map to the vram
+  save bit offset and how many bits for each of the RGB (maybe save the whole struct)
+  */
+  vg_vbe_contr_info_t mode_info;
+  
+  if (vbe_get_mode_info(mode, &mode_info) != OK) return 1;
+
+
+
+
+
+
+  int r;
+  struct minix_mem_range mr; // physical memory range
+  unsigned int vram_base; // VRAM’s physical addresss
+  unsigned int vram_size; // VRAM’s size, but you can use the frame-buffer size, instead
+  uint32_t *video_mem; // frame-buffer VM address
+
+  // Allow memory mapping
+  /* Use VBE function 0x01 to initialize vram_base and vram_size */
+ 
+  mr.mr_base = (phys_bytes) vram_base;
+  mr.mr_limit = mr.mr_base + vram_size;
+
+  if( OK != (r = sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr))) panic("sys_privctl (ADD_MEM) failed: %d\n", r);
+  
+  // Map memory
+  
+  video_mem = (uint32_t *) vm_map_phys(SELF, (void *)mr.mr_base, vram_size);
+  
+  if(video_mem == MAP_FAILED) panic("couldn’t map video memory");
+
+
+
+  return 0;
+  
+}
+
+int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
+  /* To be completed */
+  printf("%s(0x%03x, %u, 0x%08x, %d): under construction\n", __func__,
+         mode, no_rectangles, first, step);
+
+  return 1;
+}
+
+int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
+  /* To be completed */
+  printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
+
+  return 1;
+}
+
+int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
+                     int16_t speed, uint8_t fr_rate) {
+  /* To be completed */
+  printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
+         __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
+
+  return 1;
+}
+
+int(video_test_controller)() {
+  /* To be completed */
+  printf("%s(): under construction\n", __func__);
+
+  return 1;
+}
+
 
 /*
 1. Configure the video card for the desired graphics mode
@@ -42,3 +160,4 @@ for(i = 0; i< hres*vres; i++, ptr++) {
  // Handle a pixel at a time
 
 */
+

@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+
 /** @defgroup timer timer
  * @{
  *
@@ -111,5 +112,7 @@ int(timer_print_config)(uint8_t timer, enum timer_status_field field,
  * @return Returns the current time count
  */
 uint32_t(timer_print_elapsed_time)();
+
+void(delay_seconds)(uint8_t seconds);
 
 #endif /* __TIMER_H */
