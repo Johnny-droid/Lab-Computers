@@ -1,0 +1,7 @@
+Tests with mode 110 return a failed test for an unknown reason:
+Test FAILED: one or more missing/unexpected function calls!
+
+Try this case to see the error:
+lcom_run lab5 "rectangle 110 40 40 100 150 1A -t"
+
+

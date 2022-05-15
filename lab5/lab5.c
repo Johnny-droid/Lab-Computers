@@ -44,53 +44,38 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
 }
  
 int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
-  // set mode and save the information of the mode
+  /*
+  Map the graphics mode VRAM into the process' address space and initialize the video graphics mode. The LCF function vbe_get_mode_info() can be used to obtain the relevant mode parameters for these two actions.
+  Modify VRAM, by calling the functions you'll develop for this lab.
+  Switch back to text mode, by calling vg_exit()
+  */
+
   /*
   get the information of the mode and then set the mode (to get the information of the mode you can use a function already implemented, and get the information from the struct)
   use the information to map to the vram
   save bit offset and how many bits for each of the RGB (maybe save the whole struct)
   */
-  vg_vbe_contr_info_t mode_info;
   
-  if (vbe_get_mode_info(mode, &mode_info) != OK) return 1;
-
-
-
-
-
-
-  int r;
-  struct minix_mem_range mr; // physical memory range
-  unsigned int vram_base; // VRAM’s physical addresss
-  unsigned int vram_size; // VRAM’s size, but you can use the frame-buffer size, instead
-  uint32_t *video_mem; // frame-buffer VM address
-
-  // Allow memory mapping
-  /* Use VBE function 0x01 to initialize vram_base and vram_size */
- 
-  mr.mr_base = (phys_bytes) vram_base;
-  mr.mr_limit = mr.mr_base + vram_size;
-
-  if( OK != (r = sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr))) panic("sys_privctl (ADD_MEM) failed: %d\n", r);
-  
-  // Map memory
-  
-  video_mem = (uint32_t *) vm_map_phys(SELF, (void *)mr.mr_base, vram_size);
-  
-  if(video_mem == MAP_FAILED) panic("couldn’t map video memory");
-
-
-
+  if (!prepareGraphics(mode)) return 1;
+  if (!setGraphics(mode)) return 1;
+  if (vg_draw_rectangle(x, y, width, height, color) != OK) return 1; 
+  kbd_scan();
+  if (vg_exit() != OK) return 1;
   return 0;
   
 }
 
-int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
-  /* To be completed */
-  printf("%s(0x%03x, %u, 0x%08x, %d): under construction\n", __func__,
-         mode, no_rectangles, first, step);
 
-  return 1;
+
+int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
+  if (!prepareGraphics(mode)) return 1;
+  if (!setGraphics(mode)) return 1;
+
+  if (vg_draw_pattern(mode, no_rectangles, first, step) != OK) return 1;
+
+  kbd_scan();
+  if (vg_exit() != OK) return 1;
+  return 0;
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
