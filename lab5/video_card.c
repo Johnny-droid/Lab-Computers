@@ -165,7 +165,15 @@ int (vg_draw_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint
 }
 
 
+int (vg_draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 
+  enum xpm_image_type type = XPM_INDEXED;
+  xpm_image_t img_info;
+  uint8_t* sprite = xpm_load(xpm, type, &img_info);
+  sprite++;
+
+  return 0;
+}
 
 
 
