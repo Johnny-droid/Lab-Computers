@@ -16,9 +16,9 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
 int (vg_draw_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step);
 
 
-uint32_t (getBlueBits)(uint32_t color);
-uint32_t (getGreenBits)(uint32_t color);
-uint32_t (getRedBits)(uint32_t color);
+uint32_t (getBlueBitsFirst)(uint32_t first);
+uint32_t (getGreenBitsFirst)(uint32_t first);
+uint32_t (getRedBitsFirst)(uint32_t first);
 uint32_t (calculateColorPatternIndexed)(uint8_t no_rectangles, unsigned int x, unsigned int y, uint32_t first, uint8_t step);
 uint32_t (calculateColorPatternDirect)(uint8_t no_rectangles, unsigned int x, unsigned int y, uint32_t first, uint8_t step);
 
