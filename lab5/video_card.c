@@ -166,11 +166,23 @@ int (vg_draw_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint
 
 
 int (vg_draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
+  uint8_t* temp_video_mem = (uint8_t*) video_mem;
 
   enum xpm_image_type type = XPM_INDEXED;
   xpm_image_t img_info;
   uint8_t* sprite = xpm_load(xpm, type, &img_info);
-  sprite++;
+  
+
+  for (uint16_t i = y; i < v_res && i < y + img_info.height; i++) {
+    for (uint16_t j = x; j < h_res && j < x + img_info.width; j++) {
+      for (unsigned int byte = 0; byte < bytes_per_pixel; byte++) {
+        temp_video_mem[(i*h_res+j)*bytes_per_pixel + byte] = *sprite;
+        sprite++;
+      }
+    }
+  }
+  
+
 
   return 0;
 }
