@@ -7,7 +7,8 @@ extern bool flagESC;
 
 
 //Video card variables
-static char *video_mem;		/* Process (virtual) address to which VRAM is mapped */
+static char* video_mem;		// Process (virtual) address to which VRAM is mapped
+static char* buffer;
 static unsigned h_res;	        /* Horizontal resolution in pixels */
 static unsigned v_res;	        /* Vertical resolution in pixels */
 static unsigned bytes_per_pixel; 
@@ -19,7 +20,6 @@ static uint8_t blue_mask_size;
 static uint8_t red_field_position;
 static uint8_t green_field_position;
 static uint8_t blue_field_position;
-
 
 
 bool (prepareGraphics)(uint16_t mode) {
@@ -83,7 +83,7 @@ bool (setGraphics)(uint16_t mode) {
 
 
 int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
-  char* temp_video_mem = (char*) video_mem;
+  char* temp_video_mem = video_mem;
 
   if (x > h_res || y > v_res) return 1;
 
@@ -165,14 +165,17 @@ int (vg_draw_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint
 }
 
 
-int (vg_draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  uint8_t* temp_video_mem = (uint8_t*) video_mem;
+int (vg_draw_sprite)(char * sprite, uint16_t x, uint16_t y, uint8_t buffer_no, xpm_image_t img_info) {
+  char* temp_video_mem;
 
-  enum xpm_image_type type = XPM_INDEXED;
-  xpm_image_t img_info;
-  uint8_t* sprite = xpm_load(xpm, type, &img_info);
+  if (buffer_no == 0) {
+    temp_video_mem = video_mem;
+  } else if (buffer_no == 1) {
+    temp_video_mem = buffer;
+  } else {
+    return 1;
+  }
   
-
   for (uint16_t i = y; i < v_res && i < y + img_info.height; i++) {
     for (uint16_t j = x; j < h_res && j < x + img_info.width; j++) {
       for (unsigned int byte = 0; byte < bytes_per_pixel; byte++) {
@@ -181,16 +184,102 @@ int (vg_draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
       }
     }
   }
-  
-
 
   return 0;
 }
 
 
 
+int (vg_draw_moving_sprite)(char* sprite, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf, int16_t speed, uint8_t fr_rate, xpm_image_t img_info) {
+  uint16_t x = xi;
+  uint16_t y = yi;
+  int16_t speed_x, speed_y; // in the future maybe add other type of movements, besides horizontal and vertical
+  if (xf == xi) {            // but we probably need something like the slope and it will be more generalized than vertical and horizontal
+    speed_x = 0; 
+    speed_y = abs(speed);
+  } else {
+    speed_x = abs(speed);
+    speed_y = 0;
+  }
 
 
+  buffer = (char*) malloc(h_res * v_res * bytes_per_pixel * sizeof(uint8_t));
+  int no_interrupts = 60 / fr_rate;
+
+  uint8_t bit_no_KBC=1;
+  uint8_t bit_no_TIMER=0;
+
+  kbc_subscribe_int(&bit_no_KBC);
+  timer_subscribe_int(&bit_no_TIMER);
+  
+  int ipc_status, r= 0, counter_interrupts = 0, neg_speed_frame_counter = 0;
+  uint32_t irq_set_kbc = BIT(bit_no_KBC);
+  uint32_t irq_set_timer = BIT(bit_no_TIMER);
+  flagESC = true;
+  flag2Bytes = false;
+  counter_sys_in = 0;
+  message msg;
+
+
+  while (flagESC) {
+    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+
+    if (is_ipc_notify(ipc_status)) { // received notification 
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE: // hardware interrupt notification		               
+          if (msg.m_notify.interrupts & irq_set_kbc) { //subscribed interrupt                  
+            kbc_ih();
+          }
+          if (msg.m_notify.interrupts & irq_set_timer) {
+            
+            if (counter_interrupts < no_interrupts) {
+              counter_interrupts++;
+              continue;
+            }
+            counter_interrupts = 0;
+            
+            memset(buffer, 0, h_res * v_res * bytes_per_pixel);
+            vg_draw_sprite(sprite, x, y, 1, img_info);
+            memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
+            if (x == xf && y == yf) {continue;}
+
+            if (speed >= 0) {
+              x +=  speed_x;
+              y +=  speed_y;
+            } else if (neg_speed_frame_counter == abs(speed)) {
+              if (speed_x == 0) y++;
+              else x++;
+              neg_speed_frame_counter = 0;
+            } else {
+              neg_speed_frame_counter++;
+            }
+           
+            
+            if (x + img_info.width > h_res || y + img_info.height > v_res || x < 0 || y < 0) {
+              x -=  speed_x;
+              y -=  speed_y;
+              speed_x = 0;
+              speed_y = 0;
+            } 
+          }
+          break;
+        default:
+          break; // no other notifications expected: do nothing
+      }
+    }
+  }
+
+
+
+
+  timer_unsubscribe_int();
+  kbc_unsubscribe_int();
+  free(buffer);
+  return 0;
+}
 
 
 

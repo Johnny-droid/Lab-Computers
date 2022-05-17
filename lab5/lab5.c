@@ -83,20 +83,28 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
   if (!prepareGraphics(mode)) return 1;
   if (!setGraphics(mode)) return 1;
 
-  if (vg_draw_xpm(xpm, x, y) != OK) return 1;
+  enum xpm_image_type type = XPM_INDEXED;
+  xpm_image_t img_info;
+  char* sprite = (char*) xpm_load(xpm, type, &img_info);
+  if (vg_draw_sprite(sprite, x, y, 0, img_info) != OK) return 1;
 
   kbd_scan();
   if (vg_exit() != OK) return 1;
   return 0;
 }
 
-int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
-                     int16_t speed, uint8_t fr_rate) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
-         __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
+int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf, int16_t speed, uint8_t fr_rate) {
+  uint16_t mode = 0x105;
+  if (!prepareGraphics(mode)) return 1;
+  if (!setGraphics(mode)) return 1;
 
-  return 1;
+  enum xpm_image_type type = XPM_INDEXED;
+  xpm_image_t img_info;
+  char* sprite = (char*) xpm_load(xpm, type, &img_info);
+  if (vg_draw_moving_sprite(sprite, xi, yi, xf, yf, speed, fr_rate, img_info) != OK) return 1;
+
+  if (vg_exit() != OK) return 1;
+  return 0;
 }
 
 int(video_test_controller)() {

@@ -131,7 +131,7 @@ void (kbc_ih)(void) {
 
 
 int (kbc_subscribe_int)(uint8_t *bit_no) {
-  *bit_no = KBC_IRQ;
+  *bit_no = kbc_hook_id = KBC_IRQ;
   return sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &kbc_hook_id);
 }
 
