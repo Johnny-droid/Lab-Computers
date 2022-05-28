@@ -1,14 +1,9 @@
 #include "video_card.h"
 
-//Keyboard variables
-extern int counter_sys_in;
-extern bool flag2Bytes;
-extern bool flagESC;
-
 
 //Video card variables
-static char* video_mem;		// Process (virtual) address to which VRAM is mapped
-static char* buffer;
+static uint32_t* video_mem;		// Process (virtual) address to which VRAM is mapped
+static uint32_t* buffer;
 static unsigned h_res;	        /* Horizontal resolution in pixels */
 static unsigned v_res;	        /* Vertical resolution in pixels */
 static unsigned bytes_per_pixel; 
@@ -22,7 +17,11 @@ static uint8_t green_field_position;
 static uint8_t blue_field_position;
 
 
-bool (prepareGraphics)(uint16_t mode) {
+static uint8_t frame_counter = 0;
+static uint8_t frame_number =  60 / GAME_FRAME_RATE;
+
+
+bool (vg_prepareGraphics)(uint16_t mode) {
   // set mode and save the information of the mode
   vbe_mode_info_t mode_info;
   if (vbe_get_mode_info(mode, &mode_info) != OK) return 1;
@@ -40,11 +39,10 @@ bool (prepareGraphics)(uint16_t mode) {
   blue_field_position = mode_info.BlueFieldPosition;
 
   unsigned int vram_base = mode_info.PhysBasePtr; // VRAM’s physical addresss
-  unsigned int vram_size = h_res * v_res * bytes_per_pixel; // VRAM’s size, but you can use the frame-buffer size, instead
-  //uint32_t *video_mem; frame-buffer VM address
+  unsigned int vram_size = h_res * v_res * bytes_per_pixel; // VRAM’s size
 
-  // Allow memory mapping
-  /* Use VBE function 0x01 to initialize vram_base and vram_size */
+  buffer = (uint32_t*) malloc(h_res * v_res * bytes_per_pixel * sizeof(uint32_t));
+
   struct minix_mem_range mr; // physical memory range
   int r;
   mr.mr_base = (phys_bytes) vram_base;
@@ -66,7 +64,8 @@ bool (prepareGraphics)(uint16_t mode) {
   return true;
 } 
 
-bool (setGraphics)(uint16_t mode) {
+
+bool (vg_setGraphics)(uint16_t mode) {
     reg86_t r86;
     memset(&r86, 0, sizeof(r86));
 
@@ -81,12 +80,16 @@ bool (setGraphics)(uint16_t mode) {
     return true;
 }
 
+bool (vg_free)() {
+  free(buffer);
+  return true;
+}
 
 
 
 
 int (vg_draw_sprite)(char * sprite, uint16_t x, uint16_t y, uint8_t buffer_no, xpm_image_t img_info) {
-  char* temp_video_mem;
+  uint32_t* temp_video_mem;
 
   if (buffer_no == 0) {
     temp_video_mem = video_mem;
@@ -110,6 +113,37 @@ int (vg_draw_sprite)(char * sprite, uint16_t x, uint16_t y, uint8_t buffer_no, x
 
 
 
+void (vg_draw_game)() {
+
+
+
+
+}
+
+
+
+void (vg_ih)() {
+  if (frame_counter < frame_number) {
+    frame_counter++;
+    return;
+  }
+  frame_counter = 0;
+
+  switch (game_state) {
+    case PLAYING:
+      vg_draw_game();
+      break;
+    
+    default:
+      break;
+  }
+
+  //memset(buffer, 0, h_res * v_res * bytes_per_pixel);
+  //vg_draw_sprite(sprite, x, y, 1, img_info);
+  //memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
+}
+
+
 
 
 int (vg_draw_moving_sprite)(char* sprite, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf, int16_t speed, uint8_t fr_rate, xpm_image_t img_info) {
@@ -125,25 +159,19 @@ int (vg_draw_moving_sprite)(char* sprite, uint16_t xi, uint16_t yi, uint16_t xf,
   }
 
 
-  buffer = (char*) malloc(h_res * v_res * bytes_per_pixel * sizeof(uint8_t));
+  //buffer = (char*) malloc(h_res * v_res * bytes_per_pixel * sizeof(uint8_t));
   int no_interrupts = 60 / fr_rate;
 
-  uint8_t bit_no_KBC=1;
   uint8_t bit_no_TIMER=0;
 
-  kbc_subscribe_int(&bit_no_KBC);
   timer_subscribe_int(&bit_no_TIMER);
   
   int ipc_status, r= 0, counter_interrupts = 0, neg_speed_frame_counter = 0;
-  uint32_t irq_set_kbc = BIT(bit_no_KBC);
   uint32_t irq_set_timer = BIT(bit_no_TIMER);
-  flagESC = true;
-  flag2Bytes = false;
-  counter_sys_in = 0;
   message msg;
 
 
-  while (flagESC) {
+  while (1) { //flagEsc was here
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
       printf("driver_receive failed with: %d", r);
       continue;
@@ -152,9 +180,6 @@ int (vg_draw_moving_sprite)(char* sprite, uint16_t xi, uint16_t yi, uint16_t xf,
     if (is_ipc_notify(ipc_status)) { // received notification 
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE: // hardware interrupt notification		               
-          if (msg.m_notify.interrupts & irq_set_kbc) { //subscribed interrupt                  
-            kbc_ih();
-          }
           if (msg.m_notify.interrupts & irq_set_timer) {
             
             if (counter_interrupts < no_interrupts) {
@@ -198,7 +223,6 @@ int (vg_draw_moving_sprite)(char* sprite, uint16_t xi, uint16_t yi, uint16_t xf,
 
 
   timer_unsubscribe_int();
-  kbc_unsubscribe_int();
   free(buffer);
   return 0;
 }

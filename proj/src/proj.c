@@ -1,6 +1,6 @@
 #include <lcom/lcf.h>
-
 #include <lcom/proj.h>
+
 #include "video_card/video_card.h"
 #include "game.h"
 
@@ -34,11 +34,12 @@ int main(int argc, char *argv[]) {
 
 
 int (proj_main_loop)(int argc, char* agrv[]) {
-  if (!prepareGraphics(GAME_GRAPHICS_MODE)) return 1;
-  if (!setGraphics(GAME_GRAPHICS_MODE)) return 1;  
+  if (!vg_prepareGraphics(GAME_GRAPHICS_MODE)) return EXIT_FAILURE;
+  if (!vg_setGraphics(GAME_GRAPHICS_MODE)) return EXIT_FAILURE;  
 
   game_loop();
 
-  if (vg_exit() != OK) return 1;
+  if (!vg_free()) return EXIT_FAILURE;
+  if (vg_exit() != OK) return EXIT_FAILURE;
   return EXIT_SUCCESS;
 }

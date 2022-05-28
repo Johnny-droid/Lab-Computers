@@ -6,14 +6,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "vg_macros.h"
-#include "keyboard/keyboard.h"
 #include <lcom/timer.h>
+#include "../game.h"
 
-bool (prepareGraphics)(uint16_t mode);
-bool (setGraphics)(uint16_t mode);
+#define GAME_FRAME_RATE 30
 
+bool (vg_prepareGraphics)(uint16_t mode);
+bool (vg_setGraphics)(uint16_t mode);
+bool (vg_free)();
 
 int (vg_draw_sprite)(char* sprite, uint16_t x, uint16_t y, uint8_t buffer_no, xpm_image_t img_info);
+
+void (vg_draw_game)();
+
+void (vg_ih)();
 
 //Just here to see (the loop will be in the game_loop function)
 int (vg_draw_moving_sprite)(char* sprite, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf, int16_t speed, uint8_t fr_rate, xpm_image_t img_info); 
