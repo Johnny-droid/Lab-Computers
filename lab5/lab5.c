@@ -35,6 +35,7 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
+
 int(video_test_init)(uint16_t mode, uint8_t delay) {
 
   if (!setGraphics(mode)) return 1;

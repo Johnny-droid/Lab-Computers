@@ -82,88 +82,7 @@ bool (setGraphics)(uint16_t mode) {
 }
 
 
-int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
-  char* temp_video_mem = video_mem;
 
-  if (x > h_res || y > v_res) return 1;
-
-  temp_video_mem += (((y * h_res) + x) * bytes_per_pixel);
-
-  for (unsigned int i = x; i < h_res && i < x + len; i++) {
-
-    for (unsigned int j = 0; j < bytes_per_pixel; j++) {
-      temp_video_mem[j] = ((color >> (j * 8)) & 0xFF);
-    }
-    
-    temp_video_mem += bytes_per_pixel;
-  }
-
-  return 0;
-}
-
-int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
-
-  uint8_t ret = 0;
-  for (uint16_t i = y; i < v_res && i < y + height; i++) {
-    ret |= vg_draw_hline(x, i, width, color);
-  }
-
-  return ret;
-}
-
-
-
-uint32_t (calculateColorPatternIndexed)(uint8_t no_rectangles, unsigned int x, unsigned int y, uint32_t first, uint8_t step) {
-  return (first + (y  * no_rectangles + x) * (uint32_t) step) % (1 << (bytes_per_pixel * 8));
-}
-
-uint32_t (getBlueBitsFirst)(uint32_t first) {
-  return ((1 << blue_mask_size) - 1) & (first >> blue_field_position);
-}
-
-uint32_t (getGreenBitsFirst)(uint32_t first) {
-  return ((1 << green_mask_size) - 1) & (first >> green_field_position);
-}
-
-uint32_t (getRedBitsFirst)(uint32_t first) {
-  return ((1 << red_mask_size) - 1) & (first >> red_field_position);
-}
-
-uint32_t (calculateColorPatternDirect)(uint8_t no_rectangles, unsigned int x, unsigned int y, uint32_t first, uint8_t step) {
-  uint32_t blue_bits = ((getBlueBitsFirst(first)) + (x + y) * step) % (1 << blue_mask_size);
-  uint32_t green_bits = ((getGreenBitsFirst(first) + y * step) % (1 << green_mask_size)) << (green_field_position);
-  uint32_t red_bits = ((getRedBitsFirst(first) + x * step) % (1 << red_mask_size)) << (red_field_position);
-  return red_bits | green_bits | blue_bits;
-}
-
-int (vg_draw_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
-  unsigned int x_pixels_per_rectangle = h_res / no_rectangles;
-  unsigned int y_pixels_per_rectangle = v_res / no_rectangles;
-  uint32_t color;
-
-  
-  if (mode == 0x105) {
-    for (unsigned int y = 0; y < no_rectangles; y++) {
-      for (unsigned int x = 0; x < no_rectangles; x++) {
-        if ((x+1)*x_pixels_per_rectangle > h_res  ||  (y+1)*y_pixels_per_rectangle > v_res) continue;
-        color = calculateColorPatternIndexed(no_rectangles, x, y, first, step);
-        vg_draw_rectangle(x * x_pixels_per_rectangle, y * y_pixels_per_rectangle, x_pixels_per_rectangle, y_pixels_per_rectangle, color);
-      }
-    }  
-  
-  } else {
-    for (unsigned int y = 0; y < no_rectangles; y++) {
-      for (unsigned int x = 0; x < no_rectangles; x++) {
-        if ((x+1)*x_pixels_per_rectangle > h_res  ||  (y+1)*y_pixels_per_rectangle > v_res) continue;
-        color = calculateColorPatternDirect(no_rectangles, x, y, first, step);
-        vg_draw_rectangle(x * x_pixels_per_rectangle, y * y_pixels_per_rectangle, x_pixels_per_rectangle, y_pixels_per_rectangle, color);
-      }
-    }  
-  }
-  
-
-  return 0;
-}
 
 
 int (vg_draw_sprite)(char * sprite, uint16_t x, uint16_t y, uint8_t buffer_no, xpm_image_t img_info) {
@@ -188,6 +107,8 @@ int (vg_draw_sprite)(char * sprite, uint16_t x, uint16_t y, uint8_t buffer_no, x
 
   return 0;
 }
+
+
 
 
 
@@ -284,40 +205,101 @@ int (vg_draw_moving_sprite)(char* sprite, uint16_t xi, uint16_t yi, uint16_t xf,
 
 
 
-int(kbd_scan)() {
-  uint8_t bit_no;
 
-  kbc_subscribe_int(&bit_no);
 
-  int ipc_status, r= 0;
-  uint32_t irq_set = BIT(bit_no);
-  message msg;
-  flagESC = true;
-  flag2Bytes = false;
-  counter_sys_in = 0;
 
-   while(flagESC) { // You may want to use a different condition
-    // Get a request message.
 
-    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
-      printf("driver_receive failed with: %d", r);
-      continue;
+/*
+int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
+  char* temp_video_mem = video_mem;
+
+  if (x > h_res || y > v_res) return 1;
+
+  temp_video_mem += (((y * h_res) + x) * bytes_per_pixel);
+
+  for (unsigned int i = x; i < h_res && i < x + len; i++) {
+
+    for (unsigned int j = 0; j < bytes_per_pixel; j++) {
+      temp_video_mem[j] = ((color >> (j * 8)) & 0xFF);
     }
-
-    if (is_ipc_notify(ipc_status)) { // received notification 
-      switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE: // hardware interrupt notification		               
-          if (msg.m_notify.interrupts & irq_set) { //subscribed interrupt                  
-           // process it
-            kbc_ih();
-          }
-          break;
-        default:
-          break; // no other notifications expected: do nothing
-      }
-    } 
+    
+    temp_video_mem += bytes_per_pixel;
   }
 
-  kbc_unsubscribe_int();
   return 0;
 }
+
+int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
+
+  uint8_t ret = 0;
+  for (uint16_t i = y; i < v_res && i < y + height; i++) {
+    ret |= vg_draw_hline(x, i, width, color);
+  }
+
+  return ret;
+}
+
+
+
+uint32_t (calculateColorPatternIndexed)(uint8_t no_rectangles, unsigned int x, unsigned int y, uint32_t first, uint8_t step) {
+  return (first + (y  * no_rectangles + x) * (uint32_t) step) % (1 << (bytes_per_pixel * 8));
+}
+
+uint32_t (getBlueBitsFirst)(uint32_t first) {
+  return ((1 << blue_mask_size) - 1) & (first >> blue_field_position);
+}
+
+uint32_t (getGreenBitsFirst)(uint32_t first) {
+  return ((1 << green_mask_size) - 1) & (first >> green_field_position);
+}
+
+uint32_t (getRedBitsFirst)(uint32_t first) {
+  return ((1 << red_mask_size) - 1) & (first >> red_field_position);
+}
+
+uint32_t (calculateColorPatternDirect)(uint8_t no_rectangles, unsigned int x, unsigned int y, uint32_t first, uint8_t step) {
+  uint32_t blue_bits = ((getBlueBitsFirst(first)) + (x + y) * step) % (1 << blue_mask_size);
+  uint32_t green_bits = ((getGreenBitsFirst(first) + y * step) % (1 << green_mask_size)) << (green_field_position);
+  uint32_t red_bits = ((getRedBitsFirst(first) + x * step) % (1 << red_mask_size)) << (red_field_position);
+  return red_bits | green_bits | blue_bits;
+}
+
+int (vg_draw_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
+  unsigned int x_pixels_per_rectangle = h_res / no_rectangles;
+  unsigned int y_pixels_per_rectangle = v_res / no_rectangles;
+  uint32_t color;
+
+  
+  if (mode == 0x105) {
+    for (unsigned int y = 0; y < no_rectangles; y++) {
+      for (unsigned int x = 0; x < no_rectangles; x++) {
+        if ((x+1)*x_pixels_per_rectangle > h_res  ||  (y+1)*y_pixels_per_rectangle > v_res) continue;
+        color = calculateColorPatternIndexed(no_rectangles, x, y, first, step);
+        vg_draw_rectangle(x * x_pixels_per_rectangle, y * y_pixels_per_rectangle, x_pixels_per_rectangle, y_pixels_per_rectangle, color);
+      }
+    }  
+  
+  } else {
+    for (unsigned int y = 0; y < no_rectangles; y++) {
+      for (unsigned int x = 0; x < no_rectangles; x++) {
+        if ((x+1)*x_pixels_per_rectangle > h_res  ||  (y+1)*y_pixels_per_rectangle > v_res) continue;
+        color = calculateColorPatternDirect(no_rectangles, x, y, first, step);
+        vg_draw_rectangle(x * x_pixels_per_rectangle, y * y_pixels_per_rectangle, x_pixels_per_rectangle, y_pixels_per_rectangle, color);
+      }
+    }  
+  }
+  
+
+  return 0;
+}
+*/
+
+
+
+
+
+
+
+
+
+

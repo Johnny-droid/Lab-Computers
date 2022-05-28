@@ -5,9 +5,10 @@ PROG=proj
 .PATH: ${.CURDIR}/util/
 .PATH: ${.CURDIR}/keyboard/
 .PATH: ${.CURDIR}/video_card/
+.PATH: ${.CURDIR}/sprites/
 
 # source code files to be compiled
-SRCS = proj.c video_card.c keyboard.c timer.c utils.c
+SRCS = proj.c game.c video_card.c keyboard.c timer.c utils.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set

@@ -1,8 +1,8 @@
 #include <lcom/lcf.h>
 
 #include <lcom/proj.h>
-#include <lcom/timer.h>
-#include "keyboard/keyboard.h"
+#include "video_card/video_card.h"
+#include "game.h"
 
 #include <stdint.h>
 #include <stdio.h>
@@ -34,6 +34,11 @@ int main(int argc, char *argv[]) {
 
 
 int (proj_main_loop)(int argc, char* agrv[]) {
-    printf("Hello World!");
-    return EXIT_SUCCESS;
+  if (!prepareGraphics(GAME_GRAPHICS_MODE)) return 1;
+  if (!setGraphics(GAME_GRAPHICS_MODE)) return 1;  
+
+  game_loop();
+
+  if (vg_exit() != OK) return 1;
+  return EXIT_SUCCESS;
 }
