@@ -2,8 +2,8 @@
 
 
 //Video card variables
-static uint32_t* video_mem;		// Process (virtual) address to which VRAM is mapped
-static uint32_t* buffer;
+static char* video_mem;		// Process (virtual) address to which VRAM is mapped
+static char* buffer;
 static unsigned h_res;	        /* Horizontal resolution in pixels */
 static unsigned v_res;	        /* Vertical resolution in pixels */
 static unsigned bytes_per_pixel; 
@@ -19,6 +19,10 @@ static uint8_t blue_field_position;
 
 static uint8_t frame_counter = 0;
 static uint8_t frame_number =  60 / GAME_FRAME_RATE;
+
+
+
+
 
 
 bool (vg_prepareGraphics)(uint16_t mode) {
@@ -41,7 +45,7 @@ bool (vg_prepareGraphics)(uint16_t mode) {
   unsigned int vram_base = mode_info.PhysBasePtr; // VRAM’s physical addresss
   unsigned int vram_size = h_res * v_res * bytes_per_pixel; // VRAM’s size
 
-  buffer = (uint32_t*) malloc(h_res * v_res * bytes_per_pixel * sizeof(uint32_t));
+  buffer = (char*) malloc(h_res * v_res * bytes_per_pixel * sizeof(char));
 
   struct minix_mem_range mr; // physical memory range
   int r;
@@ -63,6 +67,9 @@ bool (vg_prepareGraphics)(uint16_t mode) {
 
   return true;
 } 
+
+
+
 
 
 bool (vg_setGraphics)(uint16_t mode) {
@@ -88,8 +95,9 @@ bool (vg_free)() {
 
 
 
-int (vg_draw_sprite)(char * sprite, uint16_t x, uint16_t y, uint8_t buffer_no, xpm_image_t img_info) {
-  uint32_t* temp_video_mem;
+
+int (vg_draw_sprite)(char* sprite, uint16_t x, uint16_t y, uint8_t buffer_no, xpm_image_t img_info) {
+  char* temp_video_mem;
 
   if (buffer_no == 0) {
     temp_video_mem = video_mem;
@@ -114,11 +122,18 @@ int (vg_draw_sprite)(char * sprite, uint16_t x, uint16_t y, uint8_t buffer_no, x
 
 
 void (vg_draw_game)() {
-
-
-
+  // Sprites
+  enum xpm_image_type type = XPM_8_8_8;
+  xpm_image_t img_info;
+  char* sprite = (char*) xpm_load(xpm_alien, type, &img_info);
+  
+  memset(buffer, 0, h_res * v_res * bytes_per_pixel);
+  vg_draw_sprite(sprite, 400, 400, 1, img_info);
+  memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
 
 }
+
+
 
 
 
@@ -146,6 +161,28 @@ void (vg_ih)() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// not going to be used
 int (vg_draw_moving_sprite)(char* sprite, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf, int16_t speed, uint8_t fr_rate, xpm_image_t img_info) {
   uint16_t x = xi;
   uint16_t y = yi;

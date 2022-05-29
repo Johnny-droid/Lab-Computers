@@ -18,7 +18,7 @@ int(game_loop)() {
   uint32_t irq_set_timer = BIT(bit_no_TIMER);
   message msg;
 
-  while (counter_time_out < 200) { //just use for test
+  while (counter_time_out < 400) { //just use for test
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;

@@ -39,7 +39,8 @@ int (proj_main_loop)(int argc, char* agrv[]) {
 
   game_loop();
 
-  if (!vg_free()) return EXIT_FAILURE;
+  
   if (vg_exit() != OK) return EXIT_FAILURE;
+  if (!vg_free()) return EXIT_FAILURE;
   return EXIT_SUCCESS;
 }

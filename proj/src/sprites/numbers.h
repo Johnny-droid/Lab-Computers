@@ -1,5 +1,7 @@
+#ifndef _XPM_NUMBERS_H_
+#define _XPM_NUMBERS_H_
 
-static char xpm_row_t const xpm_0[]  = {
+static xpm_row_t const xpm_0[]  = {
     /* columns rows colors chars-per-pixel */
     "16 16 2 1 ",
     "  c white",
@@ -25,7 +27,7 @@ static char xpm_row_t const xpm_0[]  = {
 
 
 
-static char xpm_row_t const xpm_1[]  = {
+static xpm_row_t const xpm_1[]  = {
     /* columns rows colors chars-per-pixel */
     "16 16 2 1 ",
     "  c white",
@@ -51,7 +53,7 @@ static char xpm_row_t const xpm_1[]  = {
 
 
 
-static char xpm_row_t const xpm_2[]  = {
+static xpm_row_t const xpm_2[]  = {
     /* columns rows colors chars-per-pixel */
     "16 16 2 1 ",
     "  c white",
@@ -77,7 +79,7 @@ static char xpm_row_t const xpm_2[]  = {
 
 
 
-static char xpm_row_t const xpm_3[]  = {
+static xpm_row_t const xpm_3[]  = {
     /* columns rows colors chars-per-pixel */
     "16 16 2 1 ",
     "  c white",
@@ -103,7 +105,7 @@ static char xpm_row_t const xpm_3[]  = {
 
 
 
-static char xpm_row_t const xpm_4[]  = {
+static xpm_row_t const xpm_4[]  = {
     /* columns rows colors chars-per-pixel */
     "16 16 2 1 ",
     "  c white",
@@ -129,7 +131,7 @@ static char xpm_row_t const xpm_4[]  = {
 
 
 
-static char xpm_row_t const xpm_5[]  = {
+static xpm_row_t const xpm_5[]  = {
     /* columns rows colors chars-per-pixel */
     "16 16 2 1 ",
     "  c white",
@@ -155,7 +157,7 @@ static char xpm_row_t const xpm_5[]  = {
 
 
 
-static char xpm_row_t const xpm_6[]  = {
+static xpm_row_t const xpm_6[]  = {
     /* columns rows colors chars-per-pixel */
     "16 16 2 1 ",
     "  c white",
@@ -181,7 +183,7 @@ static char xpm_row_t const xpm_6[]  = {
 
 
 
-static char xpm_row_t const xpm_7[]  = {
+static xpm_row_t const xpm_7[]  = {
     /* columns rows colors chars-per-pixel */
     "16 16 2 1 ",
     "  c white",
@@ -207,7 +209,7 @@ static char xpm_row_t const xpm_7[]  = {
 
 
 
-static char xpm_row_t const xpm_8[]  = {
+static xpm_row_t const xpm_8[]  = {
     /* columns rows colors chars-per-pixel */
     "16 16 2 1 ",
     "  c white",
@@ -233,7 +235,7 @@ static char xpm_row_t const xpm_8[]  = {
 
 
 
-static char xpm_row_t const xpm_9[]  = {
+static xpm_row_t const xpm_9[]  = {
     /* columns rows colors chars-per-pixel */
     "16 16 2 1 ",
     "  c white",
@@ -259,12 +261,12 @@ static char xpm_row_t const xpm_9[]  = {
 
 
 
-static char xpm_row_t const xpm_slash[]  = {
-    /* columns rows colors chars-per-pixel */
+static xpm_row_t const xpm_slash[]  = {
+    // columns rows colors chars-per-pixel
     "16 16 2 1 ",
     "  c white",
     ". c None",
-    /* pixels */
+    // pixels
     "................",
     "..........  ....",
     ".........   ....",
@@ -283,7 +285,7 @@ static char xpm_row_t const xpm_slash[]  = {
     "................"
 };
 
-
+#endif 
 
 
 

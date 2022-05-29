@@ -8,6 +8,12 @@
 
 #define GAME_GRAPHICS_MODE 0x115
 
+#define GAME_WIDTH_MATRIX 20
+#define GAME_HEIGHT_MATRIX 12
+
+#define GAME_ALIEN_WIDTH 32 // maybe both are not needed because we can get info from xpm_image_t
+#define GAME_ALIEN_HEIGHT 32 // when we load sprite. Although we might want a fix value to create margins and stuff in the game
+
 //Going to make the states definition here
 
 
@@ -17,19 +23,26 @@ enum GAME_STATE {
     MENU 
 };
 
-enum ALIEN_TYPE {
-    ALIEN1,
-    DEAD, // we could probably add diferent stages of DEAD if we want to create an animation
-    EMPTY
+enum ALIEN_STATE {
+    EMPTY,
+    APPEARING,
+    ALIVE,
+    DEAD_1, //The dead states are used for animation
+    DEAD_2,
+    DEAD_3,
+    DEAD_4,
+    DEAD_5
 };
 
 struct ALIEN {
-    enum ALIEN_TYPE type;
+    // if we want other aliens we can just add a type here
+    enum ALIEN_STATE state;
+    unsigned int time;
 };
-
 
 enum GAME_STATE game_state;
 
+struct ALIEN game_matrix[GAME_HEIGHT_MATRIX][GAME_WIDTH_MATRIX];
 
 int (game_loop)();
 

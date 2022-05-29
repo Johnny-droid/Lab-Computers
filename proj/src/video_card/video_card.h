@@ -2,12 +2,18 @@
 #define __VIDEOCARD_H
 
 #include <machine/int86.h> // /usr/src/include/arch/i386
-#include <lcom/lcf.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "vg_macros.h"
+#include <lcom/lcf.h>
 #include <lcom/timer.h>
 #include "../game.h"
+
+#include "vg_macros.h"
+
+#include "sprites/alien.h"
+//#include "sprites/crosshair.h"
+//#include "sprites/numbers.h"
+
 
 #define GAME_FRAME_RATE 30
 
