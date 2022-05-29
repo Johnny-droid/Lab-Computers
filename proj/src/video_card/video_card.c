@@ -17,10 +17,6 @@ static uint8_t green_field_position;
 static uint8_t blue_field_position;
 
 
-static uint8_t frame_counter = 0;
-static uint8_t frame_number =  60 / GAME_FRAME_RATE;
-
-
 // Sprite variables
 const enum xpm_image_type sprite_type = XPM_8_8_8;
 static struct SPRITE alien_sprites[NUMBER_ALIEN_STATES];
@@ -28,12 +24,6 @@ static struct SPRITE alien_sprites[NUMBER_ALIEN_STATES];
 
 
 void (vg_ih)() {
-  if (frame_counter < frame_number) {
-    frame_counter++;
-    return;
-  }
-  frame_counter = 0;
-
   switch (game_state) {
     case PLAYING:
       vg_draw_game();
@@ -50,7 +40,7 @@ void (vg_draw_game)() {
   // CLEAN THE BUFFER
   memset(buffer, 0, h_res * v_res * bytes_per_pixel);
 
-  // DRAW THE ALIENS and only after the crosshair
+  // DRAW THE ALIENS and only after, the crosshair
   vg_draw_aliens();
 
   // COPY TO THE VRAM -> in the future we might try to do flipping
