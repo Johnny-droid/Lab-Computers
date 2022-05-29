@@ -26,47 +26,6 @@ const enum xpm_image_type sprite_type = XPM_8_8_8;
 static struct SPRITE alien_sprites[NUMBER_ALIEN_STATES];
 
 
-int (vg_draw_sprite)(char* sprite, uint16_t x, uint16_t y, uint8_t buffer_no, xpm_image_t img_info) {
-  char* temp_video_mem;
-  char* temp_sprite = sprite;
-
-  if (buffer_no == 0) {
-    temp_video_mem = video_mem;
-  } else if (buffer_no == 1) {
-    temp_video_mem = buffer;
-  } else {
-    return 1;
-  }
-
-  uint32_t row_increment = (h_res - img_info.width) * bytes_per_pixel;
-  temp_video_mem += (h_res*y + x)*bytes_per_pixel;
-
-
-  for (uint16_t i = y; i < v_res && i < y + img_info.height; i++, temp_video_mem += row_increment) {
-    for (uint16_t j = x; j < h_res && j < x + img_info.width; j++, temp_video_mem += bytes_per_pixel) {
-      for (unsigned int byte = 0; byte < bytes_per_pixel; byte++) {
-        temp_video_mem[byte] = *temp_sprite;
-        temp_sprite++;
-      }
-    }
-  }
-
-  return 0;
-}
-
-
-
-void (vg_draw_game)() {
-  
-  memset(buffer, 0, h_res * v_res * bytes_per_pixel);
-  //vg_draw_sprite(alien_sprites[1].sprite_ptr , 400, 400, 1, img_info);
-  memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
-
-}
-
-
-
-
 
 void (vg_ih)() {
   if (frame_counter < frame_number) {
@@ -83,11 +42,64 @@ void (vg_ih)() {
     default:
       break;
   }
-
-  //memset(buffer, 0, h_res * v_res * bytes_per_pixel);
-  //vg_draw_sprite(sprite, x, y, 1, img_info);
-  //memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
 }
+
+
+
+
+void (vg_draw_game)() {
+  // CLEAN THE BUFFER
+  memset(buffer, 0, h_res * v_res * bytes_per_pixel);
+
+  // DRAW THE ALIENS
+
+  vg_draw_sprite(alien_sprites[1] , 400, 400, 1);
+
+  // COPY TO THE VRAM -> in the future we might try to do flipping
+  memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
+
+}
+
+
+
+
+int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffer_no) {
+  char* temp_video_mem;
+  char* temp_sprite = sprite.ptr ;
+
+  if (buffer_no == 0) {
+    temp_video_mem = video_mem;
+  } else if (buffer_no == 1) {
+    temp_video_mem = buffer;
+  } else {
+    return 1;
+  }
+
+  uint32_t row_increment = (h_res - sprite.info.width) * bytes_per_pixel;
+  temp_video_mem += (h_res*y + x)*bytes_per_pixel;
+
+
+  for (uint16_t i = y; i < v_res && i < y + sprite.info.height; i++, temp_video_mem += row_increment) {
+    for (uint16_t j = x; j < h_res && j < x + sprite.info.width; j++, temp_video_mem += bytes_per_pixel) {
+      for (unsigned int byte = 0; byte < bytes_per_pixel; byte++) {
+        temp_video_mem[byte] = *temp_sprite;
+        temp_sprite++;
+      }
+    }
+  }
+
+  return 0;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -202,13 +214,12 @@ bool (vg_load_sprites)() {
   alien_sprites[0] = alien_alive;
   alien_sprites[1] = alien_appearing;
   alien_sprites[2] = alien_dead_1;
-  alien_sprites[2] = alien_dead_2;
-  alien_sprites[2] = alien_dead_3;
-  alien_sprites[2] = alien_dead_4;
-  alien_sprites[2] = alien_dead_5;
+  alien_sprites[3] = alien_dead_2;
+  alien_sprites[4] = alien_dead_3;
+  alien_sprites[5] = alien_dead_4;
+  alien_sprites[6] = alien_dead_5;
 
-
-
+  return true;
 }
 
 
@@ -264,7 +275,7 @@ int (vg_draw_moving_sprite)(char* sprite, uint16_t xi, uint16_t yi, uint16_t xf,
             counter_interrupts = 0;
             
             memset(buffer, 0, h_res * v_res * bytes_per_pixel);
-            vg_draw_sprite(sprite, x, y, 1, img_info);
+            //vg_draw_sprite(sprite, x, y, 1, img_info);
             memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
             if (x == xf && y == yf) {continue;}
 

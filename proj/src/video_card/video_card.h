@@ -18,8 +18,8 @@
 #define GAME_FRAME_RATE 30
 
 struct SPRITE {
-    char* sprite_ptr;
-    xpm_image_t sprite_info;
+    char* ptr;
+    xpm_image_t info;
 };
 
 
@@ -28,7 +28,7 @@ bool (vg_setGraphics)(uint16_t mode);
 bool (vg_free)();
 bool (vg_load_sprites)();
 
-int (vg_draw_sprite)(char* sprite, uint16_t x, uint16_t y, uint8_t buffer_no, xpm_image_t img_info);
+int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffer_no);
 
 void (vg_draw_game)();
 

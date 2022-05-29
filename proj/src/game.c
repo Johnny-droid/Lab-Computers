@@ -1,10 +1,26 @@
 #include "game.h"
 
+void(game_initialize)() {
+  game_state = PLAYING; // going to change it later
+  bool flip = true;
 
+  struct ALIEN empty = {EMPTY, 0};
+  struct ALIEN alive = {ALIVE, 100};
+
+  for (int i = 0; i < GAME_HEIGHT_MATRIX; i++) {
+    for (int j = 0; j < GAME_WIDTH_MATRIX; j++) {
+      if (flip) {
+        game_matrix[i][j] = empty;
+      }
+      else {
+        game_matrix[i][j] = alive;
+      }
+      flip = !flip;
+    }
+  }
+}
 
 int(game_loop)() {
-  game_state = PLAYING; //going to change it later
-  // buffer = (char*) malloc(h_res * v_res * bytes_per_pixel * sizeof(uint8_t));
 
   uint8_t bit_no_KBC;
   uint8_t bit_no_TIMER;
@@ -18,7 +34,8 @@ int(game_loop)() {
   uint32_t irq_set_timer = BIT(bit_no_TIMER);
   message msg;
 
-  while (counter_time_out < 400) { //just use for test
+  game_initialize();
+  while (counter_time_out < 400 && game_state == PLAYING) { // just use for test
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
@@ -45,6 +62,3 @@ int(game_loop)() {
   kbc_unsubscribe_int();
   return 0;
 }
-
-
-

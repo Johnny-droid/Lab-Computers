@@ -7,22 +7,27 @@
 #include "keyboard/keyboard.h"
 
 #define GAME_GRAPHICS_MODE 0x115
+#define GAME_WIDTH 800
+#define GAME_HEIGHT 600
 
-#define GAME_WIDTH_MATRIX 20
-#define GAME_HEIGHT_MATRIX 12
+#define GAME_HORIZONTAL_MARGIN 15 //total 30 both sides
+#define GAME_VERTICAL_MARGIN 20   //total 40 both sides
 
-#define GAME_ALIEN_WIDTH 64 // maybe both are not needed because we can get info from xpm_image_t
-#define GAME_ALIEN_HEIGHT 64 // when we load sprite. Although we might want a fix value to create margins and stuff in the game
+#define GAME_WIDTH_MATRIX 11
+#define GAME_HEIGHT_MATRIX 8
+
+#define GAME_ALIEN_WIDTH 70 // maybe both are not needed because we can get info from xpm_image_t
+#define GAME_ALIEN_HEIGHT 70 // when we load sprite. Although we might want a fix value to create margins and stuff in the game
 
 #define NUMBER_ALIEN_STATES 7 // Not counting empty
 
 //Going to make the states definition here
 
 
-enum GAME_STATE {
+enum GAME_STATE { // We can probably add a game over state as well
     PLAYING,
     PAUSE, 
-    MENU 
+    MENU
 };
 
 enum ALIEN_STATE {
@@ -46,6 +51,7 @@ enum GAME_STATE game_state;
 
 struct ALIEN game_matrix[GAME_HEIGHT_MATRIX][GAME_WIDTH_MATRIX];
 
+void (game_initialize)();
 int (game_loop)();
 //Probably going to add step or update function
 

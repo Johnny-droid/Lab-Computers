@@ -1,2176 +1,1672 @@
 @lcflib.a:2019, lcf_start
   proj_main_loop(argc, argv)
 > proj_main_loop(0, [NULL])
-  @/home/lcom/labs/proj/src/video_card//video_card.c:32, vg_prepareGraphics
+  @/home/lcom/labs/proj/src/video_card//video_card.c:124, vg_prepareGraphics
     vbe_get_mode_info(mode, &mode_info)
   > vbe_get_mode_info(0x115, addr: 0xeffff698)
   < vbe_get_mode_info(0x115, addr: 0xeffff698 [0xe0000000, 800x600, 8:8:8 (24) <1.37329 MiB>]) -> (ret: 0)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:56, vg_prepareGraphics
+  @/home/lcom/labs/proj/src/video_card//video_card.c:148, vg_prepareGraphics
     sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr)
   > sys_privctl(SELF, SYS_PRIV_ADD_MEM, addr: 0xeffff690 [0xe0000000 - 0xe015f900 <1.37329 MiB>])
   < sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr) -> (ret: 0)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:62, vg_prepareGraphics
+  @/home/lcom/labs/proj/src/video_card//video_card.c:153, vg_prepareGraphics
     vm_map_phys(SELF, (void *)mr.mr_base, vram_size)
   < vm_map_phys(SELF, addr: 0xe0000000, 1.37329 MiB) -> (ret: 0xef89b000)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:84, vg_setGraphics
+  @/home/lcom/labs/proj/src/video_card//video_card.c:192, vg_load_sprites
+    xpm_load(xpm_alien_appearing, sprite_type, &alien_appearing_info)
+  > xpm_load(addr: 0x81b7e74, XPM_8_8_8, addr: 0xeffff780)
+  < xpm_load(addr: 0x81b7e74, XPM_8_8_8, addr: 0xeffff780 [64x64 : 12288 bytes]) -> (ret: 0x8253000)
+  @/home/lcom/labs/proj/src/video_card//video_card.c:193, vg_load_sprites
+    xpm_load(xpm_alien_alive, sprite_type, &alien_alive_info)
+  > xpm_load(addr: 0x81b7fec, XPM_8_8_8, addr: 0xeffff770)
+  < xpm_load(addr: 0x81b7fec, XPM_8_8_8, addr: 0xeffff770 [64x64 : 12288 bytes]) -> (ret: 0x8256000)
+  @/home/lcom/labs/proj/src/video_card//video_card.c:194, vg_load_sprites
+    xpm_load(xpm_alien_dead_1, sprite_type, &alien_dead_1_info)
+  > xpm_load(addr: 0x81b8150, XPM_8_8_8, addr: 0xeffff760)
+  < xpm_load(addr: 0x81b8150, XPM_8_8_8, addr: 0xeffff760 [64x64 : 12288 bytes]) -> (ret: 0x8259000)
+  @/home/lcom/labs/proj/src/video_card//video_card.c:195, vg_load_sprites
+    xpm_load(xpm_alien_dead_2, sprite_type, &alien_dead_2_info)
+  > xpm_load(addr: 0x81b82b8, XPM_8_8_8, addr: 0xeffff750)
+  < xpm_load(addr: 0x81b82b8, XPM_8_8_8, addr: 0xeffff750 [64x64 : 12288 bytes]) -> (ret: 0x825c000)
+  @/home/lcom/labs/proj/src/video_card//video_card.c:196, vg_load_sprites
+    xpm_load(xpm_alien_dead_3, sprite_type, &alien_dead_3_info)
+  > xpm_load(addr: 0x81b8404, XPM_8_8_8, addr: 0xeffff740)
+  < xpm_load(addr: 0x81b8404, XPM_8_8_8, addr: 0xeffff740 [64x64 : 12288 bytes]) -> (ret: 0x825f000)
+  @/home/lcom/labs/proj/src/video_card//video_card.c:197, vg_load_sprites
+    xpm_load(xpm_alien_dead_4, sprite_type, &alien_dead_4_info)
+  > xpm_load(addr: 0x81b8554, XPM_8_8_8, addr: 0xeffff730)
+  < xpm_load(addr: 0x81b8554, XPM_8_8_8, addr: 0xeffff730 [64x64 : 12288 bytes]) -> (ret: 0x83c3000)
+  @/home/lcom/labs/proj/src/video_card//video_card.c:198, vg_load_sprites
+    xpm_load(xpm_alien_dead_5, sprite_type, &alien_dead_5_info)
+  > xpm_load(addr: 0x81b869c, XPM_8_8_8, addr: 0xeffff720)
+  < xpm_load(addr: 0x81b869c, XPM_8_8_8, addr: 0xeffff720 [64x64 : 12288 bytes]) -> (ret: 0x83c6000)
+  @/home/lcom/labs/proj/src/video_card//video_card.c:171, vg_setGraphics
     sys_int86(&r86)
   > sys_int86(addr: 0xeffff770 [AX: 4f02, BX: 4115, CX: 0000, DX: 0000, ES: 0000, DI: 0000])
   < sys_int86(addr: 0xeffff770 [AX: 004f, BX: 4115, CX: 0000, DX: 0000, ES: 0000, DI: 0000]) -> (ret: 0)
   @/home/lcom/labs/proj/src/keyboard//keyboard.c:135, kbc_subscribe_int
     sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &kbc_hook_id)
-  > sys_irqsetpolicy(1, 3, addr: 0x822e1cc [1])
-  < sys_irqsetpolicy(1, 3, addr: 0x822e1cc [10]) -> (ret: 0)
-  @game.c:13, game_loop
+  > sys_irqsetpolicy(1, 3, addr: 0x82301cc [1])
+  < sys_irqsetpolicy(1, 3, addr: 0x82301cc [10]) -> (ret: 0)
+  @game.c:29, game_loop
     timer_subscribe_int(&bit_no_TIMER)
   > timer_subscribe_int(addr: 0xeffff78a [0])
     @/home/lcom/labs/proj/src/timer//timer.c:57, timer_subscribe_int
       sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &timer_hook_id)
-    > sys_irqsetpolicy(0, 1, addr: 0x824b390 [0])
-    < sys_irqsetpolicy(0, 1, addr: 0x824b390 [11]) -> (ret: 0)
+    > sys_irqsetpolicy(0, 1, addr: 0x824cf60 [0])
+    < sys_irqsetpolicy(0, 1, addr: 0x824cf60 [11]) -> (ret: 0)
   < timer_subscribe_int(addr: 0xeffff78a [0]) -> (ret: 0)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8251000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8254000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8257000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x825a000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x825d000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83c1000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83c4000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83c7000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83ca000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83cd000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83d1000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83d4000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83d7000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83da000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83dd000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83e0000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83e3000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83e6000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83e9000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83ec000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83ef000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83f2000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83f5000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83f8000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83fb000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x83fe000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8401000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8404000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8407000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x840a000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x840d000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8410000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8413000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8416000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8419000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x841c000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x841f000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8422000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8425000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8428000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x842b000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x842e000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8431000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8434000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8437000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x843a000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x843d000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8440000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8443000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8446000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8449000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x844c000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x844f000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8452000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8455000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8458000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x845b000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x845e000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8461000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8464000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8467000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x846a000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x846d000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8470000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8473000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8476000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8479000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x847c000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x847f000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8482000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8485000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8488000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x848b000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x848e000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8491000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8494000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8497000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x849a000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x849d000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84a0000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84a3000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84a6000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84a9000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84ac000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84af000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84b2000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84b5000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84b8000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84bb000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84be000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84c1000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84c4000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84c7000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84ca000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84cd000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84d0000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84d3000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84d6000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84d9000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84dc000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84df000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84e2000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84e5000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84e8000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84eb000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84ee000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84f1000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84f4000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84f7000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84fa000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x84fd000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8500000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8503000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8506000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8509000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x850c000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x850f000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8512000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8515000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8518000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x851b000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x851e000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8521000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8524000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8527000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x852a000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x852d000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8530000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8533000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8536000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x8539000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x853c000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @/home/lcom/labs/proj/src/video_card//video_card.c:133, vg_draw_game
-    xpm_load(xpm_alien, sprite_type, &img_info)
-  > xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0)
-  < xpm_load(addr: 0x81b7984, XPM_8_8_8, addr: 0xeffff6e0 [64x64 : 12288 bytes]) -> (ret: 0x853f000)
-  @game.c:22, game_loop
+  @game.c:39, game_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff740, addr: 0xeffff784)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
-  @game.c:44, game_loop
+  @game.c:61, game_loop
     timer_unsubscribe_int()
     @/home/lcom/labs/proj/src/timer//timer.c:62, timer_unsubscribe_int
       sys_irqrmpolicy(&timer_hook_id)
-    > sys_irqrmpolicy(addr: 0x824b390 [11])
-    < sys_irqrmpolicy(addr: 0x824b390 [11]) -> (ret: 0)
+    > sys_irqrmpolicy(addr: 0x824cf60 [11])
+    < sys_irqrmpolicy(addr: 0x824cf60 [11]) -> (ret: 0)
   @/home/lcom/labs/proj/src/keyboard//keyboard.c:139, kbc_unsubscribe_int
     sys_irqrmpolicy(&kbc_hook_id)
-  > sys_irqrmpolicy(addr: 0x822e1cc [10])
-  < sys_irqrmpolicy(addr: 0x822e1cc [10]) -> (ret: 0)
-  @proj.c:43, proj_main_loop
+  > sys_irqrmpolicy(addr: 0x82301cc [10])
+  < sys_irqrmpolicy(addr: 0x82301cc [10]) -> (ret: 0)
+  @proj.c:44, proj_main_loop
     vg_exit()
   < vg_exit() -> (ret: 0)
 < proj_main_loop(0, [NULL]) -> (ret: 0)
