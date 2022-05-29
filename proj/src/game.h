@@ -16,8 +16,11 @@
 #define GAME_WIDTH_MATRIX 11
 #define GAME_HEIGHT_MATRIX 8
 
-#define GAME_ALIEN_WIDTH 70 // maybe both are not needed because we can get info from xpm_image_t
-#define GAME_ALIEN_HEIGHT 70 // when we load sprite. Although we might want a fix value to create margins and stuff in the game
+#define ALIEN_WIDTH 70 // maybe both are not needed because we can get info from xpm_image_t
+#define ALIEN_HEIGHT 70 // when we load sprite. Although we might want a fix value to create margins and stuff in the game
+
+#define ALIEN_HORIZONTAL_MARGIN 3 // (70 - 64) / 2
+#define ALIEN_VERTICAL_MARGIN 3   // (70 - 64) / 2
 
 #define NUMBER_ALIEN_STATES 7 // Not counting empty
 
@@ -44,7 +47,7 @@ enum ALIEN_STATE {
 struct ALIEN {
     // if we want other aliens we can just add a type here
     enum ALIEN_STATE state;
-    unsigned int time;
+    unsigned int time; 
 };
 
 enum GAME_STATE game_state;

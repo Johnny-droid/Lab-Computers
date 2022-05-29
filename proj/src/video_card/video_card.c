@@ -46,21 +46,38 @@ void (vg_ih)() {
 
 
 
-
 void (vg_draw_game)() {
   // CLEAN THE BUFFER
   memset(buffer, 0, h_res * v_res * bytes_per_pixel);
 
-  // DRAW THE ALIENS
-
-  vg_draw_sprite(alien_sprites[1] , 400, 400, 1);
+  // DRAW THE ALIENS and only after the crosshair
+  vg_draw_aliens();
 
   // COPY TO THE VRAM -> in the future we might try to do flipping
   memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
 
 }
 
+void (vg_draw_aliens)() {
+  
+  uint16_t xi = GAME_HORIZONTAL_MARGIN;
+  uint16_t yi = GAME_VERTICAL_MARGIN;
+  uint16_t x = xi;
+  uint16_t y = yi;
+  struct SPRITE sprite;
+  enum ALIEN_STATE state;
 
+  for (int i = 0; i < GAME_HEIGHT_MATRIX; i++, y += ALIEN_HEIGHT) {
+    x = xi;
+    for (int j = 0; j < GAME_WIDTH_MATRIX; j++, x += ALIEN_WIDTH) {
+      state = game_matrix[i][j].state;
+      if (state == EMPTY) continue;
+
+      sprite = alien_sprites[state];
+      vg_draw_sprite(sprite, x + ALIEN_HORIZONTAL_MARGIN, y + ALIEN_VERTICAL_MARGIN, 1);
+    }
+  } 
+}
 
 
 int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffer_no) {

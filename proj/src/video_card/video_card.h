@@ -29,7 +29,7 @@ bool (vg_free)();
 bool (vg_load_sprites)();
 
 int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffer_no);
-
+void (vg_draw_aliens)();
 void (vg_draw_game)();
 
 void (vg_ih)();
