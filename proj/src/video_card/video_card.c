@@ -21,83 +21,14 @@ static uint8_t frame_counter = 0;
 static uint8_t frame_number =  60 / GAME_FRAME_RATE;
 
 
-
-
-
-
-bool (vg_prepareGraphics)(uint16_t mode) {
-  // set mode and save the information of the mode
-  vbe_mode_info_t mode_info;
-  if (vbe_get_mode_info(mode, &mode_info) != OK) return 1;
-  
-  h_res = mode_info.XResolution;
-  v_res = mode_info.YResolution;
-  bytes_per_pixel = ((mode_info.BitsPerPixel + 7) / 8);
-
-  red_mask_size = mode_info.RedMaskSize;
-  green_mask_size = mode_info.GreenMaskSize;
-  blue_mask_size = mode_info.BlueMaskSize;   
-
-  red_field_position = mode_info.RedFieldPosition;
-  green_field_position = mode_info.GreenFieldPosition;
-  blue_field_position = mode_info.BlueFieldPosition;
-
-  unsigned int vram_base = mode_info.PhysBasePtr; // VRAM’s physical addresss
-  unsigned int vram_size = h_res * v_res * bytes_per_pixel; // VRAM’s size
-
-  buffer = (char*) malloc(h_res * v_res * bytes_per_pixel * sizeof(char));
-
-  struct minix_mem_range mr; // physical memory range
-  int r;
-  mr.mr_base = (phys_bytes) vram_base;
-  mr.mr_limit = mr.mr_base + vram_size;
-
-  if( OK != (r = sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr))) {
-    panic("sys_privctl (ADD_MEM) failed: %d\n", r);
-    return false;
-  }
-  
-  // Map memory
-  video_mem = vm_map_phys(SELF, (void *)mr.mr_base, vram_size);
-  
-  if(video_mem == MAP_FAILED) {
-    panic("couldn’t map video memory");
-    return false;
-  }
-
-  return true;
-} 
-
-
-
-
-
-bool (vg_setGraphics)(uint16_t mode) {
-    reg86_t r86;
-    memset(&r86, 0, sizeof(r86));
-
-    r86.ax = (VBE_MODE_AH << 8) | VBE_SET_MODE_AL;       // VBE call, function 02 -- set VBE mode
-    r86.bx = BIT(14) | mode;                                 // set bit 14: linear framebuffer
-    r86.intno = BIOS_SERVICE_VIDEO_CARD;
-
-    if( sys_int86(&r86) != OK ) {
-        printf("set_vbe_mode: sys_int86() failed \n");
-        return false;
-    }
-    return true;
-}
-
-bool (vg_free)() {
-  free(buffer);
-  return true;
-}
-
-
-
+// Sprite variables
+const enum xpm_image_type sprite_type = XPM_8_8_8;
+static struct SPRITE alien_sprites[NUMBER_ALIEN_STATES];
 
 
 int (vg_draw_sprite)(char* sprite, uint16_t x, uint16_t y, uint8_t buffer_no, xpm_image_t img_info) {
   char* temp_video_mem;
+  char* temp_sprite = sprite;
 
   if (buffer_no == 0) {
     temp_video_mem = video_mem;
@@ -106,12 +37,16 @@ int (vg_draw_sprite)(char* sprite, uint16_t x, uint16_t y, uint8_t buffer_no, xp
   } else {
     return 1;
   }
-  
-  for (uint16_t i = y; i < v_res && i < y + img_info.height; i++) {
-    for (uint16_t j = x; j < h_res && j < x + img_info.width; j++) {
+
+  uint32_t row_increment = (h_res - img_info.width) * bytes_per_pixel;
+  temp_video_mem += (h_res*y + x)*bytes_per_pixel;
+
+
+  for (uint16_t i = y; i < v_res && i < y + img_info.height; i++, temp_video_mem += row_increment) {
+    for (uint16_t j = x; j < h_res && j < x + img_info.width; j++, temp_video_mem += bytes_per_pixel) {
       for (unsigned int byte = 0; byte < bytes_per_pixel; byte++) {
-        temp_video_mem[(i*h_res+j)*bytes_per_pixel + byte] = *sprite;
-        sprite++;
+        temp_video_mem[byte] = *temp_sprite;
+        temp_sprite++;
       }
     }
   }
@@ -122,13 +57,9 @@ int (vg_draw_sprite)(char* sprite, uint16_t x, uint16_t y, uint8_t buffer_no, xp
 
 
 void (vg_draw_game)() {
-  // Sprites
-  enum xpm_image_type type = XPM_8_8_8;
-  xpm_image_t img_info;
-  char* sprite = (char*) xpm_load(xpm_alien, type, &img_info);
   
   memset(buffer, 0, h_res * v_res * bytes_per_pixel);
-  vg_draw_sprite(sprite, 400, 400, 1, img_info);
+  //vg_draw_sprite(alien_sprites[1].sprite_ptr , 400, 400, 1, img_info);
   memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
 
 }
@@ -172,6 +103,113 @@ void (vg_ih)() {
 
 
 
+
+
+
+
+
+
+
+
+
+bool (vg_prepareGraphics)(uint16_t mode) {
+  vbe_mode_info_t mode_info;
+  if (vbe_get_mode_info(mode, &mode_info) != OK) return 1;
+  
+  h_res = mode_info.XResolution;
+  v_res = mode_info.YResolution;
+  bytes_per_pixel = ((mode_info.BitsPerPixel + 7) / 8);
+
+  red_mask_size = mode_info.RedMaskSize;
+  green_mask_size = mode_info.GreenMaskSize;
+  blue_mask_size = mode_info.BlueMaskSize;   
+
+  red_field_position = mode_info.RedFieldPosition;
+  green_field_position = mode_info.GreenFieldPosition;
+  blue_field_position = mode_info.BlueFieldPosition;
+
+  unsigned int vram_base = mode_info.PhysBasePtr; // VRAM’s physical addresss
+  unsigned int vram_size = h_res * v_res * bytes_per_pixel; // VRAM’s size
+
+  buffer = (char*) malloc(h_res * v_res * bytes_per_pixel * sizeof(char));
+
+  struct minix_mem_range mr; // physical memory range
+  int r;
+  mr.mr_base = (phys_bytes) vram_base;
+  mr.mr_limit = mr.mr_base + vram_size;
+
+  if( OK != (r = sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr))) {
+    panic("sys_privctl (ADD_MEM) failed: %d\n", r);
+    return false;
+  }
+
+  video_mem = vm_map_phys(SELF, (void *)mr.mr_base, vram_size);
+
+  if(video_mem == MAP_FAILED) {
+    panic("couldn’t map video memory");
+    return false;
+  }
+
+  return true;
+} 
+
+bool (vg_setGraphics)(uint16_t mode) {
+    reg86_t r86;
+    memset(&r86, 0, sizeof(r86));
+
+    r86.ax = (VBE_MODE_AH << 8) | VBE_SET_MODE_AL;       // VBE call, function 02 -- set VBE mode
+    r86.bx = BIT(14) | mode;                                 // set bit 14: linear framebuffer
+    r86.intno = BIOS_SERVICE_VIDEO_CARD;
+
+    if( sys_int86(&r86) != OK ) {
+        printf("set_vbe_mode: sys_int86() failed \n");
+        return false;
+    }
+    return true;
+}
+
+bool (vg_free)() {
+  free(buffer);
+  return true;
+}
+
+bool (vg_load_sprites)() {
+  xpm_image_t alien_appearing_info;
+  xpm_image_t alien_alive_info;
+  xpm_image_t alien_dead_1_info;
+  xpm_image_t alien_dead_2_info;
+  xpm_image_t alien_dead_3_info;
+  xpm_image_t alien_dead_4_info;
+  xpm_image_t alien_dead_5_info;
+
+  char* alien_appearing_ptr = (char*) xpm_load(xpm_alien_appearing, sprite_type, &alien_appearing_info);
+  char* alien_alive_ptr = (char*) xpm_load(xpm_alien_alive, sprite_type, &alien_alive_info);
+  char* alien_dead_1_ptr = (char*) xpm_load(xpm_alien_dead_1, sprite_type, &alien_dead_1_info);
+  char* alien_dead_2_ptr = (char*) xpm_load(xpm_alien_dead_2, sprite_type, &alien_dead_2_info);
+  char* alien_dead_3_ptr = (char*) xpm_load(xpm_alien_dead_3, sprite_type, &alien_dead_3_info);
+  char* alien_dead_4_ptr = (char*) xpm_load(xpm_alien_dead_4, sprite_type, &alien_dead_4_info);
+  char* alien_dead_5_ptr = (char*) xpm_load(xpm_alien_dead_5, sprite_type, &alien_dead_5_info);
+
+
+  struct SPRITE alien_alive = {alien_appearing_ptr, alien_appearing_info};
+  struct SPRITE alien_appearing = {alien_alive_ptr, alien_alive_info};
+  struct SPRITE alien_dead_1 = {alien_dead_1_ptr, alien_dead_1_info};
+  struct SPRITE alien_dead_2 = {alien_dead_2_ptr, alien_dead_2_info};
+  struct SPRITE alien_dead_3 = {alien_dead_3_ptr, alien_dead_3_info};
+  struct SPRITE alien_dead_4 = {alien_dead_4_ptr, alien_dead_4_info};
+  struct SPRITE alien_dead_5 = {alien_dead_5_ptr, alien_dead_5_info};
+
+  alien_sprites[0] = alien_alive;
+  alien_sprites[1] = alien_appearing;
+  alien_sprites[2] = alien_dead_1;
+  alien_sprites[2] = alien_dead_2;
+  alien_sprites[2] = alien_dead_3;
+  alien_sprites[2] = alien_dead_4;
+  alien_sprites[2] = alien_dead_5;
+
+
+
+}
 
 
 
@@ -263,100 +301,6 @@ int (vg_draw_moving_sprite)(char* sprite, uint16_t xi, uint16_t yi, uint16_t xf,
   free(buffer);
   return 0;
 }
-
-
-
-
-
-
-
-/*
-int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
-  char* temp_video_mem = video_mem;
-
-  if (x > h_res || y > v_res) return 1;
-
-  temp_video_mem += (((y * h_res) + x) * bytes_per_pixel);
-
-  for (unsigned int i = x; i < h_res && i < x + len; i++) {
-
-    for (unsigned int j = 0; j < bytes_per_pixel; j++) {
-      temp_video_mem[j] = ((color >> (j * 8)) & 0xFF);
-    }
-    
-    temp_video_mem += bytes_per_pixel;
-  }
-
-  return 0;
-}
-
-int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
-
-  uint8_t ret = 0;
-  for (uint16_t i = y; i < v_res && i < y + height; i++) {
-    ret |= vg_draw_hline(x, i, width, color);
-  }
-
-  return ret;
-}
-
-
-
-uint32_t (calculateColorPatternIndexed)(uint8_t no_rectangles, unsigned int x, unsigned int y, uint32_t first, uint8_t step) {
-  return (first + (y  * no_rectangles + x) * (uint32_t) step) % (1 << (bytes_per_pixel * 8));
-}
-
-uint32_t (getBlueBitsFirst)(uint32_t first) {
-  return ((1 << blue_mask_size) - 1) & (first >> blue_field_position);
-}
-
-uint32_t (getGreenBitsFirst)(uint32_t first) {
-  return ((1 << green_mask_size) - 1) & (first >> green_field_position);
-}
-
-uint32_t (getRedBitsFirst)(uint32_t first) {
-  return ((1 << red_mask_size) - 1) & (first >> red_field_position);
-}
-
-uint32_t (calculateColorPatternDirect)(uint8_t no_rectangles, unsigned int x, unsigned int y, uint32_t first, uint8_t step) {
-  uint32_t blue_bits = ((getBlueBitsFirst(first)) + (x + y) * step) % (1 << blue_mask_size);
-  uint32_t green_bits = ((getGreenBitsFirst(first) + y * step) % (1 << green_mask_size)) << (green_field_position);
-  uint32_t red_bits = ((getRedBitsFirst(first) + x * step) % (1 << red_mask_size)) << (red_field_position);
-  return red_bits | green_bits | blue_bits;
-}
-
-int (vg_draw_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
-  unsigned int x_pixels_per_rectangle = h_res / no_rectangles;
-  unsigned int y_pixels_per_rectangle = v_res / no_rectangles;
-  uint32_t color;
-
-  
-  if (mode == 0x105) {
-    for (unsigned int y = 0; y < no_rectangles; y++) {
-      for (unsigned int x = 0; x < no_rectangles; x++) {
-        if ((x+1)*x_pixels_per_rectangle > h_res  ||  (y+1)*y_pixels_per_rectangle > v_res) continue;
-        color = calculateColorPatternIndexed(no_rectangles, x, y, first, step);
-        vg_draw_rectangle(x * x_pixels_per_rectangle, y * y_pixels_per_rectangle, x_pixels_per_rectangle, y_pixels_per_rectangle, color);
-      }
-    }  
-  
-  } else {
-    for (unsigned int y = 0; y < no_rectangles; y++) {
-      for (unsigned int x = 0; x < no_rectangles; x++) {
-        if ((x+1)*x_pixels_per_rectangle > h_res  ||  (y+1)*y_pixels_per_rectangle > v_res) continue;
-        color = calculateColorPatternDirect(no_rectangles, x, y, first, step);
-        vg_draw_rectangle(x * x_pixels_per_rectangle, y * y_pixels_per_rectangle, x_pixels_per_rectangle, y_pixels_per_rectangle, color);
-      }
-    }  
-  }
-  
-
-  return 0;
-}
-*/
-
-
-
 
 
 
