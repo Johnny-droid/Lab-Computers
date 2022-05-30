@@ -27,6 +27,8 @@
 #define ALIEN_HORIZONTAL_MARGIN 3 // (70 - 64) / 2
 #define ALIEN_VERTICAL_MARGIN 3   // (70 - 64) / 2
 
+#define CROSSHAIR_WIDTH 64
+#define CROSSHAIR_HEIGHT 64
 
 // GAMEPLAY 
 #define NUMBER_ALIEN_STATES 7 // Not counting empty
@@ -66,12 +68,9 @@ struct ALIEN {
 enum GAME_STATE game_state;
 struct ALIEN game_matrix[GAME_HEIGHT_MATRIX][GAME_WIDTH_MATRIX];
 
-int16_t mouse_x;
-int16_t mouse_y;
-
 static unsigned int alien_times[NUMBER_ALIEN_STATES + 1] = {
     10,     // APPEARING                       
-    360,    // ALIVE
+    600,    // ALIVE
     10,     // DEAD_1
     10,     // DEAD_2
     10,     // DEAD_3
@@ -79,6 +78,14 @@ static unsigned int alien_times[NUMBER_ALIEN_STATES + 1] = {
     10,     // DEAD_5
     0       // EMPTY
 };
+
+// MOUSE VARIABLES
+int16_t mouse_x;
+int16_t mouse_y;
+int16_t crosshair_half_width; 
+int16_t crosshair_half_height;  
+int16_t crosshair_width_border;
+int16_t crosshair_height_border;
 
 void (game_initialize)();
 int (game_loop)();

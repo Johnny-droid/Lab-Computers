@@ -61,11 +61,10 @@ void (mouse_event_handler)(struct MOUSE_EVENT mouse_event) {
   mouse_y -= mouse_event.moveY;
   //printf("Mouse x: %d\t Mouse y: %d\n", mouse_x, mouse_y);
 
-
-  if (mouse_x < 0) mouse_x = 0;
-  if (mouse_x >= GAME_WIDTH) mouse_x = GAME_WIDTH-1;
-  if (mouse_y < 0) mouse_y = 0;
-  if (mouse_y >= GAME_HEIGHT) mouse_y = GAME_HEIGHT-1;
+  if (mouse_x < crosshair_half_width) mouse_x = crosshair_half_width;
+  if (mouse_x >= crosshair_width_border) mouse_x = crosshair_width_border-1;
+  if (mouse_y < crosshair_half_height) mouse_y = crosshair_half_height;
+  if (mouse_y >= crosshair_height_border) mouse_y = crosshair_height_border-1;
 
   switch (game_state) {
     case PLAYING:

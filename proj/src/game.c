@@ -14,6 +14,10 @@ void(game_initialize)() {
   game_state = PLAYING; // going to change it later to MENU
   mouse_x = MOUSE_INIT_X;
   mouse_y = MOUSE_INIT_Y;
+  crosshair_half_width = (CROSSHAIR_WIDTH >> 1);  //dividing by 2
+  crosshair_half_height = (CROSSHAIR_HEIGHT >> 1);  
+  crosshair_width_border = (GAME_WIDTH - (CROSSHAIR_WIDTH >> 1));
+  crosshair_height_border = (GAME_HEIGHT - (CROSSHAIR_HEIGHT >> 1));
 
   struct ALIEN empty = {EMPTY, 0};
 

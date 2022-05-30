@@ -71,7 +71,7 @@ void (vg_draw_aliens)() {
 }
 
 void (vg_draw_crosshair)() {
-  vg_draw_sprite(crosshair, mouse_x, mouse_y, 1);
+  vg_draw_sprite(crosshair, mouse_x-crosshair_half_width, mouse_y-crosshair_half_height, 1);
 }
 
 

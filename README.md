@@ -19,4 +19,6 @@ Group members:
 - Make the RTC
 - Make the enable_interrupts for the mouse
 
-
+# Questions:
+- How to do the flipping of pointer with the buffers and video_mem
+- Why is None not working in our xpm (important for the crosshair)
