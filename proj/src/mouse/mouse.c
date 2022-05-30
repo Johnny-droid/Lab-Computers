@@ -92,6 +92,7 @@ void (mouse_check_kill)() {
 
   // Kills the alien
   } else if (alien->state == ALIVE || alien->state == APPEARING) {
+    points++;
     alien->state = DEAD_1;
     alien->time = alien_times[DEAD_1];
   }

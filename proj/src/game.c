@@ -9,9 +9,11 @@ static uint32_t random_alien_counter = 0;
 static uint32_t random_alien_number = ALIEN_INIT_SPAWN_TIME;
 static uint32_t random_alien_spawn_rate_increase = ALIEN_SPAWN_RATE_INCREASE;
 
+
 void(game_initialize)() {
   srand(time(NULL));    //used to generate random numbers for alien spawn
   game_state = PLAYING; // going to change it later to MENU
+  points = 0;
   mouse_x = MOUSE_INIT_X;
   mouse_y = MOUSE_INIT_Y;
   crosshair_half_width = (CROSSHAIR_WIDTH >> 1);  //dividing by 2
@@ -49,12 +51,11 @@ int(game_loop)() {
   message msg;
 
   game_initialize();
-  while (counter_time_out < 1000 && game_state == PLAYING) { // time_out just used for test
+  while (counter_time_out < 5000 && game_state == PLAYING) { // time_out just used for test
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
     }
-
     if (is_ipc_notify(ipc_status)) { // received notification
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE:                                 // hardware interrupt notification
@@ -123,9 +124,9 @@ void(game_update_alien_times)() {
   for (int i = 0; i < GAME_HEIGHT_MATRIX; i++) {
     for (int j = 0; j < GAME_WIDTH_MATRIX; j++) {
       alien = &game_matrix[i][j];
+      
       // EMPTY
-      if (alien->state == EMPTY)
-        continue;
+      if (alien->state == EMPTY) continue;
 
       // ALIENS KILL PLAYER
       if (alien->state == ALIVE && alien->time == 0) {
@@ -134,8 +135,7 @@ void(game_update_alien_times)() {
       }
 
       // DECREMENT TIME LEFT
-      if (alien->time > 0)
-        alien->time--;
+      if (alien->time > 0) alien->time--;
 
       // CHANGE TO THE NEXT STATE
       else {

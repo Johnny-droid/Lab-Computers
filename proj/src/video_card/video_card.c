@@ -20,6 +20,7 @@ static uint8_t blue_field_position;
 // Sprite variables
 const enum xpm_image_type sprite_type = XPM_8_8_8;
 static struct SPRITE alien_sprites[NUMBER_ALIEN_STATES];
+static struct SPRITE numbers_sprites[10];
 static struct SPRITE crosshair;
 
 
@@ -43,6 +44,7 @@ void (vg_draw_game)() {
   // DRAW THE ALIENS and only after, the crosshair
   vg_draw_aliens();
   vg_draw_crosshair();
+  vg_draw_points();
 
   // COPY TO THE VRAM -> in the future we might try to do flipping
   memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
@@ -72,6 +74,10 @@ void (vg_draw_aliens)() {
 
 void (vg_draw_crosshair)() {
   vg_draw_sprite(crosshair, mouse_x-crosshair_half_width, mouse_y-crosshair_half_height, 1);
+}
+
+void (vg_draw_points)() {
+
 }
 
 
@@ -206,6 +212,11 @@ bool (vg_load_sprites)() {
   xpm_image_t alien_dead_4_info;
   xpm_image_t alien_dead_5_info;
   xpm_image_t crosshair_info;
+  xpm_image_t number_0_info; xpm_image_t number_1_info;
+  xpm_image_t number_2_info; xpm_image_t number_3_info;
+  xpm_image_t number_4_info; xpm_image_t number_5_info;
+  xpm_image_t number_6_info; xpm_image_t number_7_info;
+  xpm_image_t number_8_info; xpm_image_t number_9_info;
 
   char* alien_appearing_ptr = (char*) xpm_load(xpm_alien_appearing, sprite_type, &alien_appearing_info);
   char* alien_alive_ptr = (char*) xpm_load(xpm_alien_alive, sprite_type, &alien_alive_info);
@@ -215,6 +226,16 @@ bool (vg_load_sprites)() {
   char* alien_dead_4_ptr = (char*) xpm_load(xpm_alien_dead_4, sprite_type, &alien_dead_4_info);
   char* alien_dead_5_ptr = (char*) xpm_load(xpm_alien_dead_5, sprite_type, &alien_dead_5_info);
   char* crosshair_ptr = (char*) xpm_load(xpm_crosshair, sprite_type, &crosshair_info);
+  char* number_0_ptr = (char*) xpm_load(xpm_0, sprite_type, &number_0_info);
+  char* number_1_ptr = (char*) xpm_load(xpm_1, sprite_type, &number_1_info);
+  char* number_2_ptr = (char*) xpm_load(xpm_2, sprite_type, &number_2_info);
+  char* number_3_ptr = (char*) xpm_load(xpm_3, sprite_type, &number_3_info);
+  char* number_4_ptr = (char*) xpm_load(xpm_4, sprite_type, &number_4_info);
+  char* number_5_ptr = (char*) xpm_load(xpm_5, sprite_type, &number_5_info);
+  char* number_6_ptr = (char*) xpm_load(xpm_6, sprite_type, &number_6_info);
+  char* number_7_ptr = (char*) xpm_load(xpm_7, sprite_type, &number_7_info);
+  char* number_8_ptr = (char*) xpm_load(xpm_8, sprite_type, &number_8_info);
+  char* number_9_ptr = (char*) xpm_load(xpm_9, sprite_type, &number_9_info);
 
   struct SPRITE alien_alive = {alien_appearing_ptr, alien_appearing_info};
   struct SPRITE alien_appearing = {alien_alive_ptr, alien_alive_info};
@@ -223,8 +244,17 @@ bool (vg_load_sprites)() {
   struct SPRITE alien_dead_3 = {alien_dead_3_ptr, alien_dead_3_info};
   struct SPRITE alien_dead_4 = {alien_dead_4_ptr, alien_dead_4_info};
   struct SPRITE alien_dead_5 = {alien_dead_5_ptr, alien_dead_5_info};
-  struct SPRITE crosshair_sprite = {crosshair_ptr, crosshair_info};
-  crosshair = crosshair_sprite;
+  struct SPRITE crosshair_sprite = {crosshair_ptr, crosshair_info}; crosshair = crosshair_sprite;
+  struct SPRITE number_0 = {number_0_ptr, number_0_info};
+  struct SPRITE number_1 = {number_1_ptr, number_1_info};
+  struct SPRITE number_2 = {number_2_ptr, number_2_info};
+  struct SPRITE number_3 = {number_3_ptr, number_3_info};
+  struct SPRITE number_4 = {number_4_ptr, number_4_info};
+  struct SPRITE number_5 = {number_5_ptr, number_5_info};
+  struct SPRITE number_6 = {number_6_ptr, number_6_info};
+  struct SPRITE number_7 = {number_7_ptr, number_7_info};
+  struct SPRITE number_8 = {number_8_ptr, number_8_info};
+  struct SPRITE number_9 = {number_9_ptr, number_9_info};
 
   alien_sprites[0] = alien_alive;
   alien_sprites[1] = alien_appearing;
@@ -234,6 +264,16 @@ bool (vg_load_sprites)() {
   alien_sprites[5] = alien_dead_4;
   alien_sprites[6] = alien_dead_5;
 
+  numbers_sprites[0] = number_0;
+  numbers_sprites[1] = number_1;
+  numbers_sprites[2] = number_2;
+  numbers_sprites[3] = number_3;
+  numbers_sprites[4] = number_4;
+  numbers_sprites[5] = number_5;
+  numbers_sprites[6] = number_6;
+  numbers_sprites[7] = number_7;
+  numbers_sprites[8] = number_8;
+  numbers_sprites[9] = number_9;
   return true;
 }
 

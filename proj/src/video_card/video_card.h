@@ -12,7 +12,7 @@
 
 #include "sprites/alien.h"
 #include "sprites/crosshair.h"
-//#include "sprites/numbers.h"
+#include "sprites/numbers.h"
 
 
 #define GAME_FRAME_RATE 15
@@ -31,6 +31,7 @@ bool (vg_load_sprites)();
 int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffer_no);
 void (vg_draw_aliens)();
 void (vg_draw_crosshair)();
+void (vg_draw_points)();
 void (vg_draw_game)();
 
 void (vg_ih)();
