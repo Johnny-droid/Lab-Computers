@@ -24,6 +24,9 @@ static struct SPRITE numbers_sprites[10];
 static struct SPRITE crosshair;
 
 
+
+// DRAW FUNCTIONS
+
 void (vg_ih)() {
   switch (game_state) {
     case PLAYING:
@@ -77,7 +80,20 @@ void (vg_draw_crosshair)() {
 }
 
 void (vg_draw_points)() {
+  unsigned int sprite_number, temp_points = points;
+  uint16_t x = POINTS_WIDTH_MARGIN;
+  uint16_t y = POINTS_HEIGHT_MARGIN;
+  if (temp_points == 0) {
+    vg_draw_sprite(numbers_sprites[0], x, y, 1);
+    return;
+  }
 
+  while (temp_points != 0) {
+    sprite_number = temp_points % 10;
+    temp_points /= 10;
+    vg_draw_sprite(numbers_sprites[sprite_number], x, y, 1);
+    x += numbers_sprites[sprite_number].info.width + POINTS_BETWEEN_MARGIN;
+  }
 }
 
 
@@ -140,7 +156,7 @@ int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffe
 
 
 
-
+// SETUP FUNCTIONS
 
 bool (vg_prepareGraphics)(uint16_t mode) {
   vbe_mode_info_t mode_info;
@@ -276,99 +292,6 @@ bool (vg_load_sprites)() {
   numbers_sprites[9] = number_9;
   return true;
 }
-
-
-
-
-
-
-
-
-
-
-// not going to be used
-int (vg_draw_moving_sprite)(char* sprite, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf, int16_t speed, uint8_t fr_rate, xpm_image_t img_info) {
-  uint16_t x = xi;
-  uint16_t y = yi;
-  int16_t speed_x, speed_y; // in the future maybe add other type of movements, besides horizontal and vertical
-  if (xf == xi) {            // but we probably need something like the slope and it will be more generalized than vertical and horizontal
-    speed_x = 0; 
-    speed_y = abs(speed);
-  } else {
-    speed_x = abs(speed);
-    speed_y = 0;
-  }
-
-
-  //buffer = (char*) malloc(h_res * v_res * bytes_per_pixel * sizeof(uint8_t));
-  int no_interrupts = 60 / fr_rate;
-
-  uint8_t bit_no_TIMER=0;
-
-  timer_subscribe_int(&bit_no_TIMER);
-  
-  int ipc_status, r= 0, counter_interrupts = 0, neg_speed_frame_counter = 0;
-  uint32_t irq_set_timer = BIT(bit_no_TIMER);
-  message msg;
-
-
-  while (1) { //flagEsc was here
-    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
-      printf("driver_receive failed with: %d", r);
-      continue;
-    }
-
-    if (is_ipc_notify(ipc_status)) { // received notification 
-      switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE: // hardware interrupt notification		               
-          if (msg.m_notify.interrupts & irq_set_timer) {
-            
-            if (counter_interrupts < no_interrupts) {
-              counter_interrupts++;
-              continue;
-            }
-            counter_interrupts = 0;
-            
-            memset(buffer, 0, h_res * v_res * bytes_per_pixel);
-            //vg_draw_sprite(sprite, x, y, 1, img_info);
-            memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
-            if (x == xf && y == yf) {continue;}
-
-            if (speed > 0) {
-              x +=  speed_x;
-              y +=  speed_y;
-            } else if (neg_speed_frame_counter == abs(speed)) {
-              if (speed_x == 0) y++;
-              else x++;
-              neg_speed_frame_counter = 0;
-            } else {
-              neg_speed_frame_counter++;
-            }
-           
-            
-            if (x + img_info.width > h_res || y + img_info.height > v_res || x < 0 || y < 0) {
-              x -=  speed_x;
-              y -=  speed_y;
-              speed_x = 0;
-              speed_y = 0;
-            } 
-          }
-          break;
-        default:
-          break; // no other notifications expected: do nothing
-      }
-    }
-  }
-
-
-
-
-  timer_unsubscribe_int();
-  free(buffer);
-  return 0;
-}
-
-
 
 
 

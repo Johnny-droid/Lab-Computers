@@ -112,7 +112,7 @@ void(game_ih)() {
 
 
 void(game_step)() {
-  game_update_alien_times();
+  game_update_alien_times();  
   game_generate_new_alien();
 }
 
