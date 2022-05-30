@@ -1,11 +1,13 @@
 #ifndef __KEYBOARD_H
 #define __KEYBOARD_H
 
+#include <lcom/lcf.h>
 #include <stdlib.h>
-
-extern int global_hook_id;
+#include <stdint.h>
+#include "i8042.h"
 
 bool (kbc_communication_error)();
+bool (keyboard_check)();
 bool (kbc_output_buf_full)();
 bool (kbc_input_buf_full)();
 int(kbc_subscribe_int)(uint8_t *bit_no);

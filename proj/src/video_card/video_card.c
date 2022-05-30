@@ -20,7 +20,7 @@ static uint8_t blue_field_position;
 // Sprite variables
 const enum xpm_image_type sprite_type = XPM_8_8_8;
 static struct SPRITE alien_sprites[NUMBER_ALIEN_STATES];
-
+static struct SPRITE crosshair;
 
 
 void (vg_ih)() {
@@ -42,6 +42,7 @@ void (vg_draw_game)() {
 
   // DRAW THE ALIENS and only after, the crosshair
   vg_draw_aliens();
+  vg_draw_crosshair();
 
   // COPY TO THE VRAM -> in the future we might try to do flipping
   memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
@@ -67,6 +68,10 @@ void (vg_draw_aliens)() {
       vg_draw_sprite(sprite, x + ALIEN_HORIZONTAL_MARGIN, y + ALIEN_VERTICAL_MARGIN, 1);
     }
   } 
+}
+
+void (vg_draw_crosshair)() {
+  vg_draw_sprite(crosshair, mouse_x, mouse_y, 1);
 }
 
 
@@ -200,6 +205,7 @@ bool (vg_load_sprites)() {
   xpm_image_t alien_dead_3_info;
   xpm_image_t alien_dead_4_info;
   xpm_image_t alien_dead_5_info;
+  xpm_image_t crosshair_info;
 
   char* alien_appearing_ptr = (char*) xpm_load(xpm_alien_appearing, sprite_type, &alien_appearing_info);
   char* alien_alive_ptr = (char*) xpm_load(xpm_alien_alive, sprite_type, &alien_alive_info);
@@ -208,7 +214,7 @@ bool (vg_load_sprites)() {
   char* alien_dead_3_ptr = (char*) xpm_load(xpm_alien_dead_3, sprite_type, &alien_dead_3_info);
   char* alien_dead_4_ptr = (char*) xpm_load(xpm_alien_dead_4, sprite_type, &alien_dead_4_info);
   char* alien_dead_5_ptr = (char*) xpm_load(xpm_alien_dead_5, sprite_type, &alien_dead_5_info);
-
+  char* crosshair_ptr = (char*) xpm_load(xpm_crosshair, sprite_type, &crosshair_info);
 
   struct SPRITE alien_alive = {alien_appearing_ptr, alien_appearing_info};
   struct SPRITE alien_appearing = {alien_alive_ptr, alien_alive_info};
@@ -217,6 +223,8 @@ bool (vg_load_sprites)() {
   struct SPRITE alien_dead_3 = {alien_dead_3_ptr, alien_dead_3_info};
   struct SPRITE alien_dead_4 = {alien_dead_4_ptr, alien_dead_4_info};
   struct SPRITE alien_dead_5 = {alien_dead_5_ptr, alien_dead_5_info};
+  struct SPRITE crosshair_sprite = {crosshair_ptr, crosshair_info};
+  crosshair = crosshair_sprite;
 
   alien_sprites[0] = alien_alive;
   alien_sprites[1] = alien_appearing;

@@ -9,3 +9,14 @@ Group members:
 3. Ana Costa (up202007602@edu.fe.up.pt)
 4. Rúben Monteiro (up202006478@edu.fe.up.pt)
 
+
+
+# Tasks:
+- Create a Menu
+- Create a Game Over
+- Create a Pause
+- Create a Scoreboard
+- Make the RTC
+- Make the enable_interrupts for the mouse
+
+

@@ -6,6 +6,7 @@
 #define KBC_IRQ 1 //the keyboard uses IRQ line 1
 
 #define KBC_STAT_CHECK (BIT(7) | BIT(6))
+#define MOUSE_CHECK BIT(5)
 #define KBC_OUT_BUF_FULL BIT(0)
 #define KBC_IN_BUF_FULL BIT(1)
 #define KBC_STAT_REG 0x64
@@ -20,6 +21,7 @@
 #define ESC_MAKE 0x01
 #define ESC_BREAK 0x81
 #define MAKE_SCAN_CODE BIT(7)
+
 
 #endif 
 

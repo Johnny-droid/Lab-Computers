@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include "video_card/video_card.h"
 #include "keyboard/keyboard.h"
+#include "mouse/mouse.h"
 
 #define GAME_GRAPHICS_MODE 0x115
 #define GAME_WIDTH 800
@@ -35,6 +36,9 @@
 #define ALIEN_RANDOM_SPAWN_ATTEMPTS 3  
 #define ALIEN_MAX_SPAWN_RATE 5          // in frames
 
+#define MOUSE_INIT_X (GAME_WIDTH / 2)
+#define MOUSE_INIT_Y (GAME_HEIGHT / 2)
+
 enum GAME_STATE { // We can probably add a game over state as well
     PLAYING,
     PAUSE, 
@@ -60,17 +64,19 @@ struct ALIEN {
 };
 
 enum GAME_STATE game_state;
-
 struct ALIEN game_matrix[GAME_HEIGHT_MATRIX][GAME_WIDTH_MATRIX];
+
+int16_t mouse_x;
+int16_t mouse_y;
 
 static unsigned int alien_times[NUMBER_ALIEN_STATES + 1] = {
     10,     // APPEARING                       
     360,    // ALIVE
-    20,     // DEAD_1
-    20,     // DEAD_2
-    20,     // DEAD_3
-    20,     // DEAD_4
-    20,     // DEAD_5
+    10,     // DEAD_1
+    10,     // DEAD_2
+    10,     // DEAD_3
+    10,     // DEAD_4
+    10,     // DEAD_5
     0       // EMPTY
 };
 

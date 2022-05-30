@@ -12,6 +12,8 @@ static uint32_t random_alien_spawn_rate_increase = ALIEN_SPAWN_RATE_INCREASE;
 void(game_initialize)() {
   srand(time(NULL));    //used to generate random numbers for alien spawn
   game_state = PLAYING; // going to change it later to MENU
+  mouse_x = MOUSE_INIT_X;
+  mouse_y = MOUSE_INIT_Y;
 
   struct ALIEN empty = {EMPTY, 0};
 
@@ -28,14 +30,18 @@ int(game_loop)() {
 
   uint8_t bit_no_KBC;
   uint8_t bit_no_TIMER;
+  uint8_t bit_no_MOUSE;
 
   kbc_subscribe_int(&bit_no_KBC);
   timer_subscribe_int(&bit_no_TIMER);
+  mouse_subscribe_int(&bit_no_MOUSE);
+  mouse_enable_data_reporting();
 
   int ipc_status, r = 0;
   int counter_time_out = 0;
   uint32_t irq_set_kbc = BIT(bit_no_KBC);
   uint32_t irq_set_timer = BIT(bit_no_TIMER);
+  uint32_t irq_set_mouse = BIT(bit_no_MOUSE);
   message msg;
 
   game_initialize();
@@ -48,6 +54,9 @@ int(game_loop)() {
     if (is_ipc_notify(ipc_status)) { // received notification
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE:                                 // hardware interrupt notification
+          if (msg.m_notify.interrupts & irq_set_mouse) {
+            mouse_ih();
+          }
           if (msg.m_notify.interrupts & irq_set_kbc) { // subscribed interrupt
             kbc_ih();
           }
@@ -61,6 +70,7 @@ int(game_loop)() {
             vg_ih();
             game_ih();
           }
+          
           break;
         default:
           break; // no other notifications expected: do nothing
@@ -70,6 +80,11 @@ int(game_loop)() {
 
   timer_unsubscribe_int();
   kbc_unsubscribe_int();
+ 
+  printf("Before disable data reporting\n");
+  mouse_disable_data_reporting(1);
+  printf("After disable data reporting\n"); 
+  mouse_unsubscribe_int();
   return 0;
 }
 

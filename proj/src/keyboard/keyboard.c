@@ -1,13 +1,9 @@
-#include <lcom/lcf.h>
 #include "keyboard.h"
-#include <stdint.h>
-#include "i8042.h"
+
 
 int kbc_hook_id = 1;
-int counter_sys_in;
 bool flagESC;
 bool flag2Bytes;
-
 
 
 /** Prints the input scancode. (Already implemented in the LCF)
@@ -24,19 +20,28 @@ bool flag2Bytes;
 
 bool (kbc_communication_error)() {
   uint8_t st = 0;
-  counter_sys_in++;
   if (util_sys_inb(KBC_STAT_REG, &st) != OK) {
     return true;
   }
 
   if ( (st & KBC_STAT_CHECK) == 0) return false;
   return true;
+}
 
+bool (keyboard_check)() {
+  uint8_t st = 0;
+
+  if (util_sys_inb(KBC_STAT_REG, &st) != OK) {
+    return true;
+  }
+
+  if ((st & MOUSE_CHECK) == 0)
+    return true;
+  return false;
 }
 
 bool (kbc_output_buf_full)() {
   uint8_t st = 0;
-  counter_sys_in++;
   if (util_sys_inb(KBC_STAT_REG, &st) != OK) {
     return true;
   }
@@ -46,10 +51,9 @@ bool (kbc_output_buf_full)() {
 
 }
 
-bool (kbc_intput_buf_full)() {
+bool (kbc_input_buf_full)() {
   uint8_t status_reg = 0;
   util_sys_inb(KBC_STAT_REG, &status_reg);
-  counter_sys_in++;
   if (status_reg & KBC_IN_BUF_FULL) return true; 
   return false;
 }
@@ -57,7 +61,6 @@ bool (kbc_intput_buf_full)() {
 uint8_t (kbc_read_output_buffer)() {
   uint8_t scan_code;
   util_sys_inb(KBC_OUT_BUF, &scan_code);
-  counter_sys_in++;
   return scan_code;
 }
 
@@ -66,7 +69,7 @@ uint8_t (read_command_byte)() {
   uint8_t comm = 0;
 
   while (counterCycles < 100000) {
-    if (!kbc_intput_buf_full()) {
+    if (!kbc_input_buf_full()) {
       sys_outb(KBC_STAT_REG, KBC_READ_CMD_BYTE);
       counterCycles++;
       break;
@@ -74,7 +77,6 @@ uint8_t (read_command_byte)() {
   }
   
   util_sys_inb(KBC_OUT_BUF, &comm);
-  counter_sys_in++;
   return comm;
 }
 
@@ -83,7 +85,7 @@ void (write_command_byte)(uint8_t command_byte) {
   
   while (counterCycles < 100000) {
     counterCycles++;
-    if (!kbc_intput_buf_full()) {
+    if (!kbc_input_buf_full()) {
       sys_outb(KBC_STAT_REG, KBC_WRITE_CMD_BYTE); 
       break;
     }
@@ -111,7 +113,8 @@ void (enable_interrupts)() {
  */
 void (kbc_ih)(void) {
   if (!kbc_output_buf_full()) return;
-
+  if (!keyboard_check()) return;
+  
   uint8_t scanCode = kbc_read_output_buffer();
 
   if (kbc_communication_error()) return;
