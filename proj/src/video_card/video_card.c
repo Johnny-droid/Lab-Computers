@@ -22,36 +22,63 @@ const enum xpm_image_type sprite_type = XPM_8_8_8;
 static struct SPRITE alien_sprites[NUMBER_ALIEN_STATES];
 static struct SPRITE numbers_sprites[10];
 static struct SPRITE crosshair;
+static struct SPRITE play_button[2]; //pressed and unpressed
 
+
+
+// Layout variables
+static uint16_t play_button_xi;
+static uint16_t play_button_yi;
+static uint16_t play_button_xf;
+static uint16_t play_button_yf;
 
 
 // DRAW FUNCTIONS
 
 void (vg_ih)() {
+  // CLEAN THE BUFFER
+  memset(buffer, 0, h_res * v_res * bytes_per_pixel);
+
   switch (game_state) {
     case PLAYING:
       vg_draw_game();
       break;
-    
+    case MENU:
+      vg_draw_menu();
+      break;
     default:
       break;
   }
+
+  // COPY TO THE VRAM -> in the future we might try to do flipping
+  memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
+}
+
+// We are probably going to add the name of the game here as well as well as an exit button
+void (vg_draw_menu)() {
+  vg_draw_play_button();
+  vg_draw_crosshair();
+
+}
+
+void (vg_draw_play_button)() {
+
+  if (mouse_x < play_button_xi || mouse_x > play_button_xf || mouse_y < play_button_yi || mouse_y > play_button_yf) {
+    //printf("xi: %d \t yi %d\t\t", play_button_xi, play_button_yi);
+    vg_draw_sprite(play_button[1], play_button_xi, play_button_yi, 1);
+  } else {
+    printf("Draw pressed\t");
+    vg_draw_sprite(play_button[0], play_button_xi, play_button_yi, 1);
+  }
+
 }
 
 
-
 void (vg_draw_game)() {
-  // CLEAN THE BUFFER
-  memset(buffer, 0, h_res * v_res * bytes_per_pixel);
-
   // DRAW THE ALIENS and only after, the crosshair
   vg_draw_aliens();
   vg_draw_crosshair();
   vg_draw_points();
-
-  // COPY TO THE VRAM -> in the future we might try to do flipping
-  memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
-
 }
 
 void (vg_draw_aliens)() {
@@ -74,6 +101,7 @@ void (vg_draw_aliens)() {
     }
   } 
 }
+
 
 void (vg_draw_crosshair)() {
   vg_draw_sprite(crosshair, mouse_x-crosshair_half_width, mouse_y-crosshair_half_height, 1);
@@ -233,6 +261,7 @@ bool (vg_load_sprites)() {
   xpm_image_t number_4_info; xpm_image_t number_5_info;
   xpm_image_t number_6_info; xpm_image_t number_7_info;
   xpm_image_t number_8_info; xpm_image_t number_9_info;
+  xpm_image_t play_button_pressed_info; xpm_image_t play_button_unpressed_info; 
 
   char* alien_appearing_ptr = (char*) xpm_load(xpm_alien_appearing, sprite_type, &alien_appearing_info);
   char* alien_alive_ptr = (char*) xpm_load(xpm_alien_alive, sprite_type, &alien_alive_info);
@@ -252,6 +281,8 @@ bool (vg_load_sprites)() {
   char* number_7_ptr = (char*) xpm_load(xpm_7, sprite_type, &number_7_info);
   char* number_8_ptr = (char*) xpm_load(xpm_8, sprite_type, &number_8_info);
   char* number_9_ptr = (char*) xpm_load(xpm_9, sprite_type, &number_9_info);
+  char* play_button_pressed_ptr = (char*) xpm_load(xpm_play_button_pressed, sprite_type, &play_button_pressed_info);
+  char* play_button_unpressed_ptr = (char*) xpm_load(xpm_play_button_unpressed, sprite_type, &play_button_unpressed_info);
 
   struct SPRITE alien_alive = {alien_appearing_ptr, alien_appearing_info};
   struct SPRITE alien_appearing = {alien_alive_ptr, alien_alive_info};
@@ -271,6 +302,8 @@ bool (vg_load_sprites)() {
   struct SPRITE number_7 = {number_7_ptr, number_7_info};
   struct SPRITE number_8 = {number_8_ptr, number_8_info};
   struct SPRITE number_9 = {number_9_ptr, number_9_info};
+  struct SPRITE play_button_pressed = {play_button_pressed_ptr, play_button_pressed_info};
+  struct SPRITE play_button_unpressed = {play_button_unpressed_ptr, play_button_unpressed_info};
 
   alien_sprites[0] = alien_alive;
   alien_sprites[1] = alien_appearing;
@@ -290,6 +323,15 @@ bool (vg_load_sprites)() {
   numbers_sprites[7] = number_7;
   numbers_sprites[8] = number_8;
   numbers_sprites[9] = number_9;
+
+  play_button[0] = play_button_pressed;
+  play_button[1] = play_button_unpressed;
+  
+  play_button_xi = (GAME_WIDTH >> 1) - (play_button_pressed_info.width >> 1);
+  play_button_yi = (GAME_HEIGHT >> 1) - (play_button_pressed_info.height >> 1);
+  play_button_xf = (GAME_WIDTH >> 1) + (play_button_pressed_info.width >> 1);
+  play_button_yf = (GAME_HEIGHT >> 1) + (play_button_pressed_info.height >> 1);
+
   return true;
 }
 

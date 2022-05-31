@@ -12,7 +12,7 @@ static uint32_t random_alien_spawn_rate_increase = ALIEN_SPAWN_RATE_INCREASE;
 
 void(game_initialize)() {
   srand(time(NULL));    //used to generate random numbers for alien spawn
-  game_state = PLAYING; // going to change it later to MENU
+  game_state = MENU;    
   points = 0;
   mouse_x = MOUSE_INIT_X;
   mouse_y = MOUSE_INIT_Y;
@@ -51,7 +51,7 @@ int(game_loop)() {
   message msg;
 
   game_initialize();
-  while (counter_time_out < 5000 && game_state == PLAYING) { // time_out just used for test
+  while (counter_time_out < 5000 && game_state != EXIT) { // time_out just used for test
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
@@ -106,8 +106,6 @@ void(game_ih)() {
       break;
   }
 }
-
-
 
 
 

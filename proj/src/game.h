@@ -50,6 +50,7 @@ enum GAME_STATE { // We can probably add a game over state as well
     PAUSE, 
     MENU,
     GAME_OVER,
+    EXIT
 };
 
 enum ALIEN_STATE { // If changed, don't forget to change the macro above

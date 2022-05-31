@@ -13,7 +13,7 @@
 #include "sprites/alien.h"
 #include "sprites/crosshair.h"
 #include "sprites/numbers.h"
-
+#include "sprites/buttons.h"
 
 #define GAME_FRAME_RATE 15
 
@@ -32,7 +32,11 @@ int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffe
 void (vg_draw_aliens)();
 void (vg_draw_crosshair)();
 void (vg_draw_points)();
+void (vg_draw_play_button)();
+
+
 void (vg_draw_game)();
+void (vg_draw_menu)();
 
 void (vg_ih)();
 
