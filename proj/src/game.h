@@ -93,6 +93,14 @@ int16_t crosshair_half_height;
 int16_t crosshair_width_border;
 int16_t crosshair_height_border;
 
+// BUTTON VARIABLES
+uint16_t play_button_xi;
+uint16_t play_button_yi;
+uint16_t play_button_xf;
+uint16_t play_button_yf;
+
+
+
 void (game_initialize)();
 int (game_loop)();
 void (game_ih)();

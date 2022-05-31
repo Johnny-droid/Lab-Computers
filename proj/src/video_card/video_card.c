@@ -26,12 +26,6 @@ static struct SPRITE play_button[2]; //pressed and unpressed
 
 
 
-// Layout variables
-static uint16_t play_button_xi;
-static uint16_t play_button_yi;
-static uint16_t play_button_xf;
-static uint16_t play_button_yf;
-
 
 // DRAW FUNCTIONS
 
@@ -67,7 +61,6 @@ void (vg_draw_play_button)() {
     //printf("xi: %d \t yi %d\t\t", play_button_xi, play_button_yi);
     vg_draw_sprite(play_button[1], play_button_xi, play_button_yi, 1);
   } else {
-    printf("Draw pressed\t");
     vg_draw_sprite(play_button[0], play_button_xi, play_button_yi, 1);
   }
 

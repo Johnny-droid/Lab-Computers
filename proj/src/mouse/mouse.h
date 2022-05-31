@@ -23,6 +23,7 @@ int(mouse_unsubscribe_int)();
 void (mouse_ih)();
 void (mouse_event_handler)(struct MOUSE_EVENT mouse_event);
 void (mouse_check_kill)();
+void (mouse_check_play_button)();
 int (read_ACK_byte)();
 int (mouse_disable_data_reporting)(int mode);
 

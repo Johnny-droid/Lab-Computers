@@ -70,12 +70,14 @@ void (mouse_event_handler)(struct MOUSE_EVENT mouse_event) {
     case PLAYING:
       if (mouse_event.lbdown) mouse_check_kill();
       break;
-    
+
+    case MENU:
+      if (mouse_event.lbdown) mouse_check_play_button();
+      break;
     default:
       break;
   }
 }
-
 
 void (mouse_check_kill)() {
   int x = (mouse_x - GAME_HORIZONTAL_MARGIN) / ALIEN_WIDTH;
@@ -97,6 +99,17 @@ void (mouse_check_kill)() {
     alien->time = alien_times[DEAD_1];
   }
 }
+
+
+void (mouse_check_play_button)() {
+  if (mouse_x < play_button_xi || mouse_x > play_button_xf || mouse_y < play_button_yi || mouse_y > play_button_yf) return; 
+  game_state = PLAYING;
+}
+
+
+
+
+
 
 
 int(read_ACK_byte)() {
