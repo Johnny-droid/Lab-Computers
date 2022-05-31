@@ -13,7 +13,7 @@ Group members:
 
 # Tasks:
 - Add things to Menu
-- Create a Pause
+- Add things to Pause
 - Create a Scoreboard
 - Make the RTC
 - Make the enable_interrupts for the mouse

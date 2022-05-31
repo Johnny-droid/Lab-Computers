@@ -1,2 +1,0 @@
-Before disable data reporting
-After disable data reporting

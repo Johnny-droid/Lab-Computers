@@ -30,7 +30,7 @@
 #define CROSSHAIR_WIDTH 64
 #define CROSSHAIR_HEIGHT 64
 
-#define POINTS_WIDTH_MARGIN  430
+#define POINTS_WIDTH_MARGIN  700
 #define POINTS_HEIGHT_MARGIN 32
 #define POINTS_BETWEEN_MARGIN 5
 
@@ -45,7 +45,7 @@
 #define MOUSE_INIT_X (GAME_WIDTH / 2)
 #define MOUSE_INIT_Y (GAME_HEIGHT / 2)
 
-#define GAME_OVER_WAIT 40
+#define GAME_OVER_WAIT 60
 
 enum GAME_STATE { // We can probably add a game over state as well
     PLAYING,
