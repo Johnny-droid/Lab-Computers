@@ -19,6 +19,7 @@ Group members:
 - Make the enable_interrupts for the mouse
 - Special powers
 - Maybe add lives to the game 
+- Maybe add shoot effect to the game
 - After all is finished clean up the code and some comments
 
 # Questions:
