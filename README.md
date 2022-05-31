@@ -12,12 +12,12 @@ Group members:
 
 
 # Tasks:
-- Create a Menu
-- Create a Game Over
+- Add things to Menu
 - Create a Pause
 - Create a Scoreboard
 - Make the RTC
 - Make the enable_interrupts for the mouse
+- Maybe add lives to the game 
 - After all is finished clean up the code and some comments
 
 # Questions:
