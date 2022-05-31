@@ -3,7 +3,7 @@
 
 
 static uint32_t frame_counter = 0;
-static uint32_t frame_number = 60 / GAME_FRAME_RATE;
+//static uint32_t frame_number = 60 / GAME_FRAME_RATE;
 
 static uint32_t random_alien_counter = 0;
 static uint32_t random_alien_number = ALIEN_INIT_SPAWN_TIME;
@@ -40,11 +40,11 @@ int(game_loop)() {
   uint8_t bit_no_KBC;
   uint8_t bit_no_TIMER;
   uint8_t bit_no_MOUSE;
-
+  mouse_enable_data_reporting();
   kbc_subscribe_int(&bit_no_KBC);
   timer_subscribe_int(&bit_no_TIMER);
   mouse_subscribe_int(&bit_no_MOUSE);
-  mouse_enable_data_reporting();
+
 
   int ipc_status, r = 0;
   uint32_t irq_set_kbc = BIT(bit_no_KBC);
@@ -68,13 +68,12 @@ int(game_loop)() {
             kbc_ih();
           }
           if (msg.m_notify.interrupts & irq_set_timer) {
-            if (frame_counter < frame_number) {
-              frame_counter++;
-              break;
+            frame_counter++;
+            if (frame_counter % 2 == 0) {
+              vg_ih();
+              game_ih();
             }
-            frame_counter = 0;
-            vg_ih();
-            game_ih();
+            
           }
           
           break;
@@ -88,9 +87,10 @@ int(game_loop)() {
   kbc_unsubscribe_int();
  
   printf("Before disable data reporting\n");
-  mouse_disable_data_reporting(1);
+
   printf("After disable data reporting\n"); 
   mouse_unsubscribe_int();
+    mouse_disable_data_reporting(1);
   return 0;
 }
 

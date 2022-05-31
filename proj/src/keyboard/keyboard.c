@@ -124,12 +124,38 @@ void (kbc_ih)(void) {
     return;
   }
 
+
   if (flag2Bytes) {
     flag2Bytes = false;
   }
 
 
-  if (scanCode == ESC_BREAK) flagESC = false;
+  if (scanCode == ESC_BREAK) {
+    flagESC = false;
+  }
+
+  keyboard_event_handler(scanCode);
+}
+
+
+void (keyboard_event_handler)(uint8_t scanCode) {
+  if (scanCode == ESC_BREAK) {
+    game_state = EXIT;
+    return;
+  }
+
+  switch (game_state) {
+    case PLAYING:
+      if (scanCode == P_BREAK) game_state = PAUSE;
+      break;
+
+    case PAUSE:
+      if (scanCode == P_BREAK) game_state = PLAYING;
+      break;
+
+    default:
+      break;
+  }
 }
 
 

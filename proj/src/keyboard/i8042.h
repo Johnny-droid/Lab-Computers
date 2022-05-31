@@ -20,6 +20,11 @@
 #define KBC_SCANCODE_2B 0xE0
 #define ESC_MAKE 0x01
 #define ESC_BREAK 0x81
+#define P_MAKE 0x09
+#define P_BREAK 0x99
+#define B_MAKE 0x30
+#define B_BREAK 0xB0
+
 #define MAKE_SCAN_CODE BIT(7)
 
 

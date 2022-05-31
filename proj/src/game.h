@@ -79,11 +79,11 @@ unsigned int points;
 static unsigned int alien_times[NUMBER_ALIEN_STATES + 1] = {
     5,     // APPEARING                       
     300,    // ALIVE
-    1,     // DEAD_1
-    1,     // DEAD_2
-    1,     // DEAD_3
-    1,     // DEAD_4
-    1,     // DEAD_5
+    2,     // DEAD_1
+    2,     // DEAD_2
+    2,     // DEAD_3
+    2,     // DEAD_4
+    2,     // DEAD_5
     0       // EMPTY
 };
 

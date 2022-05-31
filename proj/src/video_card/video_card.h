@@ -16,7 +16,7 @@
 #include "sprites/buttons.h"
 #include "sprites/titles.h"
 
-#define GAME_FRAME_RATE 15
+#define GAME_FRAME_RATE 20
 
 struct SPRITE {
     char* ptr;

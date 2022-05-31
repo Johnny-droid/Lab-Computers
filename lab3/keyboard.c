@@ -135,7 +135,7 @@ void (kbc_ih)(void) {
   arr[0] = scanCode;
 
   if (scanCode == ESC_BREAK) flagESC = false;
-
+  kbd_print_scancode(!(scanCode & BIT(7)),size,arr);
 }
 
 

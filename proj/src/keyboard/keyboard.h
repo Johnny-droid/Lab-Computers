@@ -5,6 +5,9 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "i8042.h"
+#include "../game.h"
+
+
 
 bool (kbc_communication_error)();
 bool (keyboard_check)();
@@ -16,6 +19,7 @@ uint8_t (kbc_read_output_buffer)();
 void (enable_interrupts)();
 void (kbc_ih)(void);
 
+void (keyboard_event_handler)(uint8_t scanCode);
 
 uint8_t (read_command_byte)();
 void (write_command_byte)(uint8_t command_byte);
