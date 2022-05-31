@@ -113,7 +113,7 @@ void (vg_draw_points)() {
     sprite_number = temp_points % 10;
     temp_points /= 10;
     vg_draw_sprite(numbers_sprites[sprite_number], x, y, 1);
-    x += numbers_sprites[sprite_number].info.width + POINTS_BETWEEN_MARGIN;
+    x -= numbers_sprites[sprite_number].info.width + POINTS_BETWEEN_MARGIN;
   }
 }
 
