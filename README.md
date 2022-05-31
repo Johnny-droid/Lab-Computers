@@ -17,6 +17,7 @@ Group members:
 - Create a Scoreboard
 - Make the RTC
 - Make the enable_interrupts for the mouse
+- Special powers
 - Maybe add lives to the game 
 - After all is finished clean up the code and some comments
 
