@@ -23,9 +23,11 @@ static struct SPRITE alien_sprites[NUMBER_ALIEN_STATES];
 static struct SPRITE numbers_sprites[10];
 static struct SPRITE crosshair;
 static struct SPRITE play_button[2]; //pressed and unpressed
+static struct SPRITE game_over;
 
 
-
+static uint16_t game_over_x;
+static uint16_t game_over_y;
 
 // DRAW FUNCTIONS
 
@@ -40,6 +42,9 @@ void (vg_ih)() {
     case MENU:
       vg_draw_menu();
       break;
+    case GAME_OVER:
+      vg_draw_game_over();
+      break;
     default:
       break;
   }
@@ -48,17 +53,19 @@ void (vg_ih)() {
   memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
 }
 
+void (vg_draw_game_over)() {
+  vg_draw_sprite(game_over, game_over_x, game_over_y, 1);
+}
+
 // We are probably going to add the name of the game here as well as well as an exit button
 void (vg_draw_menu)() {
   vg_draw_play_button();
   vg_draw_crosshair();
-
 }
 
 void (vg_draw_play_button)() {
 
   if (mouse_x < play_button_xi || mouse_x > play_button_xf || mouse_y < play_button_yi || mouse_y > play_button_yf) {
-    //printf("xi: %d \t yi %d\t\t", play_button_xi, play_button_yi);
     vg_draw_sprite(play_button[1], play_button_xi, play_button_yi, 1);
   } else {
     vg_draw_sprite(play_button[0], play_button_xi, play_button_yi, 1);
@@ -255,6 +262,7 @@ bool (vg_load_sprites)() {
   xpm_image_t number_6_info; xpm_image_t number_7_info;
   xpm_image_t number_8_info; xpm_image_t number_9_info;
   xpm_image_t play_button_pressed_info; xpm_image_t play_button_unpressed_info; 
+  xpm_image_t game_over_info;
 
   char* alien_appearing_ptr = (char*) xpm_load(xpm_alien_appearing, sprite_type, &alien_appearing_info);
   char* alien_alive_ptr = (char*) xpm_load(xpm_alien_alive, sprite_type, &alien_alive_info);
@@ -276,6 +284,7 @@ bool (vg_load_sprites)() {
   char* number_9_ptr = (char*) xpm_load(xpm_9, sprite_type, &number_9_info);
   char* play_button_pressed_ptr = (char*) xpm_load(xpm_play_button_pressed, sprite_type, &play_button_pressed_info);
   char* play_button_unpressed_ptr = (char*) xpm_load(xpm_play_button_unpressed, sprite_type, &play_button_unpressed_info);
+  char* game_over_ptr = (char*) xpm_load(xpm_game_over, sprite_type, &game_over_info);
 
   struct SPRITE alien_alive = {alien_appearing_ptr, alien_appearing_info};
   struct SPRITE alien_appearing = {alien_alive_ptr, alien_alive_info};
@@ -297,6 +306,7 @@ bool (vg_load_sprites)() {
   struct SPRITE number_9 = {number_9_ptr, number_9_info};
   struct SPRITE play_button_pressed = {play_button_pressed_ptr, play_button_pressed_info};
   struct SPRITE play_button_unpressed = {play_button_unpressed_ptr, play_button_unpressed_info};
+  struct SPRITE game_over_sprite = {game_over_ptr, game_over_info}; game_over = game_over_sprite;
 
   alien_sprites[0] = alien_alive;
   alien_sprites[1] = alien_appearing;
@@ -324,6 +334,9 @@ bool (vg_load_sprites)() {
   play_button_yi = (GAME_HEIGHT >> 1) - (play_button_pressed_info.height >> 1);
   play_button_xf = (GAME_WIDTH >> 1) + (play_button_pressed_info.width >> 1);
   play_button_yf = (GAME_HEIGHT >> 1) + (play_button_pressed_info.height >> 1);
+
+  game_over_x = (GAME_WIDTH >> 1) - (game_over.info.width >> 1);
+  game_over_y = (GAME_HEIGHT >> 1) - (game_over.info.height >> 1);
 
   return true;
 }

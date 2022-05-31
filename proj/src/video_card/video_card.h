@@ -14,6 +14,7 @@
 #include "sprites/crosshair.h"
 #include "sprites/numbers.h"
 #include "sprites/buttons.h"
+#include "sprites/titles.h"
 
 #define GAME_FRAME_RATE 15
 
@@ -37,6 +38,7 @@ void (vg_draw_play_button)();
 
 void (vg_draw_game)();
 void (vg_draw_menu)();
+void (vg_draw_game_over)();
 
 void (vg_ih)();
 

@@ -44,14 +44,13 @@ int(game_loop)() {
   mouse_enable_data_reporting();
 
   int ipc_status, r = 0;
-  int counter_time_out = 0;
   uint32_t irq_set_kbc = BIT(bit_no_KBC);
   uint32_t irq_set_timer = BIT(bit_no_TIMER);
   uint32_t irq_set_mouse = BIT(bit_no_MOUSE);
   message msg;
 
   game_initialize();
-  while (counter_time_out < 5000 && game_state != EXIT) { // time_out just used for test
+  while (game_state != EXIT) { // time_out just used for test
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
@@ -66,7 +65,6 @@ int(game_loop)() {
             kbc_ih();
           }
           if (msg.m_notify.interrupts & irq_set_timer) {
-            counter_time_out++;
             if (frame_counter < frame_number) {
               frame_counter++;
               break;

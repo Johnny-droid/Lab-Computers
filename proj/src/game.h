@@ -76,7 +76,7 @@ unsigned int points;
 
 static unsigned int alien_times[NUMBER_ALIEN_STATES + 1] = {
     10,     // APPEARING                       
-    400,    // ALIVE
+    300,    // ALIVE
     7,     // DEAD_1
     7,     // DEAD_2
     7,     // DEAD_3
@@ -93,7 +93,7 @@ int16_t crosshair_half_height;
 int16_t crosshair_width_border;
 int16_t crosshair_height_border;
 
-// BUTTON VARIABLES
+// BUTTON/TITLES VARIABLES
 uint16_t play_button_xi;
 uint16_t play_button_yi;
 uint16_t play_button_xf;
