@@ -108,6 +108,8 @@ int (game_loop)();
 void (game_ih)();
 
 void (game_step)();
+void (game_reset)();
+
 void (game_update_alien_times)();
 void (game_generate_new_alien)();
 

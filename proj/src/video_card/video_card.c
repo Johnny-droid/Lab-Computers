@@ -141,7 +141,6 @@ int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffe
   uint32_t row_increment = (h_res - sprite.info.width) * bytes_per_pixel;
   //uint32_t row_increment = h_res * bytes_per_pixel;
   temp_video_mem += (h_res*y + x)*bytes_per_pixel;
-
   
   for (uint16_t i = y; i < v_res && i < y + sprite.info.height; i++, temp_video_mem += row_increment) {
     for (uint16_t j = x; j < h_res && j < x + sprite.info.width; j++, temp_video_mem += bytes_per_pixel) {

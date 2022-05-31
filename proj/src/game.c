@@ -5,9 +5,9 @@
 static uint32_t frame_counter = 0;
 //static uint32_t frame_number = 60 / GAME_FRAME_RATE;
 
-static uint32_t random_alien_counter = 0;
-static uint32_t random_alien_number = ALIEN_INIT_SPAWN_TIME;
-static uint32_t random_alien_spawn_rate_increase = ALIEN_SPAWN_RATE_INCREASE;
+static uint32_t random_alien_counter;
+static uint32_t random_alien_number;
+static uint32_t random_alien_spawn_rate_increase;
 
 static uint32_t game_over_counter;
 
@@ -24,13 +24,11 @@ void(game_initialize)() {
   crosshair_width_border = (GAME_WIDTH - (CROSSHAIR_WIDTH >> 1));
   crosshair_height_border = (GAME_HEIGHT - (CROSSHAIR_HEIGHT >> 1));
 
-  struct ALIEN empty = {EMPTY, 0};
+  random_alien_counter = 0;
+  random_alien_number = ALIEN_INIT_SPAWN_TIME;
+  random_alien_spawn_rate_increase = ALIEN_SPAWN_RATE_INCREASE;
 
-  for (int i = 0; i < GAME_HEIGHT_MATRIX; i++) {
-    for (int j = 0; j < GAME_WIDTH_MATRIX; j++) {
-      game_matrix[i][j] = empty;
-    }
-  }
+  game_reset();
 }
 
 
@@ -104,7 +102,7 @@ void(game_ih)() {
       break;
     case GAME_OVER:
       game_over_counter--;
-      if (game_over_counter == 0) game_state = MENU;
+      if (game_over_counter == 0) game_initialize();
     default:
       break;
   }
@@ -116,6 +114,18 @@ void(game_step)() {
   game_update_alien_times();  
   game_generate_new_alien();
 }
+
+
+void (game_reset)() {
+  struct ALIEN empty = {EMPTY, 0};
+
+  for (int i = 0; i < GAME_HEIGHT_MATRIX; i++) {
+    for (int j = 0; j < GAME_WIDTH_MATRIX; j++) {
+      game_matrix[i][j] = empty;
+    }
+  }
+}
+
 
 
 void(game_update_alien_times)() {

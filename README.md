@@ -17,7 +17,7 @@ Group members:
 - Create a Scoreboard
 - Make the RTC
 - Make the enable_interrupts for the mouse
-- Special powers
+- Special powers (B as the bomb maybe)
 - Maybe add lives to the game 
 - Maybe add shoot effect to the game
 - After all is finished clean up the code and some comments
