@@ -9,11 +9,14 @@ static uint32_t random_alien_counter = 0;
 static uint32_t random_alien_number = ALIEN_INIT_SPAWN_TIME;
 static uint32_t random_alien_spawn_rate_increase = ALIEN_SPAWN_RATE_INCREASE;
 
+static uint32_t game_over_counter;
+
 
 void(game_initialize)() {
   srand(time(NULL));    //used to generate random numbers for alien spawn
   game_state = MENU;    
   points = 0;
+  game_over_counter = 0;
   mouse_x = MOUSE_INIT_X;
   mouse_y = MOUSE_INIT_Y;
   crosshair_half_width = (CROSSHAIR_WIDTH >> 1);  //dividing by 2
@@ -99,7 +102,9 @@ void(game_ih)() {
     case PLAYING:
       game_step();
       break;
-
+    case GAME_OVER:
+      game_over_counter--;
+      if (game_over_counter == 0) game_state = MENU;
     default:
       break;
   }
@@ -126,6 +131,7 @@ void(game_update_alien_times)() {
 
       // ALIENS KILL PLAYER
       if (alien->state == ALIVE && alien->time == 0) {
+        game_over_counter = GAME_OVER_WAIT;
         game_state = GAME_OVER;
         return;
       }

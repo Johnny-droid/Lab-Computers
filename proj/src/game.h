@@ -45,6 +45,8 @@
 #define MOUSE_INIT_X (GAME_WIDTH / 2)
 #define MOUSE_INIT_Y (GAME_HEIGHT / 2)
 
+#define GAME_OVER_WAIT 40
+
 enum GAME_STATE { // We can probably add a game over state as well
     PLAYING,
     PAUSE, 
@@ -75,13 +77,13 @@ struct ALIEN game_matrix[GAME_HEIGHT_MATRIX][GAME_WIDTH_MATRIX];
 unsigned int points;
 
 static unsigned int alien_times[NUMBER_ALIEN_STATES + 1] = {
-    10,     // APPEARING                       
+    5,     // APPEARING                       
     300,    // ALIVE
-    7,     // DEAD_1
-    7,     // DEAD_2
-    7,     // DEAD_3
-    7,     // DEAD_4
-    7,     // DEAD_5
+    1,     // DEAD_1
+    1,     // DEAD_2
+    1,     // DEAD_3
+    1,     // DEAD_4
+    1,     // DEAD_5
     0       // EMPTY
 };
 

@@ -55,6 +55,7 @@ void (vg_ih)() {
 
 void (vg_draw_game_over)() {
   vg_draw_sprite(game_over, game_over_x, game_over_y, 1);
+  vg_draw_crosshair();
 }
 
 // We are probably going to add the name of the game here as well as well as an exit button
