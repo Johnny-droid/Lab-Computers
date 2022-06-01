@@ -2,11 +2,9 @@
 #include "mouse.h"
 
 static int mouse_hook_id;
-uint8_t arr[3];
 int nbytes = 0;
-bool endCycle;
-struct packet p;
-
+uint8_t arr[3];
+static bool button_was_raised = true;
 
 
 void(mouse_ih)() {
@@ -66,15 +64,21 @@ void (mouse_event_handler)(struct MOUSE_EVENT mouse_event) {
   if (mouse_y < crosshair_half_height) mouse_y = crosshair_half_height;
   if (mouse_y >= crosshair_height_border) mouse_y = crosshair_height_border-1;
 
+  if (!mouse_event.lbdown) button_was_raised = true; 
+
   switch (game_state) {
     case PLAYING:
-      if (mouse_event.lbdown) mouse_check_kill();
+      if (mouse_event.lbdown && button_was_raised) {
+        mouse_check_kill();
+        button_was_raised = false;
+      }
       break;
 
     case MENU:
-      if (mouse_event.lbdown) {
+      if (mouse_event.lbdown && button_was_raised) {
         mouse_check_play_button();
         mouse_check_exit_button();
+        button_was_raised = false;
       }
       break;
     default:

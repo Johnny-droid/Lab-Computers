@@ -3,7 +3,7 @@
 
 
 static uint32_t frame_counter = 0;
-//static uint32_t frame_number = 60 / GAME_FRAME_RATE;
+static uint32_t frame_number = 60 / GAME_FRAME_RATE;
 
 static uint32_t random_alien_counter;
 static uint32_t random_alien_number;
@@ -67,7 +67,7 @@ int(game_loop)() {
           }
           if (msg.m_notify.interrupts & irq_set_timer) {
             frame_counter++;
-            if (frame_counter % 2 == 0) {
+            if (frame_counter % frame_number == 0) {
               vg_ih();
               game_ih();
             }
@@ -83,12 +83,8 @@ int(game_loop)() {
 
   timer_unsubscribe_int();
   kbc_unsubscribe_int();
- 
-  printf("Before disable data reporting\n");
-
-  printf("After disable data reporting\n"); 
   mouse_unsubscribe_int();
-    mouse_disable_data_reporting(1);
+  mouse_disable_data_reporting(1);
   return 0;
 }
 
