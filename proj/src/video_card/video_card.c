@@ -66,16 +66,16 @@ void (vg_ih)() {
 }
 
 void (vg_draw_game_over)() {
-  vg_draw_sprite(game_over, game_over_x, game_over_y, 1);
   vg_draw_crosshair();
+  vg_draw_sprite(game_over, game_over_x, game_over_y, 1);
 }
 
 // We are probably going to add the name of the game here as well as well as an exit button
 void (vg_draw_menu)() {
+  vg_draw_crosshair();
   vg_draw_game_name();
   vg_draw_play_button();
   vg_draw_exit_button();
-  vg_draw_crosshair();
 }
 
 void (vg_draw_paused)() {
@@ -104,9 +104,8 @@ void (vg_draw_game_name)() {
 
 
 void (vg_draw_game)() {
-  // DRAW THE ALIENS and only after, the crosshair
-  vg_draw_aliens();
   vg_draw_crosshair();
+  vg_draw_aliens();
   vg_draw_points();
 }
 
@@ -156,7 +155,8 @@ void (vg_draw_points)() {
 
 int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffer_no) {
   char* temp_video_mem;
-  char* temp_sprite = sprite.ptr ;
+  char* temp_sprite = sprite.ptr;
+  uint32_t color = 0;
 
   if (buffer_no == 0) {
     temp_video_mem = video_mem;
@@ -172,6 +172,8 @@ int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffe
   
   for (uint16_t i = y; i < v_res && i < y + sprite.info.height; i++, temp_video_mem += row_increment) {
     for (uint16_t j = x; j < h_res && j < x + sprite.info.width; j++, temp_video_mem += bytes_per_pixel) {
+      color = (temp_video_mem[0] | temp_video_mem[1] | temp_video_mem[2]);
+      if (color != 0) { temp_sprite += 3; continue;}
       for (unsigned int byte = 0; byte < bytes_per_pixel; byte++) {
         temp_video_mem[byte] = *temp_sprite;
         temp_sprite++;
