@@ -54,6 +54,9 @@ void (vg_ih)() {
     case GAME_OVER:
       vg_draw_game_over();
       break;
+    case PAUSE:
+      vg_draw_paused();
+    
     default:
       break;
   }
@@ -73,6 +76,10 @@ void (vg_draw_menu)() {
   vg_draw_play_button();
   vg_draw_exit_button();
   vg_draw_crosshair();
+}
+
+void (vg_draw_paused)() {
+  vg_draw_sprite(paused, paused_x, paused_y, 1);
 }
 
 void (vg_draw_play_button)() {
