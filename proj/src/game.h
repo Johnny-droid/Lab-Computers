@@ -15,6 +15,7 @@
 
 
 // LAYOUT
+
 #define GAME_HORIZONTAL_MARGIN 15 //total 30 both sides
 #define GAME_VERTICAL_MARGIN 95   
 
@@ -34,13 +35,17 @@
 #define POINTS_HEIGHT_MARGIN 32
 #define POINTS_BETWEEN_MARGIN 5
 
+#define BUTTON_MARGIN_TOP 100
+#define GAME_MARGIN_TOP 150
+
+
 // GAMEPLAY 
 #define NUMBER_ALIEN_STATES 7 // Not counting empty
 
 #define ALIEN_INIT_SPAWN_TIME 70        // in frames
 #define ALIEN_SPAWN_RATE_INCREASE  5   // in frames
 #define ALIEN_RANDOM_SPAWN_ATTEMPTS 2  
-#define ALIEN_MAX_SPAWN_RATE 25          // in frames
+#define ALIEN_MAX_SPAWN_RATE 15          // in frames
 
 #define MOUSE_INIT_X (GAME_WIDTH / 2)
 #define MOUSE_INIT_Y (GAME_HEIGHT / 2)
@@ -101,6 +106,10 @@ uint16_t play_button_yi;
 uint16_t play_button_xf;
 uint16_t play_button_yf;
 
+uint16_t exit_button_xi;
+uint16_t exit_button_yi;
+uint16_t exit_button_xf;
+uint16_t exit_button_yf;
 
 
 void (game_initialize)();

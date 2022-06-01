@@ -34,6 +34,8 @@ void (vg_draw_aliens)();
 void (vg_draw_crosshair)();
 void (vg_draw_points)();
 void (vg_draw_play_button)();
+void (vg_draw_exit_button)();
+void (vg_draw_game_name)();
 
 
 void (vg_draw_game)();

@@ -23,11 +23,20 @@ static struct SPRITE alien_sprites[NUMBER_ALIEN_STATES];
 static struct SPRITE numbers_sprites[10];
 static struct SPRITE crosshair;
 static struct SPRITE play_button[2]; //pressed and unpressed
+static struct SPRITE exit_button[2];
 static struct SPRITE game_over;
+static struct SPRITE game_name;
+static struct SPRITE paused;
 
 
 static uint16_t game_over_x;
 static uint16_t game_over_y;
+
+static uint16_t game_name_x;
+static uint16_t game_name_y;
+
+static uint16_t paused_x;
+static uint16_t paused_y;
 
 // DRAW FUNCTIONS
 
@@ -60,18 +69,30 @@ void (vg_draw_game_over)() {
 
 // We are probably going to add the name of the game here as well as well as an exit button
 void (vg_draw_menu)() {
+  vg_draw_game_name();
   vg_draw_play_button();
+  vg_draw_exit_button();
   vg_draw_crosshair();
 }
 
 void (vg_draw_play_button)() {
-
   if (mouse_x < play_button_xi || mouse_x > play_button_xf || mouse_y < play_button_yi || mouse_y > play_button_yf) {
     vg_draw_sprite(play_button[1], play_button_xi, play_button_yi, 1);
   } else {
     vg_draw_sprite(play_button[0], play_button_xi, play_button_yi, 1);
   }
+}
 
+void (vg_draw_exit_button)() {
+  if (mouse_x < exit_button_xi || mouse_x > exit_button_xf || mouse_y < exit_button_yi || mouse_y > exit_button_yf) {
+    vg_draw_sprite(exit_button[1], exit_button_xi, exit_button_yi, 1);
+  } else {
+    vg_draw_sprite(exit_button[0], exit_button_xi, exit_button_yi, 1);
+  }
+}
+
+void (vg_draw_game_name)() {
+  vg_draw_sprite(game_name, game_name_x, game_name_y, 1);
 }
 
 
@@ -156,7 +177,7 @@ int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffe
  /*
   for (uint16_t i = y; i < v_res && i < y + sprite.info.height; i++, temp_video_mem += row_increment) {
     maybe we can try it with void* cast
-    memcpy(temp_video_mem, temp_sprite, bytes_per_pixel * (sprite.info.width+1));
+    memcpy(temp_video_mem, temp_sprite, bytes_per_pixel * (sprite.info.width));
     temp_sprite += sprite.info.width;
   }
   */
@@ -274,7 +295,8 @@ bool (vg_load_sprites)() {
   xpm_image_t number_6_info; xpm_image_t number_7_info;
   xpm_image_t number_8_info; xpm_image_t number_9_info;
   xpm_image_t play_button_pressed_info; xpm_image_t play_button_unpressed_info; 
-  xpm_image_t game_over_info;
+  xpm_image_t exit_button_pressed_info; xpm_image_t exit_button_unpressed_info; 
+  xpm_image_t game_over_info;   xpm_image_t game_name_info;   xpm_image_t paused_info;
 
   char* alien_appearing_ptr = (char*) xpm_load(xpm_alien_appearing, sprite_type, &alien_appearing_info);
   char* alien_alive_ptr = (char*) xpm_load(xpm_alien_alive, sprite_type, &alien_alive_info);
@@ -296,7 +318,11 @@ bool (vg_load_sprites)() {
   char* number_9_ptr = (char*) xpm_load(xpm_9, sprite_type, &number_9_info);
   char* play_button_pressed_ptr = (char*) xpm_load(xpm_play_button_pressed, sprite_type, &play_button_pressed_info);
   char* play_button_unpressed_ptr = (char*) xpm_load(xpm_play_button_unpressed, sprite_type, &play_button_unpressed_info);
+  char* exit_button_pressed_ptr = (char*) xpm_load(xpm_exit_button_pressed, sprite_type, &exit_button_pressed_info);
+  char* exit_button_unpressed_ptr = (char*) xpm_load(xpm_exit_button_unpressed, sprite_type, &exit_button_unpressed_info);
   char* game_over_ptr = (char*) xpm_load(xpm_game_over, sprite_type, &game_over_info);
+  char* game_name_ptr = (char*) xpm_load(xpm_game_name, sprite_type, &game_name_info);
+  char* paused_ptr = (char*) xpm_load(xpm_paused, sprite_type, &paused_info);
 
   struct SPRITE alien_alive = {alien_appearing_ptr, alien_appearing_info};
   struct SPRITE alien_appearing = {alien_alive_ptr, alien_alive_info};
@@ -318,7 +344,11 @@ bool (vg_load_sprites)() {
   struct SPRITE number_9 = {number_9_ptr, number_9_info};
   struct SPRITE play_button_pressed = {play_button_pressed_ptr, play_button_pressed_info};
   struct SPRITE play_button_unpressed = {play_button_unpressed_ptr, play_button_unpressed_info};
+  struct SPRITE exit_button_pressed = {exit_button_pressed_ptr, exit_button_pressed_info};
+  struct SPRITE exit_button_unpressed = {exit_button_unpressed_ptr, exit_button_unpressed_info};
   struct SPRITE game_over_sprite = {game_over_ptr, game_over_info}; game_over = game_over_sprite;
+  struct SPRITE game_name_sprite = {game_name_ptr, game_name_info}; game_name = game_name_sprite;
+  struct SPRITE paused_sprite = {paused_ptr, paused_info}; paused = paused_sprite;
 
   alien_sprites[0] = alien_alive;
   alien_sprites[1] = alien_appearing;
@@ -341,14 +371,28 @@ bool (vg_load_sprites)() {
 
   play_button[0] = play_button_pressed;
   play_button[1] = play_button_unpressed;
+
+  exit_button[0] = exit_button_pressed;
+  exit_button[1] = exit_button_unpressed;
   
   play_button_xi = (GAME_WIDTH >> 1) - (play_button_pressed_info.width >> 1);
-  play_button_yi = (GAME_HEIGHT >> 1) - (play_button_pressed_info.height >> 1);
+  play_button_yi = ((GAME_HEIGHT >> 1) + BUTTON_MARGIN_TOP) - (play_button_pressed_info.height >> 1);
   play_button_xf = (GAME_WIDTH >> 1) + (play_button_pressed_info.width >> 1);
-  play_button_yf = (GAME_HEIGHT >> 1) + (play_button_pressed_info.height >> 1);
+  play_button_yf = ((GAME_HEIGHT >> 1) + BUTTON_MARGIN_TOP) + (play_button_pressed_info.height >> 1);
+
+  exit_button_xi = (GAME_WIDTH >> 1) - (exit_button_pressed_info.width >> 1);
+  exit_button_yi = ((GAME_HEIGHT >> 1) + (BUTTON_MARGIN_TOP << 1)) - (exit_button_pressed_info.height >> 1);
+  exit_button_xf = (GAME_WIDTH >> 1) + (exit_button_pressed_info.width >> 1);
+  exit_button_yf = ((GAME_HEIGHT >> 1) + (BUTTON_MARGIN_TOP << 1)) + (exit_button_pressed_info.height >> 1);
 
   game_over_x = (GAME_WIDTH >> 1) - (game_over.info.width >> 1);
   game_over_y = (GAME_HEIGHT >> 1) - (game_over.info.height >> 1);
+
+  game_name_x = (GAME_WIDTH >> 1) - (game_name.info.width >> 1);
+  game_name_y = GAME_MARGIN_TOP;
+
+  paused_x = (GAME_WIDTH >> 1) - (paused.info.width >> 1);
+  paused_y = (GAME_HEIGHT >> 1) - (paused.info.height >> 1);
 
   return true;
 }

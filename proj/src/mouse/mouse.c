@@ -72,7 +72,10 @@ void (mouse_event_handler)(struct MOUSE_EVENT mouse_event) {
       break;
 
     case MENU:
-      if (mouse_event.lbdown) mouse_check_play_button();
+      if (mouse_event.lbdown) {
+        mouse_check_play_button();
+        mouse_check_exit_button();
+      }
       break;
     default:
       break;
@@ -106,9 +109,10 @@ void (mouse_check_play_button)() {
   game_state = PLAYING;
 }
 
-
-
-
+void (mouse_check_exit_button)() {
+  if (mouse_x < exit_button_xi || mouse_x > exit_button_xf || mouse_y < exit_button_yi || mouse_y > exit_button_yf) return; 
+  game_state = EXIT;
+}
 
 
 
