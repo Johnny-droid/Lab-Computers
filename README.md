@@ -12,14 +12,12 @@ Group members:
 
 
 # Tasks:
-- Add things to Menu
-- Add things to Pause
 - Create a Scoreboard
-- Make the RTC
+- Make and display the RTC
 - Make the enable_interrupts for the mouse
 - Special powers (B as the bomb maybe)
 - Maybe add lives to the game 
-- Maybe add shoot effect to the game
+- Maybe add shoot effect to the game and limited number of bullets per second?
 - After all is finished clean up the code and some comments
 
 # Questions:
