@@ -179,6 +179,48 @@ int(read_ACK_byte)() {
   }
 
 }
+int(_mouse_enable_data_reporting_)() {
+  
+  int r;
+  bool try_again = true;
+  while (try_again) {
+    try_again = false;
+    int counterCycles = 0;
+    while (counterCycles < 10) {
+      if (!kbc_intput_buf_full()) {
+        sys_outb(KBC_STAT_REG, WR_MOUSE);
+        break;
+      }
+      counterCycles++;
+      tickdelay(micros_to_ticks(DELAY));
+    }
+    sys_outb(KBC_OUT_BUF, STREAM_MODE);
+    r = read_ACK_byte();
+    if (r == 1)
+      try_again = true;
+  }
+  if(r==-1) return 1;
+
+  try_again = true;
+  while (try_again) {
+    try_again = false;
+    int counterCycles = 0;
+    while (counterCycles < 10) {
+      if (!kbc_intput_buf_full()) {
+        sys_outb(KBC_STAT_REG, WR_MOUSE);
+        break;
+      }
+      counterCycles++;
+      tickdelay(micros_to_ticks(DELAY));
+    }
+    sys_outb(KBC_OUT_BUF, DATA_REPORT);
+    r = read_ACK_byte();
+    if (r == 1)
+      try_again = true;
+  }
+
+  return 0;
+}
 
 int(mouse_disable_data_reporting)(int mode) {
   int r;

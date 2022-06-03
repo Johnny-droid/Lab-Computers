@@ -10,6 +10,8 @@
 extern int nbytes;
 extern bool endCycle;
 extern struct packet p; 
+extern int timer_global_counter; 
+
 
 // Any header files included below this line should have been created by you
 
@@ -41,7 +43,7 @@ int main(int argc, char *argv[]) {
 int (mouse_test_packet)(uint32_t cnt) {
   uint8_t bit_no_MOUSE=12;
   mouse_subscribe_int(&bit_no_MOUSE);
-  mouse_enable_data_reporting();
+  _mouse_enable_data_reporting_();
   int ipc_status;
   message msg;
   uint32_t irq_set = BIT(bit_no_MOUSE);
@@ -76,9 +78,10 @@ int (mouse_test_packet)(uint32_t cnt) {
   }
   
   //unsubscribe
+  mouse_disable_data_reporting(1);
   mouse_unsubscribe_int();
   
-  mouse_disable_data_reporting(1);
+  
   
   return 0;
 }
@@ -98,9 +101,9 @@ int (mouse_test_async)(uint8_t idle_time) {
   uint32_t timer0_int_bit = BIT(bit_no_TIMER);
   int r = 0;
 
-  int counter = 0;
+  timer_global_counter  = 0;
 
-   while(counter/60 < idle_time) { // You may want to use a different condition
+   while(timer_global_counter/60 < idle_time) { // You may want to use a different condition
     // Get a request message.
 
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
@@ -113,7 +116,7 @@ int (mouse_test_async)(uint8_t idle_time) {
         case HARDWARE: // hardware interrupt notification		               
           if (msg.m_notify.interrupts & irq_set) { //subscribed interrupt                  
            // process it
-            counter=0;
+            timer_global_counter=0;
             mouse_ih();
             if(nbytes==3){
                nbytes=0;
@@ -122,7 +125,7 @@ int (mouse_test_async)(uint8_t idle_time) {
           }
           if (msg.m_notify.interrupts & timer0_int_bit) { // Timer0 int?
             /* process Timer0 interrupt request */
-            counter++;
+            timer_int_handler();
           }
           break;
         default:
