@@ -38,7 +38,7 @@ int(game_loop)() {
   uint8_t bit_no_KBC;
   uint8_t bit_no_TIMER;
   uint8_t bit_no_MOUSE;
-  mouse_enable_data_reporting();
+  _mouse_enable_data_reporting_();
   kbc_subscribe_int(&bit_no_KBC);
   timer_subscribe_int(&bit_no_TIMER);
   mouse_subscribe_int(&bit_no_MOUSE);

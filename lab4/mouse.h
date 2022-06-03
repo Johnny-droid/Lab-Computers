@@ -35,6 +35,7 @@ void (mouse_ih)();
 int (read_ACK_byte)();
 int (mouse_disable_data_reporting)(int mode);
 void (mouse_check_pattern)(mouse_event_t evt);
+int(_mouse_enable_data_reporting_)();
 
 
  

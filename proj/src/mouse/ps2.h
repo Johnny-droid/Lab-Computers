@@ -35,6 +35,8 @@
 #define WR_MOUSE     0xD4
 #define RM_MODE      0xF0
 #define DISABLE      0xF5
+#define DATA_REPORT  0xF4
+#define STREAM_MODE  0xEA
 
 
 
