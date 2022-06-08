@@ -49,3 +49,38 @@ void(writeSaveFile)(){
 int(compareScore)(int score){
     return score>scores[9];
 }
+
+char*(getLeaderBoard)(){
+    char str[256];
+    memset(str, 0, sizeof str);
+    int i = 0;
+    char sc[4];
+    while(i<10 && names[i]!='\0'){
+        memset(sc, 0, sizeof sc);
+        itoa(scores[i],sc,10);
+        for(int j = 4; j > sizeof(sc)/sizeof(sc[0]); j--)
+            strcat(str, "0");
+        strcat(str, sc);
+        strcat(str,"-");
+        strcat(str, names[i]);
+        strcat(str,"-");
+        strcat(str, dates[i++]);
+        strcat(str,"\n");
+    }
+    return str;
+}
+
+void(addScore)(int score, char name[10], char date[10]){
+    int i = 1;
+    while(scores[i]<score){
+        memset(scores[i-1], 0, sizeof scores[i-1]);
+        memset(names[i-1], 0, sizeof names[i-1]);
+        memset(dates[i-1], 0, sizeof dates[i-1]);
+        scores[i-1]= scores[i];
+        strcpy(names[i-1], names[i]);
+        strcpy(dates[i-1], dates[i++]);
+    }
+    scores[--i] = score;
+    strcpy(names[i], name);
+    strcpy(dates[i], date);
+}

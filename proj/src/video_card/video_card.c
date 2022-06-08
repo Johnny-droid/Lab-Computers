@@ -329,6 +329,22 @@ bool (vg_load_sprites)() {
   xpm_image_t number_4_info; xpm_image_t number_5_info;
   xpm_image_t number_6_info; xpm_image_t number_7_info;
   xpm_image_t number_8_info; xpm_image_t number_9_info;
+
+  xpm_image_t letter_A_info; xpm_image_t letter_B_info;
+  xpm_image_t letter_C_info; xpm_image_t letter_D_info;
+  xpm_image_t letter_E_info; xpm_image_t letter_F_info;
+  xpm_image_t letter_G_info; xpm_image_t letter_H_info;
+  xpm_image_t letter_I_info; xpm_image_t letter_J_info;
+  xpm_image_t letter_K_info; xpm_image_t letter_L_info;
+  xpm_image_t letter_M_info; xpm_image_t letter_N_info;
+  xpm_image_t letter_O_info; xpm_image_t letter_P_info;
+  xpm_image_t letter_Q_info; xpm_image_t letter_R_info;
+  xpm_image_t letter_S_info; xpm_image_t letter_T_info;
+  xpm_image_t letter_U_info; xpm_image_t letter_V_info;
+  xpm_image_t letter_W_info; xpm_image_t letter_X_info;
+  xpm_image_t letter_Y_info; xpm_image_t letter_Z_info;
+  xpm_image_t symb_dash_info; xpm_image_t symb_slash_info;
+  
   xpm_image_t play_button_pressed_info; xpm_image_t play_button_unpressed_info; 
   xpm_image_t exit_button_pressed_info; xpm_image_t exit_button_unpressed_info; 
   xpm_image_t game_over_info;   xpm_image_t game_name_info;   xpm_image_t paused_info;
@@ -351,6 +367,36 @@ bool (vg_load_sprites)() {
   char* number_7_ptr = (char*) xpm_load(xpm_7, sprite_type, &number_7_info);
   char* number_8_ptr = (char*) xpm_load(xpm_8, sprite_type, &number_8_info);
   char* number_9_ptr = (char*) xpm_load(xpm_9, sprite_type, &number_9_info);
+
+  char* letter_A_ptr = (char*) xpm_load(xpm_A, sprite_type, &letter_A_info);
+  char* letter_B_ptr = (char*) xpm_load(xpm_B, sprite_type, &letter_B_info);
+  char* letter_C_ptr = (char*) xpm_load(xpm_C, sprite_type, &letter_C_info);
+  char* letter_D_ptr = (char*) xpm_load(xpm_D, sprite_type, &letter_D_info);
+  char* letter_E_ptr = (char*) xpm_load(xpm_E, sprite_type, &letter_E_info);
+  char* letter_F_ptr = (char*) xpm_load(xpm_F, sprite_type, &letter_F_info);
+  char* letter_G_ptr = (char*) xpm_load(xpm_G, sprite_type, &letter_G_info);
+  char* letter_H_ptr = (char*) xpm_load(xpm_H, sprite_type, &letter_H_info);
+  char* letter_I_ptr = (char*) xpm_load(xpm_I, sprite_type, &letter_I_info);
+  char* letter_J_ptr = (char*) xpm_load(xpm_J, sprite_type, &letter_J_info);
+  char* letter_K_ptr = (char*) xpm_load(xpm_K, sprite_type, &letter_K_info);
+  char* letter_L_ptr = (char*) xpm_load(xpm_L, sprite_type, &letter_L_info);
+  char* letter_M_ptr = (char*) xpm_load(xpm_M, sprite_type, &letter_M_info);
+  char* letter_N_ptr = (char*) xpm_load(xpm_N, sprite_type, &letter_N_info);
+  char* letter_O_ptr = (char*) xpm_load(xpm_O, sprite_type, &letter_O_info);
+  char* letter_P_ptr = (char*) xpm_load(xpm_P, sprite_type, &letter_P_info);
+  char* letter_Q_ptr = (char*) xpm_load(xpm_Q, sprite_type, &letter_Q_info);
+  char* letter_R_ptr = (char*) xpm_load(xpm_R, sprite_type, &letter_R_info);
+  char* letter_S_ptr = (char*) xpm_load(xpm_S, sprite_type, &letter_S_info);
+  char* letter_T_ptr = (char*) xpm_load(xpm_T, sprite_type, &letter_T_info);
+  char* letter_U_ptr = (char*) xpm_load(xpm_U, sprite_type, &letter_U_info);
+  char* letter_V_ptr = (char*) xpm_load(xpm_V, sprite_type, &letter_V_info);
+  char* letter_W_ptr = (char*) xpm_load(xpm_W, sprite_type, &letter_W_info);
+  char* letter_X_ptr = (char*) xpm_load(xpm_X, sprite_type, &letter_X_info);
+  char* letter_Y_ptr = (char*) xpm_load(xpm_Y, sprite_type, &letter_Y_info);
+  char* letter_Z_ptr = (char*) xpm_load(xpm_Z, sprite_type, &letter_Z_info);
+  char* symb_dash_ptr = (char*) xpm_load(xpm_dash, sprite_type, &symb_dash_info);
+  char* symb_slash_ptr = (char*) xpm_load(xpm_slash, sprite_type, &symb_slash_info);
+
   char* play_button_pressed_ptr = (char*) xpm_load(xpm_play_button_pressed, sprite_type, &play_button_pressed_info);
   char* play_button_unpressed_ptr = (char*) xpm_load(xpm_play_button_unpressed, sprite_type, &play_button_unpressed_info);
   char* exit_button_pressed_ptr = (char*) xpm_load(xpm_exit_button_pressed, sprite_type, &exit_button_pressed_info);
@@ -377,6 +423,34 @@ bool (vg_load_sprites)() {
   struct SPRITE number_7 = {number_7_ptr, number_7_info};
   struct SPRITE number_8 = {number_8_ptr, number_8_info};
   struct SPRITE number_9 = {number_9_ptr, number_9_info};
+
+  struct SPRITE letter_A = {letter_A_ptr, letter_A_info};
+  struct SPRITE letter_B = {letter_B_ptr, letter_B_info};
+  struct SPRITE letter_C = {letter_C_ptr, letter_C_info};
+  struct SPRITE letter_D = {letter_D_ptr, letter_D_info};
+  struct SPRITE letter_E = {letter_E_ptr, letter_E_info};
+  struct SPRITE letter_F = {letter_F_ptr, letter_F_info};
+  struct SPRITE letter_G = {letter_G_ptr, letter_G_info};
+  struct SPRITE letter_H = {letter_H_ptr, letter_H_info};
+  struct SPRITE letter_I = {letter_I_ptr, letter_I_info};
+  struct SPRITE letter_J = {letter_J_ptr, letter_J_info};
+  struct SPRITE letter_K = {letter_K_ptr, letter_K_info};
+  struct SPRITE letter_L = {letter_L_ptr, letter_L_info};
+  struct SPRITE letter_M = {letter_M_ptr, letter_M_info};
+  struct SPRITE letter_N = {letter_N_ptr, letter_N_info};
+  struct SPRITE letter_O = {letter_O_ptr, letter_O_info};
+  struct SPRITE letter_P = {letter_P_ptr, letter_P_info};
+  struct SPRITE letter_Q = {letter_Q_ptr, letter_Q_info};
+  struct SPRITE letter_R = {letter_R_ptr, letter_R_info};
+  struct SPRITE letter_S = {letter_S_ptr, letter_S_info};
+  struct SPRITE letter_T = {letter_T_ptr, letter_T_info};
+  struct SPRITE letter_U = {letter_U_ptr, letter_U_info};
+  struct SPRITE letter_V = {letter_V_ptr, letter_V_info};
+  struct SPRITE letter_W = {letter_W_ptr, letter_W_info};
+  struct SPRITE letter_X = {letter_X_ptr, letter_X_info};
+  struct SPRITE letter_Y = {letter_Y_ptr, letter_Y_info};
+  struct SPRITE letter_Z = {letter_Z_ptr, letter_Z_info};
+  
   struct SPRITE play_button_pressed = {play_button_pressed_ptr, play_button_pressed_info};
   struct SPRITE play_button_unpressed = {play_button_unpressed_ptr, play_button_unpressed_info};
   struct SPRITE exit_button_pressed = {exit_button_pressed_ptr, exit_button_pressed_info};

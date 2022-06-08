@@ -7,6 +7,7 @@ PROG=proj
 .PATH: ${.CURDIR}/video_card/
 .PATH: ${.CURDIR}/sprites/
 .PATH: ${.CURDIR}/mouse/
+.PATH: ${.CURDIR}/leaderBoard/
 
 # source code files to be compiled
 SRCS = proj.c game.c video_card.c keyboard.c mouse.c timer.c utils.c

@@ -11,7 +11,6 @@
 #include <stdint.h>
 #include <string.h>
 #include "../game.h"
-#include "keyboard/keyboard.h"
 #include "ps2.h"
 
 char names[10][6];

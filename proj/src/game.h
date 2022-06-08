@@ -8,6 +8,7 @@
 #include "video_card/video_card.h"
 #include "keyboard/keyboard.h"
 #include "mouse/mouse.h"
+//#include "leaderboard/leaderboard.h"
 
 #define GAME_GRAPHICS_MODE 0x115
 #define GAME_WIDTH 800

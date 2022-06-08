@@ -15,6 +15,7 @@
 #include "sprites/numbers.h"
 #include "sprites/buttons.h"
 #include "sprites/titles.h"
+#include "sprites/letters.h"
 
 #define GAME_FRAME_RATE 30
 
