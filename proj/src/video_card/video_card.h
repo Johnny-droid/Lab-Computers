@@ -32,17 +32,21 @@ bool (vg_load_sprites)();
 
 int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffer_no);
 void (vg_draw_aliens)();
+void (vg_draw_killer_alien)();
 void (vg_draw_crosshair)(uint8_t buffer_no);
 void (vg_draw_points)();
 void (vg_draw_play_button)();
 void (vg_draw_exit_button)();
 void (vg_draw_game_name)();
 void (vg_draw_paused)();
+void (vg_draw_str)(char * str, int x, int y);
 
 
 void (vg_draw_game)();
 void (vg_draw_menu)();
 void (vg_draw_game_over)();
+void (vg_draw_input_screen)();
+void (vg_draw_leadeboard)();
 
 void (vg_ih)();
 

@@ -8,7 +8,7 @@
 #include "video_card/video_card.h"
 #include "keyboard/keyboard.h"
 #include "mouse/mouse.h"
-//#include "leaderboard/leaderboard.h"
+#include "leaderboard/leaderboard.h"
 
 #define GAME_GRAPHICS_MODE 0x115
 #define GAME_WIDTH 800
@@ -53,12 +53,14 @@
 
 #define GAME_OVER_WAIT 60
 
-enum GAME_STATE { // We can probably add a game over state as well
+enum GAME_STATE {
     PLAYING,
     PAUSE, 
     MENU,
     GAME_OVER,
-    EXIT
+    EXIT,
+    LEADERBOARD,
+    LB_INPUT
 };
 
 enum ALIEN_STATE { // If changed, don't forget to change the macro above
@@ -112,6 +114,11 @@ uint16_t exit_button_yi;
 uint16_t exit_button_xf;
 uint16_t exit_button_yf;
 
+char name[6];
+char input_message[100];
+int lb_counter;
+
+struct leaderboard LB;
 
 void (game_initialize)();
 int (game_loop)();
@@ -123,6 +130,8 @@ void (game_reset)();
 void (game_update_alien_times)();
 void (game_generate_new_alien)();
 
+void (game_leaderboard)();
+void (game_save_and_display_lb)();
 
 
 #endif 

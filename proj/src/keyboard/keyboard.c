@@ -153,6 +153,52 @@ void (keyboard_event_handler)(uint8_t scanCode) {
       if (scanCode == P_BREAK) game_state = PLAYING;
       break;
 
+    case LB_INPUT:
+      if(name[5] == 0)
+        switch (scanCode)
+        {
+          case A_MAKE: strcat(name, "A"); break;
+          case B_MAKE: strcat(name, "B"); break;
+          case C_MAKE: strcat(name, "C"); break;
+          case D_MAKE: strcat(name, "D"); break;
+          case E_MAKE: strcat(name, "E"); break;
+          case F_MAKE: strcat(name, "F"); break;
+          case G_MAKE: strcat(name, "G"); break;
+          case H_MAKE: strcat(name, "H"); break;
+          case I_MAKE: strcat(name, "I"); break;
+          case J_MAKE: strcat(name, "J"); break;
+          case K_MAKE: strcat(name, "K"); break;
+          case L_MAKE: strcat(name, "L"); break;
+          case M_MAKE: strcat(name, "M"); break;
+          case N_MAKE: strcat(name, "N"); break;
+          case O_MAKE: strcat(name, "O"); break;
+          case P_MAKE: strcat(name, "P"); break;
+          case Q_MAKE: strcat(name, "Q"); break;
+          case R_MAKE: strcat(name, "R"); break;
+          case S_MAKE: strcat(name, "S"); break;
+          case T_MAKE: strcat(name, "T"); break;
+          case U_MAKE: strcat(name, "U"); break;
+          case V_MAKE: strcat(name, "V"); break;
+          case W_MAKE: strcat(name, "W"); break;
+          case X_MAKE: strcat(name, "X"); break;
+          case Y_MAKE: strcat(name, "Y"); break;
+          case Z_MAKE: strcat(name, "Z"); break;
+          
+          case DASH_MAKE: strcat(name, "-"); break;
+          
+          case ENTER_MAKE: if(name[0]!='\0') game_save_and_display_lb(); break;
+          
+          default:
+            break;
+        }
+      else
+        if(scanCode == ENTER_MAKE && name[0]!='\0') 
+          game_save_and_display_lb(); 
+      break;
+    case LEADERBOARD:
+      if(scanCode == ENTER_MAKE)
+        game_initialize();
+        break;
     default:
       break;
   }

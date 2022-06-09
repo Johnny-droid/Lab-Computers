@@ -17,6 +17,7 @@ void(game_initialize)() {
   game_state = MENU;    
   points = 0;
   game_over_counter = 0;
+  lb_counter = 0;
   mouse_x = MOUSE_INIT_X;
   mouse_y = MOUSE_INIT_Y;
   crosshair_half_width = (CROSSHAIR_WIDTH >> 1);  //dividing by 2
@@ -43,7 +44,6 @@ int(game_loop)() {
   timer_subscribe_int(&bit_no_TIMER);
   mouse_subscribe_int(&bit_no_MOUSE);
 
-
   int ipc_status, r = 0;
   uint32_t irq_set_kbc = BIT(bit_no_KBC);
   uint32_t irq_set_timer = BIT(bit_no_TIMER);
@@ -51,7 +51,9 @@ int(game_loop)() {
   message msg;
 
   game_initialize();
-  while (game_state != EXIT) { // time_out just used for test
+  readSaveFile(&LB);
+
+  while (game_state != EXIT) {
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
@@ -81,6 +83,8 @@ int(game_loop)() {
     }
   }
 
+  writeSaveFile(&LB);
+
   timer_unsubscribe_int();
   kbc_unsubscribe_int();
   mouse_unsubscribe_int();
@@ -98,13 +102,37 @@ void(game_ih)() {
       break;
     case GAME_OVER:
       game_over_counter--;
-      if (game_over_counter == 0) game_initialize();
+      if (game_over_counter == 0) game_leaderboard();
+      break;
+    case LEADERBOARD:
+      lb_counter--;
+      if (lb_counter == 0) game_initialize();
+      break;
     default:
       break;
   }
 }
 
+void (game_leaderboard)(){
+  memset(name, 0, sizeof name);
+  memset(input_message, 0, sizeof input_message);
+  strcpy(input_message, "YOUR SCORE WAS ");
+  char sc[4];
+  sprintf(sc, "%d", points);
+  strcat(input_message, sc);
+  if(compareScore(points, LB)){
+    strcat(input_message, "!\nPLEASE INSERT YOUR NAME,\nAND PRESS ENTER");
+    game_state = LB_INPUT;
+    return;
+  }
+  lb_counter = 100;
+  game_state = LEADERBOARD;
+}
 
+void (game_save_and_display_lb)(){
+  addScore(points, name, "09/06/2022", &LB);
+  game_state = LEADERBOARD;
+}
 
 void(game_step)() {
   game_update_alien_times();  

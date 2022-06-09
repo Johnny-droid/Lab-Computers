@@ -9,24 +9,29 @@
 #include <minix/sysutil.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <string.h>
 #include "../game.h"
-#include "ps2.h"
 
-char names[10][6];
+struct leaderboard
+{
+    char names[10][6];
 
-char dates[10][10];
+    char dates[10][10];
 
-uint8_t scores[10];
+    uint8_t scores[10];
+};
 
-void(readSaveFile)();
+char str[256];
 
-void(writeSaveFile)();
+void(readSaveFile)(struct leaderboard* LB);
 
-int(compareScore)(int score);
+void(writeSaveFile)(struct leaderboard* LB);
 
-void(addScore)(int score, char name[10], char date[10]);
+int(compareScore)(int score, struct leaderboard LB);
 
-char * (getLeaderBoard)();
+void(addScore)(int score, char name[10], char date[10], struct leaderboard* LB);
+
+char * (getLeaderBoard)(struct leaderboard* LB);
 
 #endif //LC_LEADERBOARD_H

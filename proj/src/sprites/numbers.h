@@ -384,7 +384,7 @@ static xpm_row_t const xpm_9[] = {
   "................................",
   "................................"};
 
-static xpm_row_t const xpm_slash[] = {
+/*static xpm_row_t const xpm_slash[] = {
   // columns rows colors chars-per-pixel
   "16 16 2 1 ",
   "  c #FFFFFF",
@@ -406,5 +406,5 @@ static xpm_row_t const xpm_slash[] = {
   "....   .........",
   "....  ..........",
   "................"};
-
+*/
 #endif

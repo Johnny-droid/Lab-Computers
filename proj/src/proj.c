@@ -3,6 +3,7 @@
 
 #include "video_card/video_card.h"
 #include "game.h"
+#include "leaderboard/leaderboard.h"
 
 #include <stdint.h>
 #include <stdio.h>

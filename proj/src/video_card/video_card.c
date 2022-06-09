@@ -21,6 +21,8 @@ static uint8_t blue_field_position;
 const enum xpm_image_type sprite_type = XPM_8_8_8;
 static struct SPRITE alien_sprites[NUMBER_ALIEN_STATES];
 static struct SPRITE numbers_sprites[10];
+static struct SPRITE letters_sprites[26];
+static struct SPRITE symb_sprites[2];
 static struct SPRITE crosshair;
 static struct SPRITE play_button[2]; //pressed and unpressed
 static struct SPRITE exit_button[2];
@@ -56,7 +58,13 @@ void (vg_ih)() {
       break;
     case PAUSE:
       vg_draw_paused();
-    
+      break;
+    case LB_INPUT:
+      vg_draw_input_screen();
+      break;
+    case LEADERBOARD:
+      vg_draw_leadeboard();
+      break;
     default:
       break;
   }
@@ -67,6 +75,7 @@ void (vg_ih)() {
 
 void (vg_draw_game_over)() {
   vg_draw_sprite(game_over, game_over_x, game_over_y, 1);
+  vg_draw_killer_alien();
   vg_draw_crosshair(1);
 }
 
@@ -123,6 +132,28 @@ void (vg_draw_aliens)() {
     for (int j = 0; j < GAME_WIDTH_MATRIX; j++, x += ALIEN_WIDTH) {
       state = game_matrix[i][j].state;
       if (state == EMPTY) continue;
+
+      sprite = alien_sprites[state];
+      vg_draw_sprite(sprite, x + ALIEN_HORIZONTAL_MARGIN, y + ALIEN_VERTICAL_MARGIN, 1);
+    }
+  } 
+}
+
+void (vg_draw_killer_alien)() {
+  
+  uint16_t xi = GAME_HORIZONTAL_MARGIN;
+  uint16_t yi = GAME_VERTICAL_MARGIN;
+  uint16_t x = xi;
+  uint16_t y = yi;
+  struct SPRITE sprite;
+  enum ALIEN_STATE state;
+
+  for (int i = 0; i < GAME_HEIGHT_MATRIX; i++, y += ALIEN_HEIGHT) {
+    x = xi;
+    for (int j = 0; j < GAME_WIDTH_MATRIX; j++, x += ALIEN_WIDTH) {
+      state = game_matrix[i][j].state;
+      unsigned int time = game_matrix[i][j].time;
+      if (state == EMPTY || time!=0) continue;
 
       sprite = alien_sprites[state];
       vg_draw_sprite(sprite, x + ALIEN_HORIZONTAL_MARGIN, y + ALIEN_VERTICAL_MARGIN, 1);
@@ -207,6 +238,83 @@ int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffe
     }
   }
     
+  return 0;
+}
+  
+void (vg_draw_str)(char * str, int x0, int y0){ 
+  int x = x0;
+  int y = y0;
+  for(int i = 0; str[i] != '\0'; i++){
+    switch (str[i])
+    {
+    case 'A': vg_draw_sprite(letters_sprites[0], x, y, 1); break;
+    case 'B': vg_draw_sprite(letters_sprites[1], x, y, 1); break;
+    case 'C': vg_draw_sprite(letters_sprites[2], x, y, 1); break;
+    case 'D': vg_draw_sprite(letters_sprites[3], x, y, 1); break;
+    case 'E': vg_draw_sprite(letters_sprites[4], x, y, 1); break;
+    case 'F': vg_draw_sprite(letters_sprites[5], x, y, 1); break;
+    case 'G': vg_draw_sprite(letters_sprites[6], x, y, 1); break;
+    case 'H': vg_draw_sprite(letters_sprites[7], x, y, 1); break;
+    case 'I': vg_draw_sprite(letters_sprites[8], x, y, 1); break;
+    case 'J': vg_draw_sprite(letters_sprites[9], x, y, 1); break;
+    case 'K': vg_draw_sprite(letters_sprites[10], x, y, 1); break;
+    case 'L': vg_draw_sprite(letters_sprites[11], x, y, 1); break;
+    case 'M': vg_draw_sprite(letters_sprites[12], x, y, 1); break;
+    case 'N': vg_draw_sprite(letters_sprites[13], x, y, 1); break;
+    case 'O': vg_draw_sprite(letters_sprites[14], x, y, 1); break;
+    case 'P': vg_draw_sprite(letters_sprites[15], x, y, 1); break;
+    case 'Q': vg_draw_sprite(letters_sprites[16], x, y, 1); break;
+    case 'R': vg_draw_sprite(letters_sprites[17], x, y, 1); break;
+    case 'S': vg_draw_sprite(letters_sprites[18], x, y, 1); break;
+    case 'T': vg_draw_sprite(letters_sprites[19], x, y, 1); break;
+    case 'U': vg_draw_sprite(letters_sprites[20], x, y, 1); break;
+    case 'V': vg_draw_sprite(letters_sprites[21], x, y, 1); break;
+    case 'W': vg_draw_sprite(letters_sprites[22], x, y, 1); break;
+    case 'X': vg_draw_sprite(letters_sprites[23], x, y, 1); break;
+    case 'Y': vg_draw_sprite(letters_sprites[24], x, y, 1); break;
+    case 'Z': vg_draw_sprite(letters_sprites[25], x, y, 1); break;
+
+    case '0': vg_draw_sprite(numbers_sprites[0], x, y, 1); break;
+    case '1': vg_draw_sprite(numbers_sprites[1], x, y, 1); break;
+    case '2': vg_draw_sprite(numbers_sprites[2], x, y, 1); break;
+    case '3': vg_draw_sprite(numbers_sprites[3], x, y, 1); break;
+    case '4': vg_draw_sprite(numbers_sprites[4], x, y, 1); break;
+    case '5': vg_draw_sprite(numbers_sprites[5], x, y, 1); break;
+    case '6': vg_draw_sprite(numbers_sprites[6], x, y, 1); break;
+    case '7': vg_draw_sprite(numbers_sprites[7], x, y, 1); break;
+    case '8': vg_draw_sprite(numbers_sprites[8], x, y, 1); break;
+    case '9': vg_draw_sprite(numbers_sprites[9], x, y, 1); break;
+
+    case '-': vg_draw_sprite(symb_sprites[0], x, y, 1); break;
+    case '/': vg_draw_sprite(symb_sprites[1], x, y, 1); break;
+
+    case ' ':
+      x -= letters_sprites[0].info.width - 20;
+      break;
+
+    case '\n': 
+      y+= letters_sprites[0].info.height; 
+      x = x0 - letters_sprites[0].info.width;
+      break;
+
+    default:
+      break;
+    }
+    x += letters_sprites[0].info.width;
+  }
+}
+
+void (vg_draw_input_screen)(){
+  vg_draw_str(input_message, 10, 10);
+  if(name[0]!='\0')
+    vg_draw_str(name, 100, 4*letters_sprites[0].info.height + 40);
+  vg_draw_crosshair(1);
+}
+
+void (vg_draw_leadeboard)(){
+  vg_draw_str(getLeaderBoard(&LB), 10, 10);
+  vg_draw_crosshair(1);
+}
 
   /*
   for (uint16_t i = y; i < v_res && i < y + sprite.info.height; i++, temp_video_mem += row_increment) {
@@ -218,8 +326,6 @@ int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffe
   */
   
   
-  return 0;
-}
 
 
 
@@ -451,6 +557,9 @@ bool (vg_load_sprites)() {
   struct SPRITE letter_Y = {letter_Y_ptr, letter_Y_info};
   struct SPRITE letter_Z = {letter_Z_ptr, letter_Z_info};
   
+  struct SPRITE symb_dash = {symb_dash_ptr, symb_dash_info};
+  struct SPRITE symb_slash = {symb_slash_ptr, symb_slash_info};
+  
   struct SPRITE play_button_pressed = {play_button_pressed_ptr, play_button_pressed_info};
   struct SPRITE play_button_unpressed = {play_button_unpressed_ptr, play_button_unpressed_info};
   struct SPRITE exit_button_pressed = {exit_button_pressed_ptr, exit_button_pressed_info};
@@ -477,6 +586,36 @@ bool (vg_load_sprites)() {
   numbers_sprites[7] = number_7;
   numbers_sprites[8] = number_8;
   numbers_sprites[9] = number_9;
+
+  letters_sprites[0] = letter_A;
+  letters_sprites[1] = letter_B;
+  letters_sprites[2] = letter_C;
+  letters_sprites[3] = letter_D;
+  letters_sprites[4] = letter_E;
+  letters_sprites[5] = letter_F;
+  letters_sprites[6] = letter_G;
+  letters_sprites[7] = letter_H;
+  letters_sprites[8] = letter_I;
+  letters_sprites[9] = letter_J;
+  letters_sprites[10] = letter_K;
+  letters_sprites[11] = letter_L;
+  letters_sprites[12] = letter_M;
+  letters_sprites[13] = letter_N;
+  letters_sprites[14] = letter_O;
+  letters_sprites[15] = letter_P;
+  letters_sprites[16] = letter_Q;
+  letters_sprites[17] = letter_R;
+  letters_sprites[18] = letter_S;
+  letters_sprites[19] = letter_T;
+  letters_sprites[20] = letter_U;
+  letters_sprites[21] = letter_V;
+  letters_sprites[22] = letter_W;
+  letters_sprites[23] = letter_X;
+  letters_sprites[24] = letter_Y;
+  letters_sprites[25] = letter_Z;
+
+  symb_sprites[0] = symb_dash;
+  symb_sprites[1] = symb_slash;
 
   play_button[0] = play_button_pressed;
   play_button[1] = play_button_unpressed;
