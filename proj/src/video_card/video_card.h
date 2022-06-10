@@ -19,6 +19,8 @@
 
 #define GAME_FRAME_RATE 30
 
+char str[256];
+
 struct SPRITE {
     char* ptr;
     xpm_image_t info;

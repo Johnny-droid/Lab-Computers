@@ -29,6 +29,7 @@ static struct SPRITE exit_button[2];
 static struct SPRITE game_over;
 static struct SPRITE game_name;
 static struct SPRITE paused;
+static struct SPRITE lbsprite;
 
 
 static uint16_t game_over_x;
@@ -305,14 +306,16 @@ void (vg_draw_str)(char * str, int x0, int y0){
 }
 
 void (vg_draw_input_screen)(){
-  vg_draw_str(input_message, 10, 10);
+  vg_draw_str(input_message, 100, 100);
   if(name[0]!='\0')
-    vg_draw_str(name, 100, 4*letters_sprites[0].info.height + 40);
+    vg_draw_str(name, 7*letters_sprites[0].info.width+100, letters_sprites[0].info.height+100);
   vg_draw_crosshair(1);
 }
 
 void (vg_draw_leadeboard)(){
-  vg_draw_str(getLeaderBoard(&LB), 10, 10);
+  //vg_draw_sprite(lbsprite, 1, 1, 1);
+  vg_draw_str(getLeaderBoard(&LB, str), 200, 100);
+  vg_draw_str("PRESS ENTER TO CONTINUE", 100, 100+13*letters_sprites[0].info.height);
   vg_draw_crosshair(1);
 }
 
@@ -450,6 +453,7 @@ bool (vg_load_sprites)() {
   xpm_image_t letter_W_info; xpm_image_t letter_X_info;
   xpm_image_t letter_Y_info; xpm_image_t letter_Z_info;
   xpm_image_t symb_dash_info; xpm_image_t symb_slash_info;
+  xpm_image_t lbsprite_info;
   
   xpm_image_t play_button_pressed_info; xpm_image_t play_button_unpressed_info; 
   xpm_image_t exit_button_pressed_info; xpm_image_t exit_button_unpressed_info; 
@@ -502,6 +506,8 @@ bool (vg_load_sprites)() {
   char* letter_Z_ptr = (char*) xpm_load(xpm_Z, sprite_type, &letter_Z_info);
   char* symb_dash_ptr = (char*) xpm_load(xpm_dash, sprite_type, &symb_dash_info);
   char* symb_slash_ptr = (char*) xpm_load(xpm_slash, sprite_type, &symb_slash_info);
+
+  char * lbsprite_ptr = (char*) xpm_load(xpm_lbbig, sprite_type, &lbsprite_info);
 
   char* play_button_pressed_ptr = (char*) xpm_load(xpm_play_button_pressed, sprite_type, &play_button_pressed_info);
   char* play_button_unpressed_ptr = (char*) xpm_load(xpm_play_button_unpressed, sprite_type, &play_button_unpressed_info);
@@ -567,6 +573,11 @@ bool (vg_load_sprites)() {
   struct SPRITE game_over_sprite = {game_over_ptr, game_over_info}; game_over = game_over_sprite;
   struct SPRITE game_name_sprite = {game_name_ptr, game_name_info}; game_name = game_name_sprite;
   struct SPRITE paused_sprite = {paused_ptr, paused_info}; paused = paused_sprite;
+
+  struct SPRITE lb_temp_sprite = {lbsprite_ptr, lbsprite_info};
+  
+
+  lbsprite = lb_temp_sprite;
 
   alien_sprites[0] = alien_alive;
   alien_sprites[1] = alien_appearing;

@@ -17,7 +17,6 @@ void(game_initialize)() {
   game_state = MENU;    
   points = 0;
   game_over_counter = 0;
-  lb_counter = 0;
   mouse_x = MOUSE_INIT_X;
   mouse_y = MOUSE_INIT_Y;
   crosshair_half_width = (CROSSHAIR_WIDTH >> 1);  //dividing by 2
@@ -104,10 +103,6 @@ void(game_ih)() {
       game_over_counter--;
       if (game_over_counter == 0) game_leaderboard();
       break;
-    case LEADERBOARD:
-      lb_counter--;
-      if (lb_counter == 0) game_initialize();
-      break;
     default:
       break;
   }
@@ -116,21 +111,20 @@ void(game_ih)() {
 void (game_leaderboard)(){
   memset(name, 0, sizeof name);
   memset(input_message, 0, sizeof input_message);
-  strcpy(input_message, "YOUR SCORE WAS ");
+  strcpy(input_message, "SCORE - ");
   char sc[4];
   sprintf(sc, "%d", points);
   strcat(input_message, sc);
   if(compareScore(points, LB)){
-    strcat(input_message, "!\nPLEASE INSERT YOUR NAME,\nAND PRESS ENTER");
+    strcat(input_message, "\nNAME  - \n\nTYPE AND PRESS ENTER");
     game_state = LB_INPUT;
     return;
   }
-  lb_counter = 100;
   game_state = LEADERBOARD;
 }
 
 void (game_save_and_display_lb)(){
-  addScore(points, name, "09/06/2022", &LB);
+  addScore(points, name, &LB);
   game_state = LEADERBOARD;
 }
 

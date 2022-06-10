@@ -116,7 +116,6 @@ uint16_t exit_button_yf;
 
 char name[6];
 char input_message[100];
-int lb_counter;
 
 struct leaderboard LB;
 
