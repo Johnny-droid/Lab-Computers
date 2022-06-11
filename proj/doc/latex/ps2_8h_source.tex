@@ -1,0 +1,56 @@
+\hypertarget{ps2_8h_source}{}\doxysection{ps2.\+h}
+\label{ps2_8h_source}\index{mouse/ps2.h@{mouse/ps2.h}}
+\mbox{\hyperlink{ps2_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_LCOM\_PS2\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_LCOM\_PS2\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define MOUSE\_IRQ 12 }\textcolor{comment}{//the mouse uses IRQ line 12}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define KBC\_STAT\_CHECK (BIT(7) | BIT(6))}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define KBC\_OUT\_BUF\_FULL BIT(0)}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define KBC\_IN\_BUF\_FULL BIT(1)}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define KBC\_STAT\_REG 0x64}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define KBC\_OUT\_BUF 0x60}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define KBC\_READ\_CMD\_BYTE 0x20}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define KBC\_WRITE\_CMD\_BYTE 0x60}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define KBC\_COMMAND\_ENABLE\_INTERRUPTS (BIT(0))}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define KBC\_SCANCODE\_2B 0xE0}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define ESC\_MAKE 0x01}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define ESC\_BREAK 0x81}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define MAKE\_SCAN\_CODE BIT(7)}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define  ACK 0xFA }\textcolor{comment}{// if everything OK}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define  NACK 0xFE }\textcolor{comment}{// if invalid byte (may be due to a serial communication error)}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define  ERROR 0xFC }\textcolor{comment}{// second consecutive invalid byte}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define RB\_MOUSE BIT(1)}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define MB\_MOUSE BIT(2)}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define LB\_MOUSE BIT(0)}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define X\_SIGN BIT(4)}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define Y\_SIGN BIT(5)}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define Y\_OV\_MOUSE BIT(7)}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define X\_OV\_MOUSE BIT(6)}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define WR\_MOUSE     0xD4}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define RM\_MODE      0xF0}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define DISABLE      0xF5}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define DATA\_REPORT  0xF4}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define STREAM\_MODE  0xEA}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define DELAY 20000}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#endif }}
+
+\end{DoxyCode}

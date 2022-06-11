@@ -1,0 +1,36 @@
+\hypertarget{rtc__macros_8h_source}{}\doxysection{rtc\+\_\+macros.\+h}
+\label{rtc__macros_8h_source}\index{rtc/rtc\_macros.h@{rtc/rtc\_macros.h}}
+\mbox{\hyperlink{rtc__macros_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef RTC\_MACROS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define RTC\_MACROS\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define RTC\_IRQ 8}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{// Two ports to access the internal registers}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#define  RTC\_ADDR\_REG 0x70 }\textcolor{comment}{// loaded with the RTC register address to access}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define RTC\_DATA\_REG 0x71 }\textcolor{comment}{// to transfer the data to/from the RTC’s register in question}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// Registers}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define SECONDS 0x00}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define MINUTES 0x02}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define HOURS 0x04}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define DAY\_OF\_THE\_WEEK 0x06}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define DATE\_OF\_THE\_MONTH 0x07}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define MONTH 0x08}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define YEAR 0x09}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define REGISTER\_A 0x0A}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define REGISTER\_B 0x0B}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define REGISTER\_C 0x0C}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define REGISTER\_D 0x0D}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define RTC\_UIP      0x80           }}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define disINT       0x8F           }}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define enINT        0x70           }}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define enPINT       0x40           }}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define set24        0x02           }}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define setBCD       0xFB           }}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

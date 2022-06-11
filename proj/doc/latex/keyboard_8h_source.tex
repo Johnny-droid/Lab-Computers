@@ -1,0 +1,35 @@
+\hypertarget{keyboard_8h_source}{}\doxysection{keyboard.\+h}
+\label{keyboard_8h_source}\index{keyboard/keyboard.h@{keyboard/keyboard.h}}
+\mbox{\hyperlink{keyboard_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_KEYBOARD\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_KEYBOARD\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{i8042_8h}{i8042.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}../game.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 bool (\mbox{\hyperlink{keyboard_8h_a81e0dd72f861826d1a3b3fa9f3a73009}{kbc\_communication\_error}})();}
+\DoxyCodeLine{13 bool (\mbox{\hyperlink{keyboard_8h_a296e7c116c0d332dbd00b09887a5fe43}{keyboard\_check}})();}
+\DoxyCodeLine{14 bool (\mbox{\hyperlink{keyboard_8h_ae7791ebf0c69886aab3679f7931a5fdb}{kbc\_output\_buf\_full}})();}
+\DoxyCodeLine{15 bool (\mbox{\hyperlink{keyboard_8h_a9857b46ef297d9764c21dbbca19790db}{kbc\_input\_buf\_full}})();}
+\DoxyCodeLine{16 int(\mbox{\hyperlink{keyboard_8h_a02884ada1971dbade466081413210b18}{kbc\_subscribe\_int}})(uint8\_t *bit\_no);}
+\DoxyCodeLine{17 int(\mbox{\hyperlink{keyboard_8h_a1102381e6a9e876e05dd78c58ccb5673}{kbc\_unsubscribe\_int}})();}
+\DoxyCodeLine{18 uint8\_t (\mbox{\hyperlink{keyboard_8h_a9b5b2b85e2874688e892417234bc21d8}{kbc\_read\_output\_buffer}})();}
+\DoxyCodeLine{19 void (\mbox{\hyperlink{keyboard_8h_aa9f74ccfbf69e0d4441dbe94994874bf}{enable\_interrupts}})();}
+\DoxyCodeLine{20 void (\mbox{\hyperlink{keyboard_8h_a5761bd4aad91ac1d68916ad88f583d9f}{kbc\_ih}})(void);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 void (\mbox{\hyperlink{keyboard_8h_ad5f3d22aa193025ad9761f6d839af186}{keyboard\_event\_handler}})(uint8\_t scanCode);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 uint8\_t (\mbox{\hyperlink{keyboard_8h_ae5f3493b33b14eaf88a7b7f8a4fa8ed2}{read\_command\_byte}})();}
+\DoxyCodeLine{25 void (\mbox{\hyperlink{keyboard_8h_aad26ab45170d77851bd43452220e19ec}{write\_command\_byte}})(uint8\_t command\_byte);}
+\DoxyCodeLine{26  }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{29 }
+
+\end{DoxyCode}

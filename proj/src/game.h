@@ -47,7 +47,7 @@
 #define ALIEN_INIT_SPAWN_TIME 70        // in frames
 #define ALIEN_SPAWN_RATE_INCREASE  5   // in frames
 #define ALIEN_RANDOM_SPAWN_ATTEMPTS 2  
-#define ALIEN_MAX_SPAWN_RATE 15          // in frames
+#define ALIEN_MAX_SPAWN_RATE 20          // in frames
 
 #define MOUSE_INIT_X (GAME_WIDTH / 2)
 #define MOUSE_INIT_Y (GAME_HEIGHT / 2)

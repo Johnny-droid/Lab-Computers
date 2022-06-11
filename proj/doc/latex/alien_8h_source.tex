@@ -1,0 +1,816 @@
+\hypertarget{alien_8h_source}{}\doxysection{alien.\+h}
+\label{alien_8h_source}\index{sprites/alien.h@{sprites/alien.h}}
+\mbox{\hyperlink{alien_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_XPM\_ALIEN\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_XPM\_ALIEN\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{static} xpm\_row\_t \textcolor{keyword}{const} xpm\_alien\_appearing[] = \{}
+\DoxyCodeLine{5   \textcolor{comment}{// columns rows colors chars-\/per-\/pixel}}
+\DoxyCodeLine{6   \textcolor{stringliteral}{"{}64 64 15 1 "{}},}
+\DoxyCodeLine{7   \textcolor{stringliteral}{"{}  c \#000000"{}}, \textcolor{comment}{// black}}
+\DoxyCodeLine{8   \textcolor{stringliteral}{"{}. c \#210909"{}},}
+\DoxyCodeLine{9   \textcolor{stringliteral}{"{}X c \#350F0F"{}},}
+\DoxyCodeLine{10   \textcolor{stringliteral}{"{}o c \#491515"{}},}
+\DoxyCodeLine{11   \textcolor{stringliteral}{"{}O c \#561919"{}},}
+\DoxyCodeLine{12   \textcolor{stringliteral}{"{}+ c \#601B1B"{}},}
+\DoxyCodeLine{13   \textcolor{stringliteral}{"{}@ c \#601C1C"{}},}
+\DoxyCodeLine{14   \textcolor{stringliteral}{"{}\# c \#7F2424"{}},}
+\DoxyCodeLine{15   \textcolor{stringliteral}{"{}\$ c \#FF0010"{}},}
+\DoxyCodeLine{16   \textcolor{stringliteral}{"{}\% c \#DB575C"{}},}
+\DoxyCodeLine{17   \textcolor{stringliteral}{"{}\& c \#FF4747"{}},}
+\DoxyCodeLine{18   \textcolor{stringliteral}{"{}* c \#FF6868"{}},}
+\DoxyCodeLine{19   \textcolor{stringliteral}{"{}= c \#E07D7F"{}},}
+\DoxyCodeLine{20   \textcolor{stringliteral}{"{}-\/ c \#FFBABC"{}},}
+\DoxyCodeLine{21   \textcolor{stringliteral}{"{}; c \#000000"{}}, \textcolor{comment}{// None}}
+\DoxyCodeLine{22   \textcolor{comment}{// pixels}}
+\DoxyCodeLine{23   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{24   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{25   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{26   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{27   \textcolor{stringliteral}{"{};;;;;;;;-\/-\/;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{28   \textcolor{stringliteral}{"{};;;;;;;;-\/-\/;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{29   \textcolor{stringliteral}{"{};;;;;;-\/-\/==-\/-\/-\/-\/;;;;;;;;;;;;-\/-\/;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{30   \textcolor{stringliteral}{"{};;;;;;-\/-\/==-\/-\/-\/-\/;;;;;;;;;;;;-\/-\/;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{31   \textcolor{stringliteral}{"{};;;;==;;;;\%\%\#\#-\/-\/;;;;;;-\/-\/-\/-\/\#\#-\/-\/;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{32   \textcolor{stringliteral}{"{};;;;==;;;;\%\%\#\#-\/-\/;;;;;;-\/-\/-\/-\/\#\#-\/-\/;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{33   \textcolor{stringliteral}{"{};;;;;;;;;;\%\%\#\#-\/-\/;;;;-\/-\/;;;;\%\%\#\#-\/-\/-\/-\/;;;;;;;;;;-\/-\/-\/-\/-\/-\/-\/-\/;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{34   \textcolor{stringliteral}{"{};;;;;;;;;;\%\%\#\#-\/-\/;;;;-\/-\/;;;;\%\%\#\#-\/-\/-\/-\/;;;;;;;;;;-\/-\/-\/-\/-\/-\/-\/-\/;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{35   \textcolor{stringliteral}{"{};;;;;;;;;;;;==-\/-\/;;;;;;;;;;;;\%\%\#\#-\/-\/;;;;;;;;-\/-\/\#\#\#\#\#\#\#\#-\/-\/;;;;;;;;;;"{}},}
+\DoxyCodeLine{36   \textcolor{stringliteral}{"{};;;;;;;;;;;;==-\/-\/;;;;;;;;;;;;\%\%\#\#-\/-\/;;;;;;;;-\/-\/\#\#\#\#\#\#\#\#-\/-\/;;;;;;;;;;"{}},}
+\DoxyCodeLine{37   \textcolor{stringliteral}{"{};;;;;;;;;;;;====;;;;;;;;;;;;\%\%++==;;;;;;;;==++++\%\%\#\#-\/-\/;;;;;;;;;;"{}},}
+\DoxyCodeLine{38   \textcolor{stringliteral}{"{};;;;;;;;;;;;====;;;;;;;;;;;;\%\%++==;;;;;;;;==++++\%\%\#\#-\/-\/;;;;;;;;;;"{}},}
+\DoxyCodeLine{39   \textcolor{stringliteral}{"{};;;;;;;;;;;;====;;;;;;;;;;==++++==;;;;;;==++++\%\%;;\%\%==;;;;;;;;;;"{}},}
+\DoxyCodeLine{40   \textcolor{stringliteral}{"{};;;;;;;;;;;;====;;;;;;;;;;==++++==;;;;;;==++++\%\%;;\%\%==;;;;;;;;;;"{}},}
+\DoxyCodeLine{41   \textcolor{stringliteral}{"{};;;;;;;;;;====\#\#==;;;;;;-\/-\/\#\#++++\#\#-\/-\/;;-\/-\/\#\#++\#\#\%\%;;\%\%\#\#-\/-\/;;;;;;;;"{}},}
+\DoxyCodeLine{42   \textcolor{stringliteral}{"{};;;;;;;;;;====\#\#==;;;;;;-\/-\/\#\#++++\#\#-\/-\/;;-\/-\/\#\#++\#\#\%\%;;\%\%\#\#-\/-\/;;;;;;;;"{}},}
+\DoxyCodeLine{43   \textcolor{stringliteral}{"{};;;;;;;;;;\%\%++++\#\#====..==\#\#++++++==..==++++==;;;;;;==++-\/-\/;;;;;;"{}},}
+\DoxyCodeLine{44   \textcolor{stringliteral}{"{};;;;;;;;;;\%\%++++\#\#====..==\#\#++++++==..==++++==;;;;;;==++-\/-\/;;;;;;"{}},}
+\DoxyCodeLine{45   \textcolor{stringliteral}{"{};;;;;;;;;;\%\%++++++\#\#==XX==++++++++==XX==++++==;;;;;;;;====-\/-\/;;;;"{}},}
+\DoxyCodeLine{46   \textcolor{stringliteral}{"{};;;;;;;;;;\%\%++++++\#\#==XX==++++++++==XX==++++==;;;;;;;;====-\/-\/;;;;"{}},}
+\DoxyCodeLine{47   \textcolor{stringliteral}{"{};;;;;;;;;;\%\%++++++++==OO====++++++\%\%OO\%\%++++==....;;;;;;;;==;;;;"{}},}
+\DoxyCodeLine{48   \textcolor{stringliteral}{"{};;;;;;;;;;\%\%++++++++==OO====++++++\%\%OO\%\%++++==....;;;;;;;;==;;;;"{}},}
+\DoxyCodeLine{49   \textcolor{stringliteral}{"{};;;;;;;;;;\%\%\%\%==++++==  \&\&\%\%\%\%\%\%\%\%oooo\%\%\%\%\%\%++====....;;;;;;==;;"{}},}
+\DoxyCodeLine{50   \textcolor{stringliteral}{"{};;;;;;;;;;\%\%\%\%==++++==  \&\&\%\%\%\%\%\%\%\%oooo\%\%\%\%\%\%++====....;;;;;;==;;"{}},}
+\DoxyCodeLine{51   \textcolor{stringliteral}{"{};;;;;;....XXOO\%\%\%\%====  \$\$\$\$oooo@@@@@@oo\%\%\%\%\%\%\%\%==OOXX....;;;;;;"{}},}
+\DoxyCodeLine{52   \textcolor{stringliteral}{"{};;;;;;....XXOO\%\%\%\%====  \$\$\$\$oooo@@@@@@oo\%\%\%\%\%\%\%\%==OOXX....;;;;;;"{}},}
+\DoxyCodeLine{53   \textcolor{stringliteral}{"{};;....XXOO\$\$-\/-\/-\/-\/-\/-\/-\/-\/    @@@@@@oo****\&\&@@OOOOOO\%\%\%\%\$\$OOOOXX....;;"{}},}
+\DoxyCodeLine{54   \textcolor{stringliteral}{"{};;....XXOO\$\$-\/-\/-\/-\/-\/-\/-\/-\/    @@@@@@oo****\&\&@@OOOOOO\%\%\%\%\$\$OOOOXX....;;"{}},}
+\DoxyCodeLine{55   \textcolor{stringliteral}{"{};;....XXOO\$\$-\/-\/\#\#\#\#\#\#-\/-\/  \&\&****XX\&\&\&\&\&\&@@-\/-\/-\/-\/OOOO\%\%\$\$OOOO......;;"{}},}
+\DoxyCodeLine{56   \textcolor{stringliteral}{"{};;....XXOO\$\$-\/-\/\#\#\#\#\#\#-\/-\/  \&\&****XX\&\&\&\&\&\&@@-\/-\/-\/-\/OOOO\%\%\$\$OOOO......;;"{}},}
+\DoxyCodeLine{57   \textcolor{stringliteral}{"{};;;;;;....XX==\#\#++++==  \$\$\&\&\&\&XX\$\$\$\$\$\$-\/-\/\#\#\#\#-\/-\/-\/-\/\%\%OOXX....;;;;;;"{}},}
+\DoxyCodeLine{58   \textcolor{stringliteral}{"{};;;;;;....XX==\#\#++++==  \$\$\&\&\&\&XX\$\$\$\$\$\$-\/-\/\#\#\#\#-\/-\/-\/-\/\%\%OOXX....;;;;;;"{}},}
+\DoxyCodeLine{59   \textcolor{stringliteral}{"{};;;;;;;;..-\/-\/\#\#++++++\%\%OOXX-\/-\/-\/-\/-\/-\/XXXX-\/-\/++++++++\#\#-\/-\/-\/-\/....;;;;;;;;"{}},}
+\DoxyCodeLine{60   \textcolor{stringliteral}{"{};;;;;;;;..-\/-\/\#\#++++++\%\%OOXX-\/-\/-\/-\/-\/-\/XXXX-\/-\/++++++++\#\#-\/-\/-\/-\/....;;;;;;;;"{}},}
+\DoxyCodeLine{61   \textcolor{stringliteral}{"{};;;;;;;;-\/-\/\#\#++++++\%\%\%\%\%\%-\/-\/\#\#\#\#==-\/-\/OO\%\%++++++++++\#\#-\/-\/;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{62   \textcolor{stringliteral}{"{};;;;;;;;-\/-\/\#\#++++++\%\%\%\%\%\%-\/-\/\#\#\#\#==-\/-\/OO\%\%++++++++++\#\#-\/-\/;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{63   \textcolor{stringliteral}{"{};;;;;;-\/-\/\#\#==\%\%\%\%\%\%....\%\%\%\%++\#\#++-\/-\/\%\%\%\%\%\%\%\%\%\%==++++\#\#-\/-\/;;;;;;;;;;"{}},}
+\DoxyCodeLine{64   \textcolor{stringliteral}{"{};;;;;;-\/-\/\#\#==\%\%\%\%\%\%....\%\%\%\%++\#\#++-\/-\/\%\%\%\%\%\%\%\%\%\%==++++\#\#-\/-\/;;;;;;;;;;"{}},}
+\DoxyCodeLine{65   \textcolor{stringliteral}{"{};;;;;;==\#\#\%\%;;;;;;;;......\%\%++++-\/-\/XX......;;;;==++\#\#-\/-\/;;;;;;;;;;"{}},}
+\DoxyCodeLine{66   \textcolor{stringliteral}{"{};;;;;;==\#\#\%\%;;;;;;;;......\%\%++++-\/-\/XX......;;;;==++\#\#-\/-\/;;;;;;;;;;"{}},}
+\DoxyCodeLine{67   \textcolor{stringliteral}{"{};;;;==++\%\%;;;;;;;;;;;;;;..==++==......;;;;;;;;;;-\/-\/\#\#-\/-\/;;;;;;;;;;"{}},}
+\DoxyCodeLine{68   \textcolor{stringliteral}{"{};;;;==++\%\%;;;;;;;;;;;;;;..==++==......;;;;;;;;;;-\/-\/\#\#-\/-\/;;;;;;;;;;"{}},}
+\DoxyCodeLine{69   \textcolor{stringliteral}{"{};;;;==++\%\%;;;;;;;;;;;;;;-\/-\/++++==;;;;;;;;;;;;;;;;==\#\#==;;;;;;;;;;"{}},}
+\DoxyCodeLine{70   \textcolor{stringliteral}{"{};;;;==++\%\%;;;;;;;;;;;;;;-\/-\/++++==;;;;;;;;;;;;;;;;==\#\#==;;;;;;;;;;"{}},}
+\DoxyCodeLine{71   \textcolor{stringliteral}{"{};;;;;;====;;;;;;;;;;;;-\/-\/++++++\%\%;;;;;;;;;;;;;;;;====;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{72   \textcolor{stringliteral}{"{};;;;;;====;;;;;;;;;;;;-\/-\/++++++\%\%;;;;;;;;;;;;;;;;====;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{73   \textcolor{stringliteral}{"{};;;;;;====;;;;;;;;;;;;==++\%\%\%\%;;;;;;;;;;;;;;;;\%\%\#\#==;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{74   \textcolor{stringliteral}{"{};;;;;;====;;;;;;;;;;;;==++\%\%\%\%;;;;;;;;;;;;;;;;\%\%\#\#==;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{75   \textcolor{stringliteral}{"{};;;;;;;;====;;;;;;;;==\#\#\%\%;;;;;;;;;;;;;;;;;;;;\%\%==;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{76   \textcolor{stringliteral}{"{};;;;;;;;====;;;;;;;;==\#\#\%\%;;;;;;;;;;;;;;;;;;;;\%\%==;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{77   \textcolor{stringliteral}{"{};;;;;;;;;;;;==;;;;;;==\%\%;;;;;;;;;;;;;;;;;;;;;;\%\%==;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{78   \textcolor{stringliteral}{"{};;;;;;;;;;;;==;;;;;;==\%\%;;;;;;;;;;;;;;;;;;;;;;\%\%==;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{79   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;==\%\%;;;;;;;;;;;;;;;;;;;;;;\%\%==;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{80   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;==\%\%;;;;;;;;;;;;;;;;;;;;;;\%\%==;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{81   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;==\%\%;;;;;;;;;;;;;;;;;;;;;;;;\%\%\%\%;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{82   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;==\%\%;;;;;;;;;;;;;;;;;;;;;;;;\%\%\%\%;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{83   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;;;==;;;;;;;;;;;;;;;;;;;;;;;;;;;;\%\%;;;;;;;;;;"{}},}
+\DoxyCodeLine{84   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;;;==;;;;;;;;;;;;;;;;;;;;;;;;;;;;\%\%;;;;;;;;;;"{}},}
+\DoxyCodeLine{85   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}},}
+\DoxyCodeLine{86   \textcolor{stringliteral}{"{};;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"{}}\};}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{keyword}{static} xpm\_row\_t \textcolor{keyword}{const} xpm\_alien\_alive[] = \{}
+\DoxyCodeLine{89   \textcolor{comment}{// columns rows colors chars-\/per-\/pixel}}
+\DoxyCodeLine{90   \textcolor{stringliteral}{"{}64 64 12 1 "{}},}
+\DoxyCodeLine{91   \textcolor{stringliteral}{"{}  c \#350F0F"{}},}
+\DoxyCodeLine{92   \textcolor{stringliteral}{"{}. c \#491515"{}},}
+\DoxyCodeLine{93   \textcolor{stringliteral}{"{}X c \#601B1B"{}},}
+\DoxyCodeLine{94   \textcolor{stringliteral}{"{}o c \#601C1C"{}},}
+\DoxyCodeLine{95   \textcolor{stringliteral}{"{}O c \#7F2424"{}},}
+\DoxyCodeLine{96   \textcolor{stringliteral}{"{}+ c \#FF0000"{}}, \textcolor{comment}{// red}}
+\DoxyCodeLine{97   \textcolor{stringliteral}{"{}@ c \#DB575C"{}},}
+\DoxyCodeLine{98   \textcolor{stringliteral}{"{}\# c \#FF4747"{}},}
+\DoxyCodeLine{99   \textcolor{stringliteral}{"{}\$ c \#FF6868"{}},}
+\DoxyCodeLine{100   \textcolor{stringliteral}{"{}\% c \#E07D7F"{}},}
+\DoxyCodeLine{101   \textcolor{stringliteral}{"{}\& c \#FFBABC"{}},}
+\DoxyCodeLine{102   \textcolor{stringliteral}{"{}* c \#000000"{}}, \textcolor{comment}{// None}}
+\DoxyCodeLine{103   \textcolor{comment}{// pixels}}
+\DoxyCodeLine{104   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{105   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{106   \textcolor{stringliteral}{"{}********\&\&\&\&\&\&\&\&\&\&\&\&\&\&********************\&\&\&\&\&\&\&\&\&\&\&\&\&\&********"{}},}
+\DoxyCodeLine{107   \textcolor{stringliteral}{"{}********\&\&\&\&\&\&\&\&\&\&\&\&\&\&********************\&\&\&\&\&\&\&\&\&\&\&\&\&\&********"{}},}
+\DoxyCodeLine{108   \textcolor{stringliteral}{"{}******\&\&\&\&\%\%\%\%\%\%OOOOOO\&\&****************\&\&OOOOOO\%\%\%\%\%\%\&\&\&\&******"{}},}
+\DoxyCodeLine{109   \textcolor{stringliteral}{"{}******\&\&\&\&\%\%\%\%\%\%OOOOOO\&\&****************\&\&OOOOOO\%\%\%\%\%\%\&\&\&\&******"{}},}
+\DoxyCodeLine{110   \textcolor{stringliteral}{"{}****\&\&@@@@******\%\%\%\%OOOO\&\&************\&\&OOOO\%\%\%\%******@@@@\&\&****"{}},}
+\DoxyCodeLine{111   \textcolor{stringliteral}{"{}****\&\&@@@@******\%\%\%\%OOOO\&\&************\&\&OOOO\%\%\%\%******@@@@\&\&****"{}},}
+\DoxyCodeLine{112   \textcolor{stringliteral}{"{}****@@**************\%\%XXXX\&\&********\&\&XXXX\%\%**************@@****"{}},}
+\DoxyCodeLine{113   \textcolor{stringliteral}{"{}****@@**************\%\%XXXX\&\&********\&\&XXXX\%\%**************@@****"{}},}
+\DoxyCodeLine{114   \textcolor{stringliteral}{"{}********************\%\%XXXX\&\&********\&\&XXXX\%\%********************"{}},}
+\DoxyCodeLine{115   \textcolor{stringliteral}{"{}********************\%\%XXXX\&\&********\&\&XXXX\%\%********************"{}},}
+\DoxyCodeLine{116   \textcolor{stringliteral}{"{}******\&\&\&\&\&\&**********\%\%..XX\%\%****\%\%XX..\%\%**********\&\&\&\&\&\&******"{}},}
+\DoxyCodeLine{117   \textcolor{stringliteral}{"{}******\&\&\&\&\&\&**********\%\%..XX\%\%****\%\%XX..\%\%**********\&\&\&\&\&\&******"{}},}
+\DoxyCodeLine{118   \textcolor{stringliteral}{"{}****\&\&OOOOOO\&\&\&\&******\%\%....XX\%\%\%\%XX....\%\%******\&\&\&\&OOOOOO\&\&****"{}},}
+\DoxyCodeLine{119   \textcolor{stringliteral}{"{}****\&\&OOOOOO\&\&\&\&******\%\%....XX\%\%\%\%XX....\%\%******\&\&\&\&OOOOOO\&\&****"{}},}
+\DoxyCodeLine{120   \textcolor{stringliteral}{"{}**\&\&OOOO\%\%XXXXXX\&\&**\%\%XXXX............XXXX\%\%**\&\&XXXXXX\%\%OOOO\&\&**"{}},}
+\DoxyCodeLine{121   \textcolor{stringliteral}{"{}**\&\&OOOO\%\%XXXXXX\&\&**\%\%XXXX............XXXX\%\%**\&\&XXXXXX\%\%OOOO\&\&**"{}},}
+\DoxyCodeLine{122   \textcolor{stringliteral}{"{}**\&\&OO\%\%**\%\%XXXX\&\&**\%\%XX................XX\%\%**\&\&XXXX\%\%**\%\%OO\&\&**"{}},}
+\DoxyCodeLine{123   \textcolor{stringliteral}{"{}**\&\&OO\%\%**\%\%XXXX\&\&**\%\%XX................XX\%\%**\&\&XXXX\%\%**\%\%OO\&\&**"{}},}
+\DoxyCodeLine{124   \textcolor{stringliteral}{"{}**\&\&\%\%******\%\%XXXX\&\&XX....................XX\&\&XXXX\%\%******\%\%\&\&**"{}},}
+\DoxyCodeLine{125   \textcolor{stringliteral}{"{}**\&\&\%\%******\%\%XXXX\&\&XX....................XX\&\&XXXX\%\%******\%\%\&\&**"{}},}
+\DoxyCodeLine{126   \textcolor{stringliteral}{"{}**\&\&\%\%******\%\%XXXX............................XXXX\%\%******\%\%\&\&**"{}},}
+\DoxyCodeLine{127   \textcolor{stringliteral}{"{}**\&\&\%\%******\%\%XXXX............................XXXX\%\%******\%\%\&\&**"{}},}
+\DoxyCodeLine{128   \textcolor{stringliteral}{"{}**\%\%\%\%********\%\%XX....oo................oo....XX\%\%********\%\%\%\%**"{}},}
+\DoxyCodeLine{129   \textcolor{stringliteral}{"{}**\%\%\%\%********\%\%XX....oo................oo....XX\%\%********\%\%\%\%**"{}},}
+\DoxyCodeLine{130   \textcolor{stringliteral}{"{}**@@\%\%********\%\%XX..  ++..oooo....oooo..++  ..XX\%\%********\%\%@@**"{}},}
+\DoxyCodeLine{131   \textcolor{stringliteral}{"{}**@@\%\%********\%\%XX..  ++..oooo....oooo..++  ..XX\%\%********\%\%@@**"{}},}
+\DoxyCodeLine{132   \textcolor{stringliteral}{"{}****@@@@****\&\&XXXX....  oo++\#\#oooo\#\#++oo  ....XXXX\&\&****@@@@****"{}},}
+\DoxyCodeLine{133   \textcolor{stringliteral}{"{}****@@@@****\&\&XXXX....  oo++\#\#oooo\#\#++oo  ....XXXX\&\&****@@@@****"{}},}
+\DoxyCodeLine{134   \textcolor{stringliteral}{"{}******@@****\&\&XX..oooo..  ++++    ++++  ..oooo..XX\&\&****@@******"{}},}
+\DoxyCodeLine{135   \textcolor{stringliteral}{"{}******@@****\&\&XX..oooo..  ++++    ++++  ..oooo..XX\&\&****@@******"{}},}
+\DoxyCodeLine{136   \textcolor{stringliteral}{"{}********@@**\&\&XX  ++\#\#oo..    ....    oooo\#\#++  XX\&\&**@@********"{}},}
+\DoxyCodeLine{137   \textcolor{stringliteral}{"{}********@@**\&\&XX  ++\#\#oo..    ....    oooo\#\#++  XX\&\&**@@********"{}},}
+\DoxyCodeLine{138   \textcolor{stringliteral}{"{}**************\%\%  ++++oo\#\#\$\$\$\$oooo\$\$\$\$\#\#oo++++  \%\%**************"{}},}
+\DoxyCodeLine{139   \textcolor{stringliteral}{"{}**************\%\%  ++++oo\#\#\$\$\$\$oooo\$\$\$\$\#\#oo++++  \%\%**************"{}},}
+\DoxyCodeLine{140   \textcolor{stringliteral}{"{}**************\%\%XX      ++\#\#\#\#oooo\#\#\#\#++      XX\%\%**************"{}},}
+\DoxyCodeLine{141   \textcolor{stringliteral}{"{}**************\%\%XX      ++\#\#\#\#oooo\#\#\#\#++      XX\%\%**************"{}},}
+\DoxyCodeLine{142   \textcolor{stringliteral}{"{}************\%\%XXXX\%\%XX  ++++++    ++++++  XX\%\%XXXX\%\%************"{}},}
+\DoxyCodeLine{143   \textcolor{stringliteral}{"{}************\%\%XXXX\%\%XX  ++++++    ++++++  XX\%\%XXXX\%\%************"{}},}
+\DoxyCodeLine{144   \textcolor{stringliteral}{"{}**********\%\%XXXX\%\%**\%\%XX      ....      XX\%\%**\%\%XXXX\%\%**********"{}},}
+\DoxyCodeLine{145   \textcolor{stringliteral}{"{}**********\%\%XXXX\%\%**\%\%XX      ....      XX\%\%**\%\%XXXX\%\%**********"{}},}
+\DoxyCodeLine{146   \textcolor{stringliteral}{"{}**********\%\%XX\%\%****\%\%OOXXXXXX\%\%\%\%XXXXXXOO\%\%****\%\%XX\%\%**********"{}},}
+\DoxyCodeLine{147   \textcolor{stringliteral}{"{}**********\%\%XX\%\%****\%\%OOXXXXXX\%\%\%\%XXXXXXOO\%\%****\%\%XX\%\%**********"{}},}
+\DoxyCodeLine{148   \textcolor{stringliteral}{"{}**********@@XX\%\%********OOXX\%\%****\%\%XXOO********\%\%XX@@**********"{}},}
+\DoxyCodeLine{149   \textcolor{stringliteral}{"{}**********@@XX\%\%********OOXX\%\%****\%\%XXOO********\%\%XX@@**********"{}},}
+\DoxyCodeLine{150   \textcolor{stringliteral}{"{}************\%\%OO@@****\&\&OO@@@@****@@@@OO\&\&****@@OO\%\%************"{}},}
+\DoxyCodeLine{151   \textcolor{stringliteral}{"{}************\%\%OO@@****\&\&OO@@@@****@@@@OO\&\&****@@OO\%\%************"{}},}
+\DoxyCodeLine{152   \textcolor{stringliteral}{"{}************\%\%OO@@**\&\&OO@@************@@OO\&\&**@@OO\%\%************"{}},}
+\DoxyCodeLine{153   \textcolor{stringliteral}{"{}************\%\%OO@@**\&\&OO@@************@@OO\&\&**@@OO\%\%************"{}},}
+\DoxyCodeLine{154   \textcolor{stringliteral}{"{}************\%\%OO@@**\&\&@@****************@@\&\&**@@OO\%\%************"{}},}
+\DoxyCodeLine{155   \textcolor{stringliteral}{"{}************\%\%OO@@**\&\&@@****************@@\&\&**@@OO\%\%************"{}},}
+\DoxyCodeLine{156   \textcolor{stringliteral}{"{}************\%\%OO@@**\&\&@@****************@@\&\&**@@OO\%\%************"{}},}
+\DoxyCodeLine{157   \textcolor{stringliteral}{"{}************\%\%OO@@**\&\&@@****************@@\&\&**@@OO\%\%************"{}},}
+\DoxyCodeLine{158   \textcolor{stringliteral}{"{}********\%\%\%\%OO@@****@@\%\%\%\%************\%\%\%\%@@****@@OO\%\%\%\%********"{}},}
+\DoxyCodeLine{159   \textcolor{stringliteral}{"{}********\%\%\%\%OO@@****@@\%\%\%\%************\%\%\%\%@@****@@OO\%\%\%\%********"{}},}
+\DoxyCodeLine{160   \textcolor{stringliteral}{"{}******@@@@@@@@********@@@@************@@@@********@@@@@@@@******"{}},}
+\DoxyCodeLine{161   \textcolor{stringliteral}{"{}******@@@@@@@@********@@@@************@@@@********@@@@@@@@******"{}},}
+\DoxyCodeLine{162   \textcolor{stringliteral}{"{}****@@******************@@@@********@@@@******************@@****"{}},}
+\DoxyCodeLine{163   \textcolor{stringliteral}{"{}****@@******************@@@@********@@@@******************@@****"{}},}
+\DoxyCodeLine{164   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{165   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{166   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{167   \textcolor{stringliteral}{"{}****************************************************************"{}}\};}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169 \textcolor{keyword}{static} xpm\_row\_t \textcolor{keyword}{const} xpm\_alien\_dead\_1[] = \{}
+\DoxyCodeLine{170   \textcolor{comment}{// columns rows colors chars-\/per-\/pixel}}
+\DoxyCodeLine{171   \textcolor{stringliteral}{"{}64 64 12 1 "{}},}
+\DoxyCodeLine{172   \textcolor{stringliteral}{"{}  c \#350F0F"{}},}
+\DoxyCodeLine{173   \textcolor{stringliteral}{"{}. c \#491515"{}},}
+\DoxyCodeLine{174   \textcolor{stringliteral}{"{}X c \#601B1B"{}},}
+\DoxyCodeLine{175   \textcolor{stringliteral}{"{}o c \#DD0007"{}},}
+\DoxyCodeLine{176   \textcolor{stringliteral}{"{}O c \#FF0400"{}},}
+\DoxyCodeLine{177   \textcolor{stringliteral}{"{}+ c \#FF0008"{}},}
+\DoxyCodeLine{178   \textcolor{stringliteral}{"{}@ c \#DD252B"{}},}
+\DoxyCodeLine{179   \textcolor{stringliteral}{"{}\# c \#DB575C"{}},}
+\DoxyCodeLine{180   \textcolor{stringliteral}{"{}\$ c \#FF4747"{}},}
+\DoxyCodeLine{181   \textcolor{stringliteral}{"{}\% c \#E07D7F"{}},}
+\DoxyCodeLine{182   \textcolor{stringliteral}{"{}\& c \#FFBABC"{}},}
+\DoxyCodeLine{183   \textcolor{stringliteral}{"{}* c \#000000"{}}, \textcolor{comment}{// None}}
+\DoxyCodeLine{184   \textcolor{comment}{// pixels}}
+\DoxyCodeLine{185   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{186   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{187   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{188   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{189   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{190   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{191   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{192   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{193   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{194   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{195   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{196   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{197   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{198   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{199   \textcolor{stringliteral}{"{}************************\&\&\&\&\&\&********\&\&\&\&\&\&********************"{}},}
+\DoxyCodeLine{200   \textcolor{stringliteral}{"{}************************\&\&\&\&\&\&********\&\&\&\&\&\&********************"{}},}
+\DoxyCodeLine{201   \textcolor{stringliteral}{"{}**************************@@XX\&\&****\&\&XXXX\%\%********************"{}},}
+\DoxyCodeLine{202   \textcolor{stringliteral}{"{}**************************@@XX\&\&****\&\&XXXX\%\%********************"{}},}
+\DoxyCodeLine{203   \textcolor{stringliteral}{"{}**************************\#\#XX\&\&**\&\&    \#\#**********************"{}},}
+\DoxyCodeLine{204   \textcolor{stringliteral}{"{}**************************\#\#XX\&\&**\&\&    \#\#**********************"{}},}
+\DoxyCodeLine{205   \textcolor{stringliteral}{"{}********************\&\&\&\&****\#\#++**++@@\#\#************************"{}},}
+\DoxyCodeLine{206   \textcolor{stringliteral}{"{}********************\&\&\&\&****\#\#++**++@@\#\#************************"{}},}
+\DoxyCodeLine{207   \textcolor{stringliteral}{"{}******************\&\&@@XX\%\%**\#\#++**@@\#\#**************************"{}},}
+\DoxyCodeLine{208   \textcolor{stringliteral}{"{}******************\&\&@@XX\%\%**\#\#++**@@\#\#**************************"{}},}
+\DoxyCodeLine{209   \textcolor{stringliteral}{"{}****************\#\#\#\#@@@@@@++@@++\&\&\%\%****\&\&\&\&\&\&******************"{}},}
+\DoxyCodeLine{210   \textcolor{stringliteral}{"{}****************\#\#\#\#@@@@@@++@@++\&\&\%\%****\&\&\&\&\&\&******************"{}},}
+\DoxyCodeLine{211   \textcolor{stringliteral}{"{}**************************\%\%XX@@@@XX\&\&++++++\#\#\%\%****************"{}},}
+\DoxyCodeLine{212   \textcolor{stringliteral}{"{}**************************\%\%XX@@@@XX\&\&++++++\#\#\%\%****************"{}},}
+\DoxyCodeLine{213   \textcolor{stringliteral}{"{}********************\&\&\&\&\%\%XX\$\$OO@@\$\$XX@@@@\#\#********************"{}},}
+\DoxyCodeLine{214   \textcolor{stringliteral}{"{}********************\&\&\&\&\%\%XX\$\$OO@@\$\$XX@@@@\#\#********************"{}},}
+\DoxyCodeLine{215   \textcolor{stringliteral}{"{}******************\%\%XX@@++++OO++@@  \%\%**************************"{}},}
+\DoxyCodeLine{216   \textcolor{stringliteral}{"{}******************\%\%XX@@++++OO++@@  \%\%**************************"{}},}
+\DoxyCodeLine{217   \textcolor{stringliteral}{"{}****************\%\%  \#\#@@@@oo  ++oo  @@++++\&\&********************"{}},}
+\DoxyCodeLine{218   \textcolor{stringliteral}{"{}****************\%\%  \#\#@@@@oo  ++oo  @@++++\&\&********************"{}},}
+\DoxyCodeLine{219   \textcolor{stringliteral}{"{}****************\#\#\#\#******\%\%  oo..\#\#**@@@@  \&\&******************"{}},}
+\DoxyCodeLine{220   \textcolor{stringliteral}{"{}****************\#\#\#\#******\%\%  oo..\#\#**@@@@  \&\&******************"{}},}
+\DoxyCodeLine{221   \textcolor{stringliteral}{"{}************************\&\&XX@@oo\%\%++\&\&**@@@@XX\%\%****************"{}},}
+\DoxyCodeLine{222   \textcolor{stringliteral}{"{}************************\&\&XX@@oo\%\%++\&\&**@@@@XX\%\%****************"{}},}
+\DoxyCodeLine{223   \textcolor{stringliteral}{"{}************************\&\&++++**\%\%++++\&\&****\#\#\#\#****************"{}},}
+\DoxyCodeLine{224   \textcolor{stringliteral}{"{}************************\&\&++++**\%\%++++\&\&****\#\#\#\#****************"{}},}
+\DoxyCodeLine{225   \textcolor{stringliteral}{"{}************************\#\#  ++****\#\#  \#\#************************"{}},}
+\DoxyCodeLine{226   \textcolor{stringliteral}{"{}************************\#\#  ++****\#\#  \#\#************************"{}},}
+\DoxyCodeLine{227   \textcolor{stringliteral}{"{}************************\#\#\#\#******\#\#  \#\#************************"{}},}
+\DoxyCodeLine{228   \textcolor{stringliteral}{"{}************************\#\#\#\#******\#\#  \#\#************************"{}},}
+\DoxyCodeLine{229   \textcolor{stringliteral}{"{}**************************\#\#********\#\#**************************"{}},}
+\DoxyCodeLine{230   \textcolor{stringliteral}{"{}**************************\#\#********\#\#**************************"{}},}
+\DoxyCodeLine{231   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{232   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{233   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{234   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{235   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{236   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{237   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{238   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{239   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{240   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{241   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{242   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{243   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{244   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{245   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{246   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{247   \textcolor{stringliteral}{"{}****************************************************************"{}},}
+\DoxyCodeLine{248   \textcolor{stringliteral}{"{}****************************************************************"{}}\};}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250 \textcolor{keyword}{static} xpm\_row\_t \textcolor{keyword}{const} xpm\_alien\_dead\_2[] = \{}
+\DoxyCodeLine{251   \textcolor{comment}{// columns rows colors chars-\/per-\/pixel}}
+\DoxyCodeLine{252   \textcolor{stringliteral}{"{}64 64 5 1 "{}},}
+\DoxyCodeLine{253   \textcolor{stringliteral}{"{}  c \#491515"{}},}
+\DoxyCodeLine{254   \textcolor{stringliteral}{"{}. c \#601B1B"{}},}
+\DoxyCodeLine{255   \textcolor{stringliteral}{"{}X c \#FF0400"{}},}
+\DoxyCodeLine{256   \textcolor{stringliteral}{"{}o c \#DD252B"{}},}
+\DoxyCodeLine{257   \textcolor{stringliteral}{"{}O c \#000000"{}},}
+\DoxyCodeLine{258   \textcolor{comment}{// pixels}}
+\DoxyCodeLine{259   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{260   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{261   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{262   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{263   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{264   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{265   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{266   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{267   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{268   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{269   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{270   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{271   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{272   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{273   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{274   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{275   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{276   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{277   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{278   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{279   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{280   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{281   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO    OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{282   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO    OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{283   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOO  ..oooo..  OOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{284   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOO  ..oooo..  OOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{285   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOO  ooXX  XXoooo  OOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{286   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOO  ooXX  XXoooo  OOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{287   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOO  ooooXXXXXX..  OOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{288   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOO  ooooXXXXXX..  OOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{289   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOO  ..XX  ooooOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{290   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOO  ..XX  ooooOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{291   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOO  oooooo..  OOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{292   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOO  oooooo..  OOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{293   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOO      OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{294   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOO      OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{295   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{296   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{297   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{298   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{299   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{300   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{301   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{302   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{303   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{304   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{305   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{306   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{307   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{308   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{309   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{310   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{311   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{312   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{313   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{314   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{315   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{316   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{317   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{318   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{319   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{320   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{321   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}},}
+\DoxyCodeLine{322   \textcolor{stringliteral}{"{}OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"{}}\};}
+\DoxyCodeLine{323 }
+\DoxyCodeLine{324 \textcolor{keyword}{static} xpm\_row\_t \textcolor{keyword}{const} xpm\_alien\_dead\_3[] = \{}
+\DoxyCodeLine{325   \textcolor{comment}{// columns rows colors chars-\/per-\/pixel}}
+\DoxyCodeLine{326   \textcolor{stringliteral}{"{}64 64 6 1 "{}},}
+\DoxyCodeLine{327   \textcolor{stringliteral}{"{}  c \#26191B"{}},}
+\DoxyCodeLine{328   \textcolor{stringliteral}{"{}. c \#513539"{}},}
+\DoxyCodeLine{329   \textcolor{stringliteral}{"{}X c \#9E686E"{}},}
+\DoxyCodeLine{330   \textcolor{stringliteral}{"{}o c \#FFA8B2"{}},}
+\DoxyCodeLine{331   \textcolor{stringliteral}{"{}O c \#FFBFC6"{}},}
+\DoxyCodeLine{332   \textcolor{stringliteral}{"{}+ c \#000000"{}}, \textcolor{comment}{// None}}
+\DoxyCodeLine{333   \textcolor{comment}{// pixels}}
+\DoxyCodeLine{334   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{335   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{336   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{337   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{338   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{339   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{340   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{341   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{342   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{343   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{344   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{345   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{346   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{347   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{348   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{349   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{350   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{351   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{352   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{353   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{354   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{355   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{356   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++        ++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{357   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++        ++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{358   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++  ........  ++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{359   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++  ........  ++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{360   \textcolor{stringliteral}{"{}++++++++++++++++++++++++  ..XXXXXXXX..  ++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{361   \textcolor{stringliteral}{"{}++++++++++++++++++++++++  ..XXXXXXXX..  ++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{362   \textcolor{stringliteral}{"{}++++++++++++++++++++++  ..XXooooooooXX..  ++++++++++++++++++++++"{}},}
+\DoxyCodeLine{363   \textcolor{stringliteral}{"{}++++++++++++++++++++++  ..XXooooooooXX..  ++++++++++++++++++++++"{}},}
+\DoxyCodeLine{364   \textcolor{stringliteral}{"{}++++++++++++++++++++++  ..XXooOOOOooXX..  ++++++++++++++++++++++"{}},}
+\DoxyCodeLine{365   \textcolor{stringliteral}{"{}++++++++++++++++++++++  ..XXooOOOOooXX..  ++++++++++++++++++++++"{}},}
+\DoxyCodeLine{366   \textcolor{stringliteral}{"{}++++++++++++++++++++++  ..XXooOOOOooXX..  ++++++++++++++++++++++"{}},}
+\DoxyCodeLine{367   \textcolor{stringliteral}{"{}++++++++++++++++++++++  ..XXooOOOOooXX..  ++++++++++++++++++++++"{}},}
+\DoxyCodeLine{368   \textcolor{stringliteral}{"{}++++++++++++++++++++++  ..XXooooooooXX..  ++++++++++++++++++++++"{}},}
+\DoxyCodeLine{369   \textcolor{stringliteral}{"{}++++++++++++++++++++++  ..XXooooooooXX..  ++++++++++++++++++++++"{}},}
+\DoxyCodeLine{370   \textcolor{stringliteral}{"{}++++++++++++++++++++++++  ..XXXXXXXX..  ++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{371   \textcolor{stringliteral}{"{}++++++++++++++++++++++++  ..XXXXXXXX..  ++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{372   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++  ........  ++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{373   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++  ........  ++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{374   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++        ++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{375   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++        ++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{376   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{377   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{378   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{379   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{380   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{381   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{382   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{383   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{384   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{385   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{386   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{387   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{388   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{389   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{390   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{391   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{392   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{393   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{394   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{395   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{396   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}},}
+\DoxyCodeLine{397   \textcolor{stringliteral}{"{}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"{}}\};}
+\DoxyCodeLine{398 }
+\DoxyCodeLine{399 \textcolor{keyword}{static} xpm\_row\_t \textcolor{keyword}{const} xpm\_alien\_dead\_4[] = \{}
+\DoxyCodeLine{400   \textcolor{comment}{// columns rows colors chars-\/per-\/pixel}}
+\DoxyCodeLine{401   \textcolor{stringliteral}{"{}64 64 4 1 "{}},}
+\DoxyCodeLine{402   \textcolor{stringliteral}{"{}  c \#26191B"{}},}
+\DoxyCodeLine{403   \textcolor{stringliteral}{"{}. c \#513539"{}},}
+\DoxyCodeLine{404   \textcolor{stringliteral}{"{}X c \#9E686E"{}},}
+\DoxyCodeLine{405   \textcolor{stringliteral}{"{}o c \#000000"{}}, \textcolor{comment}{// None}}
+\DoxyCodeLine{406   \textcolor{comment}{// pixels}}
+\DoxyCodeLine{407   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{408   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{409   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{410   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{411   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{412   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{413   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{414   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{415   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{416   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{417   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{418   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{419   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{420   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{421   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{422   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{423   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{424   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{425   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooo        oooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{426   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooo        oooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{427   \textcolor{stringliteral}{"{}oooooooooooooooooooooooo    ........    oooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{428   \textcolor{stringliteral}{"{}oooooooooooooooooooooooo    ........    oooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{429   \textcolor{stringliteral}{"{}oooooooooooooooooooooo  ....XXXXXXXX....  oooooooooooooooooooooo"{}},}
+\DoxyCodeLine{430   \textcolor{stringliteral}{"{}oooooooooooooooooooooo  ....XXXXXXXX....  oooooooooooooooooooooo"{}},}
+\DoxyCodeLine{431   \textcolor{stringliteral}{"{}oooooooooooooooooooo  ..XXXX........XXXX..  oooooooooooooooooooo"{}},}
+\DoxyCodeLine{432   \textcolor{stringliteral}{"{}oooooooooooooooooooo  ..XXXX........XXXX..  oooooooooooooooooooo"{}},}
+\DoxyCodeLine{433   \textcolor{stringliteral}{"{}oooooooooooooooooooo  ..XX..        ..XX..  oooooooooooooooooooo"{}},}
+\DoxyCodeLine{434   \textcolor{stringliteral}{"{}oooooooooooooooooooo  ..XX..        ..XX..  oooooooooooooooooooo"{}},}
+\DoxyCodeLine{435   \textcolor{stringliteral}{"{}oooooooooooooooooo  ..XX..  oooooooo  ..XX..  oooooooooooooooooo"{}},}
+\DoxyCodeLine{436   \textcolor{stringliteral}{"{}oooooooooooooooooo  ..XX..  oooooooo  ..XX..  oooooooooooooooooo"{}},}
+\DoxyCodeLine{437   \textcolor{stringliteral}{"{}oooooooooooooooooo  ..XX..  oooooooo  ..XX..  oooooooooooooooooo"{}},}
+\DoxyCodeLine{438   \textcolor{stringliteral}{"{}oooooooooooooooooo  ..XX..  oooooooo  ..XX..  oooooooooooooooooo"{}},}
+\DoxyCodeLine{439   \textcolor{stringliteral}{"{}oooooooooooooooooo  ..XX..  oooooooo  ..XX..  oooooooooooooooooo"{}},}
+\DoxyCodeLine{440   \textcolor{stringliteral}{"{}oooooooooooooooooo  ..XX..  oooooooo  ..XX..  oooooooooooooooooo"{}},}
+\DoxyCodeLine{441   \textcolor{stringliteral}{"{}oooooooooooooooooo  ..XX..  oooooooo  ..XX..  oooooooooooooooooo"{}},}
+\DoxyCodeLine{442   \textcolor{stringliteral}{"{}oooooooooooooooooo  ..XX..  oooooooo  ..XX..  oooooooooooooooooo"{}},}
+\DoxyCodeLine{443   \textcolor{stringliteral}{"{}oooooooooooooooooooo  ..XX..        ..XX..  oooooooooooooooooooo"{}},}
+\DoxyCodeLine{444   \textcolor{stringliteral}{"{}oooooooooooooooooooo  ..XX..        ..XX..  oooooooooooooooooooo"{}},}
+\DoxyCodeLine{445   \textcolor{stringliteral}{"{}oooooooooooooooooooo  ..XXXX........XXXX..  oooooooooooooooooooo"{}},}
+\DoxyCodeLine{446   \textcolor{stringliteral}{"{}oooooooooooooooooooo  ..XXXX........XXXX..  oooooooooooooooooooo"{}},}
+\DoxyCodeLine{447   \textcolor{stringliteral}{"{}oooooooooooooooooooooo  ....XXXXXXXX....  oooooooooooooooooooooo"{}},}
+\DoxyCodeLine{448   \textcolor{stringliteral}{"{}oooooooooooooooooooooo  ....XXXXXXXX....  oooooooooooooooooooooo"{}},}
+\DoxyCodeLine{449   \textcolor{stringliteral}{"{}oooooooooooooooooooooooo    ........    oooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{450   \textcolor{stringliteral}{"{}oooooooooooooooooooooooo    ........    oooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{451   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooo        oooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{452   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooo        oooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{453   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{454   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{455   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{456   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{457   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{458   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{459   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{460   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{461   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{462   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{463   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{464   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{465   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{466   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{467   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{468   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{469   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}},}
+\DoxyCodeLine{470   \textcolor{stringliteral}{"{}oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"{}}\};}
+\DoxyCodeLine{471 }
+\DoxyCodeLine{472 \textcolor{keyword}{static} xpm\_row\_t \textcolor{keyword}{const} xpm\_alien\_dead\_5[] = \{}
+\DoxyCodeLine{473   \textcolor{comment}{// columns rows colors chars-\/per-\/pixel}}
+\DoxyCodeLine{474   \textcolor{stringliteral}{"{}64 64 3 1 "{}},}
+\DoxyCodeLine{475   \textcolor{stringliteral}{"{}  c \#26191B"{}},}
+\DoxyCodeLine{476   \textcolor{stringliteral}{"{}. c \#513539"{}},}
+\DoxyCodeLine{477   \textcolor{stringliteral}{"{}X c \#000000"{}}, \textcolor{comment}{// None}}
+\DoxyCodeLine{478   \textcolor{comment}{// pixels}}
+\DoxyCodeLine{479   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{480   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{481   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{482   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{483   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{484   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{485   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{486   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{487   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{488   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{489   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{490   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{491   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{492   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{493   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{494   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{495   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXX        XXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{496   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXX        XXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{497   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXX    ........    XXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{498   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXX    ........    XXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{499   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXX  ....        ....  XXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{500   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXX  ....        ....  XXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{501   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXX  ..    XXXXXXXX    ..  XXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{502   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXX  ..    XXXXXXXX    ..  XXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{503   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{504   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{505   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{506   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{507   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{508   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{509   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{510   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{511   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{512   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{513   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{514   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{515   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{516   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{517   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{518   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXX  ..  XXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{519   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXX  ..    XXXXXXXX    ..  XXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{520   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXX  ..    XXXXXXXX    ..  XXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{521   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXX  ....        ....  XXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{522   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXX  ....        ....  XXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{523   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXX    ........    XXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{524   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXX    ........    XXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{525   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXX        XXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{526   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXX        XXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{527   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{528   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{529   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{530   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{531   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{532   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{533   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{534   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{535   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{536   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{537   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{538   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{539   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{540   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{541   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}},}
+\DoxyCodeLine{542   \textcolor{stringliteral}{"{}XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"{}}\};}
+\DoxyCodeLine{543 }
+\DoxyCodeLine{544 \textcolor{comment}{/* XPM */}}
+\DoxyCodeLine{545 \textcolor{keyword}{static} xpm\_row\_t \textcolor{keyword}{const} xpm\_alien\_kill\_1[] = \{}
+\DoxyCodeLine{546   \textcolor{comment}{/* columns rows colors chars-\/per-\/pixel */}}
+\DoxyCodeLine{547   \textcolor{stringliteral}{"{}64 64 17 1 "{}},}
+\DoxyCodeLine{548   \textcolor{stringliteral}{"{}  c \#350F0F"{}},}
+\DoxyCodeLine{549   \textcolor{stringliteral}{"{}. c \#491515"{}},}
+\DoxyCodeLine{550   \textcolor{stringliteral}{"{}X c \#601B1B"{}},}
+\DoxyCodeLine{551   \textcolor{stringliteral}{"{}o c \#601C1C"{}},}
+\DoxyCodeLine{552   \textcolor{stringliteral}{"{}O c \#502F2F"{}},}
+\DoxyCodeLine{553   \textcolor{stringliteral}{"{}+ c \#7F2424"{}},}
+\DoxyCodeLine{554   \textcolor{stringliteral}{"{}@ c \#753B3B"{}},}
+\DoxyCodeLine{555   \textcolor{stringliteral}{"{}\# c \#FF0000"{}},}
+\DoxyCodeLine{556   \textcolor{stringliteral}{"{}\$ c \#DB575C"{}},}
+\DoxyCodeLine{557   \textcolor{stringliteral}{"{}\% c \#FF4747"{}},}
+\DoxyCodeLine{558   \textcolor{stringliteral}{"{}\& c \#FF6060"{}},}
+\DoxyCodeLine{559   \textcolor{stringliteral}{"{}* c \#FF6868"{}},}
+\DoxyCodeLine{560   \textcolor{stringliteral}{"{}= c \#E07D7F"{}},}
+\DoxyCodeLine{561   \textcolor{stringliteral}{"{}-\/ c \#FF7C7C"{}},}
+\DoxyCodeLine{562   \textcolor{stringliteral}{"{}; c \#FF8E8E"{}},}
+\DoxyCodeLine{563   \textcolor{stringliteral}{"{}: c \#FFBABC"{}},}
+\DoxyCodeLine{564   \textcolor{stringliteral}{"{}> c \#000000"{}},}
+\DoxyCodeLine{565   \textcolor{comment}{/* pixels */}}
+\DoxyCodeLine{566   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{567   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{568   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::::::::::::>>>>>>>>>>>>>>>>::::::::::::::>>>>>>>>>>"{}},}
+\DoxyCodeLine{569   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::::::::::::>>>>>>>>>>>>>>>>::::::::::::::>>>>>>>>>>"{}},}
+\DoxyCodeLine{570   \textcolor{stringliteral}{"{}>>>>>>>>>>::::====++++++::>>>>>>>>>>>>::++++++======::::>>>>>>>>"{}},}
+\DoxyCodeLine{571   \textcolor{stringliteral}{"{}>>>>>>>>>>::::====++++++::>>>>>>>>>>>>::++++++======::::>>>>>>>>"{}},}
+\DoxyCodeLine{572   \textcolor{stringliteral}{"{}>>>>>>>>::\$\$\$\$>>>>====++++::>>>>>>>>::++++====>>>>\$\$\$\$::>>>>>>>>"{}},}
+\DoxyCodeLine{573   \textcolor{stringliteral}{"{}>>>>>>>>::\$\$\$\$>>>>====++++::>>>>>>>>::++++====>>>>\$\$\$\$::>>>>>>>>"{}},}
+\DoxyCodeLine{574   \textcolor{stringliteral}{"{}>>>>>>::\$\$>>>>>>>>>>>>==XXXX::>>>>>>::XXXX==>>>>>>>>\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{575   \textcolor{stringliteral}{"{}>>>>>>::\$\$>>>>>>>>>>>>==XXXX::>>>>>>::XXXX==>>>>>>>>\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{576   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>==XXXX::>>>>>>::XXXX==>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{577   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>==XXXX::>>>>>>::XXXX==>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{578   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>==..XX==>>>>==XX..==>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{579   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>==..XX==>>>>==XX..==>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{580   \textcolor{stringliteral}{"{}>>>>>>::::::>>>>>>>>>>==....XX====XX....==>>>>>>>>>>::::::>>>>>>"{}},}
+\DoxyCodeLine{581   \textcolor{stringliteral}{"{}>>>>>>::::::>>>>>>>>>>==....XX====XX....==>>>>>>>>>>::::::>>>>>>"{}},}
+\DoxyCodeLine{582   \textcolor{stringliteral}{"{}>>>>::++++++::::>>>>==XXXX............XXXX==>>>>::::++++++::>>>>"{}},}
+\DoxyCodeLine{583   \textcolor{stringliteral}{"{}>>>>::++++++::::>>>>==XXXX............XXXX==>>>>::::++++++::>>>>"{}},}
+\DoxyCodeLine{584   \textcolor{stringliteral}{"{}>>::++++==XXXXXX::>>==XX................XX==>>::XXXXXX====++::>>"{}},}
+\DoxyCodeLine{585   \textcolor{stringliteral}{"{}>>::++++==XXXXXX::>>==XX................XX==>>::XXXXXX====++::>>"{}},}
+\DoxyCodeLine{586   \textcolor{stringliteral}{"{}>>::++==>>==XXXX::::XX....................XX::XXXXXX==>>>>==::>>"{}},}
+\DoxyCodeLine{587   \textcolor{stringliteral}{"{}>>::++==>>==XXXX::::XX....................XX::XXXXXX==>>>>==::>>"{}},}
+\DoxyCodeLine{588   \textcolor{stringliteral}{"{}>>::==>>>>>>==XXXX............................XXXX==>>>>>>====>>"{}},}
+\DoxyCodeLine{589   \textcolor{stringliteral}{"{}>>::==>>>>>>==XXXX............................XXXX==>>>>>>====>>"{}},}
+\DoxyCodeLine{590   \textcolor{stringliteral}{"{}>>\$\$==>>>>>>>>==XX....oo................oo....XX==>>>>>>>>==\$\$>>"{}},}
+\DoxyCodeLine{591   \textcolor{stringliteral}{"{}>>\$\$==>>>>>>>>==XX....oo................oo....XX==>>>>>>>>==\$\$>>"{}},}
+\DoxyCodeLine{592   \textcolor{stringliteral}{"{}>>>>\$\$\$\$>>>>>>==XX..  \#\#..oooo..........\#\#  ..XX==>>>>>>>>\$\$\$\$>>"{}},}
+\DoxyCodeLine{593   \textcolor{stringliteral}{"{}>>>>\$\$\$\$>>>>>>==XX..  \#\#..oooo..........\#\#  ..XX==>>>>>>>>\$\$\$\$>>"{}},}
+\DoxyCodeLine{594   \textcolor{stringliteral}{"{}>>>>>>>>\$\$>>::XXXX....  oo\#\#\%\%oooooooooo  ....XXXX::>>>>>>\$\$>>>>"{}},}
+\DoxyCodeLine{595   \textcolor{stringliteral}{"{}>>>>>>>>\$\$>>::XXXX....  oo\#\#\%\%oooooooooo  ....XXXX::>>>>>>\$\$>>>>"{}},}
+\DoxyCodeLine{596   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::XX........  \#\#\#\#    \#\#\#\#  ..oooo..XX::>>>>>>\$\$>>>>"{}},}
+\DoxyCodeLine{597   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::XX........  \#\#\#\#    \#\#\#\#  ..oooo..XX::>>>>>>\$\$>>>>"{}},}
+\DoxyCodeLine{598   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::XX..oooo....  OO....    oooo\%\%\#\#  XX::>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{599   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::XX..oooo....  OO....    oooo\%\%\#\#  XX::>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{600   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>==  \#\#\#\#oo\%\%-\/-\/;;@@oo****\%\%oo\#\#\#\#  ==>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{601   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>==  \#\#\#\#oo\%\%-\/-\/;;@@oo****\%\%oo\#\#\#\#  ==>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{602   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>==XX      \#\#\%\%\&\&oooo\%\%\%\%\#\#      XX==>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{603   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>==XX      \#\#\%\%\&\&oooo\%\%\%\%\#\#      XX==>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{604   \textcolor{stringliteral}{"{}>>>>>>>>>>>>==XXXX==XX  \#\#\#\#\#\#    \#\#\#\#\#\#  XX==XXXX==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{605   \textcolor{stringliteral}{"{}>>>>>>>>>>>>==XXXX==XX  \#\#\#\#\#\#    \#\#\#\#\#\#  XX==XXXX==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{606   \textcolor{stringliteral}{"{}>>>>>>>>>>==XXXX==>>==XX      ....      XX==>>==XXXX==>>>>>>>>>>"{}},}
+\DoxyCodeLine{607   \textcolor{stringliteral}{"{}>>>>>>>>>>==XXXX==>>==XX      ....      XX==>>==XXXX==>>>>>>>>>>"{}},}
+\DoxyCodeLine{608   \textcolor{stringliteral}{"{}>>>>>>>>>>==XX==>>>>>>==++XXXX====XXXX++==>>>>>>==XX==>>>>>>>>>>"{}},}
+\DoxyCodeLine{609   \textcolor{stringliteral}{"{}>>>>>>>>>>==XX==>>>>>>==++XXXX====XXXX++==>>>>>>==XX==>>>>>>>>>>"{}},}
+\DoxyCodeLine{610   \textcolor{stringliteral}{"{}>>>>>>>>>>\$\$XX==>>>>>>>>>>++XX====XX++>>>>>>>>>>==XX\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{611   \textcolor{stringliteral}{"{}>>>>>>>>>>\$\$XX==>>>>>>>>>>++XX====XX++>>>>>>>>>>==XX\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{612   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>>>::++\$\$\$\$\$\$\$\$++::>>>>>>>>==XX\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{613   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>>>::++\$\$\$\$\$\$\$\$++::>>>>>>>>==XX\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{614   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>::++\$\$>>>>>>>>\$\$++::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{615   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>::++\$\$>>>>>>>>\$\$++::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{616   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>::\$\$>>>>>>>>>>>>\$\$::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{617   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>::\$\$>>>>>>>>>>>>\$\$::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{618   \textcolor{stringliteral}{"{}>>>>>>>>==++\$\$>>>>>>>>::\$\$>>>>>>>>>>>>\$\$::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{619   \textcolor{stringliteral}{"{}>>>>>>>>==++\$\$>>>>>>>>::\$\$>>>>>>>>>>>>\$\$::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{620   \textcolor{stringliteral}{"{}>>>>>>>>==++\$\$>>>>>>>>\$\$====>>>>>>>>====\$\$>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{621   \textcolor{stringliteral}{"{}>>>>>>>>==++\$\$>>>>>>>>\$\$====>>>>>>>>====\$\$>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{622   \textcolor{stringliteral}{"{}>>>>>>\$\$\$\$\$\$>>>>>>>>>>>>\$\$\$\$>>>>>>>>\$\$\$\$>>>>>>>>\$\$++====\$\$\$\$>>>>"{}},}
+\DoxyCodeLine{623   \textcolor{stringliteral}{"{}>>>>>>\$\$\$\$\$\$>>>>>>>>>>>>\$\$\$\$>>>>>>>>\$\$\$\$>>>>>>>>\$\$++====\$\$\$\$>>>>"{}},}
+\DoxyCodeLine{624   \textcolor{stringliteral}{"{}>>>>\$\$>>>>>>>>>>>>>>>>>>>>\$\$\$\$>>>>\$\$\$\$>>>>>>>>>>>>\$\$\$\$\$\$>>>>>>>>"{}},}
+\DoxyCodeLine{625   \textcolor{stringliteral}{"{}>>>>\$\$>>>>>>>>>>>>>>>>>>>>\$\$\$\$>>>>\$\$\$\$>>>>>>>>>>>>\$\$\$\$\$\$>>>>>>>>"{}},}
+\DoxyCodeLine{626   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{627   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{628   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{629   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}}}
+\DoxyCodeLine{630 \};}
+\DoxyCodeLine{631 }
+\DoxyCodeLine{632 \textcolor{comment}{/* XPM */}}
+\DoxyCodeLine{633 \textcolor{keyword}{static} xpm\_row\_t \textcolor{keyword}{const} xpm\_alien\_kill\_2[] = \{}
+\DoxyCodeLine{634   \textcolor{comment}{/* columns rows colors chars-\/per-\/pixel */}}
+\DoxyCodeLine{635   \textcolor{stringliteral}{"{}64 64 18 1 "{}},}
+\DoxyCodeLine{636   \textcolor{stringliteral}{"{}  c \#350F0F"{}},}
+\DoxyCodeLine{637   \textcolor{stringliteral}{"{}. c \#491515"{}},}
+\DoxyCodeLine{638   \textcolor{stringliteral}{"{}X c \#601B1B"{}},}
+\DoxyCodeLine{639   \textcolor{stringliteral}{"{}o c \#601C1C"{}},}
+\DoxyCodeLine{640   \textcolor{stringliteral}{"{}O c \#502F2F"{}},}
+\DoxyCodeLine{641   \textcolor{stringliteral}{"{}+ c \#7F2424"{}},}
+\DoxyCodeLine{642   \textcolor{stringliteral}{"{}@ c \#613535"{}},}
+\DoxyCodeLine{643   \textcolor{stringliteral}{"{}\# c \#753B3B"{}},}
+\DoxyCodeLine{644   \textcolor{stringliteral}{"{}\$ c \#FF0000"{}},}
+\DoxyCodeLine{645   \textcolor{stringliteral}{"{}\% c \#DB575C"{}},}
+\DoxyCodeLine{646   \textcolor{stringliteral}{"{}\& c \#FF4747"{}},}
+\DoxyCodeLine{647   \textcolor{stringliteral}{"{}* c \#FF6060"{}},}
+\DoxyCodeLine{648   \textcolor{stringliteral}{"{}= c \#E07D7F"{}},}
+\DoxyCodeLine{649   \textcolor{stringliteral}{"{}-\/ c \#FF7C7C"{}},}
+\DoxyCodeLine{650   \textcolor{stringliteral}{"{}; c \#FF8E8E"{}},}
+\DoxyCodeLine{651   \textcolor{stringliteral}{"{}: c \#FFABAB"{}},}
+\DoxyCodeLine{652   \textcolor{stringliteral}{"{}> c \#FFBABC"{}},}
+\DoxyCodeLine{653   \textcolor{stringliteral}{"{}, c \#000000"{}},}
+\DoxyCodeLine{654   \textcolor{comment}{/* pixels */}}
+\DoxyCodeLine{655   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{656   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{657   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,>>>>>>>>>>,,,,,,,,,,,,,,>>>>>>>>>>,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{658   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,>>>>>>>>>>,,,,,,,,,,,,,,>>>>>>>>>>,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{659   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,>>>>==++++++>>,,,,,,,,,,>>++++====>>>>,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{660   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,>>>>==++++++>>,,,,,,,,,,>>++++====>>>>,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{661   \textcolor{stringliteral}{"{},,,,,,,,,,,,>>\%\%\%\%,,====++++>>,,,,,,>>++====,,\%\%\%\%>>,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{662   \textcolor{stringliteral}{"{},,,,,,,,,,,,>>\%\%\%\%,,====++++>>,,,,,,>>++====,,\%\%\%\%>>,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{663   \textcolor{stringliteral}{"{},,,,,,,,>>>>\%\%,,,,,,,,==XXXX>>,,,,,,>>XX==,,,,,,\%\%,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{664   \textcolor{stringliteral}{"{},,,,,,,,>>>>\%\%,,,,,,,,==XXXX>>,,,,,,>>XX==,,,,,,\%\%,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{665   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,,,==XXXX>>,,>>XXXX==,,,,,,,,,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{666   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,,,==XXXX>>,,>>XXXX==,,,,,,,,,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{667   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,,,==..XX==,,==XX..==,,,,,,,,,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{668   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,,,==..XX==,,==XX..==,,,,,,,,,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{669   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,==....XX====XX....==,,,,,,,,>>>>>>>>,,,,,,"{}},}
+\DoxyCodeLine{670   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,==....XX====XX....==,,,,,,,,>>>>>>>>,,,,,,"{}},}
+\DoxyCodeLine{671   \textcolor{stringliteral}{"{},,,,,,>>>>>>,,,,,,,,==XXXX............XXXX==,,,,>>XX++++++>>,,,,"{}},}
+\DoxyCodeLine{672   \textcolor{stringliteral}{"{},,,,,,>>>>>>,,,,,,,,==XXXX............XXXX==,,,,>>XX++++++>>,,,,"{}},}
+\DoxyCodeLine{673   \textcolor{stringliteral}{"{},,,,>>++++++>>>>>>,,==XX................XX==,,>>XXXXXX==++++>>,,"{}},}
+\DoxyCodeLine{674   \textcolor{stringliteral}{"{},,,,>>++++++>>>>>>,,==XX................XX==,,>>XXXXXX==++++>>,,"{}},}
+\DoxyCodeLine{675   \textcolor{stringliteral}{"{},,>>++======XXXX>>>>XX....................XX>>XXXX====,,====>>,,"{}},}
+\DoxyCodeLine{676   \textcolor{stringliteral}{"{},,>>++======XXXX>>>>XX....................XX>>XXXX====,,====>>,,"{}},}
+\DoxyCodeLine{677   \textcolor{stringliteral}{"{},,>>==,,,,,,==XXXX............................XX==,,,,,,==>>,,,,"{}},}
+\DoxyCodeLine{678   \textcolor{stringliteral}{"{},,>>==,,,,,,==XXXX............................XX==,,,,,,==>>,,,,"{}},}
+\DoxyCodeLine{679   \textcolor{stringliteral}{"{},,,,\%\%==,,\%\%,,==XX......................oo....XX==,,,,,,==\%\%,,,,"{}},}
+\DoxyCodeLine{680   \textcolor{stringliteral}{"{},,,,\%\%==,,\%\%,,==XX......................oo....XX==,,,,,,==\%\%,,,,"{}},}
+\DoxyCodeLine{681   \textcolor{stringliteral}{"{},,,,,,\%\%\%\%,,,,==XX..  oo................\$\$  ..XX==,,,,,,\%\%\%\%,,,,"{}},}
+\DoxyCodeLine{682   \textcolor{stringliteral}{"{},,,,,,\%\%\%\%,,,,==XX..  oo................\$\$  ..XX==,,,,,,\%\%\%\%,,,,"{}},}
+\DoxyCodeLine{683   \textcolor{stringliteral}{"{},,,,,,,,,,,,>>XXXX....  oooooooooooooooo  ....XXXX>>,,,,,,\%\%,,,,"{}},}
+\DoxyCodeLine{684   \textcolor{stringliteral}{"{},,,,,,,,,,,,>>XXXX....  oooooooooooooooo  ....XXXX>>,,,,,,\%\%,,,,"{}},}
+\DoxyCodeLine{685   \textcolor{stringliteral}{"{},,,,,,,,,,,,>>XX........  \$\$\$\$          ........XX>>,,,,,,,,\%\%,,"{}},}
+\DoxyCodeLine{686   \textcolor{stringliteral}{"{},,,,,,,,,,,,>>XX........  \$\$\$\$          ........XX>>,,,,,,,,\%\%,,"{}},}
+\DoxyCodeLine{687   \textcolor{stringliteral}{"{},,,,,,,,,,,,>>XX..oooo....  OO....@@......oooo..XX>>,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{688   \textcolor{stringliteral}{"{},,,,,,,,,,,,>>XX..oooo....  OO....@@......oooo..XX>>,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{689   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,==      oo\&\&-\/-\/::\#\#\#\#;;-\/-\/\&\&oo      ==,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{690   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,==      oo\&\&-\/-\/::\#\#\#\#;;-\/-\/\&\&oo      ==,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{691   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,==XX....  \$\$\&\&**oooo**\&\&\$\$  ....XX==,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{692   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,==XX....  \$\$\&\&**oooo**\&\&\$\$  ....XX==,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{693   \textcolor{stringliteral}{"{},,,,,,,,,,,,==XXXX==XX  \$\$\$\$\$\$    \$\$\$\$\$\$  XX==XXXX==,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{694   \textcolor{stringliteral}{"{},,,,,,,,,,,,==XXXX==XX  \$\$\$\$\$\$    \$\$\$\$\$\$  XX==XXXX==,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{695   \textcolor{stringliteral}{"{},,,,,,,,,,==XXXX==,,==XX      ....      XX==,,==XX==,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{696   \textcolor{stringliteral}{"{},,,,,,,,,,==XXXX==,,==XX      ....      XX==,,==XX==,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{697   \textcolor{stringliteral}{"{},,,,,,,,==XXXX==,,,,,,==++XXXX====XXXX++==,,,,==XXXX==,,,,,,,,,,"{}},}
+\DoxyCodeLine{698   \textcolor{stringliteral}{"{},,,,,,,,==XXXX==,,,,,,==++XXXX====XXXX++==,,,,==XXXX==,,,,,,,,,,"{}},}
+\DoxyCodeLine{699   \textcolor{stringliteral}{"{},,,,,,,,\%\%XX==,,,,,,,,,,,,++XX====XX++,,,,,,,,,,==XX\%\%,,,,,,,,,,"{}},}
+\DoxyCodeLine{700   \textcolor{stringliteral}{"{},,,,,,,,\%\%XX==,,,,,,,,,,,,++XX====XX++,,,,,,,,,,==XX\%\%,,,,,,,,,,"{}},}
+\DoxyCodeLine{701   \textcolor{stringliteral}{"{},,,,,,,,==++\%\%,,,,,,,,,,>>++\%\%\%\%\%\%\%\%++>>,,,,,,,,==XX\%\%,,,,,,,,,,"{}},}
+\DoxyCodeLine{702   \textcolor{stringliteral}{"{},,,,,,,,==++\%\%,,,,,,,,,,>>++\%\%\%\%\%\%\%\%++>>,,,,,,,,==XX\%\%,,,,,,,,,,"{}},}
+\DoxyCodeLine{703   \textcolor{stringliteral}{"{},,,,,,,,==++\%\%,,,,,,,,>>++\%\%,,,,,,,,\%\%++>>,,,,,,==XX\%\%,,,,,,,,,,"{}},}
+\DoxyCodeLine{704   \textcolor{stringliteral}{"{},,,,,,,,==++\%\%,,,,,,,,>>++\%\%,,,,,,,,\%\%++>>,,,,,,==XX\%\%,,,,,,,,,,"{}},}
+\DoxyCodeLine{705   \textcolor{stringliteral}{"{},,,,,,,,==++\%\%,,,,,,,,>>\%\%,,,,,,,,,,,,\%\%>>,,,,\%\%++==,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{706   \textcolor{stringliteral}{"{},,,,,,,,==++\%\%,,,,,,,,>>\%\%,,,,,,,,,,,,\%\%>>,,,,\%\%++==,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{707   \textcolor{stringliteral}{"{},,,,,,,,,,==++\%\%,,,,,,>>\%\%,,,,,,,,,,,,\%\%>>,,,,\%\%++==,,,,\%\%,,,,,,"{}},}
+\DoxyCodeLine{708   \textcolor{stringliteral}{"{},,,,,,,,,,==++\%\%,,,,,,>>\%\%,,,,,,,,,,,,\%\%>>,,,,\%\%++==,,,,\%\%,,,,,,"{}},}
+\DoxyCodeLine{709   \textcolor{stringliteral}{"{},,,,,,,,,,==++\%\%,,,,,,,,>>====,,,,====>>,,,,,,\%\%++==,,==\%\%,,,,,,"{}},}
+\DoxyCodeLine{710   \textcolor{stringliteral}{"{},,,,,,,,,,==++\%\%,,,,,,,,>>====,,,,====>>,,,,,,\%\%++==,,==\%\%,,,,,,"{}},}
+\DoxyCodeLine{711   \textcolor{stringliteral}{"{},,,,,,,,,,,,\%\%\%\%,,,,,,,,,,\%\%\%\%\%\%\%\%\%\%\%\%,,,,,,,,\%\%++++==\%\%,,,,,,,,"{}},}
+\DoxyCodeLine{712   \textcolor{stringliteral}{"{},,,,,,,,,,,,\%\%\%\%,,,,,,,,,,\%\%\%\%\%\%\%\%\%\%\%\%,,,,,,,,\%\%++++==\%\%,,,,,,,,"{}},}
+\DoxyCodeLine{713   \textcolor{stringliteral}{"{},,,,,,,,,,\%\%,,,,,,,,,,,,,,,,\%\%,,,,\%\%,,,,,,,,,,,,\%\%\%\%\%\%,,,,,,,,,,"{}},}
+\DoxyCodeLine{714   \textcolor{stringliteral}{"{},,,,,,,,,,\%\%,,,,,,,,,,,,,,,,\%\%,,,,\%\%,,,,,,,,,,,,\%\%\%\%\%\%,,,,,,,,,,"{}},}
+\DoxyCodeLine{715   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{716   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{717   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"{}},}
+\DoxyCodeLine{718   \textcolor{stringliteral}{"{},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"{}}}
+\DoxyCodeLine{719 \};}
+\DoxyCodeLine{720 }
+\DoxyCodeLine{721 \textcolor{keyword}{static} xpm\_row\_t \textcolor{keyword}{const} xpm\_alien\_kill\_3[] = \{}
+\DoxyCodeLine{722   \textcolor{comment}{/* columns rows colors chars-\/per-\/pixel */}}
+\DoxyCodeLine{723   \textcolor{stringliteral}{"{}64 64 17 1 "{}},}
+\DoxyCodeLine{724   \textcolor{stringliteral}{"{}  c \#350F0F"{}},}
+\DoxyCodeLine{725   \textcolor{stringliteral}{"{}. c \#491515"{}},}
+\DoxyCodeLine{726   \textcolor{stringliteral}{"{}X c \#601B1B"{}},}
+\DoxyCodeLine{727   \textcolor{stringliteral}{"{}o c \#601C1C"{}},}
+\DoxyCodeLine{728   \textcolor{stringliteral}{"{}O c \#502F2F"{}},}
+\DoxyCodeLine{729   \textcolor{stringliteral}{"{}+ c \#7F2424"{}},}
+\DoxyCodeLine{730   \textcolor{stringliteral}{"{}@ c \#753B3B"{}},}
+\DoxyCodeLine{731   \textcolor{stringliteral}{"{}\# c \#FF0000"{}},}
+\DoxyCodeLine{732   \textcolor{stringliteral}{"{}\$ c \#DB575C"{}},}
+\DoxyCodeLine{733   \textcolor{stringliteral}{"{}\% c \#FF4747"{}},}
+\DoxyCodeLine{734   \textcolor{stringliteral}{"{}\& c \#FF6060"{}},}
+\DoxyCodeLine{735   \textcolor{stringliteral}{"{}* c \#FF6868"{}},}
+\DoxyCodeLine{736   \textcolor{stringliteral}{"{}= c \#E07D7F"{}},}
+\DoxyCodeLine{737   \textcolor{stringliteral}{"{}-\/ c \#FF7C7C"{}},}
+\DoxyCodeLine{738   \textcolor{stringliteral}{"{}; c \#FF9C9C"{}},}
+\DoxyCodeLine{739   \textcolor{stringliteral}{"{}: c \#FFBABC"{}},}
+\DoxyCodeLine{740   \textcolor{stringliteral}{"{}> c \#000000"{}},}
+\DoxyCodeLine{741   \textcolor{comment}{/* pixels */}}
+\DoxyCodeLine{742   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{743   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{744   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{745   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::::::::::::>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{746   \textcolor{stringliteral}{"{}>>>>>>>>>>::::==++++++++::>>>>>>>>>>>>>>::::::::::::::>>>>>>>>>>"{}},}
+\DoxyCodeLine{747   \textcolor{stringliteral}{"{}>>>>>>>>>>::::==++++++++::>>>>>>>>>>>>>>::::::::::::::>>>>>>>>>>"{}},}
+\DoxyCodeLine{748   \textcolor{stringliteral}{"{}>>>>>>>>::\$\$\$\$>>====++++++::>>>>>>>>>>::++++++======::::>>>>>>>>"{}},}
+\DoxyCodeLine{749   \textcolor{stringliteral}{"{}>>>>>>>>::\$\$\$\$>>====++++++::>>>>>>>>>>::++++++======::::>>>>>>>>"{}},}
+\DoxyCodeLine{750   \textcolor{stringliteral}{"{}>>>>>>::\$\$>>>>>>>>==XXXXXX::>>>>>>>>::++++====>>>>\$\$\$\$::>>>>>>>>"{}},}
+\DoxyCodeLine{751   \textcolor{stringliteral}{"{}>>>>>>::\$\$>>>>>>>>==XXXXXX::>>>>>>>>::++++====>>>>\$\$\$\$::>>>>>>>>"{}},}
+\DoxyCodeLine{752   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>====XXXX::>>>>>>::XXXX==>>>>>>>>\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{753   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>====XXXX::>>>>>>::XXXX==>>>>>>>>\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{754   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>==..XX==>>>>==XX..==>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{755   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>==..XX==>>>>==XX..==>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{756   \textcolor{stringliteral}{"{}>>>>>>::::::>>>>>>>>>>==....XX====XX....==>>>>>>>>>>::::::>>>>>>"{}},}
+\DoxyCodeLine{757   \textcolor{stringliteral}{"{}>>>>>>::::::>>>>>>>>>>==....XX====XX....==>>>>>>>>>>::::::>>>>>>"{}},}
+\DoxyCodeLine{758   \textcolor{stringliteral}{"{}>>>>::++++++::::>>>>==XXXX............XXXX==>>>>::::++++++::>>>>"{}},}
+\DoxyCodeLine{759   \textcolor{stringliteral}{"{}>>>>::++++++::::>>>>==XXXX............XXXX==>>>>::::++++++::>>>>"{}},}
+\DoxyCodeLine{760   \textcolor{stringliteral}{"{}>>::++++==XXXXXX::>>==XX................XX==>>::XXXXXX====++::>>"{}},}
+\DoxyCodeLine{761   \textcolor{stringliteral}{"{}>>::++++==XXXXXX::>>==XX................XX==>>::XXXXXX====++::>>"{}},}
+\DoxyCodeLine{762   \textcolor{stringliteral}{"{}>>::++==>>==XXXX::::XX....................XX::XXXXXX==>>>>==::>>"{}},}
+\DoxyCodeLine{763   \textcolor{stringliteral}{"{}>>::++==>>==XXXX::::XX....................XX::XXXXXX==>>>>==::>>"{}},}
+\DoxyCodeLine{764   \textcolor{stringliteral}{"{}>>::==>>>>>>==XXXX............................XXXX==>>>>>>====>>"{}},}
+\DoxyCodeLine{765   \textcolor{stringliteral}{"{}>>::==>>>>>>==XXXX............................XXXX==>>>>>>====>>"{}},}
+\DoxyCodeLine{766   \textcolor{stringliteral}{"{}>>::==>>>>>>>>==XX....oo......................XX==>>>>>>>>==\$\$>>"{}},}
+\DoxyCodeLine{767   \textcolor{stringliteral}{"{}>>::==>>>>>>>>==XX....oo......................XX==>>>>>>>>==\$\$>>"{}},}
+\DoxyCodeLine{768   \textcolor{stringliteral}{"{}>>>>\$\$==>>>>>>==XX..  \#\#................oo  ..XX==>>>>>>>>\$\$\$\$>>"{}},}
+\DoxyCodeLine{769   \textcolor{stringliteral}{"{}>>>>\$\$==>>>>>>==XX..  \#\#................oo  ..XX==>>>>>>>>\$\$\$\$>>"{}},}
+\DoxyCodeLine{770   \textcolor{stringliteral}{"{}>>>>>>\$\$\$\$\$\$::XXXX....  oooooooooooooooo  ....XXXX::>>>>>>\$\$>>>>"{}},}
+\DoxyCodeLine{771   \textcolor{stringliteral}{"{}>>>>>>\$\$\$\$\$\$::XXXX....  oooooooooooooooo  ....XXXX::>>>>>>\$\$>>>>"{}},}
+\DoxyCodeLine{772   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::XX........          \#\#\#\#  ........XX::>>>>>>\$\$>>>>"{}},}
+\DoxyCodeLine{773   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::XX........          \#\#\#\#  ........XX::>>>>>>\$\$>>>>"{}},}
+\DoxyCodeLine{774   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::XX..oooo............OO  ....oooo  XX::>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{775   \textcolor{stringliteral}{"{}>>>>>>>>>>>>::XX..oooo............OO  ....oooo  XX::>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{776   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>==  \#\#\#\#oo\%\%****oo@@;;-\/-\/\%\%oo\#\#\#\#  ==>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{777   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>==  \#\#\#\#oo\%\%****oo@@;;-\/-\/\%\%oo\#\#\#\#  ==>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{778   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>==XX      \#\#\%\%\%\%oooo\&\&\%\%\#\#      XX==>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{779   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>==XX      \#\#\%\%\%\%oooo\&\&\%\%\#\#      XX==>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{780   \textcolor{stringliteral}{"{}>>>>>>>>>>>>==XXXX==XX  \#\#\#\#\#\#    \#\#\#\#\#\#  XX==XXXX==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{781   \textcolor{stringliteral}{"{}>>>>>>>>>>>>==XXXX==XX  \#\#\#\#\#\#    \#\#\#\#\#\#  XX==XXXX==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{782   \textcolor{stringliteral}{"{}>>>>>>>>>>==XXXX==>>==XX      ....      XX==>>==XX==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{783   \textcolor{stringliteral}{"{}>>>>>>>>>>==XXXX==>>==XX      ....      XX==>>==XX==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{784   \textcolor{stringliteral}{"{}>>>>>>>>==XXXX==>>>>>>==++XXXX====XXXX++==>>>>==XXXX==>>>>>>>>>>"{}},}
+\DoxyCodeLine{785   \textcolor{stringliteral}{"{}>>>>>>>>==XXXX==>>>>>>==++XXXX====XXXX++==>>>>==XXXX==>>>>>>>>>>"{}},}
+\DoxyCodeLine{786   \textcolor{stringliteral}{"{}>>>>>>>>\$\$XX==>>>>>>>>>>>>++XX====XX++>>>>>>>>>>==XX\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{787   \textcolor{stringliteral}{"{}>>>>>>>>\$\$XX==>>>>>>>>>>>>++XX====XX++>>>>>>>>>>==XX\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{788   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>>>::++\$\$\$\$\$\$\$\$++::>>>>>>>>==XX\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{789   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>>>::++\$\$\$\$\$\$\$\$++::>>>>>>>>==XX\$\$>>>>>>>>>>"{}},}
+\DoxyCodeLine{790   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>::++\$\$>>>>>>>>\$\$++::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{791   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>::++\$\$>>>>>>>>\$\$++::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{792   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>::\$\$>>>>>>>>>>>>\$\$::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{793   \textcolor{stringliteral}{"{}>>>>>>>>>>==++\$\$>>>>>>::\$\$>>>>>>>>>>>>\$\$::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{794   \textcolor{stringliteral}{"{}>>>>>>>>==++\$\$>>>>>>>>::\$\$>>>>>>>>>>>>\$\$::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{795   \textcolor{stringliteral}{"{}>>>>>>>>==++\$\$>>>>>>>>::\$\$>>>>>>>>>>>>\$\$::>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{796   \textcolor{stringliteral}{"{}>>>>>>>>==++\$\$>>>>>>>>\$\$====>>>>>>>>====\$\$>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{797   \textcolor{stringliteral}{"{}>>>>>>>>==++\$\$>>>>>>>>\$\$====>>>>>>>>====\$\$>>>>\$\$++==>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{798   \textcolor{stringliteral}{"{}>>>>>>>>\$\$\$\$>>>>>>>>>>>>\$\$\$\$>>>>>>>>\$\$\$\$>>>>>>>>\$\$++====\$\$\$\$>>>>"{}},}
+\DoxyCodeLine{799   \textcolor{stringliteral}{"{}>>>>>>>>\$\$\$\$>>>>>>>>>>>>\$\$\$\$>>>>>>>>\$\$\$\$>>>>>>>>\$\$++====\$\$\$\$>>>>"{}},}
+\DoxyCodeLine{800   \textcolor{stringliteral}{"{}>>>>>>>>>>\$\$>>>>>>>>>>>>>>\$\$\$\$>>>>\$\$\$\$>>>>>>>>>>>>\$\$\$\$\$\$>>>>>>>>"{}},}
+\DoxyCodeLine{801   \textcolor{stringliteral}{"{}>>>>>>>>>>\$\$>>>>>>>>>>>>>>\$\$\$\$>>>>\$\$\$\$>>>>>>>>>>>>\$\$\$\$\$\$>>>>>>>>"{}},}
+\DoxyCodeLine{802   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{803   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{804   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}},}
+\DoxyCodeLine{805   \textcolor{stringliteral}{"{}>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"{}}}
+\DoxyCodeLine{806 \};}
+\DoxyCodeLine{807 }
+\DoxyCodeLine{808 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{809 }
+\DoxyCodeLine{810 }
+
+\end{DoxyCode}

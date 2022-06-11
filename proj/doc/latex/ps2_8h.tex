@@ -1,0 +1,257 @@
+\hypertarget{ps2_8h}{}\doxysection{mouse/ps2.h File Reference}
+\label{ps2_8h}\index{mouse/ps2.h@{mouse/ps2.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for ps2.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{ps2_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ps2_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a85964cb90343bb1a029b1d1b4229f910}{MOUSE\+\_\+\+IRQ}}~12
+\item 
+\#define \mbox{\hyperlink{ps2_8h_ab0a8f8d91f9f9956b42700722ce46baf}{KBC\+\_\+\+STAT\+\_\+\+CHECK}}~(BIT(7) $\vert$ BIT(6))
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a34be69702bd6d0890a2cde71904b2fb1}{KBC\+\_\+\+OUT\+\_\+\+BUF\+\_\+\+FULL}}~BIT(0)
+\item 
+\#define \mbox{\hyperlink{ps2_8h_aa2ba49a60452780795dc2d87626104b1}{KBC\+\_\+\+IN\+\_\+\+BUF\+\_\+\+FULL}}~BIT(1)
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a34b14687d83496940a236351fbbb1aea}{KBC\+\_\+\+STAT\+\_\+\+REG}}~0x64
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a1ccde68b2b6d4e45b50eef1403e10bb7}{KBC\+\_\+\+OUT\+\_\+\+BUF}}~0x60
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a9687584bce5e862b8fdd8ec50082cafa}{KBC\+\_\+\+READ\+\_\+\+CMD\+\_\+\+BYTE}}~0x20
+\item 
+\#define \mbox{\hyperlink{ps2_8h_aca33a3f0aa27f801bf8c0dbed5961c7f}{KBC\+\_\+\+WRITE\+\_\+\+CMD\+\_\+\+BYTE}}~0x60
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a8284b3954e107981ec7d569eba710bc5}{KBC\+\_\+\+COMMAND\+\_\+\+ENABLE\+\_\+\+INTERRUPTS}}~(BIT(0))
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a9d73c89c19fd289e0bafe764be578173}{KBC\+\_\+\+SCANCODE\+\_\+2B}}~0x\+E0
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a168fd0a54619731c76c386a7f1bde2b1}{ESC\+\_\+\+MAKE}}~0x01
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a343f44cb034d2d2ff3438b3d45dcde1f}{ESC\+\_\+\+BREAK}}~0x81
+\item 
+\#define \mbox{\hyperlink{ps2_8h_af8e71c558a0af27184829a3114d08e79}{MAKE\+\_\+\+SCAN\+\_\+\+CODE}}~BIT(7)
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a6f6489887e08bff4887d0bc5dcf214d8}{ACK}}~0x\+FA
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a958518a45b12053ae33606ee7cb68a55}{NACK}}~0x\+FE
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a8fe83ac76edc595f6b98cd4a4127aed5}{ERROR}}~0x\+FC
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a98c096dff7c9bae1531e8cda49d128d0}{RB\+\_\+\+MOUSE}}~BIT(1)
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a70cc9593c7502a56a79247afd77f6054}{MB\+\_\+\+MOUSE}}~BIT(2)
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a5bfbb993796508e92e7c4cc7f87fa2a1}{LB\+\_\+\+MOUSE}}~BIT(0)
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a181f1c2860e4d7fd7788990378061137}{X\+\_\+\+SIGN}}~BIT(4)
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a2a0064e2f0979eea21b81e4fe6b2ac32}{Y\+\_\+\+SIGN}}~BIT(5)
+\item 
+\#define \mbox{\hyperlink{ps2_8h_ac9e02f1e98d9e48ce02e158cc765bd86}{Y\+\_\+\+OV\+\_\+\+MOUSE}}~BIT(7)
+\item 
+\#define \mbox{\hyperlink{ps2_8h_ae8409b4193dc333d4c9a1b441b1263ca}{X\+\_\+\+OV\+\_\+\+MOUSE}}~BIT(6)
+\item 
+\#define \mbox{\hyperlink{ps2_8h_af9ba3526cd26417420380e42e51ab8a7}{WR\+\_\+\+MOUSE}}~0x\+D4
+\item 
+\#define \mbox{\hyperlink{ps2_8h_adff2e019db994e61e8ed6fe885d595ed}{RM\+\_\+\+MODE}}~0x\+F0
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a99496f7308834e8b220f7894efa0b6ab}{DISABLE}}~0x\+F5
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a782efbd04012530bb88bd5660dc24af6}{DATA\+\_\+\+REPORT}}~0x\+F4
+\item 
+\#define \mbox{\hyperlink{ps2_8h_ab3919f33b46e0808c4ed1c56a6a423f2}{STREAM\+\_\+\+MODE}}~0x\+EA
+\item 
+\#define \mbox{\hyperlink{ps2_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}}~20000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{ps2_8h_a6f6489887e08bff4887d0bc5dcf214d8}\label{ps2_8h_a6f6489887e08bff4887d0bc5dcf214d8}} 
+\index{ps2.h@{ps2.h}!ACK@{ACK}}
+\index{ACK@{ACK}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{ACK}{ACK}}
+{\footnotesize\ttfamily \#define ACK~0x\+FA}
+
+\mbox{\Hypertarget{ps2_8h_a782efbd04012530bb88bd5660dc24af6}\label{ps2_8h_a782efbd04012530bb88bd5660dc24af6}} 
+\index{ps2.h@{ps2.h}!DATA\_REPORT@{DATA\_REPORT}}
+\index{DATA\_REPORT@{DATA\_REPORT}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{DATA\_REPORT}{DATA\_REPORT}}
+{\footnotesize\ttfamily \#define DATA\+\_\+\+REPORT~0x\+F4}
+
+\mbox{\Hypertarget{ps2_8h_a62249e384b997229a3e2ae74ade334e2}\label{ps2_8h_a62249e384b997229a3e2ae74ade334e2}} 
+\index{ps2.h@{ps2.h}!DELAY@{DELAY}}
+\index{DELAY@{DELAY}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{DELAY}{DELAY}}
+{\footnotesize\ttfamily \#define DELAY~20000}
+
+\mbox{\Hypertarget{ps2_8h_a99496f7308834e8b220f7894efa0b6ab}\label{ps2_8h_a99496f7308834e8b220f7894efa0b6ab}} 
+\index{ps2.h@{ps2.h}!DISABLE@{DISABLE}}
+\index{DISABLE@{DISABLE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{DISABLE}{DISABLE}}
+{\footnotesize\ttfamily \#define DISABLE~0x\+F5}
+
+\mbox{\Hypertarget{ps2_8h_a8fe83ac76edc595f6b98cd4a4127aed5}\label{ps2_8h_a8fe83ac76edc595f6b98cd4a4127aed5}} 
+\index{ps2.h@{ps2.h}!ERROR@{ERROR}}
+\index{ERROR@{ERROR}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{ERROR}{ERROR}}
+{\footnotesize\ttfamily \#define ERROR~0x\+FC}
+
+\mbox{\Hypertarget{ps2_8h_a343f44cb034d2d2ff3438b3d45dcde1f}\label{ps2_8h_a343f44cb034d2d2ff3438b3d45dcde1f}} 
+\index{ps2.h@{ps2.h}!ESC\_BREAK@{ESC\_BREAK}}
+\index{ESC\_BREAK@{ESC\_BREAK}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{ESC\_BREAK}{ESC\_BREAK}}
+{\footnotesize\ttfamily \#define ESC\+\_\+\+BREAK~0x81}
+
+\mbox{\Hypertarget{ps2_8h_a168fd0a54619731c76c386a7f1bde2b1}\label{ps2_8h_a168fd0a54619731c76c386a7f1bde2b1}} 
+\index{ps2.h@{ps2.h}!ESC\_MAKE@{ESC\_MAKE}}
+\index{ESC\_MAKE@{ESC\_MAKE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{ESC\_MAKE}{ESC\_MAKE}}
+{\footnotesize\ttfamily \#define ESC\+\_\+\+MAKE~0x01}
+
+\mbox{\Hypertarget{ps2_8h_a8284b3954e107981ec7d569eba710bc5}\label{ps2_8h_a8284b3954e107981ec7d569eba710bc5}} 
+\index{ps2.h@{ps2.h}!KBC\_COMMAND\_ENABLE\_INTERRUPTS@{KBC\_COMMAND\_ENABLE\_INTERRUPTS}}
+\index{KBC\_COMMAND\_ENABLE\_INTERRUPTS@{KBC\_COMMAND\_ENABLE\_INTERRUPTS}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_COMMAND\_ENABLE\_INTERRUPTS}{KBC\_COMMAND\_ENABLE\_INTERRUPTS}}
+{\footnotesize\ttfamily \#define KBC\+\_\+\+COMMAND\+\_\+\+ENABLE\+\_\+\+INTERRUPTS~(BIT(0))}
+
+\mbox{\Hypertarget{ps2_8h_aa2ba49a60452780795dc2d87626104b1}\label{ps2_8h_aa2ba49a60452780795dc2d87626104b1}} 
+\index{ps2.h@{ps2.h}!KBC\_IN\_BUF\_FULL@{KBC\_IN\_BUF\_FULL}}
+\index{KBC\_IN\_BUF\_FULL@{KBC\_IN\_BUF\_FULL}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_IN\_BUF\_FULL}{KBC\_IN\_BUF\_FULL}}
+{\footnotesize\ttfamily \#define KBC\+\_\+\+IN\+\_\+\+BUF\+\_\+\+FULL~BIT(1)}
+
+\mbox{\Hypertarget{ps2_8h_a1ccde68b2b6d4e45b50eef1403e10bb7}\label{ps2_8h_a1ccde68b2b6d4e45b50eef1403e10bb7}} 
+\index{ps2.h@{ps2.h}!KBC\_OUT\_BUF@{KBC\_OUT\_BUF}}
+\index{KBC\_OUT\_BUF@{KBC\_OUT\_BUF}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_OUT\_BUF}{KBC\_OUT\_BUF}}
+{\footnotesize\ttfamily \#define KBC\+\_\+\+OUT\+\_\+\+BUF~0x60}
+
+\mbox{\Hypertarget{ps2_8h_a34be69702bd6d0890a2cde71904b2fb1}\label{ps2_8h_a34be69702bd6d0890a2cde71904b2fb1}} 
+\index{ps2.h@{ps2.h}!KBC\_OUT\_BUF\_FULL@{KBC\_OUT\_BUF\_FULL}}
+\index{KBC\_OUT\_BUF\_FULL@{KBC\_OUT\_BUF\_FULL}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_OUT\_BUF\_FULL}{KBC\_OUT\_BUF\_FULL}}
+{\footnotesize\ttfamily \#define KBC\+\_\+\+OUT\+\_\+\+BUF\+\_\+\+FULL~BIT(0)}
+
+\mbox{\Hypertarget{ps2_8h_a9687584bce5e862b8fdd8ec50082cafa}\label{ps2_8h_a9687584bce5e862b8fdd8ec50082cafa}} 
+\index{ps2.h@{ps2.h}!KBC\_READ\_CMD\_BYTE@{KBC\_READ\_CMD\_BYTE}}
+\index{KBC\_READ\_CMD\_BYTE@{KBC\_READ\_CMD\_BYTE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_READ\_CMD\_BYTE}{KBC\_READ\_CMD\_BYTE}}
+{\footnotesize\ttfamily \#define KBC\+\_\+\+READ\+\_\+\+CMD\+\_\+\+BYTE~0x20}
+
+\mbox{\Hypertarget{ps2_8h_a9d73c89c19fd289e0bafe764be578173}\label{ps2_8h_a9d73c89c19fd289e0bafe764be578173}} 
+\index{ps2.h@{ps2.h}!KBC\_SCANCODE\_2B@{KBC\_SCANCODE\_2B}}
+\index{KBC\_SCANCODE\_2B@{KBC\_SCANCODE\_2B}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_SCANCODE\_2B}{KBC\_SCANCODE\_2B}}
+{\footnotesize\ttfamily \#define KBC\+\_\+\+SCANCODE\+\_\+2B~0x\+E0}
+
+\mbox{\Hypertarget{ps2_8h_ab0a8f8d91f9f9956b42700722ce46baf}\label{ps2_8h_ab0a8f8d91f9f9956b42700722ce46baf}} 
+\index{ps2.h@{ps2.h}!KBC\_STAT\_CHECK@{KBC\_STAT\_CHECK}}
+\index{KBC\_STAT\_CHECK@{KBC\_STAT\_CHECK}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_STAT\_CHECK}{KBC\_STAT\_CHECK}}
+{\footnotesize\ttfamily \#define KBC\+\_\+\+STAT\+\_\+\+CHECK~(BIT(7) $\vert$ BIT(6))}
+
+\mbox{\Hypertarget{ps2_8h_a34b14687d83496940a236351fbbb1aea}\label{ps2_8h_a34b14687d83496940a236351fbbb1aea}} 
+\index{ps2.h@{ps2.h}!KBC\_STAT\_REG@{KBC\_STAT\_REG}}
+\index{KBC\_STAT\_REG@{KBC\_STAT\_REG}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_STAT\_REG}{KBC\_STAT\_REG}}
+{\footnotesize\ttfamily \#define KBC\+\_\+\+STAT\+\_\+\+REG~0x64}
+
+\mbox{\Hypertarget{ps2_8h_aca33a3f0aa27f801bf8c0dbed5961c7f}\label{ps2_8h_aca33a3f0aa27f801bf8c0dbed5961c7f}} 
+\index{ps2.h@{ps2.h}!KBC\_WRITE\_CMD\_BYTE@{KBC\_WRITE\_CMD\_BYTE}}
+\index{KBC\_WRITE\_CMD\_BYTE@{KBC\_WRITE\_CMD\_BYTE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_WRITE\_CMD\_BYTE}{KBC\_WRITE\_CMD\_BYTE}}
+{\footnotesize\ttfamily \#define KBC\+\_\+\+WRITE\+\_\+\+CMD\+\_\+\+BYTE~0x60}
+
+\mbox{\Hypertarget{ps2_8h_a5bfbb993796508e92e7c4cc7f87fa2a1}\label{ps2_8h_a5bfbb993796508e92e7c4cc7f87fa2a1}} 
+\index{ps2.h@{ps2.h}!LB\_MOUSE@{LB\_MOUSE}}
+\index{LB\_MOUSE@{LB\_MOUSE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{LB\_MOUSE}{LB\_MOUSE}}
+{\footnotesize\ttfamily \#define LB\+\_\+\+MOUSE~BIT(0)}
+
+\mbox{\Hypertarget{ps2_8h_af8e71c558a0af27184829a3114d08e79}\label{ps2_8h_af8e71c558a0af27184829a3114d08e79}} 
+\index{ps2.h@{ps2.h}!MAKE\_SCAN\_CODE@{MAKE\_SCAN\_CODE}}
+\index{MAKE\_SCAN\_CODE@{MAKE\_SCAN\_CODE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{MAKE\_SCAN\_CODE}{MAKE\_SCAN\_CODE}}
+{\footnotesize\ttfamily \#define MAKE\+\_\+\+SCAN\+\_\+\+CODE~BIT(7)}
+
+\mbox{\Hypertarget{ps2_8h_a70cc9593c7502a56a79247afd77f6054}\label{ps2_8h_a70cc9593c7502a56a79247afd77f6054}} 
+\index{ps2.h@{ps2.h}!MB\_MOUSE@{MB\_MOUSE}}
+\index{MB\_MOUSE@{MB\_MOUSE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{MB\_MOUSE}{MB\_MOUSE}}
+{\footnotesize\ttfamily \#define MB\+\_\+\+MOUSE~BIT(2)}
+
+\mbox{\Hypertarget{ps2_8h_a85964cb90343bb1a029b1d1b4229f910}\label{ps2_8h_a85964cb90343bb1a029b1d1b4229f910}} 
+\index{ps2.h@{ps2.h}!MOUSE\_IRQ@{MOUSE\_IRQ}}
+\index{MOUSE\_IRQ@{MOUSE\_IRQ}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_IRQ}{MOUSE\_IRQ}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+IRQ~12}
+
+\mbox{\Hypertarget{ps2_8h_a958518a45b12053ae33606ee7cb68a55}\label{ps2_8h_a958518a45b12053ae33606ee7cb68a55}} 
+\index{ps2.h@{ps2.h}!NACK@{NACK}}
+\index{NACK@{NACK}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{NACK}{NACK}}
+{\footnotesize\ttfamily \#define NACK~0x\+FE}
+
+\mbox{\Hypertarget{ps2_8h_a98c096dff7c9bae1531e8cda49d128d0}\label{ps2_8h_a98c096dff7c9bae1531e8cda49d128d0}} 
+\index{ps2.h@{ps2.h}!RB\_MOUSE@{RB\_MOUSE}}
+\index{RB\_MOUSE@{RB\_MOUSE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{RB\_MOUSE}{RB\_MOUSE}}
+{\footnotesize\ttfamily \#define RB\+\_\+\+MOUSE~BIT(1)}
+
+\mbox{\Hypertarget{ps2_8h_adff2e019db994e61e8ed6fe885d595ed}\label{ps2_8h_adff2e019db994e61e8ed6fe885d595ed}} 
+\index{ps2.h@{ps2.h}!RM\_MODE@{RM\_MODE}}
+\index{RM\_MODE@{RM\_MODE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{RM\_MODE}{RM\_MODE}}
+{\footnotesize\ttfamily \#define RM\+\_\+\+MODE~0x\+F0}
+
+\mbox{\Hypertarget{ps2_8h_ab3919f33b46e0808c4ed1c56a6a423f2}\label{ps2_8h_ab3919f33b46e0808c4ed1c56a6a423f2}} 
+\index{ps2.h@{ps2.h}!STREAM\_MODE@{STREAM\_MODE}}
+\index{STREAM\_MODE@{STREAM\_MODE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{STREAM\_MODE}{STREAM\_MODE}}
+{\footnotesize\ttfamily \#define STREAM\+\_\+\+MODE~0x\+EA}
+
+\mbox{\Hypertarget{ps2_8h_af9ba3526cd26417420380e42e51ab8a7}\label{ps2_8h_af9ba3526cd26417420380e42e51ab8a7}} 
+\index{ps2.h@{ps2.h}!WR\_MOUSE@{WR\_MOUSE}}
+\index{WR\_MOUSE@{WR\_MOUSE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{WR\_MOUSE}{WR\_MOUSE}}
+{\footnotesize\ttfamily \#define WR\+\_\+\+MOUSE~0x\+D4}
+
+\mbox{\Hypertarget{ps2_8h_ae8409b4193dc333d4c9a1b441b1263ca}\label{ps2_8h_ae8409b4193dc333d4c9a1b441b1263ca}} 
+\index{ps2.h@{ps2.h}!X\_OV\_MOUSE@{X\_OV\_MOUSE}}
+\index{X\_OV\_MOUSE@{X\_OV\_MOUSE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{X\_OV\_MOUSE}{X\_OV\_MOUSE}}
+{\footnotesize\ttfamily \#define X\+\_\+\+OV\+\_\+\+MOUSE~BIT(6)}
+
+\mbox{\Hypertarget{ps2_8h_a181f1c2860e4d7fd7788990378061137}\label{ps2_8h_a181f1c2860e4d7fd7788990378061137}} 
+\index{ps2.h@{ps2.h}!X\_SIGN@{X\_SIGN}}
+\index{X\_SIGN@{X\_SIGN}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{X\_SIGN}{X\_SIGN}}
+{\footnotesize\ttfamily \#define X\+\_\+\+SIGN~BIT(4)}
+
+\mbox{\Hypertarget{ps2_8h_ac9e02f1e98d9e48ce02e158cc765bd86}\label{ps2_8h_ac9e02f1e98d9e48ce02e158cc765bd86}} 
+\index{ps2.h@{ps2.h}!Y\_OV\_MOUSE@{Y\_OV\_MOUSE}}
+\index{Y\_OV\_MOUSE@{Y\_OV\_MOUSE}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{Y\_OV\_MOUSE}{Y\_OV\_MOUSE}}
+{\footnotesize\ttfamily \#define Y\+\_\+\+OV\+\_\+\+MOUSE~BIT(7)}
+
+\mbox{\Hypertarget{ps2_8h_a2a0064e2f0979eea21b81e4fe6b2ac32}\label{ps2_8h_a2a0064e2f0979eea21b81e4fe6b2ac32}} 
+\index{ps2.h@{ps2.h}!Y\_SIGN@{Y\_SIGN}}
+\index{Y\_SIGN@{Y\_SIGN}!ps2.h@{ps2.h}}
+\doxysubsubsection{\texorpdfstring{Y\_SIGN}{Y\_SIGN}}
+{\footnotesize\ttfamily \#define Y\+\_\+\+SIGN~BIT(5)}
+

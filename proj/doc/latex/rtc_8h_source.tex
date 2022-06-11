@@ -1,0 +1,42 @@
+\hypertarget{rtc_8h_source}{}\doxysection{rtc.\+h}
+\label{rtc_8h_source}\index{rtc/rtc.h@{rtc/rtc.h}}
+\mbox{\hyperlink{rtc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_RTC\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_RTC\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <minix/sysutil.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}../game.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{keyboard_8h}{keyboard/keyboard.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{rtc__macros_8h}{rtc\_macros.h}}"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{static}  uint8\_t g\_rtc\_seconds;}
+\DoxyCodeLine{13 \textcolor{keyword}{static}  uint8\_t g\_rtc\_minutes;}
+\DoxyCodeLine{14 \textcolor{keyword}{static}  uint8\_t g\_rtc\_hours;}
+\DoxyCodeLine{15 \textcolor{keyword}{static}  uint8\_t g\_rtc\_day;}
+\DoxyCodeLine{16 \textcolor{keyword}{static}  uint8\_t g\_rtc\_month;}
+\DoxyCodeLine{17 \textcolor{keyword}{static}  uint8\_t g\_rtc\_year;}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 int (\mbox{\hyperlink{rtc_8h_a06a9b8ca98cf78ab62036ec063312a68}{get\_rtc\_seconds}})();}
+\DoxyCodeLine{21 uint8\_t (\mbox{\hyperlink{rtc_8h_a8ddb224479310fa0558c1e88e482361f}{to\_BCD}})(uint8\_t value);}
+\DoxyCodeLine{22 int (\mbox{\hyperlink{rtc_8h_a2012dfb8e2bd5e0513a51a28d98fb413}{get\_rtc\_minutes}})();}
+\DoxyCodeLine{23 int (\mbox{\hyperlink{rtc_8h_acb8b5f8bcd848dc310330c98bbc8ddbb}{get\_rtc\_hours}})();}
+\DoxyCodeLine{24 int (\mbox{\hyperlink{rtc_8h_a19e8a53612977dffe6cd0e1506d12a17}{get\_rtc\_day}})();}
+\DoxyCodeLine{25 int (\mbox{\hyperlink{rtc_8h_ad6b217b52b2d375be782b3b8cb1966c3}{get\_rtc\_month}})();}
+\DoxyCodeLine{26 int (\mbox{\hyperlink{rtc_8h_ae6a2a6637c0d24bcfd4f105b540bfaf5}{get\_rtc\_year}})();}
+\DoxyCodeLine{27 int(\mbox{\hyperlink{rtc_8h_a6bbe679f115cec90d36d50eb2aac1b89}{rtc\_subscribe\_int}})(uint8\_t *bit\_no) ;}
+\DoxyCodeLine{28 int(\mbox{\hyperlink{rtc_8h_a9d4850bb2a488644672d43287f160622}{rtc\_unsubscribe\_int}})() ;}
+\DoxyCodeLine{29 int (\mbox{\hyperlink{rtc_8h_a072a0e9c4b41fd99807dec8cea0604e9}{read\_time}})();}
+\DoxyCodeLine{30 void (\mbox{\hyperlink{rtc_8h_aabd698c3dd999f44e3600c12b0f9b4a8}{read\_reg\_B}})();}
+\DoxyCodeLine{31 void (\mbox{\hyperlink{rtc_8h_a11b4589424f5a88548f3f547eb5304b5}{write\_reg\_B}})();}
+\DoxyCodeLine{32 void (\mbox{\hyperlink{rtc_8h_acb6de2f9e938cc8c8d558f504351bbbc}{disable\_interrupts\_rtc}})();}
+\DoxyCodeLine{33 void (\mbox{\hyperlink{rtc_8h_a62c48ba2dc93ebcf6c3b11a6bcf7801a}{enable\_interrupts\_rtc}})();}
+\DoxyCodeLine{34 void (\mbox{\hyperlink{rtc_8h_ae9182afc075d07b93a3f119b372ad183}{wait\_valid\_rtc}})();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,125 @@
+\hypertarget{keyboard_8h}{}\doxysection{keyboard/keyboard.h File Reference}
+\label{keyboard_8h}\index{keyboard/keyboard.h@{keyboard/keyboard.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}i8042.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../game.\+h\char`\"{}}\newline
+Include dependency graph for keyboard.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{keyboard_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{keyboard_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool() \mbox{\hyperlink{keyboard_8h_a81e0dd72f861826d1a3b3fa9f3a73009}{kbc\+\_\+communication\+\_\+error}} ()
+\item 
+bool() \mbox{\hyperlink{keyboard_8h_a296e7c116c0d332dbd00b09887a5fe43}{keyboard\+\_\+check}} ()
+\item 
+bool() \mbox{\hyperlink{keyboard_8h_ae7791ebf0c69886aab3679f7931a5fdb}{kbc\+\_\+output\+\_\+buf\+\_\+full}} ()
+\item 
+bool() \mbox{\hyperlink{keyboard_8h_a9857b46ef297d9764c21dbbca19790db}{kbc\+\_\+input\+\_\+buf\+\_\+full}} ()
+\item 
+int() \mbox{\hyperlink{keyboard_8h_a02884ada1971dbade466081413210b18}{kbc\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\item 
+int() \mbox{\hyperlink{keyboard_8h_a1102381e6a9e876e05dd78c58ccb5673}{kbc\+\_\+unsubscribe\+\_\+int}} ()
+\item 
+uint8\+\_\+t() \mbox{\hyperlink{keyboard_8h_a9b5b2b85e2874688e892417234bc21d8}{kbc\+\_\+read\+\_\+output\+\_\+buffer}} ()
+\item 
+void() \mbox{\hyperlink{keyboard_8h_aa9f74ccfbf69e0d4441dbe94994874bf}{enable\+\_\+interrupts}} ()
+\item 
+void() \mbox{\hyperlink{keyboard_8h_a5761bd4aad91ac1d68916ad88f583d9f}{kbc\+\_\+ih}} (void)
+\item 
+void() \mbox{\hyperlink{keyboard_8h_ad5f3d22aa193025ad9761f6d839af186}{keyboard\+\_\+event\+\_\+handler}} (uint8\+\_\+t scan\+Code)
+\item 
+uint8\+\_\+t() \mbox{\hyperlink{keyboard_8h_ae5f3493b33b14eaf88a7b7f8a4fa8ed2}{read\+\_\+command\+\_\+byte}} ()
+\item 
+void() \mbox{\hyperlink{keyboard_8h_aad26ab45170d77851bd43452220e19ec}{write\+\_\+command\+\_\+byte}} (uint8\+\_\+t command\+\_\+byte)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{keyboard_8h_aa9f74ccfbf69e0d4441dbe94994874bf}\label{keyboard_8h_aa9f74ccfbf69e0d4441dbe94994874bf}} 
+\index{keyboard.h@{keyboard.h}!enable\_interrupts@{enable\_interrupts}}
+\index{enable\_interrupts@{enable\_interrupts}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{enable\_interrupts()}{enable\_interrupts()}}
+{\footnotesize\ttfamily void() enable\+\_\+interrupts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{keyboard_8h_a81e0dd72f861826d1a3b3fa9f3a73009}\label{keyboard_8h_a81e0dd72f861826d1a3b3fa9f3a73009}} 
+\index{keyboard.h@{keyboard.h}!kbc\_communication\_error@{kbc\_communication\_error}}
+\index{kbc\_communication\_error@{kbc\_communication\_error}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_communication\_error()}{kbc\_communication\_error()}}
+{\footnotesize\ttfamily bool() kbc\+\_\+communication\+\_\+error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints the input scancode. (Already implemented in the LCF) Parameters make Whether this is a make or a break code size Size in bytes of the scancode bytes Array with size elements, with the scancode bytes \mbox{\Hypertarget{keyboard_8h_a5761bd4aad91ac1d68916ad88f583d9f}\label{keyboard_8h_a5761bd4aad91ac1d68916ad88f583d9f}} 
+\index{keyboard.h@{keyboard.h}!kbc\_ih@{kbc\_ih}}
+\index{kbc\_ih@{kbc\_ih}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_ih()}{kbc\_ih()}}
+{\footnotesize\ttfamily void() kbc\+\_\+ih (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Handles keyboard interrupts (C implementation) Reads the status register and the output buffer (OB). If there was some error, the byte read from the OB should be discarded. All communication with other code must be done via global variables, static if possible. \mbox{\Hypertarget{keyboard_8h_a9857b46ef297d9764c21dbbca19790db}\label{keyboard_8h_a9857b46ef297d9764c21dbbca19790db}} 
+\index{keyboard.h@{keyboard.h}!kbc\_input\_buf\_full@{kbc\_input\_buf\_full}}
+\index{kbc\_input\_buf\_full@{kbc\_input\_buf\_full}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_input\_buf\_full()}{kbc\_input\_buf\_full()}}
+{\footnotesize\ttfamily bool() kbc\+\_\+input\+\_\+buf\+\_\+full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{keyboard_8h_ae7791ebf0c69886aab3679f7931a5fdb}\label{keyboard_8h_ae7791ebf0c69886aab3679f7931a5fdb}} 
+\index{keyboard.h@{keyboard.h}!kbc\_output\_buf\_full@{kbc\_output\_buf\_full}}
+\index{kbc\_output\_buf\_full@{kbc\_output\_buf\_full}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_output\_buf\_full()}{kbc\_output\_buf\_full()}}
+{\footnotesize\ttfamily bool() kbc\+\_\+output\+\_\+buf\+\_\+full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{keyboard_8h_a9b5b2b85e2874688e892417234bc21d8}\label{keyboard_8h_a9b5b2b85e2874688e892417234bc21d8}} 
+\index{keyboard.h@{keyboard.h}!kbc\_read\_output\_buffer@{kbc\_read\_output\_buffer}}
+\index{kbc\_read\_output\_buffer@{kbc\_read\_output\_buffer}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_read\_output\_buffer()}{kbc\_read\_output\_buffer()}}
+{\footnotesize\ttfamily uint8\+\_\+t() kbc\+\_\+read\+\_\+output\+\_\+buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{keyboard_8h_a02884ada1971dbade466081413210b18}\label{keyboard_8h_a02884ada1971dbade466081413210b18}} 
+\index{keyboard.h@{keyboard.h}!kbc\_subscribe\_int@{kbc\_subscribe\_int}}
+\index{kbc\_subscribe\_int@{kbc\_subscribe\_int}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_subscribe\_int()}{kbc\_subscribe\_int()}}
+{\footnotesize\ttfamily int() kbc\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{keyboard_8h_a1102381e6a9e876e05dd78c58ccb5673}\label{keyboard_8h_a1102381e6a9e876e05dd78c58ccb5673}} 
+\index{keyboard.h@{keyboard.h}!kbc\_unsubscribe\_int@{kbc\_unsubscribe\_int}}
+\index{kbc\_unsubscribe\_int@{kbc\_unsubscribe\_int}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_unsubscribe\_int()}{kbc\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() kbc\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{keyboard_8h_a296e7c116c0d332dbd00b09887a5fe43}\label{keyboard_8h_a296e7c116c0d332dbd00b09887a5fe43}} 
+\index{keyboard.h@{keyboard.h}!keyboard\_check@{keyboard\_check}}
+\index{keyboard\_check@{keyboard\_check}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{keyboard\_check()}{keyboard\_check()}}
+{\footnotesize\ttfamily bool() keyboard\+\_\+check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{keyboard_8h_ad5f3d22aa193025ad9761f6d839af186}\label{keyboard_8h_ad5f3d22aa193025ad9761f6d839af186}} 
+\index{keyboard.h@{keyboard.h}!keyboard\_event\_handler@{keyboard\_event\_handler}}
+\index{keyboard\_event\_handler@{keyboard\_event\_handler}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{keyboard\_event\_handler()}{keyboard\_event\_handler()}}
+{\footnotesize\ttfamily void() keyboard\+\_\+event\+\_\+handler (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{scan\+Code }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{keyboard_8h_ae5f3493b33b14eaf88a7b7f8a4fa8ed2}\label{keyboard_8h_ae5f3493b33b14eaf88a7b7f8a4fa8ed2}} 
+\index{keyboard.h@{keyboard.h}!read\_command\_byte@{read\_command\_byte}}
+\index{read\_command\_byte@{read\_command\_byte}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{read\_command\_byte()}{read\_command\_byte()}}
+{\footnotesize\ttfamily uint8\+\_\+t() read\+\_\+command\+\_\+byte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{keyboard_8h_aad26ab45170d77851bd43452220e19ec}\label{keyboard_8h_aad26ab45170d77851bd43452220e19ec}} 
+\index{keyboard.h@{keyboard.h}!write\_command\_byte@{write\_command\_byte}}
+\index{write\_command\_byte@{write\_command\_byte}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{write\_command\_byte()}{write\_command\_byte()}}
+{\footnotesize\ttfamily void() write\+\_\+command\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command\+\_\+byte }\end{DoxyParamCaption})}
+

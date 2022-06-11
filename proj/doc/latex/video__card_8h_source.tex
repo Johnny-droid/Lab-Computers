@@ -1,0 +1,67 @@
+\hypertarget{video__card_8h_source}{}\doxysection{video\+\_\+card.\+h}
+\label{video__card_8h_source}\index{video\_card/video\_card.h@{video\_card/video\_card.h}}
+\mbox{\hyperlink{video__card_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_VIDEOCARD\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_VIDEOCARD\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <machine/int86.h>} \textcolor{comment}{// /usr/src/include/arch/i386}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <lcom/timer.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}../game.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{vg__macros_8h}{vg\_macros.h}}"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{alien_8h}{sprites/alien.h}}"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{crosshair_8h}{sprites/crosshair.h}}"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{numbers_8h}{sprites/numbers.h}}"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{buttons_8h}{sprites/buttons.h}}"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{titles_8h}{sprites/titles.h}}"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{letters_8h}{sprites/letters.h}}"{}}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define GAME\_FRAME\_RATE 30}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keywordtype}{char} \mbox{\hyperlink{video__card_8h_a3000f858ecb5a5417c1566b691efd56d}{str}}[256];}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_s_p_r_i_t_e}{SPRITE}} \{}
+\DoxyCodeLine{25     \textcolor{keywordtype}{char}* \mbox{\hyperlink{struct_s_p_r_i_t_e_a64d082a2b1eec15a9d9081e89747de2a}{ptr}};}
+\DoxyCodeLine{26     xpm\_image\_t \mbox{\hyperlink{struct_s_p_r_i_t_e_ad8a399f879ebbcb19bd34b22c20b72fb}{info}};}
+\DoxyCodeLine{27 \};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 bool (\mbox{\hyperlink{video__card_8h_a58da58b2a2a4f4491c1bf5d3edda3831}{vg\_prepareGraphics}})(uint16\_t mode);}
+\DoxyCodeLine{31 bool (\mbox{\hyperlink{video__card_8h_ad186b37440757d076fcaef669f9c9716}{vg\_setGraphics}})(uint16\_t mode);}
+\DoxyCodeLine{32 bool (\mbox{\hyperlink{video__card_8h_afc288a31807a895bae9c196d792f37d9}{vg\_free}})();}
+\DoxyCodeLine{33 bool (\mbox{\hyperlink{video__card_8h_a657acb157d415aa26269b1c236652e7c}{vg\_load\_sprites}})();}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 int (\mbox{\hyperlink{video__card_8h_a02d3e124bc8e00e6565e52d2a163b81b}{vg\_draw\_sprite}})(\textcolor{keyword}{struct }\mbox{\hyperlink{struct_s_p_r_i_t_e}{SPRITE}} sprite, uint16\_t x, uint16\_t y, uint8\_t buffer\_no);}
+\DoxyCodeLine{36 void (\mbox{\hyperlink{video__card_8h_a5ae6974e9b25b3238268a4462c3c16b9}{vg\_draw\_aliens}})();}
+\DoxyCodeLine{37 void (\mbox{\hyperlink{video__card_8h_a2a5fa7adf6dbbd087a2866159ac87929}{vg\_draw\_killer\_alien}})();}
+\DoxyCodeLine{38 void (\mbox{\hyperlink{video__card_8h_a35fa5d66afa07f4c8dfd3b380181477f}{vg\_draw\_crosshair}})(uint8\_t buffer\_no);}
+\DoxyCodeLine{39 void (\mbox{\hyperlink{video__card_8h_a53745456f63382387bded268f1aa3465}{vg\_draw\_points}})();}
+\DoxyCodeLine{40 void (\mbox{\hyperlink{video__card_8h_a1f4e3c3851ed01ebb5be19c68a7b87bc}{vg\_draw\_play\_button}})();}
+\DoxyCodeLine{41 void (\mbox{\hyperlink{video__card_8h_af1326f3798c4973e0106e353fc059ed7}{vg\_draw\_exit\_button}})();}
+\DoxyCodeLine{42 void (\mbox{\hyperlink{video__card_8h_a1987a826636993e18ab07e8814f5380b}{vg\_draw\_game\_name}})();}
+\DoxyCodeLine{43 void (\mbox{\hyperlink{video__card_8h_afc537c3ed61d3c0f633eab7f582300c8}{vg\_draw\_paused}})();}
+\DoxyCodeLine{44 void (\mbox{\hyperlink{video__card_8h_a17934f41c82524b926428f3998088e03}{vg\_draw\_str}})(\textcolor{keywordtype}{char} * \mbox{\hyperlink{video__card_8h_a3000f858ecb5a5417c1566b691efd56d}{str}}, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 void (\mbox{\hyperlink{video__card_8h_ac6bba8e0d1ff88e9a5e5dd23316084b8}{vg\_draw\_game}})();}
+\DoxyCodeLine{48 void (\mbox{\hyperlink{video__card_8h_a5f7fa9633c62a5e0159e5264764b3403}{vg\_draw\_menu}})();}
+\DoxyCodeLine{49 void (\mbox{\hyperlink{video__card_8h_a76e62397e824022ba2c18fc01acc1aba}{vg\_draw\_game\_over}})();}
+\DoxyCodeLine{50 void (\mbox{\hyperlink{video__card_8h_a5c2f5522e6f8dbcc0fff02b24a72fbe4}{vg\_draw\_input\_screen}})();}
+\DoxyCodeLine{51 void (\mbox{\hyperlink{video__card_8h_a5e18225cda81ca2e2df8ede7c92fef18}{vg\_draw\_leadeboard}})();}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 void (\mbox{\hyperlink{video__card_8h_a73b06ba7a6845e76debaa9dcd3aa7650}{vg\_ih}})();}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 void (\mbox{\hyperlink{video__card_8h_af035738fa5e77af395389aca862c3832}{vg\_draw\_time\_info}})() ;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 }
+
+\end{DoxyCode}

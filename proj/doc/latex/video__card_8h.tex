@@ -1,0 +1,238 @@
+\hypertarget{video__card_8h}{}\doxysection{video\+\_\+card/video\+\_\+card.h File Reference}
+\label{video__card_8h}\index{video\_card/video\_card.h@{video\_card/video\_card.h}}
+{\ttfamily \#include $<$machine/int86.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/timer.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../game.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vg\+\_\+macros.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sprites/alien.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sprites/crosshair.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sprites/numbers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sprites/buttons.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sprites/titles.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sprites/letters.\+h\char`\"{}}\newline
+Include dependency graph for video\+\_\+card.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video__card_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video__card_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_s_p_r_i_t_e}{SPRITE}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{video__card_8h_affdb3fbbc1fc274aeac592c7a6baf7f3}{GAME\+\_\+\+FRAME\+\_\+\+RATE}}~30
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool() \mbox{\hyperlink{video__card_8h_a58da58b2a2a4f4491c1bf5d3edda3831}{vg\+\_\+prepare\+Graphics}} (uint16\+\_\+t mode)
+\item 
+bool() \mbox{\hyperlink{video__card_8h_ad186b37440757d076fcaef669f9c9716}{vg\+\_\+set\+Graphics}} (uint16\+\_\+t mode)
+\item 
+bool() \mbox{\hyperlink{video__card_8h_afc288a31807a895bae9c196d792f37d9}{vg\+\_\+free}} ()
+\item 
+bool() \mbox{\hyperlink{video__card_8h_a657acb157d415aa26269b1c236652e7c}{vg\+\_\+load\+\_\+sprites}} ()
+\item 
+int() \mbox{\hyperlink{video__card_8h_a02d3e124bc8e00e6565e52d2a163b81b}{vg\+\_\+draw\+\_\+sprite}} (struct \mbox{\hyperlink{struct_s_p_r_i_t_e}{SPRITE}} sprite, uint16\+\_\+t x, uint16\+\_\+t y, uint8\+\_\+t buffer\+\_\+no)
+\item 
+void() \mbox{\hyperlink{video__card_8h_a5ae6974e9b25b3238268a4462c3c16b9}{vg\+\_\+draw\+\_\+aliens}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_a2a5fa7adf6dbbd087a2866159ac87929}{vg\+\_\+draw\+\_\+killer\+\_\+alien}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_a35fa5d66afa07f4c8dfd3b380181477f}{vg\+\_\+draw\+\_\+crosshair}} (uint8\+\_\+t buffer\+\_\+no)
+\item 
+void() \mbox{\hyperlink{video__card_8h_a53745456f63382387bded268f1aa3465}{vg\+\_\+draw\+\_\+points}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_a1f4e3c3851ed01ebb5be19c68a7b87bc}{vg\+\_\+draw\+\_\+play\+\_\+button}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_af1326f3798c4973e0106e353fc059ed7}{vg\+\_\+draw\+\_\+exit\+\_\+button}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_a1987a826636993e18ab07e8814f5380b}{vg\+\_\+draw\+\_\+game\+\_\+name}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_afc537c3ed61d3c0f633eab7f582300c8}{vg\+\_\+draw\+\_\+paused}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_a17934f41c82524b926428f3998088e03}{vg\+\_\+draw\+\_\+str}} (char $\ast$\mbox{\hyperlink{video__card_8h_a3000f858ecb5a5417c1566b691efd56d}{str}}, int x, int y)
+\item 
+void() \mbox{\hyperlink{video__card_8h_ac6bba8e0d1ff88e9a5e5dd23316084b8}{vg\+\_\+draw\+\_\+game}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_a5f7fa9633c62a5e0159e5264764b3403}{vg\+\_\+draw\+\_\+menu}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_a76e62397e824022ba2c18fc01acc1aba}{vg\+\_\+draw\+\_\+game\+\_\+over}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_a5c2f5522e6f8dbcc0fff02b24a72fbe4}{vg\+\_\+draw\+\_\+input\+\_\+screen}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_a5e18225cda81ca2e2df8ede7c92fef18}{vg\+\_\+draw\+\_\+leadeboard}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_a73b06ba7a6845e76debaa9dcd3aa7650}{vg\+\_\+ih}} ()
+\item 
+void() \mbox{\hyperlink{video__card_8h_af035738fa5e77af395389aca862c3832}{vg\+\_\+draw\+\_\+time\+\_\+info}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{video__card_8h_a3000f858ecb5a5417c1566b691efd56d}{str}} \mbox{[}256\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{video__card_8h_affdb3fbbc1fc274aeac592c7a6baf7f3}\label{video__card_8h_affdb3fbbc1fc274aeac592c7a6baf7f3}} 
+\index{video\_card.h@{video\_card.h}!GAME\_FRAME\_RATE@{GAME\_FRAME\_RATE}}
+\index{GAME\_FRAME\_RATE@{GAME\_FRAME\_RATE}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{GAME\_FRAME\_RATE}{GAME\_FRAME\_RATE}}
+{\footnotesize\ttfamily \#define GAME\+\_\+\+FRAME\+\_\+\+RATE~30}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{video__card_8h_a5ae6974e9b25b3238268a4462c3c16b9}\label{video__card_8h_a5ae6974e9b25b3238268a4462c3c16b9}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_aliens@{vg\_draw\_aliens}}
+\index{vg\_draw\_aliens@{vg\_draw\_aliens}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_aliens()}{vg\_draw\_aliens()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+aliens (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a35fa5d66afa07f4c8dfd3b380181477f}\label{video__card_8h_a35fa5d66afa07f4c8dfd3b380181477f}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_crosshair@{vg\_draw\_crosshair}}
+\index{vg\_draw\_crosshair@{vg\_draw\_crosshair}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_crosshair()}{vg\_draw\_crosshair()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+crosshair (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{buffer\+\_\+no }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_af1326f3798c4973e0106e353fc059ed7}\label{video__card_8h_af1326f3798c4973e0106e353fc059ed7}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_exit\_button@{vg\_draw\_exit\_button}}
+\index{vg\_draw\_exit\_button@{vg\_draw\_exit\_button}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_exit\_button()}{vg\_draw\_exit\_button()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+exit\+\_\+button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_ac6bba8e0d1ff88e9a5e5dd23316084b8}\label{video__card_8h_ac6bba8e0d1ff88e9a5e5dd23316084b8}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_game@{vg\_draw\_game}}
+\index{vg\_draw\_game@{vg\_draw\_game}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_game()}{vg\_draw\_game()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a1987a826636993e18ab07e8814f5380b}\label{video__card_8h_a1987a826636993e18ab07e8814f5380b}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_game\_name@{vg\_draw\_game\_name}}
+\index{vg\_draw\_game\_name@{vg\_draw\_game\_name}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_game\_name()}{vg\_draw\_game\_name()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+game\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a76e62397e824022ba2c18fc01acc1aba}\label{video__card_8h_a76e62397e824022ba2c18fc01acc1aba}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_game\_over@{vg\_draw\_game\_over}}
+\index{vg\_draw\_game\_over@{vg\_draw\_game\_over}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_game\_over()}{vg\_draw\_game\_over()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+game\+\_\+over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a5c2f5522e6f8dbcc0fff02b24a72fbe4}\label{video__card_8h_a5c2f5522e6f8dbcc0fff02b24a72fbe4}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_input\_screen@{vg\_draw\_input\_screen}}
+\index{vg\_draw\_input\_screen@{vg\_draw\_input\_screen}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_input\_screen()}{vg\_draw\_input\_screen()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+input\+\_\+screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a2a5fa7adf6dbbd087a2866159ac87929}\label{video__card_8h_a2a5fa7adf6dbbd087a2866159ac87929}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_killer\_alien@{vg\_draw\_killer\_alien}}
+\index{vg\_draw\_killer\_alien@{vg\_draw\_killer\_alien}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_killer\_alien()}{vg\_draw\_killer\_alien()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+killer\+\_\+alien (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a5e18225cda81ca2e2df8ede7c92fef18}\label{video__card_8h_a5e18225cda81ca2e2df8ede7c92fef18}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_leadeboard@{vg\_draw\_leadeboard}}
+\index{vg\_draw\_leadeboard@{vg\_draw\_leadeboard}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_leadeboard()}{vg\_draw\_leadeboard()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+leadeboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a5f7fa9633c62a5e0159e5264764b3403}\label{video__card_8h_a5f7fa9633c62a5e0159e5264764b3403}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_menu@{vg\_draw\_menu}}
+\index{vg\_draw\_menu@{vg\_draw\_menu}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_menu()}{vg\_draw\_menu()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_afc537c3ed61d3c0f633eab7f582300c8}\label{video__card_8h_afc537c3ed61d3c0f633eab7f582300c8}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_paused@{vg\_draw\_paused}}
+\index{vg\_draw\_paused@{vg\_draw\_paused}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_paused()}{vg\_draw\_paused()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+paused (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a1f4e3c3851ed01ebb5be19c68a7b87bc}\label{video__card_8h_a1f4e3c3851ed01ebb5be19c68a7b87bc}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_play\_button@{vg\_draw\_play\_button}}
+\index{vg\_draw\_play\_button@{vg\_draw\_play\_button}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_play\_button()}{vg\_draw\_play\_button()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+play\+\_\+button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a53745456f63382387bded268f1aa3465}\label{video__card_8h_a53745456f63382387bded268f1aa3465}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_points@{vg\_draw\_points}}
+\index{vg\_draw\_points@{vg\_draw\_points}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_points()}{vg\_draw\_points()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a02d3e124bc8e00e6565e52d2a163b81b}\label{video__card_8h_a02d3e124bc8e00e6565e52d2a163b81b}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_sprite@{vg\_draw\_sprite}}
+\index{vg\_draw\_sprite@{vg\_draw\_sprite}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_sprite()}{vg\_draw\_sprite()}}
+{\footnotesize\ttfamily int() vg\+\_\+draw\+\_\+sprite (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_s_p_r_i_t_e}{SPRITE}}}]{sprite,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint8\+\_\+t}]{buffer\+\_\+no }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a17934f41c82524b926428f3998088e03}\label{video__card_8h_a17934f41c82524b926428f3998088e03}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_str@{vg\_draw\_str}}
+\index{vg\_draw\_str@{vg\_draw\_str}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_str()}{vg\_draw\_str()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+str (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_af035738fa5e77af395389aca862c3832}\label{video__card_8h_af035738fa5e77af395389aca862c3832}} 
+\index{video\_card.h@{video\_card.h}!vg\_draw\_time\_info@{vg\_draw\_time\_info}}
+\index{vg\_draw\_time\_info@{vg\_draw\_time\_info}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_time\_info()}{vg\_draw\_time\_info()}}
+{\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+time\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_afc288a31807a895bae9c196d792f37d9}\label{video__card_8h_afc288a31807a895bae9c196d792f37d9}} 
+\index{video\_card.h@{video\_card.h}!vg\_free@{vg\_free}}
+\index{vg\_free@{vg\_free}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_free()}{vg\_free()}}
+{\footnotesize\ttfamily bool() vg\+\_\+free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a73b06ba7a6845e76debaa9dcd3aa7650}\label{video__card_8h_a73b06ba7a6845e76debaa9dcd3aa7650}} 
+\index{video\_card.h@{video\_card.h}!vg\_ih@{vg\_ih}}
+\index{vg\_ih@{vg\_ih}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_ih()}{vg\_ih()}}
+{\footnotesize\ttfamily void() vg\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a657acb157d415aa26269b1c236652e7c}\label{video__card_8h_a657acb157d415aa26269b1c236652e7c}} 
+\index{video\_card.h@{video\_card.h}!vg\_load\_sprites@{vg\_load\_sprites}}
+\index{vg\_load\_sprites@{vg\_load\_sprites}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_load\_sprites()}{vg\_load\_sprites()}}
+{\footnotesize\ttfamily bool() vg\+\_\+load\+\_\+sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_a58da58b2a2a4f4491c1bf5d3edda3831}\label{video__card_8h_a58da58b2a2a4f4491c1bf5d3edda3831}} 
+\index{video\_card.h@{video\_card.h}!vg\_prepareGraphics@{vg\_prepareGraphics}}
+\index{vg\_prepareGraphics@{vg\_prepareGraphics}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_prepareGraphics()}{vg\_prepareGraphics()}}
+{\footnotesize\ttfamily bool() vg\+\_\+prepare\+Graphics (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{video__card_8h_ad186b37440757d076fcaef669f9c9716}\label{video__card_8h_ad186b37440757d076fcaef669f9c9716}} 
+\index{video\_card.h@{video\_card.h}!vg\_setGraphics@{vg\_setGraphics}}
+\index{vg\_setGraphics@{vg\_setGraphics}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{vg\_setGraphics()}{vg\_setGraphics()}}
+{\footnotesize\ttfamily bool() vg\+\_\+set\+Graphics (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{video__card_8h_a3000f858ecb5a5417c1566b691efd56d}\label{video__card_8h_a3000f858ecb5a5417c1566b691efd56d}} 
+\index{video\_card.h@{video\_card.h}!str@{str}}
+\index{str@{str}!video\_card.h@{video\_card.h}}
+\doxysubsubsection{\texorpdfstring{str}{str}}
+{\footnotesize\ttfamily char str\mbox{[}256\mbox{]}}
+

@@ -1,0 +1,57 @@
+\hypertarget{leaderboard_8c}{}\doxysection{leaderboard/leaderboard.c File Reference}
+\label{leaderboard_8c}\index{leaderboard/leaderboard.c@{leaderboard/leaderboard.c}}
+{\ttfamily \#include \char`\"{}leaderboard.\+h\char`\"{}}\newline
+Include dependency graph for leaderboard.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{leaderboard_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void() \mbox{\hyperlink{leaderboard_8c_a2dd8d7574085a18ec2746abce0f04881}{read\+Save\+File}} (struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$\mbox{\hyperlink{game_8h_ad2107a29c74a32275719ad6644abafc3}{LB}})
+\item 
+void() \mbox{\hyperlink{leaderboard_8c_a5c11ffc3061ec8846b14ce0acdb9d489}{write\+Save\+File}} (struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$\mbox{\hyperlink{game_8h_ad2107a29c74a32275719ad6644abafc3}{LB}})
+\item 
+int() \mbox{\hyperlink{leaderboard_8c_af01dc71e6b2c3f3a62c2b1e1cfd5d6ba}{compare\+Score}} (int score, struct \mbox{\hyperlink{structleaderboard}{leaderboard}} \mbox{\hyperlink{game_8h_ad2107a29c74a32275719ad6644abafc3}{LB}})
+\item 
+char $\ast$() \mbox{\hyperlink{leaderboard_8c_a29efc4729787df5faa427b46a2e5d4a1}{get\+Leader\+Board}} (struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$\mbox{\hyperlink{game_8h_ad2107a29c74a32275719ad6644abafc3}{LB}}, char $\ast$\mbox{\hyperlink{video__card_8h_a3000f858ecb5a5417c1566b691efd56d}{str}})
+\item 
+void() \mbox{\hyperlink{leaderboard_8c_a6a61ad6064d4ace340c98ef26acf58b8}{add\+Score}} (int score, char $\ast$\mbox{\hyperlink{game_8h_a816ec4eefee62701555be1c9560b398b}{name}}, struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$\mbox{\hyperlink{game_8h_ad2107a29c74a32275719ad6644abafc3}{LB}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{leaderboard_8c_a6a61ad6064d4ace340c98ef26acf58b8}\label{leaderboard_8c_a6a61ad6064d4ace340c98ef26acf58b8}} 
+\index{leaderboard.c@{leaderboard.c}!addScore@{addScore}}
+\index{addScore@{addScore}!leaderboard.c@{leaderboard.c}}
+\doxysubsubsection{\texorpdfstring{addScore()}{addScore()}}
+{\footnotesize\ttfamily void() add\+Score (\begin{DoxyParamCaption}\item[{int}]{score,  }\item[{char $\ast$}]{name,  }\item[{struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$}]{LB }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{leaderboard_8c_af01dc71e6b2c3f3a62c2b1e1cfd5d6ba}\label{leaderboard_8c_af01dc71e6b2c3f3a62c2b1e1cfd5d6ba}} 
+\index{leaderboard.c@{leaderboard.c}!compareScore@{compareScore}}
+\index{compareScore@{compareScore}!leaderboard.c@{leaderboard.c}}
+\doxysubsubsection{\texorpdfstring{compareScore()}{compareScore()}}
+{\footnotesize\ttfamily int() compare\+Score (\begin{DoxyParamCaption}\item[{int}]{score,  }\item[{struct \mbox{\hyperlink{structleaderboard}{leaderboard}}}]{LB }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{leaderboard_8c_a29efc4729787df5faa427b46a2e5d4a1}\label{leaderboard_8c_a29efc4729787df5faa427b46a2e5d4a1}} 
+\index{leaderboard.c@{leaderboard.c}!getLeaderBoard@{getLeaderBoard}}
+\index{getLeaderBoard@{getLeaderBoard}!leaderboard.c@{leaderboard.c}}
+\doxysubsubsection{\texorpdfstring{getLeaderBoard()}{getLeaderBoard()}}
+{\footnotesize\ttfamily char $\ast$() get\+Leader\+Board (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$}]{LB,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{leaderboard_8c_a2dd8d7574085a18ec2746abce0f04881}\label{leaderboard_8c_a2dd8d7574085a18ec2746abce0f04881}} 
+\index{leaderboard.c@{leaderboard.c}!readSaveFile@{readSaveFile}}
+\index{readSaveFile@{readSaveFile}!leaderboard.c@{leaderboard.c}}
+\doxysubsubsection{\texorpdfstring{readSaveFile()}{readSaveFile()}}
+{\footnotesize\ttfamily void() read\+Save\+File (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$}]{LB }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{leaderboard_8c_a5c11ffc3061ec8846b14ce0acdb9d489}\label{leaderboard_8c_a5c11ffc3061ec8846b14ce0acdb9d489}} 
+\index{leaderboard.c@{leaderboard.c}!writeSaveFile@{writeSaveFile}}
+\index{writeSaveFile@{writeSaveFile}!leaderboard.c@{leaderboard.c}}
+\doxysubsubsection{\texorpdfstring{writeSaveFile()}{writeSaveFile()}}
+{\footnotesize\ttfamily void() write\+Save\+File (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$}]{LB }\end{DoxyParamCaption})}
+

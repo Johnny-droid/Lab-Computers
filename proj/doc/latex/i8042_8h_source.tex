@@ -1,0 +1,71 @@
+\hypertarget{i8042_8h_source}{}\doxysection{i8042.\+h}
+\label{i8042_8h_source}\index{keyboard/i8042.h@{keyboard/i8042.h}}
+\mbox{\hyperlink{i8042_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_LCOM\_I8042\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_LCOM\_I8042\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define KBC\_IRQ 1 }\textcolor{comment}{//the keyboard uses IRQ line 1}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define KBC\_STAT\_CHECK (BIT(7) | BIT(6))}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define MOUSE\_CHECK BIT(5)}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define KBC\_OUT\_BUF\_FULL BIT(0)}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define KBC\_IN\_BUF\_FULL BIT(1)}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define KBC\_STAT\_REG 0x64}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define KBC\_OUT\_BUF 0x60}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define KBC\_READ\_CMD\_BYTE 0x20}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define KBC\_WRITE\_CMD\_BYTE 0x60}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define KBC\_COMMAND\_ENABLE\_INTERRUPTS (BIT(0))}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define KBC\_SCANCODE\_2B 0xE0}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define ESC\_MAKE 0x01}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define ESC\_BREAK 0x81}}
+\DoxyCodeLine{23 \textcolor{comment}{//\#define P\_MAKE 0x09}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define P\_BREAK 0x99}}
+\DoxyCodeLine{25 \textcolor{comment}{//\#define B\_MAKE 0x30}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define B\_BREAK 0xB0}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define A\_MAKE 0x1e}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define B\_MAKE 0x30}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define C\_MAKE 0x2e}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define D\_MAKE 0x20}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define E\_MAKE 0x12}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define F\_MAKE 0x21}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define G\_MAKE 0x22}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define H\_MAKE 0x23}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define I\_MAKE 0x17}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define J\_MAKE 0x24}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define K\_MAKE 0x25}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define L\_MAKE 0x26}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define M\_MAKE 0x32}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define N\_MAKE 0x31}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define O\_MAKE 0x18}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define P\_MAKE 0x19}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define Q\_MAKE 0x10}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define R\_MAKE 0x13}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define S\_MAKE 0x1f}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define T\_MAKE 0x14}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define U\_MAKE 0x16}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define V\_MAKE 0x2f}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define W\_MAKE 0x11}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define X\_MAKE 0x2d}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define Y\_MAKE 0x15}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define Z\_MAKE 0x2c}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#define DASH\_MAKE 0x35}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define ENTER\_MAKE 0x1c}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define DEL\_MAKE 0x0e}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define MAKE\_SCAN\_CODE BIT(7)}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }}
+\DoxyCodeLine{65 }
+
+\end{DoxyCode}

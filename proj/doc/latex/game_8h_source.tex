@@ -1,0 +1,160 @@
+\hypertarget{game_8h_source}{}\doxysection{game.\+h}
+\mbox{\hyperlink{game_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_GAME\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_GAME\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <lcom/timer.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <time.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{video__card_8h}{video\_card/video\_card.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{keyboard_8h}{keyboard/keyboard.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mouse_8h}{mouse/mouse.h}}"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{leaderboard_8h}{leaderboard/leaderboard.h}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{rtc_8h}{rtc/rtc.h}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define GAME\_GRAPHICS\_MODE 0x115}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define GAME\_WIDTH 800}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define GAME\_HEIGHT 600}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{comment}{// LAYOUT}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define GAME\_HORIZONTAL\_MARGIN 15 }\textcolor{comment}{//total 30 both sides}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define GAME\_VERTICAL\_MARGIN 95   }}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define GAME\_WIDTH\_MATRIX 11}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define GAME\_HEIGHT\_MATRIX 7}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define ALIEN\_WIDTH 70 }\textcolor{comment}{// maybe both are not needed because we can get info from xpm\_image\_t}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define ALIEN\_HEIGHT 70 }\textcolor{comment}{// when we load sprite. Although we might want a fix value to create margins and stuff in the game}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define ALIEN\_HORIZONTAL\_MARGIN 3 }\textcolor{comment}{// (70 -\/ 64) / 2}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define ALIEN\_VERTICAL\_MARGIN 3   }\textcolor{comment}{// (70 -\/ 64) / 2}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define CROSSHAIR\_WIDTH 64}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define CROSSHAIR\_HEIGHT 64}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define POINTS\_WIDTH\_MARGIN  700}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define POINTS\_HEIGHT\_MARGIN 32}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define POINTS\_BETWEEN\_MARGIN 5}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define BUTTON\_MARGIN\_TOP 100}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#define GAME\_MARGIN\_TOP 150}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{// GAMEPLAY }}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define NUMBER\_ALIEN\_STATES 7 }\textcolor{comment}{// Not counting empty}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define ALIEN\_INIT\_SPAWN\_TIME 70        }\textcolor{comment}{// in frames}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define ALIEN\_SPAWN\_RATE\_INCREASE  5   }\textcolor{comment}{// in frames}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define ALIEN\_RANDOM\_SPAWN\_ATTEMPTS 2  }}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define ALIEN\_MAX\_SPAWN\_RATE 20          }\textcolor{comment}{// in frames}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define MOUSE\_INIT\_X (GAME\_WIDTH / 2)}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define MOUSE\_INIT\_Y (GAME\_HEIGHT / 2)}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define GAME\_OVER\_WAIT 120}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 uint32\_t \mbox{\hyperlink{game_8h_af85b37ab0d53dc234104a2afd102323e}{game\_over\_counter}};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{keyword}{enum} \mbox{\hyperlink{game_8h_a4cc39f049df62b331976f9a4482bd3ea}{GAME\_STATE}} \{}
+\DoxyCodeLine{60     \mbox{\hyperlink{game_8h_a4cc39f049df62b331976f9a4482bd3eaaf095245f5cebc27a97a124345269fed8}{PLAYING}},}
+\DoxyCodeLine{61     \mbox{\hyperlink{game_8h_a4cc39f049df62b331976f9a4482bd3eaa56b36d0d0bb01b339cf1041adc08e262}{PAUSE}}, }
+\DoxyCodeLine{62     \mbox{\hyperlink{game_8h_a4cc39f049df62b331976f9a4482bd3eaa4c40e60bc71a32b924ce1f08d57f9721}{MENU}},}
+\DoxyCodeLine{63     \mbox{\hyperlink{game_8h_a4cc39f049df62b331976f9a4482bd3eaa871723195985a4ae22d7e10d99bf8a00}{GAME\_OVER}},}
+\DoxyCodeLine{64     \mbox{\hyperlink{game_8h_a4cc39f049df62b331976f9a4482bd3eaa7a10b5d68d31711288e1fe0fa17dbf4f}{EXIT}},}
+\DoxyCodeLine{65     \mbox{\hyperlink{game_8h_a4cc39f049df62b331976f9a4482bd3eaa8ac6a0bc60a7a5faad394dc988be36eb}{LEADERBOARD}},}
+\DoxyCodeLine{66     \mbox{\hyperlink{game_8h_a4cc39f049df62b331976f9a4482bd3eaa00607db4c8992d33428370cc98c732cc}{LB\_INPUT}}}
+\DoxyCodeLine{67 \};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{keyword}{enum} \mbox{\hyperlink{game_8h_a28cf9572c1dcda14f694920da49a42e7}{ALIEN\_STATE}} \{ \textcolor{comment}{// If changed, don't forget to change the macro above}}
+\DoxyCodeLine{70     \mbox{\hyperlink{game_8h_a28cf9572c1dcda14f694920da49a42e7a3f4f7c50d54273fd9820dad8c6f2bd06}{APPEARING}},}
+\DoxyCodeLine{71     \mbox{\hyperlink{game_8h_a28cf9572c1dcda14f694920da49a42e7a4f34c5c191d6e0d028ca831b6c0b1571}{ALIVE}},}
+\DoxyCodeLine{72     \mbox{\hyperlink{game_8h_a28cf9572c1dcda14f694920da49a42e7ae3d162c0c52c56d8e110cd9d729e4919}{DEAD\_1}}, \textcolor{comment}{//The dead states are used for animation}}
+\DoxyCodeLine{73     \mbox{\hyperlink{game_8h_a28cf9572c1dcda14f694920da49a42e7a20facb7bde405a597592073b7af0ad3d}{DEAD\_2}},}
+\DoxyCodeLine{74     \mbox{\hyperlink{game_8h_a28cf9572c1dcda14f694920da49a42e7aabe950cfd3d0266c222589700859649b}{DEAD\_3}},}
+\DoxyCodeLine{75     \mbox{\hyperlink{game_8h_a28cf9572c1dcda14f694920da49a42e7aaae0d9db5f92b5fd9efafcf31fc189ab}{DEAD\_4}},}
+\DoxyCodeLine{76     \mbox{\hyperlink{game_8h_a28cf9572c1dcda14f694920da49a42e7ae042fc5ab8cfa484fbb7059eadde5baa}{DEAD\_5}},}
+\DoxyCodeLine{77     \mbox{\hyperlink{game_8h_a28cf9572c1dcda14f694920da49a42e7a2f0d18fc0d0fa4a6cd92dc328501874d}{EMPTY}}}
+\DoxyCodeLine{78 \};}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_a_l_i_e_n}{ALIEN}} \{}
+\DoxyCodeLine{81     \textcolor{keyword}{enum} \mbox{\hyperlink{game_8h_a28cf9572c1dcda14f694920da49a42e7}{ALIEN\_STATE}} \mbox{\hyperlink{struct_a_l_i_e_n_aa59493b5805fd153ce54cc1c85b6f7d8}{state}};}
+\DoxyCodeLine{82     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_a_l_i_e_n_a9887e0c1f37fa12d4f465e866ce01f27}{time}};      \textcolor{comment}{// TIME LEFT FOR}}
+\DoxyCodeLine{83 \};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_k_i_l_l_e_r___a_l_i_e_n}{KILLER\_ALIEN}} \{}
+\DoxyCodeLine{86     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_k_i_l_l_e_r___a_l_i_e_n_afa36576260ebd1115dd6d086bd944ddb}{state}};}
+\DoxyCodeLine{87     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_k_i_l_l_e_r___a_l_i_e_n_a12d97b660f896674659dfc390b057f03}{x}};}
+\DoxyCodeLine{88     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_k_i_l_l_e_r___a_l_i_e_n_a1de5d7fc4de8748ccce81791013ac051}{y}};}
+\DoxyCodeLine{89 \};}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_k_i_l_l_e_r___a_l_i_e_n}{KILLER\_ALIEN}} \mbox{\hyperlink{game_8h_aa9f745e8273abe6509f27650dc0b44e3}{killer\_alien}};}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{keyword}{enum} \mbox{\hyperlink{game_8h_a4cc39f049df62b331976f9a4482bd3ea}{GAME\_STATE}} \mbox{\hyperlink{game_8h_a95a06bb9f2eef038903f7a456e404d0d}{game\_state}};}
+\DoxyCodeLine{95 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_a_l_i_e_n}{ALIEN}} \mbox{\hyperlink{game_8h_a71a7c46b982e7b13d05a0fd8808d0561}{game\_matrix}}[\mbox{\hyperlink{game_8h_a619ff51e6c4025de7ac57ddb5fa0ce1e}{GAME\_HEIGHT\_MATRIX}}][\mbox{\hyperlink{game_8h_ab6294ed4b3e92fd077d5eb0107973416}{GAME\_WIDTH\_MATRIX}}];}
+\DoxyCodeLine{96 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{game_8h_a6985ed91cb640ed6264376a8a1100bd5}{points}};}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} alien\_times[\mbox{\hyperlink{game_8h_a8562bf2837c9bfec78d51f58da443855}{NUMBER\_ALIEN\_STATES}} + 1] = \{}
+\DoxyCodeLine{99     5,     \textcolor{comment}{// APPEARING                       }}
+\DoxyCodeLine{100     300,    \textcolor{comment}{// ALIVE}}
+\DoxyCodeLine{101     2,     \textcolor{comment}{// DEAD\_1}}
+\DoxyCodeLine{102     2,     \textcolor{comment}{// DEAD\_2}}
+\DoxyCodeLine{103     2,     \textcolor{comment}{// DEAD\_3}}
+\DoxyCodeLine{104     2,     \textcolor{comment}{// DEAD\_4}}
+\DoxyCodeLine{105     2,     \textcolor{comment}{// DEAD\_5}}
+\DoxyCodeLine{106     0       \textcolor{comment}{// EMPTY}}
+\DoxyCodeLine{107 \};}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{comment}{// MOUSE VARIABLES}}
+\DoxyCodeLine{110 int16\_t \mbox{\hyperlink{game_8h_af31a1d563ee2613b5b30838bf58f012a}{mouse\_x}};}
+\DoxyCodeLine{111 int16\_t \mbox{\hyperlink{game_8h_a780edb8ad65677d73615b4e40d06f5f1}{mouse\_y}};}
+\DoxyCodeLine{112 int16\_t \mbox{\hyperlink{game_8h_a6787caddca16a8e6125ad4e27021909e}{crosshair\_half\_width}}; }
+\DoxyCodeLine{113 int16\_t \mbox{\hyperlink{game_8h_af1b1d91bd7b5cf243f8f576692fa5167}{crosshair\_half\_height}};  }
+\DoxyCodeLine{114 int16\_t \mbox{\hyperlink{game_8h_aea33b15b1c861d020486e041df25f297}{crosshair\_width\_border}};}
+\DoxyCodeLine{115 int16\_t \mbox{\hyperlink{game_8h_a5efc92cff0705c45959513e16f094912}{crosshair\_height\_border}};}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \textcolor{comment}{// BUTTON/TITLES VARIABLES}}
+\DoxyCodeLine{118 uint16\_t \mbox{\hyperlink{game_8h_a4216276c1be4ec4751582c8324fdc491}{play\_button\_xi}};}
+\DoxyCodeLine{119 uint16\_t \mbox{\hyperlink{game_8h_aa1344e062e70c32a1187fa9c3595fd88}{play\_button\_yi}};}
+\DoxyCodeLine{120 uint16\_t \mbox{\hyperlink{game_8h_a0cc80d5908d88586c4225c73c4fe50ea}{play\_button\_xf}};}
+\DoxyCodeLine{121 uint16\_t \mbox{\hyperlink{game_8h_ab0961a6ce7083c8b14babf4ced0f4f87}{play\_button\_yf}};}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 uint16\_t \mbox{\hyperlink{game_8h_a4ed9b29ebed1dcd0ed8b73a877566526}{exit\_button\_xi}};}
+\DoxyCodeLine{124 uint16\_t \mbox{\hyperlink{game_8h_ad1f709c79eeb979ad86a5743dac4980c}{exit\_button\_yi}};}
+\DoxyCodeLine{125 uint16\_t \mbox{\hyperlink{game_8h_aa18edd86e00957c86692e6c6e249377a}{exit\_button\_xf}};}
+\DoxyCodeLine{126 uint16\_t \mbox{\hyperlink{game_8h_a4681ec045dc310492fe8bd1bb9128070}{exit\_button\_yf}};}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128 \textcolor{keywordtype}{char} \mbox{\hyperlink{game_8h_a816ec4eefee62701555be1c9560b398b}{name}}[7];}
+\DoxyCodeLine{129 \textcolor{keywordtype}{char} \mbox{\hyperlink{game_8h_a1ed9a0d821b4f8dd55a6c612e814c841}{input\_message}}[100];}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131 \textcolor{keyword}{struct }\mbox{\hyperlink{structleaderboard}{leaderboard}} \mbox{\hyperlink{game_8h_ad2107a29c74a32275719ad6644abafc3}{LB}};}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133 uint8\_t \mbox{\hyperlink{game_8h_a7acca8be0094a19be6e308ac05924c4f}{minutes}};}
+\DoxyCodeLine{134 uint8\_t \mbox{\hyperlink{game_8h_a00a531a34a1d603329df5778f1203ab6}{hours}};}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136 void (\mbox{\hyperlink{game_8h_a73f48cfe60dbe2b92281991b723b0a91}{game\_initialize}})();}
+\DoxyCodeLine{137 int (\mbox{\hyperlink{game_8h_a649a26d3c9953d9f2af863e859e0c40d}{game\_loop}})();}
+\DoxyCodeLine{138 void (\mbox{\hyperlink{game_8h_aac455511c0aa59a5ad19dc56ff6cc1c8}{game\_ih}})();}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140 void(\mbox{\hyperlink{game_8h_a0b9ae809cf571f61e54712a23c65348e}{rtc\_ih}})();}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142 void (\mbox{\hyperlink{game_8h_aafd4e638af82c3c20fa3152f73fcab86}{game\_step}})();}
+\DoxyCodeLine{143 void (\mbox{\hyperlink{game_8h_ac6a6287dfa97719cf5473e69e5a61403}{game\_reset}})();}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145 void (\mbox{\hyperlink{game_8h_aa0afc3a2286335408c262a58142e3759}{game\_update\_alien\_times}})();}
+\DoxyCodeLine{146 void (\mbox{\hyperlink{game_8h_a1e39fffe92fbbbb4209c090f76811440}{game\_generate\_new\_alien}})();}
+\DoxyCodeLine{147 void (\mbox{\hyperlink{game_8h_a5f6f90520fc0bc9b07a0972cd3b0bfd7}{kill\_other\_aliens}})();}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149 void (\mbox{\hyperlink{game_8h_a153919f861b58032afacb6157560c394}{game\_leaderboard}})();}
+\DoxyCodeLine{150 void (\mbox{\hyperlink{game_8h_af17dbd0f57919b27039b8cc0fd90b93c}{game\_save\_and\_display\_lb}})();}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153 \textcolor{preprocessor}{\#endif }}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155 }
+
+\end{DoxyCode}
