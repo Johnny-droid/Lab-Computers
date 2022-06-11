@@ -1,14 +1,11 @@
 #include "leaderboard.h"
 
 void(readSaveFile)(struct leaderboard * LB){
-    memset(LB->scores, 0, sizeof LB->scores);
-    //memset(LB->dates, 0, sizeof LB->dates);
     memset(LB->names, 0, sizeof LB->names);
     FILE *file = fopen("/home/lcom/labs/proj/src/savefile.txt", "r");
     if(!file){
         for(int i = 0; i<10; i++){
             LB->scores[i] = 0;
-            strcpy(LB->names[i], "NOONE");
         }
         return;
     }
@@ -28,11 +25,11 @@ void(readSaveFile)(struct leaderboard * LB){
         int sc = atoi(temp_str);
         LB->scores[i] = sc;
         memset(temp_str, 0, sizeof temp_str);
-        while(line[j]!=' '){
-            temp_str[j] = line[j];
-            j++;
+        size_t k = 0;
+        while(line[j]!='.'){
+            temp_str[k] = line[j];
+            j++; k++;
         }
-        j++;
         strcpy(LB->names[i], temp_str);
         i--;
     }
@@ -42,16 +39,10 @@ void(readSaveFile)(struct leaderboard * LB){
 
 void(writeSaveFile)(struct leaderboard *LB){
     FILE *file = fopen("/home/lcom/labs/proj/src/savefile.txt", "w+");
-    if(!file)
-        return;
-    for(int i = 0; i<10; i++){
-        char sc[4];
-        sprintf(sc, "%d", LB->scores[i]);
-        fwrite(sc,1,sizeof sc,file);
-        fwrite(" ",1,1,file);
-        fwrite(LB->names[i],1,sizeof LB->names[i],file);
-        fwrite(".",1,1,file);
-    }
+    
+    for(int i = 9; i<=0; i--)
+        fprintf(file, "%d %s.\n", LB->scores[i], LB->names[i]);
+    
     fclose(file);
 }
 
@@ -83,7 +74,6 @@ char*(getLeaderBoard)(struct leaderboard* LB, char* str){
         strcat(str,"\n");
         i--;
     }
-    //printf("%s", str);
     return str;
 }
 
