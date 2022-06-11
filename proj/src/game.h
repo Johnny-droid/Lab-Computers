@@ -52,7 +52,7 @@
 #define MOUSE_INIT_X (GAME_WIDTH / 2)
 #define MOUSE_INIT_Y (GAME_HEIGHT / 2)
 
-#define GAME_OVER_WAIT 180
+#define GAME_OVER_WAIT 120
 
 uint32_t game_over_counter;
 

@@ -163,12 +163,12 @@ void(game_update_alien_times)() {
       // EMPTY
       if (alien->state == EMPTY) continue;
 
-      if(game_state != PLAYING){
+      if(game_state == GAME_OVER){
         if(killer_alien.x == j && killer_alien.y == i) continue;
         if (alien->time > 0) alien->time--;
         else{
           alien->state++;
-          alien->time = alien_times[alien->state];
+          alien->time = 2;
         }
         continue;
       }
@@ -205,7 +205,7 @@ void (kill_other_aliens)(){
       if (alien->state == EMPTY || (killer_alien.x == j && killer_alien.y == i)) continue;
       
       alien->state = DEAD_1;
-      alien->time = alien_times[DEAD_1];
+      alien->time = 2;
     }
   }
 }

@@ -76,9 +76,10 @@ void (vg_ih)() {
 }
 
 void (vg_draw_game_over)() {
-  if(game_over_counter < GAME_OVER_WAIT - 60)
+  if(game_over_counter < GAME_OVER_WAIT - 30)
     vg_draw_sprite(game_over, game_over_x, game_over_y, 1);
-  vg_draw_aliens();
+  else
+    vg_draw_aliens();
   vg_draw_killer_alien();
   vg_draw_crosshair(1);
 }
@@ -139,7 +140,7 @@ void (vg_draw_aliens)() {
       if (state == EMPTY) continue;
 
       sprite = alien_sprites[state];
-      if(game_state == PLAYING) vg_draw_sprite(sprite, x + ALIEN_HORIZONTAL_MARGIN, y + ALIEN_VERTICAL_MARGIN, 1);
+      vg_draw_sprite(sprite, x + ALIEN_HORIZONTAL_MARGIN, y + ALIEN_VERTICAL_MARGIN, 1);
     }
   } 
 }
