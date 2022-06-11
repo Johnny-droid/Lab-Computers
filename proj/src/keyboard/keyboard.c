@@ -143,7 +143,12 @@ void (keyboard_event_handler)(uint8_t scanCode) {
     game_state = EXIT;
     return;
   }
-
+  /*
+  if (scanCode == L_MAKE) {
+    game_state = LEADERBOARD;
+    return;
+  }
+  */
   switch (game_state) {
     case PLAYING:
       if (scanCode == P_BREAK) game_state = PAUSE;
@@ -185,15 +190,27 @@ void (keyboard_event_handler)(uint8_t scanCode) {
           case Z_MAKE: strcat(name, "Z"); break;
           
           case DASH_MAKE: strcat(name, "-"); break;
+
+          case DEL_MAKE:
+            if(name[0]!='\0') 
+              name[strlen(name)-1] = '\0';
+            break;
           
-          case ENTER_MAKE: if(name[0]!='\0') game_save_and_display_lb(); break;
+          case ENTER_MAKE: 
+            if(name[0]!='\0') 
+              game_save_and_display_lb();
+            break;
           
           default:
             break;
         }
-      else
+      else{
         if(scanCode == ENTER_MAKE && name[0]!='\0') 
           game_save_and_display_lb(); 
+
+        if(scanCode == DEL_MAKE && name[0]!='\0') 
+          name[strlen(name)-1] = '\0';
+      }
       break;
     case LEADERBOARD:
       if(scanCode == ENTER_MAKE)

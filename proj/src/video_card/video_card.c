@@ -20,16 +20,17 @@ static uint8_t blue_field_position;
 // Sprite variables
 const enum xpm_image_type sprite_type = XPM_8_8_8;
 static struct SPRITE alien_sprites[NUMBER_ALIEN_STATES];
+static struct SPRITE killer_alien_sprites[4];
 static struct SPRITE numbers_sprites[10];
 static struct SPRITE letters_sprites[26];
-static struct SPRITE symb_sprites[2];
+static struct SPRITE symb_sprites[3];
+static struct SPRITE lb_corners[4];
 static struct SPRITE crosshair;
 static struct SPRITE play_button[2]; //pressed and unpressed
 static struct SPRITE exit_button[2];
 static struct SPRITE game_over;
 static struct SPRITE game_name;
 static struct SPRITE paused;
-static struct SPRITE lbsprite;
 
 
 static uint16_t game_over_x;
@@ -75,7 +76,9 @@ void (vg_ih)() {
 }
 
 void (vg_draw_game_over)() {
-  vg_draw_sprite(game_over, game_over_x, game_over_y, 1);
+  if(game_over_counter < GAME_OVER_WAIT - 60)
+    vg_draw_sprite(game_over, game_over_x, game_over_y, 1);
+  vg_draw_aliens();
   vg_draw_killer_alien();
   vg_draw_crosshair(1);
 }
@@ -85,6 +88,7 @@ void (vg_draw_menu)() {
   vg_draw_game_name();
   vg_draw_play_button();
   vg_draw_exit_button();
+  vg_draw_time_info();
   vg_draw_crosshair(1);
 }
 
@@ -135,31 +139,42 @@ void (vg_draw_aliens)() {
       if (state == EMPTY) continue;
 
       sprite = alien_sprites[state];
-      vg_draw_sprite(sprite, x + ALIEN_HORIZONTAL_MARGIN, y + ALIEN_VERTICAL_MARGIN, 1);
+      if(game_state == PLAYING) vg_draw_sprite(sprite, x + ALIEN_HORIZONTAL_MARGIN, y + ALIEN_VERTICAL_MARGIN, 1);
     }
   } 
 }
 
 void (vg_draw_killer_alien)() {
+  struct SPRITE sprite = killer_alien_sprites[killer_alien.state];
+  size_t x = killer_alien.x * ALIEN_WIDTH + ALIEN_HORIZONTAL_MARGIN + GAME_HORIZONTAL_MARGIN;
+  size_t y = killer_alien.y * ALIEN_HEIGHT + ALIEN_VERTICAL_MARGIN + GAME_VERTICAL_MARGIN;
+  uint32_t color = 0;
+  uint8_t buffer_no = 1;
+  char* temp_video_mem;
+  char* temp_sprite = sprite.ptr;
+
+  if (buffer_no == 0) {
+    temp_video_mem = video_mem;
+  } else if (buffer_no == 1) {
+    temp_video_mem = buffer;
+  } else {
+    return;
+  }
+
+  uint32_t row_increment = (h_res - sprite.info.width) * bytes_per_pixel;
+  temp_video_mem += (h_res*y + x)*bytes_per_pixel;
   
-  uint16_t xi = GAME_HORIZONTAL_MARGIN;
-  uint16_t yi = GAME_VERTICAL_MARGIN;
-  uint16_t x = xi;
-  uint16_t y = yi;
-  struct SPRITE sprite;
-  enum ALIEN_STATE state;
-
-  for (int i = 0; i < GAME_HEIGHT_MATRIX; i++, y += ALIEN_HEIGHT) {
-    x = xi;
-    for (int j = 0; j < GAME_WIDTH_MATRIX; j++, x += ALIEN_WIDTH) {
-      state = game_matrix[i][j].state;
-      unsigned int time = game_matrix[i][j].time;
-      if (state == EMPTY || time!=0) continue;
-
-      sprite = alien_sprites[state];
-      vg_draw_sprite(sprite, x + ALIEN_HORIZONTAL_MARGIN, y + ALIEN_VERTICAL_MARGIN, 1);
+  for (uint16_t i = y; i < v_res && i < y + sprite.info.height; i++, temp_video_mem += row_increment) {
+    for (uint16_t j = x; j < h_res && j < x + sprite.info.width; j++, temp_video_mem += bytes_per_pixel) {
+      color = (temp_sprite[0] | temp_sprite[1] | temp_sprite[2]);
+      if (color == 0) { temp_sprite += 3; continue;}
+      for (unsigned int byte = 0; byte < bytes_per_pixel; byte++) {
+        temp_video_mem[byte] = *temp_sprite;
+        temp_sprite++;
+      }
+      
     }
-  } 
+  }
 }
 
 
@@ -178,7 +193,6 @@ void (vg_draw_crosshair)(uint8_t buffer_no) {
   uint16_t x = mouse_x - crosshair_half_width;
   uint16_t y = mouse_y - crosshair_half_height;
   uint32_t row_increment = (h_res - crosshair.info.width) * bytes_per_pixel;
-  //uint32_t row_increment = h_res * bytes_per_pixel;
   temp_video_mem += (h_res*y + x)*bytes_per_pixel;
   
   for (uint16_t i = y; i < v_res && i < y + crosshair.info.height; i++, temp_video_mem += row_increment) {
@@ -288,6 +302,7 @@ void (vg_draw_str)(char * str, int x0, int y0){
 
     case '-': vg_draw_sprite(symb_sprites[0], x, y, 1); break;
     case '/': vg_draw_sprite(symb_sprites[1], x, y, 1); break;
+    case ':': vg_draw_sprite(symb_sprites[2], x+8, y+8, 1); break;
 
     case ' ':
       x -= letters_sprites[0].info.width - 20;
@@ -308,15 +323,65 @@ void (vg_draw_str)(char * str, int x0, int y0){
 void (vg_draw_input_screen)(){
   vg_draw_str(input_message, 100, 100);
   if(name[0]!='\0')
-    vg_draw_str(name, 7*letters_sprites[0].info.width+100, letters_sprites[0].info.height+100);
+    vg_draw_str(name, 8*letters_sprites[0].info.width+96, letters_sprites[0].info.height+100);
   vg_draw_crosshair(1);
 }
 
 void (vg_draw_leadeboard)(){
-  //vg_draw_sprite(lbsprite, 1, 1, 1);
-  vg_draw_str(getLeaderBoard(&LB, str), 200, 100);
-  vg_draw_str("PRESS ENTER TO CONTINUE", 100, 100+13*letters_sprites[0].info.height);
+  vg_draw_sprite(lb_corners[0], 1, 1, 1);
+  vg_draw_sprite(lb_corners[1], 702, 1, 1);
+  vg_draw_sprite(lb_corners[2], 702, 502, 1);
+  vg_draw_sprite(lb_corners[3], 1, 502, 1);
+  vg_draw_str(getLeaderBoard(&LB, str), 230, 30);
+  vg_draw_str("PRESS ENTER TO CONTINUE", 50, 100+12*letters_sprites[0].info.height);
   vg_draw_crosshair(1);
+}
+
+void (vg_draw_time_info)() {
+  int aux_number;
+  int  hous_vg = hours;
+  int  minutes_vg = minutes;
+  uint16_t x = POINTS_WIDTH_MARGIN;
+  uint16_t y = POINTS_HEIGHT_MARGIN+8;
+  int n = 0;
+  while (minutes_vg != 0) {
+      n++;
+    aux_number = minutes_vg % 10;
+    minutes_vg /= 10;
+    vg_draw_sprite(numbers_sprites[aux_number], x, y, 1);
+    x -= numbers_sprites[aux_number].info.width + POINTS_BETWEEN_MARGIN;
+  }
+  if(n==1){
+    vg_draw_sprite(numbers_sprites[0], x, y, 1);
+    x -= numbers_sprites[0].info.width + POINTS_BETWEEN_MARGIN;    
+  }
+  if(n==0){
+    vg_draw_sprite(numbers_sprites[0], x, y, 1);
+    x -= numbers_sprites[0].info.width + POINTS_BETWEEN_MARGIN;
+    vg_draw_sprite(numbers_sprites[0], x, y, 1);
+    x -= numbers_sprites[0].info.width + POINTS_BETWEEN_MARGIN;      
+  }
+  vg_draw_sprite(symb_sprites[2], x+8, y+6+8, 1);
+  x -= numbers_sprites[1].info.width + POINTS_BETWEEN_MARGIN;
+  n=0;
+  while (hous_vg != 0) {
+    n++;
+    aux_number = hous_vg % 10;
+    hous_vg /= 10;
+    vg_draw_sprite(numbers_sprites[aux_number], x, y, 1);
+    x -= numbers_sprites[aux_number].info.width + POINTS_BETWEEN_MARGIN;
+  }
+  if(n==1){
+    vg_draw_sprite(numbers_sprites[0], x, y, 1);
+    x -= numbers_sprites[0].info.width + POINTS_BETWEEN_MARGIN;    
+  }
+  if(n==0){
+    vg_draw_sprite(numbers_sprites[0], x, y, 1);
+    x -= numbers_sprites[0].info.width + POINTS_BETWEEN_MARGIN;
+    vg_draw_sprite(numbers_sprites[0], x, y, 1);
+    x -= numbers_sprites[0].info.width + POINTS_BETWEEN_MARGIN;      
+  }
+
 }
 
   /*
@@ -432,6 +497,9 @@ bool (vg_load_sprites)() {
   xpm_image_t alien_dead_3_info;
   xpm_image_t alien_dead_4_info;
   xpm_image_t alien_dead_5_info;
+  xpm_image_t alien_kill_1_info;
+  xpm_image_t alien_kill_2_info;
+  xpm_image_t alien_kill_3_info;
   xpm_image_t crosshair_info;
   xpm_image_t number_0_info; xpm_image_t number_1_info;
   xpm_image_t number_2_info; xpm_image_t number_3_info;
@@ -453,7 +521,10 @@ bool (vg_load_sprites)() {
   xpm_image_t letter_W_info; xpm_image_t letter_X_info;
   xpm_image_t letter_Y_info; xpm_image_t letter_Z_info;
   xpm_image_t symb_dash_info; xpm_image_t symb_slash_info;
-  xpm_image_t lbsprite_info;
+  xpm_image_t two_points_info;
+
+  xpm_image_t lbc_1_info; xpm_image_t lbc_2_info;
+  xpm_image_t lbc_4_info; xpm_image_t lbc_3_info;
   
   xpm_image_t play_button_pressed_info; xpm_image_t play_button_unpressed_info; 
   xpm_image_t exit_button_pressed_info; xpm_image_t exit_button_unpressed_info; 
@@ -466,6 +537,9 @@ bool (vg_load_sprites)() {
   char* alien_dead_3_ptr = (char*) xpm_load(xpm_alien_dead_3, sprite_type, &alien_dead_3_info);
   char* alien_dead_4_ptr = (char*) xpm_load(xpm_alien_dead_4, sprite_type, &alien_dead_4_info);
   char* alien_dead_5_ptr = (char*) xpm_load(xpm_alien_dead_5, sprite_type, &alien_dead_5_info);
+  char* alien_kill_1_ptr = (char*) xpm_load(xpm_alien_kill_1, sprite_type, &alien_kill_1_info);
+  char* alien_kill_2_ptr = (char*) xpm_load(xpm_alien_kill_2, sprite_type, &alien_kill_2_info);
+  char* alien_kill_3_ptr = (char*) xpm_load(xpm_alien_kill_3, sprite_type, &alien_kill_3_info);
   char* crosshair_ptr = (char*) xpm_load(xpm_crosshair, sprite_type, &crosshair_info);
   char* number_0_ptr = (char*) xpm_load(xpm_0, sprite_type, &number_0_info);
   char* number_1_ptr = (char*) xpm_load(xpm_1, sprite_type, &number_1_info);
@@ -506,8 +580,12 @@ bool (vg_load_sprites)() {
   char* letter_Z_ptr = (char*) xpm_load(xpm_Z, sprite_type, &letter_Z_info);
   char* symb_dash_ptr = (char*) xpm_load(xpm_dash, sprite_type, &symb_dash_info);
   char* symb_slash_ptr = (char*) xpm_load(xpm_slash, sprite_type, &symb_slash_info);
+  char* two_points_ptr = (char*) xpm_load(xpm_two_points, sprite_type, &two_points_info);
 
-  char * lbsprite_ptr = (char*) xpm_load(xpm_lbbig, sprite_type, &lbsprite_info);
+  char * lbc_1_ptr = (char*) xpm_load(xpm_lbc1, sprite_type, &lbc_1_info);
+  char * lbc_2_ptr = (char*) xpm_load(xpm_lbc2, sprite_type, &lbc_2_info);
+  char * lbc_3_ptr = (char*) xpm_load(xpm_lbc3, sprite_type, &lbc_3_info);
+  char * lbc_4_ptr = (char*) xpm_load(xpm_lbc4, sprite_type, &lbc_4_info);
 
   char* play_button_pressed_ptr = (char*) xpm_load(xpm_play_button_pressed, sprite_type, &play_button_pressed_info);
   char* play_button_unpressed_ptr = (char*) xpm_load(xpm_play_button_unpressed, sprite_type, &play_button_unpressed_info);
@@ -524,6 +602,9 @@ bool (vg_load_sprites)() {
   struct SPRITE alien_dead_3 = {alien_dead_3_ptr, alien_dead_3_info};
   struct SPRITE alien_dead_4 = {alien_dead_4_ptr, alien_dead_4_info};
   struct SPRITE alien_dead_5 = {alien_dead_5_ptr, alien_dead_5_info};
+  struct SPRITE alien_kill_1 = {alien_kill_1_ptr, alien_kill_1_info};
+  struct SPRITE alien_kill_2 = {alien_kill_2_ptr, alien_kill_2_info};
+  struct SPRITE alien_kill_3 = {alien_kill_3_ptr, alien_kill_3_info};
   struct SPRITE crosshair_sprite = {crosshair_ptr, crosshair_info}; crosshair = crosshair_sprite;
   struct SPRITE number_0 = {number_0_ptr, number_0_info};
   struct SPRITE number_1 = {number_1_ptr, number_1_info};
@@ -574,10 +655,12 @@ bool (vg_load_sprites)() {
   struct SPRITE game_name_sprite = {game_name_ptr, game_name_info}; game_name = game_name_sprite;
   struct SPRITE paused_sprite = {paused_ptr, paused_info}; paused = paused_sprite;
 
-  struct SPRITE lb_temp_sprite = {lbsprite_ptr, lbsprite_info};
-  
+  struct SPRITE lbc_1 = {lbc_1_ptr, lbc_1_info};
+  struct SPRITE lbc_2 = {lbc_2_ptr, lbc_2_info};
+  struct SPRITE lbc_3 = {lbc_3_ptr, lbc_3_info};
+  struct SPRITE lbc_4 = {lbc_4_ptr, lbc_4_info};
 
-  lbsprite = lb_temp_sprite;
+  struct SPRITE two_points = {two_points_ptr, two_points_info};
 
   alien_sprites[0] = alien_alive;
   alien_sprites[1] = alien_appearing;
@@ -586,6 +669,11 @@ bool (vg_load_sprites)() {
   alien_sprites[4] = alien_dead_3;
   alien_sprites[5] = alien_dead_4;
   alien_sprites[6] = alien_dead_5;
+
+  killer_alien_sprites[0] = alien_kill_1;
+  killer_alien_sprites[1] = alien_kill_2;
+  killer_alien_sprites[2] = alien_kill_3;
+  killer_alien_sprites[3] = alien_appearing;
 
   numbers_sprites[0] = number_0;
   numbers_sprites[1] = number_1;
@@ -627,6 +715,12 @@ bool (vg_load_sprites)() {
 
   symb_sprites[0] = symb_dash;
   symb_sprites[1] = symb_slash;
+  symb_sprites[2] = two_points;
+
+  lb_corners[0] = lbc_1;
+  lb_corners[1] = lbc_2;
+  lb_corners[2] = lbc_3;
+  lb_corners[3] = lbc_4;
 
   play_button[0] = play_button_pressed;
   play_button[1] = play_button_unpressed;

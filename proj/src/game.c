@@ -9,8 +9,6 @@ static uint32_t random_alien_counter;
 static uint32_t random_alien_number;
 static uint32_t random_alien_spawn_rate_increase;
 
-static uint32_t game_over_counter;
-
 
 void(game_initialize)() {
   srand(time(NULL));    //used to generate random numbers for alien spawn
@@ -42,6 +40,7 @@ int(game_loop)() {
   kbc_subscribe_int(&bit_no_KBC);
   timer_subscribe_int(&bit_no_TIMER);
   mouse_subscribe_int(&bit_no_MOUSE);
+  rtc_ih();
 
   int ipc_status, r = 0;
   uint32_t irq_set_kbc = BIT(bit_no_KBC);
@@ -69,6 +68,7 @@ int(game_loop)() {
           if (msg.m_notify.interrupts & irq_set_timer) {
             frame_counter++;
             if (frame_counter % frame_number == 0) {
+              if (game_state == MENU) rtc_ih();
               vg_ih();
               game_ih();
             }
@@ -91,7 +91,11 @@ int(game_loop)() {
   return 0;
 }
 
-
+void(rtc_ih)(){
+  read_time();
+  hours = get_rtc_hours();
+  minutes = get_rtc_minutes();
+}
 
 void(game_ih)() {
 
@@ -100,7 +104,9 @@ void(game_ih)() {
       game_step();
       break;
     case GAME_OVER:
+      game_update_alien_times();
       game_over_counter--;
+      killer_alien.state = (game_over_counter/5) % 4;
       if (game_over_counter == 0) game_leaderboard();
       break;
     default:
@@ -111,12 +117,12 @@ void(game_ih)() {
 void (game_leaderboard)(){
   memset(name, 0, sizeof name);
   memset(input_message, 0, sizeof input_message);
-  strcpy(input_message, "SCORE - ");
+  strcpy(input_message, "SCORE:   ");
   char sc[4];
   sprintf(sc, "%d", points);
   strcat(input_message, sc);
   if(compareScore(points, LB)){
-    strcat(input_message, "\nNAME  - \n\nTYPE AND PRESS ENTER");
+    strcat(input_message, "\nNAME:   \n\nTYPE AND PRESS ENTER");
     game_state = LB_INPUT;
     return;
   }
@@ -150,17 +156,31 @@ void(game_update_alien_times)() {
   // Decrease time for every alien
   struct ALIEN *alien;
 
-  for (int i = 0; i < GAME_HEIGHT_MATRIX; i++) {
-    for (int j = 0; j < GAME_WIDTH_MATRIX; j++) {
+  for (size_t i = 0; i < GAME_HEIGHT_MATRIX; i++) {
+    for (size_t j = 0; j < GAME_WIDTH_MATRIX; j++) {
       alien = &game_matrix[i][j];
       
       // EMPTY
       if (alien->state == EMPTY) continue;
 
+      if(game_state != PLAYING){
+        if(killer_alien.x == j && killer_alien.y == i) continue;
+        if (alien->time > 0) alien->time--;
+        else{
+          alien->state++;
+          alien->time = alien_times[alien->state];
+        }
+        continue;
+      }
+
       // ALIENS KILL PLAYER
       if (alien->state == ALIVE && alien->time == 0) {
         game_over_counter = GAME_OVER_WAIT;
         game_state = GAME_OVER;
+        killer_alien.state = 0;
+        killer_alien.x = j;
+        killer_alien.y = i;
+        kill_other_aliens();
         return;
       }
 
@@ -176,6 +196,19 @@ void(game_update_alien_times)() {
   }
 }
 
+void (kill_other_aliens)(){
+  struct ALIEN *alien;
+  for (size_t i = 0; i < GAME_HEIGHT_MATRIX; i++) {
+    for (size_t j = 0; j < GAME_WIDTH_MATRIX; j++) {
+      alien = &game_matrix[i][j];
+      
+      if (alien->state == EMPTY || (killer_alien.x == j && killer_alien.y == i)) continue;
+      
+      alien->state = DEAD_1;
+      alien->time = alien_times[DEAD_1];
+    }
+  }
+}
 
 void(game_generate_new_alien)() {
   if (random_alien_counter < random_alien_number) {

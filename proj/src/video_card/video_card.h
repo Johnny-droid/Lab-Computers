@@ -52,6 +52,7 @@ void (vg_draw_leadeboard)();
 
 void (vg_ih)();
 
+void (vg_draw_time_info)() ;
 
 
 #endif

@@ -9,6 +9,7 @@
 #include "keyboard/keyboard.h"
 #include "mouse/mouse.h"
 #include "leaderboard/leaderboard.h"
+#include "rtc/rtc.h"
 
 #define GAME_GRAPHICS_MODE 0x115
 #define GAME_WIDTH 800
@@ -51,7 +52,9 @@
 #define MOUSE_INIT_X (GAME_WIDTH / 2)
 #define MOUSE_INIT_Y (GAME_HEIGHT / 2)
 
-#define GAME_OVER_WAIT 60
+#define GAME_OVER_WAIT 180
+
+uint32_t game_over_counter;
 
 enum GAME_STATE {
     PLAYING,
@@ -75,10 +78,18 @@ enum ALIEN_STATE { // If changed, don't forget to change the macro above
 };
 
 struct ALIEN {
-    // if we want other aliens we can just add a type here
     enum ALIEN_STATE state;
     unsigned int time;      // TIME LEFT FOR
 };
+
+struct KILLER_ALIEN {
+    size_t state;
+    size_t x;
+    size_t y;
+};
+
+struct KILLER_ALIEN killer_alien;
+
 
 enum GAME_STATE game_state;
 struct ALIEN game_matrix[GAME_HEIGHT_MATRIX][GAME_WIDTH_MATRIX];
@@ -114,20 +125,26 @@ uint16_t exit_button_yi;
 uint16_t exit_button_xf;
 uint16_t exit_button_yf;
 
-char name[6];
+char name[7];
 char input_message[100];
 
 struct leaderboard LB;
 
+uint8_t minutes;
+uint8_t hours;
+
 void (game_initialize)();
 int (game_loop)();
 void (game_ih)();
+
+void(rtc_ih)();
 
 void (game_step)();
 void (game_reset)();
 
 void (game_update_alien_times)();
 void (game_generate_new_alien)();
+void (kill_other_aliens)();
 
 void (game_leaderboard)();
 void (game_save_and_display_lb)();

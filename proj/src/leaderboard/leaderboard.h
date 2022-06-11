@@ -15,9 +15,7 @@
 
 struct leaderboard
 {
-    char names[10][6];
-
-    //char dates[10][11];
+    char names[10][7];
 
     uint8_t scores[10];
 };
@@ -29,7 +27,7 @@ void(writeSaveFile)(struct leaderboard* LB);
 
 int(compareScore)(int score, struct leaderboard LB);
 
-void(addScore)(int score, char name[10], /*char date[10],*/ struct leaderboard* LB);
+void(addScore)(int score, char* name, /*char date[10],*/ struct leaderboard* LB);
 
 char * (getLeaderBoard)(struct leaderboard* LB, char* str);
 

@@ -7,22 +7,30 @@
 #include <stdint.h>
 #include "../game.h"
 #include "keyboard/keyboard.h"
-#include "rtc_mecros.h"
+#include "rtc_macros.h"
+
+static  uint8_t g_rtc_seconds;
+static  uint8_t g_rtc_minutes;
+static  uint8_t g_rtc_hours;
+static  uint8_t g_rtc_day;
+static  uint8_t g_rtc_month;
+static  uint8_t g_rtc_year;
 
 
-
-int(mouse_subscribe_int)(uint8_t *bit_no);
-int(mouse_unsubscribe_int)();
-
-
-void (mouse_ih)();
-void (mouse_event_handler)(struct MOUSE_EVENT mouse_event);
-void (mouse_check_kill)();
-int (read_ACK_byte)();
-int (mouse_disable_data_reporting)(int mode);
-
-
-
- 
+int (get_rtc_seconds)();
+uint8_t (to_BCD)(uint8_t value);
+int (get_rtc_minutes)();
+int (get_rtc_hours)();
+int (get_rtc_day)();
+int (get_rtc_month)();
+int (get_rtc_year)();
+int(rtc_subscribe_int)(uint8_t *bit_no) ;
+int(rtc_unsubscribe_int)() ;
+int (read_time)();
+void (read_reg_B)();
+void (write_reg_B)();
+void (disable_interrupts_rtc)();
+void (enable_interrupts_rtc)();
+void (wait_valid_rtc)();
 
 #endif

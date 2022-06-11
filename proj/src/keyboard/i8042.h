@@ -56,6 +56,7 @@
 
 #define DASH_MAKE 0x35
 #define ENTER_MAKE 0x1c
+#define DEL_MAKE 0x0e
 
 #define MAKE_SCAN_CODE BIT(7)
 

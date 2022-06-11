@@ -10,91 +10,101 @@
 
 unsigned char reg_A;
 unsigned char reg_B;
-unsigned char g_rtc_seconds;
-unsigned char g_rtc_minutes;
-unsigned char g_rtc_hours;
-unsigned char g_rtc_day;
-unsigned char g_rtc_month;
-unsigned char g_rtc_year;
+
 static int g_rtc_hook_id = 8;				/**< @brief  RTC's Hook ID */
 
+int (get_rtc_seconds)()
+{
+	return g_rtc_seconds;
+}
+int (get_rtc_minutes)()
+{
+	return g_rtc_minutes;
+}
+int (get_rtc_hours)()
+{
+	return g_rtc_hours;
+}
+int (get_rtc_day)()
+{
+	return g_rtc_day;
+}
+int (get_rtc_month)()
+{
+	return g_rtc_month;
+}
+int (get_rtc_year)()
+{
+	return g_rtc_year;
+}
 
-int(rtc_subscribe_int)(uint8_t *bit_no) {
+int(rtc_subscribe_int)(uint8_t *bit_no) 
+{
   *bit_no = g_rtc_hook_id = RTC_IRQ;
   return sys_irqsetpolicy(RTC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &g_rtc_hook_id);
 } 
 
 
-int(rtc_unsubscribe_int)() {
+int(rtc_unsubscribe_int)() 
+{
   return sys_irqrmpolicy(&g_rtc_hook_id);
 }
 
-Time (read_time)(){
+int (read_time)(){
 
 	wait_valid_rtc();
-
-
   sys_outb(RTC_ADDR_REG, SECONDS);
-	sys_inb(RTC_DATA_REG, &g_rtc_seconds);
+	util_sys_inb(RTC_DATA_REG, &g_rtc_seconds);
+	g_rtc_seconds = to_BCD(g_rtc_seconds);
+
   sys_outb(RTC_ADDR_REG, MINUTES);
-	sys_inb(RTC_DATA_REG, &g_rtc_minutes);
+	util_sys_inb(RTC_DATA_REG, &g_rtc_minutes);
+	g_rtc_minutes = to_BCD(g_rtc_minutes);
+
   sys_outb(RTC_ADDR_REG, HOURS);
-	sys_inb(RTC_DATA_REG, & g_rtc_hours);
+	util_sys_inb(RTC_DATA_REG, & g_rtc_hours);
+	g_rtc_hours = to_BCD(g_rtc_hours);
+
   sys_outb(RTC_ADDR_REG, DATE_OF_THE_MONTH);
-	sys_inb(RTC_DATA_REG, &g_rtc_day);
+	util_sys_inb(RTC_DATA_REG, &g_rtc_day);
+	g_rtc_day = to_BCD(g_rtc_day);
+
   sys_outb(RTC_ADDR_REG, MONTH);
-	sys_inb(RTC_DATA_REG, &g_rtc_month);
+	util_sys_inb(RTC_DATA_REG, &g_rtc_month);
+	g_rtc_month = to_BCD(g_rtc_month);
+
   sys_outb(RTC_ADDR_REG, YEAR);
-	sys_inb(RTC_DATA_REG, &g_rtc_year);
+	util_sys_inb(RTC_DATA_REG, &g_rtc_year);
+	g_rtc_year = to_BCD(g_rtc_year);
 
-
-
-	//Store the already converted values in convenient variables
-	unsigned int sec = interpret_BCD(g_rtc_seconds);
-	unsigned int min = interpret_BCD(g_rtc_minutes);
-	unsigned int hour = interpret_BCD(g_rtc_hours);
-	unsigned int day = interpret_BCD(g_rtc_day);
-	unsigned int month = interpret_BCD(g_rtc_month);
-	unsigned int year = interpret_BCD(g_rtc_year);
-
-	//Create a time object
-	Time time = create_time(sec, min, hour, day, month, year);
-   struct tm strtime;
-    time_t timeoftheday;
- 
-    strtime.tm_year = g_rtc_year-1900;
-    strtime.tm_mon = 1;
-    strtime.tm_mday = g_rtc_day;
-    strtime.tm_hour = g_rtc_hours;
-    strtime.tm_min = g_rtc_minutes;
-    strtime.tm_sec = g_rtc_seconds;
-    strtime.tm_isdst = 0;
- 
-    timeoftheday = mktime(&strtime);
-    printf(ctime(&timeoftheday));
- 
-	return time;
+	return 0;
 }
 
-void read_reg_B()
+void (read_reg_B)()
 {
-	unsigned long reg_B1=0;
+	 uint8_t reg_B1=0;
 
 	//Read RTC's Register B and store it in a convenient variable
-	sys_outb(RTC_ADDR_REG, RTC_REG_B);
-	sys_inb(RTC_DATA_REG, &reg_B1);
+	sys_outb(RTC_ADDR_REG, REGISTER_B);
+	util_sys_inb(RTC_DATA_REG, &reg_B1);
 	reg_B = (unsigned char) reg_B1;
 }
-
-void write_reg_B()
+uint8_t (to_BCD)(uint8_t value)
 {
-	sys_outb(RTC_ADDR_REG, RTC_REG_B);
+	return ((value & 0xF0) >> 4) * 10 + (value & 0x0F);
+}
+
+void (write_reg_B)()
+{
+	sys_outb(RTC_ADDR_REG, REGISTER_B);
 	sys_outb(RTC_DATA_REG, reg_B);
 }
 
-void disable_interrupts()
+void (disable_interrupts_rtc)()
 {
 	read_reg_B();
+	reg_B |= set24;
+	reg_B &= setBCD;
 
 	//Disable interrupts
 	reg_B &= disINT;
@@ -103,7 +113,7 @@ void disable_interrupts()
 
 }
 
-void enable_interrupts(){
+void (enable_interrupts_rtc)(){
 
 	read_reg_B();
 
@@ -114,18 +124,17 @@ void enable_interrupts(){
 
 }
 
-void wait_valid_rtc()
+void (wait_valid_rtc)()
 {
-	unsigned long reg_A1 = 0;
+	uint8_t reg_A1 = 0;
 
 	do
 	{
-		disable_interrupts();
-		sys_outb(RTC_ADDR_REG, RTC_REG_A);
-		sys_inb(RTC_DATA_REG, &reg_A1);
-		enable_interrupts();
+		disable_interrupts_rtc();
+		sys_outb(RTC_ADDR_REG, REGISTER_A);
+		util_sys_inb(RTC_DATA_REG, &reg_A1);
+		enable_interrupts_rtc();
 	} while (reg_A1 & RTC_UIP);
 
 	reg_A = (unsigned char) reg_A1;
 }
-
