@@ -1,5 +1,5 @@
-\hypertarget{mouse_8h}{}\doxysection{mouse/mouse.h File Reference}
-\label{mouse_8h}\index{mouse/mouse.h@{mouse/mouse.h}}
+\hypertarget{mouse_8h}{}\doxysection{C\+:/\+Users/ruben/\+Documents/\+FEUP/2nd year/2nd semester/\+LC/g03/g03/proj/src/mouse/mouse.h File Reference}
+\label{mouse_8h}\index{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/mouse/mouse.h@{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/mouse/mouse.h}}
 {\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
 {\ttfamily \#include $<$minix/sysutil.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
@@ -35,22 +35,22 @@ int() \mbox{\hyperlink{mouse_8h_a20285aed4b3ef45812cd967532dd09db}{mouse\+\_\+su
 \item 
 int() \mbox{\hyperlink{mouse_8h_a3ecf823d80520009ae5e0d76ae40a3c3}{mouse\+\_\+unsubscribe\+\_\+int}} ()
 \item 
-void() \mbox{\hyperlink{mouse_8h_a210374b50462acdedab00df64d5cea3c}{mouse\+\_\+ih}} ()
-\item 
-void() \mbox{\hyperlink{mouse_8h_ae0d3b412f09718fec3afd120513f3756}{mouse\+\_\+event\+\_\+handler}} (struct \mbox{\hyperlink{struct_m_o_u_s_e___e_v_e_n_t}{MOUSE\+\_\+\+EVENT}} mouse\+\_\+event)
-\item 
-void() \mbox{\hyperlink{mouse_8h_ad2d94c7d8b705ce66d78c051583c0b83}{mouse\+\_\+check\+\_\+kill}} ()
-\item 
-void() \mbox{\hyperlink{mouse_8h_a41b69eaee44df2735e93e86e47331c97}{mouse\+\_\+check\+\_\+play\+\_\+button}} ()
-\item 
-void() \mbox{\hyperlink{mouse_8h_a22df7a8452e94ae336bd1f9e173cca11}{mouse\+\_\+check\+\_\+exit\+\_\+button}} ()
-\item 
 int() \mbox{\hyperlink{mouse_8h_a57893ebbaf2b78253872701306ddff9f}{read\+\_\+\+ACK\+\_\+byte}} ()
 \item 
 int() \mbox{\hyperlink{mouse_8h_ad66de948c1c7069dcebb565bf8655a9b}{mouse\+\_\+disable\+\_\+data\+\_\+reporting}} (int mode)
 \item 
 int() \mbox{\hyperlink{mouse_8h_abfbf1bb3b75f77e213cdb08feb81014e}{\+\_\+mouse\+\_\+enable\+\_\+data\+\_\+reporting\+\_\+}} ()
-\end{DoxyCompactItemize}
+\item 
+void() \mbox{\hyperlink{mouse_8h_a210374b50462acdedab00df64d5cea3c}{mouse\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Mouse interrupt handler. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{mouse_8h_ae0d3b412f09718fec3afd120513f3756}{mouse\+\_\+event\+\_\+handler}} (struct \mbox{\hyperlink{struct_m_o_u_s_e___e_v_e_n_t}{MOUSE\+\_\+\+EVENT}} mouse\+\_\+event)
+\begin{DoxyCompactList}\small\item\em Mouse event handler. It makes the changes required according to event that it receives. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{mouse_8h_ad2d94c7d8b705ce66d78c051583c0b83}{mouse\+\_\+check\+\_\+kill}} ()
+\begin{DoxyCompactList}\small\item\em Check for an alien kill. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{mouse_8h_a41b69eaee44df2735e93e86e47331c97}{mouse\+\_\+check\+\_\+play\+\_\+button}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the play button is pressed. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{mouse_8h_a22df7a8452e94ae336bd1f9e173cca11}{mouse\+\_\+check\+\_\+exit\+\_\+button}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the exit button is pressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -66,17 +66,29 @@ int() \mbox{\hyperlink{mouse_8h_abfbf1bb3b75f77e213cdb08feb81014e}{\+\_\+mouse\+
 \doxysubsubsection{\texorpdfstring{mouse\_check\_exit\_button()}{mouse\_check\_exit\_button()}}
 {\footnotesize\ttfamily void() mouse\+\_\+check\+\_\+exit\+\_\+button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Checks if the exit button is pressed. 
+
 \mbox{\Hypertarget{mouse_8h_ad2d94c7d8b705ce66d78c051583c0b83}\label{mouse_8h_ad2d94c7d8b705ce66d78c051583c0b83}} 
 \index{mouse.h@{mouse.h}!mouse\_check\_kill@{mouse\_check\_kill}}
 \index{mouse\_check\_kill@{mouse\_check\_kill}!mouse.h@{mouse.h}}
 \doxysubsubsection{\texorpdfstring{mouse\_check\_kill()}{mouse\_check\_kill()}}
 {\footnotesize\ttfamily void() mouse\+\_\+check\+\_\+kill (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Check for an alien kill. 
+
 \mbox{\Hypertarget{mouse_8h_a41b69eaee44df2735e93e86e47331c97}\label{mouse_8h_a41b69eaee44df2735e93e86e47331c97}} 
 \index{mouse.h@{mouse.h}!mouse\_check\_play\_button@{mouse\_check\_play\_button}}
 \index{mouse\_check\_play\_button@{mouse\_check\_play\_button}!mouse.h@{mouse.h}}
 \doxysubsubsection{\texorpdfstring{mouse\_check\_play\_button()}{mouse\_check\_play\_button()}}
 {\footnotesize\ttfamily void() mouse\+\_\+check\+\_\+play\+\_\+button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the play button is pressed. 
 
 \mbox{\Hypertarget{mouse_8h_ad66de948c1c7069dcebb565bf8655a9b}\label{mouse_8h_ad66de948c1c7069dcebb565bf8655a9b}} 
 \index{mouse.h@{mouse.h}!mouse\_disable\_data\_reporting@{mouse\_disable\_data\_reporting}}
@@ -90,11 +102,19 @@ int() \mbox{\hyperlink{mouse_8h_abfbf1bb3b75f77e213cdb08feb81014e}{\+\_\+mouse\+
 \doxysubsubsection{\texorpdfstring{mouse\_event\_handler()}{mouse\_event\_handler()}}
 {\footnotesize\ttfamily void() mouse\+\_\+event\+\_\+handler (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_m_o_u_s_e___e_v_e_n_t}{MOUSE\+\_\+\+EVENT}}}]{mouse\+\_\+event }\end{DoxyParamCaption})}
 
+
+
+Mouse event handler. It makes the changes required according to event that it receives. 
+
 \mbox{\Hypertarget{mouse_8h_a210374b50462acdedab00df64d5cea3c}\label{mouse_8h_a210374b50462acdedab00df64d5cea3c}} 
 \index{mouse.h@{mouse.h}!mouse\_ih@{mouse\_ih}}
 \index{mouse\_ih@{mouse\_ih}!mouse.h@{mouse.h}}
 \doxysubsubsection{\texorpdfstring{mouse\_ih()}{mouse\_ih()}}
 {\footnotesize\ttfamily void() mouse\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mouse interrupt handler. 
 
 \mbox{\Hypertarget{mouse_8h_a20285aed4b3ef45812cd967532dd09db}\label{mouse_8h_a20285aed4b3ef45812cd967532dd09db}} 
 \index{mouse.h@{mouse.h}!mouse\_subscribe\_int@{mouse\_subscribe\_int}}

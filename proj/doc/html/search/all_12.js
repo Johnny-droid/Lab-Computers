@@ -18,7 +18,7 @@ var searchData=
   ['rtc_2eh_15',['rtc.h',['../rtc_8h.html',1,'']]],
   ['rtc_5faddr_5freg_16',['RTC_ADDR_REG',['../rtc__macros_8h.html#a710b98232df2c563009e6f8a6cd18220',1,'rtc_macros.h']]],
   ['rtc_5fdata_5freg_17',['RTC_DATA_REG',['../rtc__macros_8h.html#a2f258a00c59c3f347c8d2d4a75471ce0',1,'rtc_macros.h']]],
-  ['rtc_5fih_18',['rtc_ih',['../game_8c.html#a0b9ae809cf571f61e54712a23c65348e',1,'rtc_ih():&#160;game.c'],['../game_8h.html#a0b9ae809cf571f61e54712a23c65348e',1,'rtc_ih():&#160;game.c']]],
+  ['rtc_5fih_18',['rtc_ih',['../rtc_8c.html#a0b9ae809cf571f61e54712a23c65348e',1,'rtc_ih():&#160;rtc.c'],['../rtc_8h.html#a0b9ae809cf571f61e54712a23c65348e',1,'rtc_ih():&#160;rtc.c']]],
   ['rtc_5firq_19',['RTC_IRQ',['../rtc__macros_8h.html#a4e22feb6ffbc1cda32fadff5c740dc51',1,'rtc_macros.h']]],
   ['rtc_5fmacros_2eh_20',['rtc_macros.h',['../rtc__macros_8h.html',1,'']]],
   ['rtc_5fsubscribe_5fint_21',['rtc_subscribe_int',['../rtc_8c.html#a6bbe679f115cec90d36d50eb2aac1b89',1,'rtc_subscribe_int(uint8_t *bit_no):&#160;rtc.c'],['../rtc_8h.html#a6bbe679f115cec90d36d50eb2aac1b89',1,'rtc_subscribe_int(uint8_t *bit_no):&#160;rtc.c']]],

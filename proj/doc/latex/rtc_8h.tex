@@ -1,12 +1,16 @@
-\hypertarget{rtc_8h}{}\doxysection{rtc/rtc.h File Reference}
-\label{rtc_8h}\index{rtc/rtc.h@{rtc/rtc.h}}
+\hypertarget{rtc_8h}{}\doxysection{C\+:/\+Users/ruben/\+Documents/\+FEUP/2nd year/2nd semester/\+LC/g03/g03/proj/src/rtc/rtc.h File Reference}
+\label{rtc_8h}\index{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/rtc/rtc.h@{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/rtc/rtc.h}}
 {\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
 {\ttfamily \#include $<$minix/sysutil.\+h$>$}\newline
+{\ttfamily \#include $<$minix/driver.\+h$>$}\newline
+{\ttfamily \#include $<$minix/drivers.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}../game.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}keyboard/keyboard.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}rtc\+\_\+macros.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}keyboard/keyboard.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../game.\+h\char`\"{}}\newline
 Include dependency graph for rtc.\+h\+:
 \nopagebreak
 \begin{figure}[H]
@@ -26,6 +30,8 @@ This graph shows which files directly or indirectly include this file\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void() \mbox{\hyperlink{rtc_8h_a0b9ae809cf571f61e54712a23c65348e}{rtc\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Interrupt handler for the RTC. It updates the hours and minutes values. \end{DoxyCompactList}\item 
 int() \mbox{\hyperlink{rtc_8h_a06a9b8ca98cf78ab62036ec063312a68}{get\+\_\+rtc\+\_\+seconds}} ()
 \item 
 uint8\+\_\+t() \mbox{\hyperlink{rtc_8h_a8ddb224479310fa0558c1e88e482361f}{to\+\_\+\+BCD}} (uint8\+\_\+t value)
@@ -118,6 +124,16 @@ void() \mbox{\hyperlink{rtc_8h_ae9182afc075d07b93a3f119b372ad183}{wait\+\_\+vali
 \index{read\_time@{read\_time}!rtc.h@{rtc.h}}
 \doxysubsubsection{\texorpdfstring{read\_time()}{read\_time()}}
 {\footnotesize\ttfamily int() read\+\_\+time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{rtc_8h_a0b9ae809cf571f61e54712a23c65348e}\label{rtc_8h_a0b9ae809cf571f61e54712a23c65348e}} 
+\index{rtc.h@{rtc.h}!rtc\_ih@{rtc\_ih}}
+\index{rtc\_ih@{rtc\_ih}!rtc.h@{rtc.h}}
+\doxysubsubsection{\texorpdfstring{rtc\_ih()}{rtc\_ih()}}
+{\footnotesize\ttfamily void() rtc\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Interrupt handler for the RTC. It updates the hours and minutes values. 
 
 \mbox{\Hypertarget{rtc_8h_a6bbe679f115cec90d36d50eb2aac1b89}\label{rtc_8h_a6bbe679f115cec90d36d50eb2aac1b89}} 
 \index{rtc.h@{rtc.h}!rtc\_subscribe\_int@{rtc\_subscribe\_int}}

@@ -1,5 +1,5 @@
-\hypertarget{video__card_8c}{}\doxysection{video\+\_\+card/video\+\_\+card.c File Reference}
-\label{video__card_8c}\index{video\_card/video\_card.c@{video\_card/video\_card.c}}
+\hypertarget{video__card_8c}{}\doxysection{C\+:/\+Users/ruben/\+Documents/\+FEUP/2nd year/2nd semester/\+LC/g03/g03/proj/src/video\+\_\+card/video\+\_\+card.c File Reference}
+\label{video__card_8c}\index{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/video\_card/video\_card.c@{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/video\_card/video\_card.c}}
 {\ttfamily \#include \char`\"{}video\+\_\+card.\+h\char`\"{}}\newline
 Include dependency graph for video\+\_\+card.\+c\+:
 \nopagebreak
@@ -13,47 +13,47 @@ Include dependency graph for video\+\_\+card.\+c\+:
 \begin{DoxyCompactItemize}
 \item 
 void() \mbox{\hyperlink{video__card_8c_a73b06ba7a6845e76debaa9dcd3aa7650}{vg\+\_\+ih}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interrupt handler of the video card. It\textquotesingle{}s responsible for calling the right drawing function according to the game state. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_a76e62397e824022ba2c18fc01acc1aba}{vg\+\_\+draw\+\_\+game\+\_\+over}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the game over. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_a5f7fa9633c62a5e0159e5264764b3403}{vg\+\_\+draw\+\_\+menu}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the menu. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_afc537c3ed61d3c0f633eab7f582300c8}{vg\+\_\+draw\+\_\+paused}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the paused state. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_a1f4e3c3851ed01ebb5be19c68a7b87bc}{vg\+\_\+draw\+\_\+play\+\_\+button}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the play button (pressed or unpressed) \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_af1326f3798c4973e0106e353fc059ed7}{vg\+\_\+draw\+\_\+exit\+\_\+button}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the exit button (pressed or unpressed) \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_a1987a826636993e18ab07e8814f5380b}{vg\+\_\+draw\+\_\+game\+\_\+name}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the game title. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_ac6bba8e0d1ff88e9a5e5dd23316084b8}{vg\+\_\+draw\+\_\+game}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the game plaing state. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_a5ae6974e9b25b3238268a4462c3c16b9}{vg\+\_\+draw\+\_\+aliens}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the aliens in the matrix. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_a2a5fa7adf6dbbd087a2866159ac87929}{vg\+\_\+draw\+\_\+killer\+\_\+alien}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the aliens that killed the player Special overlapping attetion is required. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_a35fa5d66afa07f4c8dfd3b380181477f}{vg\+\_\+draw\+\_\+crosshair}} (uint8\+\_\+t buffer\+\_\+no)
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the crosshair Special overlapping attetion is required. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_a53745456f63382387bded268f1aa3465}{vg\+\_\+draw\+\_\+points}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the points in the top right corner of the playing game screen. \end{DoxyCompactList}\item 
 int() \mbox{\hyperlink{video__card_8c_a02d3e124bc8e00e6565e52d2a163b81b}{vg\+\_\+draw\+\_\+sprite}} (struct \mbox{\hyperlink{struct_s_p_r_i_t_e}{SPRITE}} sprite, uint16\+\_\+t x, uint16\+\_\+t y, uint8\+\_\+t buffer\+\_\+no)
-\item 
+\begin{DoxyCompactList}\small\item\em Draws normal sprites. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_a8ae63f1ad03d1fd41c1671b34ec5dad9}{vg\+\_\+draw\+\_\+str}} (char $\ast$\mbox{\hyperlink{video__card_8h_a3000f858ecb5a5417c1566b691efd56d}{str}}, int x0, int y0)
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the string given in the x0 and y0 values. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_a5c2f5522e6f8dbcc0fff02b24a72fbe4}{vg\+\_\+draw\+\_\+input\+\_\+screen}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the input username screen. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_a5e18225cda81ca2e2df8ede7c92fef18}{vg\+\_\+draw\+\_\+leadeboard}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the leaderboard screen. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{video__card_8c_af035738fa5e77af395389aca862c3832}{vg\+\_\+draw\+\_\+time\+\_\+info}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Draws the time in the menu. \end{DoxyCompactList}\item 
 bool() \mbox{\hyperlink{video__card_8c_a58da58b2a2a4f4491c1bf5d3edda3831}{vg\+\_\+prepare\+Graphics}} (uint16\+\_\+t mode)
-\item 
+\begin{DoxyCompactList}\small\item\em Makes required steps to draw in the video\+\_\+card Stores in the global variables the values required and maps the video memory. \end{DoxyCompactList}\item 
 bool() \mbox{\hyperlink{video__card_8c_ad186b37440757d076fcaef669f9c9716}{vg\+\_\+set\+Graphics}} (uint16\+\_\+t mode)
-\item 
+\begin{DoxyCompactList}\small\item\em Changes to the graphics mode given. \end{DoxyCompactList}\item 
 bool() \mbox{\hyperlink{video__card_8c_afc288a31807a895bae9c196d792f37d9}{vg\+\_\+free}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Frees allocated memory of the buffer. \end{DoxyCompactList}\item 
 bool() \mbox{\hyperlink{video__card_8c_a657acb157d415aa26269b1c236652e7c}{vg\+\_\+load\+\_\+sprites}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Loads all the sprites required for the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -68,11 +68,19 @@ enum xpm\+\_\+image\+\_\+type \mbox{\hyperlink{video__card_8c_a9cbb23d867090e729
 \doxysubsubsection{\texorpdfstring{vg\_draw\_aliens()}{vg\_draw\_aliens()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+aliens (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Draws the aliens in the matrix. 
+
 \mbox{\Hypertarget{video__card_8c_a35fa5d66afa07f4c8dfd3b380181477f}\label{video__card_8c_a35fa5d66afa07f4c8dfd3b380181477f}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_crosshair@{vg\_draw\_crosshair}}
 \index{vg\_draw\_crosshair@{vg\_draw\_crosshair}!video\_card.c@{video\_card.c}}
 \doxysubsubsection{\texorpdfstring{vg\_draw\_crosshair()}{vg\_draw\_crosshair()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+crosshair (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{buffer\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Draws the crosshair Special overlapping attetion is required. 
 
 \mbox{\Hypertarget{video__card_8c_af1326f3798c4973e0106e353fc059ed7}\label{video__card_8c_af1326f3798c4973e0106e353fc059ed7}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_exit\_button@{vg\_draw\_exit\_button}}
@@ -80,11 +88,19 @@ enum xpm\+\_\+image\+\_\+type \mbox{\hyperlink{video__card_8c_a9cbb23d867090e729
 \doxysubsubsection{\texorpdfstring{vg\_draw\_exit\_button()}{vg\_draw\_exit\_button()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+exit\+\_\+button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Draws the exit button (pressed or unpressed) 
+
 \mbox{\Hypertarget{video__card_8c_ac6bba8e0d1ff88e9a5e5dd23316084b8}\label{video__card_8c_ac6bba8e0d1ff88e9a5e5dd23316084b8}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_game@{vg\_draw\_game}}
 \index{vg\_draw\_game@{vg\_draw\_game}!video\_card.c@{video\_card.c}}
 \doxysubsubsection{\texorpdfstring{vg\_draw\_game()}{vg\_draw\_game()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the game plaing state. 
 
 \mbox{\Hypertarget{video__card_8c_a1987a826636993e18ab07e8814f5380b}\label{video__card_8c_a1987a826636993e18ab07e8814f5380b}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_game\_name@{vg\_draw\_game\_name}}
@@ -92,11 +108,19 @@ enum xpm\+\_\+image\+\_\+type \mbox{\hyperlink{video__card_8c_a9cbb23d867090e729
 \doxysubsubsection{\texorpdfstring{vg\_draw\_game\_name()}{vg\_draw\_game\_name()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+game\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Draws the game title. 
+
 \mbox{\Hypertarget{video__card_8c_a76e62397e824022ba2c18fc01acc1aba}\label{video__card_8c_a76e62397e824022ba2c18fc01acc1aba}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_game\_over@{vg\_draw\_game\_over}}
 \index{vg\_draw\_game\_over@{vg\_draw\_game\_over}!video\_card.c@{video\_card.c}}
 \doxysubsubsection{\texorpdfstring{vg\_draw\_game\_over()}{vg\_draw\_game\_over()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+game\+\_\+over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the game over. 
 
 \mbox{\Hypertarget{video__card_8c_a5c2f5522e6f8dbcc0fff02b24a72fbe4}\label{video__card_8c_a5c2f5522e6f8dbcc0fff02b24a72fbe4}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_input\_screen@{vg\_draw\_input\_screen}}
@@ -104,11 +128,19 @@ enum xpm\+\_\+image\+\_\+type \mbox{\hyperlink{video__card_8c_a9cbb23d867090e729
 \doxysubsubsection{\texorpdfstring{vg\_draw\_input\_screen()}{vg\_draw\_input\_screen()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+input\+\_\+screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Draws the input username screen. 
+
 \mbox{\Hypertarget{video__card_8c_a2a5fa7adf6dbbd087a2866159ac87929}\label{video__card_8c_a2a5fa7adf6dbbd087a2866159ac87929}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_killer\_alien@{vg\_draw\_killer\_alien}}
 \index{vg\_draw\_killer\_alien@{vg\_draw\_killer\_alien}!video\_card.c@{video\_card.c}}
 \doxysubsubsection{\texorpdfstring{vg\_draw\_killer\_alien()}{vg\_draw\_killer\_alien()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+killer\+\_\+alien (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the aliens that killed the player Special overlapping attetion is required. 
 
 \mbox{\Hypertarget{video__card_8c_a5e18225cda81ca2e2df8ede7c92fef18}\label{video__card_8c_a5e18225cda81ca2e2df8ede7c92fef18}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_leadeboard@{vg\_draw\_leadeboard}}
@@ -116,11 +148,19 @@ enum xpm\+\_\+image\+\_\+type \mbox{\hyperlink{video__card_8c_a9cbb23d867090e729
 \doxysubsubsection{\texorpdfstring{vg\_draw\_leadeboard()}{vg\_draw\_leadeboard()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+leadeboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Draws the leaderboard screen. 
+
 \mbox{\Hypertarget{video__card_8c_a5f7fa9633c62a5e0159e5264764b3403}\label{video__card_8c_a5f7fa9633c62a5e0159e5264764b3403}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_menu@{vg\_draw\_menu}}
 \index{vg\_draw\_menu@{vg\_draw\_menu}!video\_card.c@{video\_card.c}}
 \doxysubsubsection{\texorpdfstring{vg\_draw\_menu()}{vg\_draw\_menu()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the menu. 
 
 \mbox{\Hypertarget{video__card_8c_afc537c3ed61d3c0f633eab7f582300c8}\label{video__card_8c_afc537c3ed61d3c0f633eab7f582300c8}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_paused@{vg\_draw\_paused}}
@@ -128,11 +168,19 @@ enum xpm\+\_\+image\+\_\+type \mbox{\hyperlink{video__card_8c_a9cbb23d867090e729
 \doxysubsubsection{\texorpdfstring{vg\_draw\_paused()}{vg\_draw\_paused()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+paused (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Draws the paused state. 
+
 \mbox{\Hypertarget{video__card_8c_a1f4e3c3851ed01ebb5be19c68a7b87bc}\label{video__card_8c_a1f4e3c3851ed01ebb5be19c68a7b87bc}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_play\_button@{vg\_draw\_play\_button}}
 \index{vg\_draw\_play\_button@{vg\_draw\_play\_button}!video\_card.c@{video\_card.c}}
 \doxysubsubsection{\texorpdfstring{vg\_draw\_play\_button()}{vg\_draw\_play\_button()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+play\+\_\+button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the play button (pressed or unpressed) 
 
 \mbox{\Hypertarget{video__card_8c_a53745456f63382387bded268f1aa3465}\label{video__card_8c_a53745456f63382387bded268f1aa3465}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_points@{vg\_draw\_points}}
@@ -140,11 +188,19 @@ enum xpm\+\_\+image\+\_\+type \mbox{\hyperlink{video__card_8c_a9cbb23d867090e729
 \doxysubsubsection{\texorpdfstring{vg\_draw\_points()}{vg\_draw\_points()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Draws the points in the top right corner of the playing game screen. 
+
 \mbox{\Hypertarget{video__card_8c_a02d3e124bc8e00e6565e52d2a163b81b}\label{video__card_8c_a02d3e124bc8e00e6565e52d2a163b81b}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_sprite@{vg\_draw\_sprite}}
 \index{vg\_draw\_sprite@{vg\_draw\_sprite}!video\_card.c@{video\_card.c}}
 \doxysubsubsection{\texorpdfstring{vg\_draw\_sprite()}{vg\_draw\_sprite()}}
 {\footnotesize\ttfamily int() vg\+\_\+draw\+\_\+sprite (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_s_p_r_i_t_e}{SPRITE}}}]{sprite,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint8\+\_\+t}]{buffer\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Draws normal sprites. 
 
 \mbox{\Hypertarget{video__card_8c_a8ae63f1ad03d1fd41c1671b34ec5dad9}\label{video__card_8c_a8ae63f1ad03d1fd41c1671b34ec5dad9}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_str@{vg\_draw\_str}}
@@ -152,11 +208,19 @@ enum xpm\+\_\+image\+\_\+type \mbox{\hyperlink{video__card_8c_a9cbb23d867090e729
 \doxysubsubsection{\texorpdfstring{vg\_draw\_str()}{vg\_draw\_str()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+str (\begin{DoxyParamCaption}\item[{char $\ast$}]{str,  }\item[{int}]{x0,  }\item[{int}]{y0 }\end{DoxyParamCaption})}
 
+
+
+Draws the string given in the x0 and y0 values. 
+
 \mbox{\Hypertarget{video__card_8c_af035738fa5e77af395389aca862c3832}\label{video__card_8c_af035738fa5e77af395389aca862c3832}} 
 \index{video\_card.c@{video\_card.c}!vg\_draw\_time\_info@{vg\_draw\_time\_info}}
 \index{vg\_draw\_time\_info@{vg\_draw\_time\_info}!video\_card.c@{video\_card.c}}
 \doxysubsubsection{\texorpdfstring{vg\_draw\_time\_info()}{vg\_draw\_time\_info()}}
 {\footnotesize\ttfamily void() vg\+\_\+draw\+\_\+time\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the time in the menu. 
 
 \mbox{\Hypertarget{video__card_8c_afc288a31807a895bae9c196d792f37d9}\label{video__card_8c_afc288a31807a895bae9c196d792f37d9}} 
 \index{video\_card.c@{video\_card.c}!vg\_free@{vg\_free}}
@@ -164,11 +228,19 @@ enum xpm\+\_\+image\+\_\+type \mbox{\hyperlink{video__card_8c_a9cbb23d867090e729
 \doxysubsubsection{\texorpdfstring{vg\_free()}{vg\_free()}}
 {\footnotesize\ttfamily bool() vg\+\_\+free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Frees allocated memory of the buffer. 
+
 \mbox{\Hypertarget{video__card_8c_a73b06ba7a6845e76debaa9dcd3aa7650}\label{video__card_8c_a73b06ba7a6845e76debaa9dcd3aa7650}} 
 \index{video\_card.c@{video\_card.c}!vg\_ih@{vg\_ih}}
 \index{vg\_ih@{vg\_ih}!video\_card.c@{video\_card.c}}
 \doxysubsubsection{\texorpdfstring{vg\_ih()}{vg\_ih()}}
 {\footnotesize\ttfamily void() vg\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Interrupt handler of the video card. It\textquotesingle{}s responsible for calling the right drawing function according to the game state. 
 
 \mbox{\Hypertarget{video__card_8c_a657acb157d415aa26269b1c236652e7c}\label{video__card_8c_a657acb157d415aa26269b1c236652e7c}} 
 \index{video\_card.c@{video\_card.c}!vg\_load\_sprites@{vg\_load\_sprites}}
@@ -176,17 +248,29 @@ enum xpm\+\_\+image\+\_\+type \mbox{\hyperlink{video__card_8c_a9cbb23d867090e729
 \doxysubsubsection{\texorpdfstring{vg\_load\_sprites()}{vg\_load\_sprites()}}
 {\footnotesize\ttfamily bool() vg\+\_\+load\+\_\+sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Loads all the sprites required for the game. 
+
 \mbox{\Hypertarget{video__card_8c_a58da58b2a2a4f4491c1bf5d3edda3831}\label{video__card_8c_a58da58b2a2a4f4491c1bf5d3edda3831}} 
 \index{video\_card.c@{video\_card.c}!vg\_prepareGraphics@{vg\_prepareGraphics}}
 \index{vg\_prepareGraphics@{vg\_prepareGraphics}!video\_card.c@{video\_card.c}}
 \doxysubsubsection{\texorpdfstring{vg\_prepareGraphics()}{vg\_prepareGraphics()}}
 {\footnotesize\ttfamily bool() vg\+\_\+prepare\+Graphics (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
 
+
+
+Makes required steps to draw in the video\+\_\+card Stores in the global variables the values required and maps the video memory. 
+
 \mbox{\Hypertarget{video__card_8c_ad186b37440757d076fcaef669f9c9716}\label{video__card_8c_ad186b37440757d076fcaef669f9c9716}} 
 \index{video\_card.c@{video\_card.c}!vg\_setGraphics@{vg\_setGraphics}}
 \index{vg\_setGraphics@{vg\_setGraphics}!video\_card.c@{video\_card.c}}
 \doxysubsubsection{\texorpdfstring{vg\_setGraphics()}{vg\_setGraphics()}}
 {\footnotesize\ttfamily bool() vg\+\_\+set\+Graphics (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Changes to the graphics mode given. 
 
 
 

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Omega Class: rtc/rtc.h File Reference</title>
+<title>Omega Class: C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/rtc/rtc.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_bf2de008025dd3f9c31c9062dfa49346.html">rtc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1d6053c801fab5d2153992ba84c6834f.html">rtc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -75,61 +75,67 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;lcom/lcf.h&gt;</code><br />
 <code>#include &lt;minix/sysutil.h&gt;</code><br />
+<code>#include &lt;minix/driver.h&gt;</code><br />
+<code>#include &lt;minix/drivers.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="game_8h_source.html">../game.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="keyboard_8h_source.html">keyboard/keyboard.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="rtc__macros_8h_source.html">rtc_macros.h</a>&quot;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="keyboard_8h_source.html">keyboard/keyboard.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game_8h_source.html">../game.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for rtc.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="rtc_8h__incl.png" border="0" usemap="#artc_2rtc_8h" alt=""/></div>
-<map name="artc_2rtc_8h" id="artc_2rtc_8h">
-<area shape="rect" title=" " alt="" coords="505,5,572,32"/>
-<area shape="rect" title=" " alt="" coords="488,379,567,405"/>
-<area shape="rect" title=" " alt="" coords="389,229,496,256"/>
-<area shape="rect" title=" " alt="" coords="480,304,544,331"/>
-<area shape="rect" title=" " alt="" coords="114,304,179,331"/>
-<area shape="rect" href="game_8h.html" title=" " alt="" coords="598,80,676,107"/>
-<area shape="rect" href="keyboard_8h.html" title=" " alt="" coords="120,229,263,256"/>
-<area shape="rect" href="rtc__macros_8h.html" title=" " alt="" coords="2318,80,2417,107"/>
-<area shape="rect" title=" " alt="" coords="950,229,1044,256"/>
-<area shape="rect" title=" " alt="" coords="914,155,973,181"/>
-<area shape="rect" href="video__card_8h.html" title=" " alt="" coords="1302,155,1460,181"/>
-<area shape="rect" href="mouse_8h.html" title=" " alt="" coords="200,155,314,181"/>
-<area shape="rect" href="leaderboard_8h.html" title=" " alt="" coords="552,155,722,181"/>
-<area shape="rect" title=" " alt="" coords="1578,229,1693,256"/>
-<area shape="rect" title=" " alt="" coords="864,229,925,256"/>
-<area shape="rect" href="vg__macros_8h.html" title=" " alt="" coords="1718,229,1812,256"/>
-<area shape="rect" href="alien_8h.html" title=" " alt="" coords="1836,229,1939,256"/>
-<area shape="rect" href="crosshair_8h.html" title=" " alt="" coords="1963,229,2092,256"/>
-<area shape="rect" href="numbers_8h.html" title=" " alt="" coords="2116,229,2243,256"/>
-<area shape="rect" href="buttons_8h.html" title=" " alt="" coords="1120,229,1239,256"/>
-<area shape="rect" href="titles_8h.html" title=" " alt="" coords="1264,229,1368,256"/>
-<area shape="rect" href="letters_8h.html" title=" " alt="" coords="1392,229,1504,256"/>
-<area shape="rect" href="i8042_8h.html" title=" " alt="" coords="364,304,428,331"/>
-<area shape="rect" href="ps2_8h.html" title=" " alt="" coords="32,304,87,331"/>
-<area shape="rect" title=" " alt="" coords="672,229,738,256"/>
+<div class="center"><img src="rtc_8h__incl.png" border="0" usemap="#a_c_1_2_users_2ruben_2_documents_2_f_e_u_p_22nd_01year_22nd_01semester_2_l_c_2g03_2g03_2proj_2src_2rtc_2rtc_8h" alt=""/></div>
+<map name="a_c_1_2_users_2ruben_2_documents_2_f_e_u_p_22nd_01year_22nd_01semester_2_l_c_2g03_2g03_2proj_2src_2rtc_2rtc_8h" id="a_c_1_2_users_2ruben_2_documents_2_f_e_u_p_22nd_01year_22nd_01semester_2_l_c_2g03_2g03_2proj_2src_2rtc_2rtc_8h">
+<area shape="rect" title=" " alt="" coords="586,5,785,61"/>
+<area shape="rect" title=" " alt="" coords="393,408,471,435"/>
+<area shape="rect" title=" " alt="" coords="263,333,369,360"/>
+<area shape="rect" title=" " alt="" coords="923,109,1021,136"/>
+<area shape="rect" title=" " alt="" coords="1046,109,1151,136"/>
+<area shape="rect" title=" " alt="" coords="495,333,559,360"/>
+<area shape="rect" title=" " alt="" coords="775,333,836,360"/>
+<area shape="rect" title=" " alt="" coords="94,333,159,360"/>
+<area shape="rect" href="rtc__macros_8h.html" title=" " alt="" coords="1176,109,1275,136"/>
+<area shape="rect" title=" " alt="" coords="1159,259,1217,285"/>
+<area shape="rect" href="keyboard_8h.html" title=" " alt="" coords="331,109,474,136"/>
+<area shape="rect" href="game_8h.html" title=" " alt="" coords="647,184,724,211"/>
+<area shape="rect" href="i8042_8h.html" title=" " alt="" coords="208,184,272,211"/>
+<area shape="rect" title=" " alt="" coords="861,333,955,360"/>
+<area shape="rect" href="video__card_8h.html" title=" " alt="" coords="975,259,1134,285"/>
+<area shape="rect" href="mouse_8h.html" title=" " alt="" coords="259,259,373,285"/>
+<area shape="rect" href="leaderboard_8h.html" title=" " alt="" coords="600,259,771,285"/>
+<area shape="rect" title=" " alt="" coords="1869,333,1984,360"/>
+<area shape="rect" href="vg__macros_8h.html" title=" " alt="" coords="2009,333,2103,360"/>
+<area shape="rect" href="alien_8h.html" title=" " alt="" coords="1031,333,1134,360"/>
+<area shape="rect" href="crosshair_8h.html" title=" " alt="" coords="1158,333,1287,360"/>
+<area shape="rect" href="numbers_8h.html" title=" " alt="" coords="1311,333,1438,360"/>
+<area shape="rect" href="buttons_8h.html" title=" " alt="" coords="1462,333,1581,360"/>
+<area shape="rect" href="titles_8h.html" title=" " alt="" coords="1605,333,1709,360"/>
+<area shape="rect" href="letters_8h.html" title=" " alt="" coords="1733,333,1845,360"/>
+<area shape="rect" href="ps2_8h.html" title=" " alt="" coords="183,333,238,360"/>
+<area shape="rect" title=" " alt="" coords="583,333,649,360"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="rtc_8h__dep__incl.png" border="0" usemap="#artc_2rtc_8hdep" alt=""/></div>
-<map name="artc_2rtc_8hdep" id="artc_2rtc_8hdep">
-<area shape="rect" title=" " alt="" coords="433,5,499,32"/>
-<area shape="rect" href="game_8h.html" title=" " alt="" coords="388,80,453,107"/>
-<area shape="rect" href="rtc_8c.html" title=" " alt="" coords="478,80,545,107"/>
-<area shape="rect" href="game_8c.html" title=" " alt="" coords="5,155,71,181"/>
-<area shape="rect" href="keyboard_8h.html" title=" " alt="" coords="600,155,743,181"/>
-<area shape="rect" href="mouse_8h.html" title=" " alt="" coords="525,229,639,256"/>
-<area shape="rect" href="leaderboard_8h.html" title=" " alt="" coords="95,155,266,181"/>
-<area shape="rect" href="proj_8c.html" title=" " alt="" coords="263,229,317,256"/>
-<area shape="rect" href="video__card_8h.html" title=" " alt="" coords="341,155,500,181"/>
-<area shape="rect" href="keyboard_8c.html" title=" " alt="" coords="664,229,807,256"/>
-<area shape="rect" href="mouse_8c.html" title=" " alt="" coords="525,304,639,331"/>
-<area shape="rect" href="leaderboard_8c.html" title=" " alt="" coords="67,229,238,256"/>
-<area shape="rect" href="video__card_8c.html" title=" " alt="" coords="341,229,500,256"/>
+<div class="center"><img src="rtc_8h__dep__incl.png" border="0" usemap="#a_c_1_2_users_2ruben_2_documents_2_f_e_u_p_22nd_01year_22nd_01semester_2_l_c_2g03_2g03_2proj_2src_2rtc_2rtc_8hdep" alt=""/></div>
+<map name="a_c_1_2_users_2ruben_2_documents_2_f_e_u_p_22nd_01year_22nd_01semester_2_l_c_2g03_2g03_2proj_2src_2rtc_2rtc_8hdep" id="a_c_1_2_users_2ruben_2_documents_2_f_e_u_p_22nd_01year_22nd_01semester_2_l_c_2g03_2g03_2proj_2src_2rtc_2rtc_8hdep">
+<area shape="rect" title=" " alt="" coords="625,5,824,61"/>
+<area shape="rect" href="game_8h.html" title=" " alt="" coords="515,109,713,165"/>
+<area shape="rect" href="rtc_8c.html" title=" " alt="" coords="737,109,936,165"/>
+<area shape="rect" href="game_8c.html" title=" " alt="" coords="5,221,204,277"/>
+<area shape="rect" href="keyboard_8h.html" title=" " alt="" coords="813,213,1012,284"/>
+<area shape="rect" href="mouse_8h.html" title=" " alt="" coords="737,339,973,395"/>
+<area shape="rect" href="leaderboard_8h.html" title=" " alt="" coords="229,213,439,284"/>
+<area shape="rect" href="proj_8c.html" title=" " alt="" coords="292,339,491,395"/>
+<area shape="rect" href="video__card_8h.html" title=" " alt="" coords="515,213,713,284"/>
+<area shape="rect" href="keyboard_8c.html" title=" " alt="" coords="997,332,1196,403"/>
+<area shape="rect" href="mouse_8c.html" title=" " alt="" coords="737,451,973,507"/>
+<area shape="rect" href="leaderboard_8c.html" title=" " alt="" coords="57,332,267,403"/>
+<area shape="rect" href="video__card_8c.html" title=" " alt="" coords="515,332,713,403"/>
 </map>
 </div>
 </div>
@@ -137,6 +143,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a0b9ae809cf571f61e54712a23c65348e"><td class="memItemLeft" align="right" valign="top">void()&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc_8h.html#a0b9ae809cf571f61e54712a23c65348e">rtc_ih</a> ()</td></tr>
+<tr class="memdesc:a0b9ae809cf571f61e54712a23c65348e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt handler for the RTC. It updates the hours and minutes values.  <a href="rtc_8h.html#a0b9ae809cf571f61e54712a23c65348e">More...</a><br /></td></tr>
+<tr class="separator:a0b9ae809cf571f61e54712a23c65348e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06a9b8ca98cf78ab62036ec063312a68"><td class="memItemLeft" align="right" valign="top">int()&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc_8h.html#a06a9b8ca98cf78ab62036ec063312a68">get_rtc_seconds</a> ()</td></tr>
 <tr class="separator:a06a9b8ca98cf78ab62036ec063312a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ddb224479310fa0558c1e88e482361f"><td class="memItemLeft" align="right" valign="top">uint8_t()&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rtc_8h.html#a8ddb224479310fa0558c1e88e482361f">to_BCD</a> (uint8_t value)</td></tr>
@@ -336,6 +345,25 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b9ae809cf571f61e54712a23c65348e" name="a0b9ae809cf571f61e54712a23c65348e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b9ae809cf571f61e54712a23c65348e">&#9670;&nbsp;</a></span>rtc_ih()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void() rtc_ih </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Interrupt handler for the RTC. It updates the hours and minutes values. </p>
 
 </div>
 </div>

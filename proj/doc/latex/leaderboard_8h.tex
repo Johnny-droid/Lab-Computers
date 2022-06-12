@@ -1,5 +1,5 @@
-\hypertarget{leaderboard_8h}{}\doxysection{leaderboard/leaderboard.h File Reference}
-\label{leaderboard_8h}\index{leaderboard/leaderboard.h@{leaderboard/leaderboard.h}}
+\hypertarget{leaderboard_8h}{}\doxysection{C\+:/\+Users/ruben/\+Documents/\+FEUP/2nd year/2nd semester/\+LC/g03/g03/proj/src/leaderboard/leaderboard.h File Reference}
+\label{leaderboard_8h}\index{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/leaderboard/leaderboard.h@{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/leaderboard/leaderboard.h}}
 {\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
 {\ttfamily \#include $<$minix/sysutil.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
@@ -32,15 +32,15 @@ struct \mbox{\hyperlink{structleaderboard}{leaderboard}}
 \begin{DoxyCompactItemize}
 \item 
 void() \mbox{\hyperlink{leaderboard_8h_a2dd8d7574085a18ec2746abce0f04881}{read\+Save\+File}} (struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$\mbox{\hyperlink{game_8h_ad2107a29c74a32275719ad6644abafc3}{LB}})
-\item 
+\begin{DoxyCompactList}\small\item\em Reads the leaderboard from the file. If not found creates an empty leaderboard. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{leaderboard_8h_a5c11ffc3061ec8846b14ce0acdb9d489}{write\+Save\+File}} (struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$\mbox{\hyperlink{game_8h_ad2107a29c74a32275719ad6644abafc3}{LB}})
-\item 
+\begin{DoxyCompactList}\small\item\em Writes to file the leaderboard. \end{DoxyCompactList}\item 
 int() \mbox{\hyperlink{leaderboard_8h_af01dc71e6b2c3f3a62c2b1e1cfd5d6ba}{compare\+Score}} (int score, struct \mbox{\hyperlink{structleaderboard}{leaderboard}} \mbox{\hyperlink{game_8h_ad2107a29c74a32275719ad6644abafc3}{LB}})
-\item 
+\begin{DoxyCompactList}\small\item\em Comparison function for scores. \end{DoxyCompactList}\item 
 void() \mbox{\hyperlink{leaderboard_8h_a6a61ad6064d4ace340c98ef26acf58b8}{add\+Score}} (int score, char $\ast$\mbox{\hyperlink{game_8h_a816ec4eefee62701555be1c9560b398b}{name}}, struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$\mbox{\hyperlink{game_8h_ad2107a29c74a32275719ad6644abafc3}{LB}})
-\item 
+\begin{DoxyCompactList}\small\item\em Adds score to leaderboard. \end{DoxyCompactList}\item 
 char $\ast$() \mbox{\hyperlink{leaderboard_8h_a29efc4729787df5faa427b46a2e5d4a1}{get\+Leader\+Board}} (struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$\mbox{\hyperlink{game_8h_ad2107a29c74a32275719ad6644abafc3}{LB}}, char $\ast$\mbox{\hyperlink{video__card_8h_a3000f858ecb5a5417c1566b691efd56d}{str}})
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em returns leaderboard \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -50,11 +50,19 @@ char $\ast$() \mbox{\hyperlink{leaderboard_8h_a29efc4729787df5faa427b46a2e5d4a1}
 \doxysubsubsection{\texorpdfstring{addScore()}{addScore()}}
 {\footnotesize\ttfamily void() add\+Score (\begin{DoxyParamCaption}\item[{int}]{score,  }\item[{char $\ast$}]{name,  }\item[{struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$}]{LB }\end{DoxyParamCaption})}
 
+
+
+Adds score to leaderboard. 
+
 \mbox{\Hypertarget{leaderboard_8h_af01dc71e6b2c3f3a62c2b1e1cfd5d6ba}\label{leaderboard_8h_af01dc71e6b2c3f3a62c2b1e1cfd5d6ba}} 
 \index{leaderboard.h@{leaderboard.h}!compareScore@{compareScore}}
 \index{compareScore@{compareScore}!leaderboard.h@{leaderboard.h}}
 \doxysubsubsection{\texorpdfstring{compareScore()}{compareScore()}}
 {\footnotesize\ttfamily int() compare\+Score (\begin{DoxyParamCaption}\item[{int}]{score,  }\item[{struct \mbox{\hyperlink{structleaderboard}{leaderboard}}}]{LB }\end{DoxyParamCaption})}
+
+
+
+Comparison function for scores. 
 
 \mbox{\Hypertarget{leaderboard_8h_a29efc4729787df5faa427b46a2e5d4a1}\label{leaderboard_8h_a29efc4729787df5faa427b46a2e5d4a1}} 
 \index{leaderboard.h@{leaderboard.h}!getLeaderBoard@{getLeaderBoard}}
@@ -62,15 +70,27 @@ char $\ast$() \mbox{\hyperlink{leaderboard_8h_a29efc4729787df5faa427b46a2e5d4a1}
 \doxysubsubsection{\texorpdfstring{getLeaderBoard()}{getLeaderBoard()}}
 {\footnotesize\ttfamily char $\ast$() get\+Leader\+Board (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$}]{LB,  }\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
 
+
+
+returns leaderboard 
+
 \mbox{\Hypertarget{leaderboard_8h_a2dd8d7574085a18ec2746abce0f04881}\label{leaderboard_8h_a2dd8d7574085a18ec2746abce0f04881}} 
 \index{leaderboard.h@{leaderboard.h}!readSaveFile@{readSaveFile}}
 \index{readSaveFile@{readSaveFile}!leaderboard.h@{leaderboard.h}}
 \doxysubsubsection{\texorpdfstring{readSaveFile()}{readSaveFile()}}
 {\footnotesize\ttfamily void() read\+Save\+File (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$}]{LB }\end{DoxyParamCaption})}
 
+
+
+Reads the leaderboard from the file. If not found creates an empty leaderboard. 
+
 \mbox{\Hypertarget{leaderboard_8h_a5c11ffc3061ec8846b14ce0acdb9d489}\label{leaderboard_8h_a5c11ffc3061ec8846b14ce0acdb9d489}} 
 \index{leaderboard.h@{leaderboard.h}!writeSaveFile@{writeSaveFile}}
 \index{writeSaveFile@{writeSaveFile}!leaderboard.h@{leaderboard.h}}
 \doxysubsubsection{\texorpdfstring{writeSaveFile()}{writeSaveFile()}}
 {\footnotesize\ttfamily void() write\+Save\+File (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structleaderboard}{leaderboard}} $\ast$}]{LB }\end{DoxyParamCaption})}
+
+
+
+Writes to file the leaderboard. 
 

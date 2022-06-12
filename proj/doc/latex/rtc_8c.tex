@@ -1,11 +1,6 @@
-\hypertarget{rtc_8c}{}\doxysection{rtc/rtc.c File Reference}
-\label{rtc_8c}\index{rtc/rtc.c@{rtc/rtc.c}}
+\hypertarget{rtc_8c}{}\doxysection{C\+:/\+Users/ruben/\+Documents/\+FEUP/2nd year/2nd semester/\+LC/g03/g03/proj/src/rtc/rtc.c File Reference}
+\label{rtc_8c}\index{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/rtc/rtc.c@{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/rtc/rtc.c}}
 {\ttfamily \#include \char`\"{}rtc.\+h\char`\"{}}\newline
-{\ttfamily \#include $<$stdio.\+h$>$}\newline
-{\ttfamily \#include $<$minix/driver.\+h$>$}\newline
-{\ttfamily \#include $<$minix/sysutil.\+h$>$}\newline
-{\ttfamily \#include $<$minix/drivers.\+h$>$}\newline
-{\ttfamily \#include $<$time.\+h$>$}\newline
 Include dependency graph for rtc.\+c\+:
 \nopagebreak
 \begin{figure}[H]
@@ -17,6 +12,8 @@ Include dependency graph for rtc.\+c\+:
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void() \mbox{\hyperlink{rtc_8c_a0b9ae809cf571f61e54712a23c65348e}{rtc\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Interrupt handler for the RTC. It updates the hours and minutes values. \end{DoxyCompactList}\item 
 int() \mbox{\hyperlink{rtc_8c_a06a9b8ca98cf78ab62036ec063312a68}{get\+\_\+rtc\+\_\+seconds}} ()
 \item 
 int() \mbox{\hyperlink{rtc_8c_a2012dfb8e2bd5e0513a51a28d98fb413}{get\+\_\+rtc\+\_\+minutes}} ()
@@ -116,6 +113,16 @@ unsigned char \mbox{\hyperlink{rtc_8c_ac5eebdcd55bb86179385c3bd423c438d}{reg\+\_
 \index{read\_time@{read\_time}!rtc.c@{rtc.c}}
 \doxysubsubsection{\texorpdfstring{read\_time()}{read\_time()}}
 {\footnotesize\ttfamily int() read\+\_\+time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{rtc_8c_a0b9ae809cf571f61e54712a23c65348e}\label{rtc_8c_a0b9ae809cf571f61e54712a23c65348e}} 
+\index{rtc.c@{rtc.c}!rtc\_ih@{rtc\_ih}}
+\index{rtc\_ih@{rtc\_ih}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_ih()}{rtc\_ih()}}
+{\footnotesize\ttfamily void() rtc\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Interrupt handler for the RTC. It updates the hours and minutes values. 
 
 \mbox{\Hypertarget{rtc_8c_a6bbe679f115cec90d36d50eb2aac1b89}\label{rtc_8c_a6bbe679f115cec90d36d50eb2aac1b89}} 
 \index{rtc.c@{rtc.c}!rtc\_subscribe\_int@{rtc\_subscribe\_int}}

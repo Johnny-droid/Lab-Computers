@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Omega Class: rtc/rtc.h Source File</title>
+<title>Omega Class: C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/rtc/rtc.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_bf2de008025dd3f9c31c9062dfa49346.html">rtc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1d6053c801fab5d2153992ba84c6834f.html">rtc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -76,53 +76,60 @@ $(function() {
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;minix/sysutil.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;../game.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="keyboard_8h.html">keyboard/keyboard.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="rtc__macros_8h.html">rtc_macros.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">static</span>  uint8_t g_rtc_seconds;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">static</span>  uint8_t g_rtc_minutes;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">static</span>  uint8_t g_rtc_hours;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">static</span>  uint8_t g_rtc_day;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">static</span>  uint8_t g_rtc_month;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">static</span>  uint8_t g_rtc_year;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>int (<a class="code hl_function" href="rtc_8h.html#a06a9b8ca98cf78ab62036ec063312a68">get_rtc_seconds</a>)();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>uint8_t (<a class="code hl_function" href="rtc_8h.html#a8ddb224479310fa0558c1e88e482361f">to_BCD</a>)(uint8_t value);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>int (<a class="code hl_function" href="rtc_8h.html#a2012dfb8e2bd5e0513a51a28d98fb413">get_rtc_minutes</a>)();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>int (<a class="code hl_function" href="rtc_8h.html#acb8b5f8bcd848dc310330c98bbc8ddbb">get_rtc_hours</a>)();</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>int (<a class="code hl_function" href="rtc_8h.html#a19e8a53612977dffe6cd0e1506d12a17">get_rtc_day</a>)();</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>int (<a class="code hl_function" href="rtc_8h.html#ad6b217b52b2d375be782b3b8cb1966c3">get_rtc_month</a>)();</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>int (<a class="code hl_function" href="rtc_8h.html#ae6a2a6637c0d24bcfd4f105b540bfaf5">get_rtc_year</a>)();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>int(<a class="code hl_function" href="rtc_8h.html#a6bbe679f115cec90d36d50eb2aac1b89">rtc_subscribe_int</a>)(uint8_t *bit_no) ;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>int(<a class="code hl_function" href="rtc_8h.html#a9d4850bb2a488644672d43287f160622">rtc_unsubscribe_int</a>)() ;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>int (<a class="code hl_function" href="rtc_8h.html#a072a0e9c4b41fd99807dec8cea0604e9">read_time</a>)();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>void (<a class="code hl_function" href="rtc_8h.html#aabd698c3dd999f44e3600c12b0f9b4a8">read_reg_B</a>)();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>void (<a class="code hl_function" href="rtc_8h.html#a11b4589424f5a88548f3f547eb5304b5">write_reg_B</a>)();</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>void (<a class="code hl_function" href="rtc_8h.html#acb6de2f9e938cc8c8d558f504351bbbc">disable_interrupts_rtc</a>)();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>void (<a class="code hl_function" href="rtc_8h.html#a62c48ba2dc93ebcf6c3b11a6bcf7801a">enable_interrupts_rtc</a>)();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>void (<a class="code hl_function" href="rtc_8h.html#ae9182afc075d07b93a3f119b372ad183">wait_valid_rtc</a>)();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;minix/driver.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;minix/drivers.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="rtc__macros_8h.html">rtc_macros.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;time.h&gt;</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="keyboard_8h.html">keyboard/keyboard.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;../game.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">static</span>  uint8_t g_rtc_seconds;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">static</span>  uint8_t g_rtc_minutes;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">static</span>  uint8_t g_rtc_hours;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">static</span>  uint8_t g_rtc_day;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">static</span>  uint8_t g_rtc_month;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">static</span>  uint8_t g_rtc_year;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>void(<a class="code hl_function" href="rtc_8h.html#a0b9ae809cf571f61e54712a23c65348e">rtc_ih</a>)();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>int (<a class="code hl_function" href="rtc_8h.html#a06a9b8ca98cf78ab62036ec063312a68">get_rtc_seconds</a>)();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>uint8_t (<a class="code hl_function" href="rtc_8h.html#a8ddb224479310fa0558c1e88e482361f">to_BCD</a>)(uint8_t value);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>int (<a class="code hl_function" href="rtc_8h.html#a2012dfb8e2bd5e0513a51a28d98fb413">get_rtc_minutes</a>)();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>int (<a class="code hl_function" href="rtc_8h.html#acb8b5f8bcd848dc310330c98bbc8ddbb">get_rtc_hours</a>)();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>int (<a class="code hl_function" href="rtc_8h.html#a19e8a53612977dffe6cd0e1506d12a17">get_rtc_day</a>)();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>int (<a class="code hl_function" href="rtc_8h.html#ad6b217b52b2d375be782b3b8cb1966c3">get_rtc_month</a>)();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>int (<a class="code hl_function" href="rtc_8h.html#ae6a2a6637c0d24bcfd4f105b540bfaf5">get_rtc_year</a>)();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>int(<a class="code hl_function" href="rtc_8h.html#a6bbe679f115cec90d36d50eb2aac1b89">rtc_subscribe_int</a>)(uint8_t *bit_no) ;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>int(<a class="code hl_function" href="rtc_8h.html#a9d4850bb2a488644672d43287f160622">rtc_unsubscribe_int</a>)() ;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>int (<a class="code hl_function" href="rtc_8h.html#a072a0e9c4b41fd99807dec8cea0604e9">read_time</a>)();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>void (<a class="code hl_function" href="rtc_8h.html#aabd698c3dd999f44e3600c12b0f9b4a8">read_reg_B</a>)();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>void (<a class="code hl_function" href="rtc_8h.html#a11b4589424f5a88548f3f547eb5304b5">write_reg_B</a>)();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>void (<a class="code hl_function" href="rtc_8h.html#acb6de2f9e938cc8c8d558f504351bbbc">disable_interrupts_rtc</a>)();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>void (<a class="code hl_function" href="rtc_8h.html#a62c48ba2dc93ebcf6c3b11a6bcf7801a">enable_interrupts_rtc</a>)();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>void (<a class="code hl_function" href="rtc_8h.html#ae9182afc075d07b93a3f119b372ad183">wait_valid_rtc</a>)();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="akeyboard_8h_html"><div class="ttname"><a href="keyboard_8h.html">keyboard.h</a></div></div>
-<div class="ttc" id="artc_8h_html_a06a9b8ca98cf78ab62036ec063312a68"><div class="ttname"><a href="rtc_8h.html#a06a9b8ca98cf78ab62036ec063312a68">get_rtc_seconds</a></div><div class="ttdeci">int() get_rtc_seconds()</div><div class="ttdef"><b>Definition:</b> rtc.c:16</div></div>
-<div class="ttc" id="artc_8h_html_a072a0e9c4b41fd99807dec8cea0604e9"><div class="ttname"><a href="rtc_8h.html#a072a0e9c4b41fd99807dec8cea0604e9">read_time</a></div><div class="ttdeci">int() read_time()</div><div class="ttdef"><b>Definition:</b> rtc.c:53</div></div>
-<div class="ttc" id="artc_8h_html_a11b4589424f5a88548f3f547eb5304b5"><div class="ttname"><a href="rtc_8h.html#a11b4589424f5a88548f3f547eb5304b5">write_reg_B</a></div><div class="ttdeci">void() write_reg_B()</div><div class="ttdef"><b>Definition:</b> rtc.c:97</div></div>
-<div class="ttc" id="artc_8h_html_a19e8a53612977dffe6cd0e1506d12a17"><div class="ttname"><a href="rtc_8h.html#a19e8a53612977dffe6cd0e1506d12a17">get_rtc_day</a></div><div class="ttdeci">int() get_rtc_day()</div><div class="ttdef"><b>Definition:</b> rtc.c:28</div></div>
-<div class="ttc" id="artc_8h_html_a2012dfb8e2bd5e0513a51a28d98fb413"><div class="ttname"><a href="rtc_8h.html#a2012dfb8e2bd5e0513a51a28d98fb413">get_rtc_minutes</a></div><div class="ttdeci">int() get_rtc_minutes()</div><div class="ttdef"><b>Definition:</b> rtc.c:20</div></div>
-<div class="ttc" id="artc_8h_html_a62c48ba2dc93ebcf6c3b11a6bcf7801a"><div class="ttname"><a href="rtc_8h.html#a62c48ba2dc93ebcf6c3b11a6bcf7801a">enable_interrupts_rtc</a></div><div class="ttdeci">void() enable_interrupts_rtc()</div><div class="ttdef"><b>Definition:</b> rtc.c:116</div></div>
-<div class="ttc" id="artc_8h_html_a6bbe679f115cec90d36d50eb2aac1b89"><div class="ttname"><a href="rtc_8h.html#a6bbe679f115cec90d36d50eb2aac1b89">rtc_subscribe_int</a></div><div class="ttdeci">int() rtc_subscribe_int(uint8_t *bit_no)</div><div class="ttdef"><b>Definition:</b> rtc.c:41</div></div>
-<div class="ttc" id="artc_8h_html_a8ddb224479310fa0558c1e88e482361f"><div class="ttname"><a href="rtc_8h.html#a8ddb224479310fa0558c1e88e482361f">to_BCD</a></div><div class="ttdeci">uint8_t() to_BCD(uint8_t value)</div><div class="ttdef"><b>Definition:</b> rtc.c:92</div></div>
-<div class="ttc" id="artc_8h_html_a9d4850bb2a488644672d43287f160622"><div class="ttname"><a href="rtc_8h.html#a9d4850bb2a488644672d43287f160622">rtc_unsubscribe_int</a></div><div class="ttdeci">int() rtc_unsubscribe_int()</div><div class="ttdef"><b>Definition:</b> rtc.c:48</div></div>
-<div class="ttc" id="artc_8h_html_aabd698c3dd999f44e3600c12b0f9b4a8"><div class="ttname"><a href="rtc_8h.html#aabd698c3dd999f44e3600c12b0f9b4a8">read_reg_B</a></div><div class="ttdeci">void() read_reg_B()</div><div class="ttdef"><b>Definition:</b> rtc.c:83</div></div>
-<div class="ttc" id="artc_8h_html_acb6de2f9e938cc8c8d558f504351bbbc"><div class="ttname"><a href="rtc_8h.html#acb6de2f9e938cc8c8d558f504351bbbc">disable_interrupts_rtc</a></div><div class="ttdeci">void() disable_interrupts_rtc()</div><div class="ttdef"><b>Definition:</b> rtc.c:103</div></div>
-<div class="ttc" id="artc_8h_html_acb8b5f8bcd848dc310330c98bbc8ddbb"><div class="ttname"><a href="rtc_8h.html#acb8b5f8bcd848dc310330c98bbc8ddbb">get_rtc_hours</a></div><div class="ttdeci">int() get_rtc_hours()</div><div class="ttdef"><b>Definition:</b> rtc.c:24</div></div>
-<div class="ttc" id="artc_8h_html_ad6b217b52b2d375be782b3b8cb1966c3"><div class="ttname"><a href="rtc_8h.html#ad6b217b52b2d375be782b3b8cb1966c3">get_rtc_month</a></div><div class="ttdeci">int() get_rtc_month()</div><div class="ttdef"><b>Definition:</b> rtc.c:32</div></div>
-<div class="ttc" id="artc_8h_html_ae6a2a6637c0d24bcfd4f105b540bfaf5"><div class="ttname"><a href="rtc_8h.html#ae6a2a6637c0d24bcfd4f105b540bfaf5">get_rtc_year</a></div><div class="ttdeci">int() get_rtc_year()</div><div class="ttdef"><b>Definition:</b> rtc.c:36</div></div>
-<div class="ttc" id="artc_8h_html_ae9182afc075d07b93a3f119b372ad183"><div class="ttname"><a href="rtc_8h.html#ae9182afc075d07b93a3f119b372ad183">wait_valid_rtc</a></div><div class="ttdeci">void() wait_valid_rtc()</div><div class="ttdef"><b>Definition:</b> rtc.c:127</div></div>
+<div class="ttc" id="artc_8h_html_a06a9b8ca98cf78ab62036ec063312a68"><div class="ttname"><a href="rtc_8h.html#a06a9b8ca98cf78ab62036ec063312a68">get_rtc_seconds</a></div><div class="ttdeci">int() get_rtc_seconds()</div><div class="ttdef"><b>Definition:</b> rtc.c:19</div></div>
+<div class="ttc" id="artc_8h_html_a072a0e9c4b41fd99807dec8cea0604e9"><div class="ttname"><a href="rtc_8h.html#a072a0e9c4b41fd99807dec8cea0604e9">read_time</a></div><div class="ttdeci">int() read_time()</div><div class="ttdef"><b>Definition:</b> rtc.c:56</div></div>
+<div class="ttc" id="artc_8h_html_a0b9ae809cf571f61e54712a23c65348e"><div class="ttname"><a href="rtc_8h.html#a0b9ae809cf571f61e54712a23c65348e">rtc_ih</a></div><div class="ttdeci">void() rtc_ih()</div><div class="ttdoc">Interrupt handler for the RTC. It updates the hours and minutes values.</div><div class="ttdef"><b>Definition:</b> rtc.c:12</div></div>
+<div class="ttc" id="artc_8h_html_a11b4589424f5a88548f3f547eb5304b5"><div class="ttname"><a href="rtc_8h.html#a11b4589424f5a88548f3f547eb5304b5">write_reg_B</a></div><div class="ttdeci">void() write_reg_B()</div><div class="ttdef"><b>Definition:</b> rtc.c:100</div></div>
+<div class="ttc" id="artc_8h_html_a19e8a53612977dffe6cd0e1506d12a17"><div class="ttname"><a href="rtc_8h.html#a19e8a53612977dffe6cd0e1506d12a17">get_rtc_day</a></div><div class="ttdeci">int() get_rtc_day()</div><div class="ttdef"><b>Definition:</b> rtc.c:31</div></div>
+<div class="ttc" id="artc_8h_html_a2012dfb8e2bd5e0513a51a28d98fb413"><div class="ttname"><a href="rtc_8h.html#a2012dfb8e2bd5e0513a51a28d98fb413">get_rtc_minutes</a></div><div class="ttdeci">int() get_rtc_minutes()</div><div class="ttdef"><b>Definition:</b> rtc.c:23</div></div>
+<div class="ttc" id="artc_8h_html_a62c48ba2dc93ebcf6c3b11a6bcf7801a"><div class="ttname"><a href="rtc_8h.html#a62c48ba2dc93ebcf6c3b11a6bcf7801a">enable_interrupts_rtc</a></div><div class="ttdeci">void() enable_interrupts_rtc()</div><div class="ttdef"><b>Definition:</b> rtc.c:119</div></div>
+<div class="ttc" id="artc_8h_html_a6bbe679f115cec90d36d50eb2aac1b89"><div class="ttname"><a href="rtc_8h.html#a6bbe679f115cec90d36d50eb2aac1b89">rtc_subscribe_int</a></div><div class="ttdeci">int() rtc_subscribe_int(uint8_t *bit_no)</div><div class="ttdef"><b>Definition:</b> rtc.c:44</div></div>
+<div class="ttc" id="artc_8h_html_a8ddb224479310fa0558c1e88e482361f"><div class="ttname"><a href="rtc_8h.html#a8ddb224479310fa0558c1e88e482361f">to_BCD</a></div><div class="ttdeci">uint8_t() to_BCD(uint8_t value)</div><div class="ttdef"><b>Definition:</b> rtc.c:95</div></div>
+<div class="ttc" id="artc_8h_html_a9d4850bb2a488644672d43287f160622"><div class="ttname"><a href="rtc_8h.html#a9d4850bb2a488644672d43287f160622">rtc_unsubscribe_int</a></div><div class="ttdeci">int() rtc_unsubscribe_int()</div><div class="ttdef"><b>Definition:</b> rtc.c:51</div></div>
+<div class="ttc" id="artc_8h_html_aabd698c3dd999f44e3600c12b0f9b4a8"><div class="ttname"><a href="rtc_8h.html#aabd698c3dd999f44e3600c12b0f9b4a8">read_reg_B</a></div><div class="ttdeci">void() read_reg_B()</div><div class="ttdef"><b>Definition:</b> rtc.c:86</div></div>
+<div class="ttc" id="artc_8h_html_acb6de2f9e938cc8c8d558f504351bbbc"><div class="ttname"><a href="rtc_8h.html#acb6de2f9e938cc8c8d558f504351bbbc">disable_interrupts_rtc</a></div><div class="ttdeci">void() disable_interrupts_rtc()</div><div class="ttdef"><b>Definition:</b> rtc.c:106</div></div>
+<div class="ttc" id="artc_8h_html_acb8b5f8bcd848dc310330c98bbc8ddbb"><div class="ttname"><a href="rtc_8h.html#acb8b5f8bcd848dc310330c98bbc8ddbb">get_rtc_hours</a></div><div class="ttdeci">int() get_rtc_hours()</div><div class="ttdef"><b>Definition:</b> rtc.c:27</div></div>
+<div class="ttc" id="artc_8h_html_ad6b217b52b2d375be782b3b8cb1966c3"><div class="ttname"><a href="rtc_8h.html#ad6b217b52b2d375be782b3b8cb1966c3">get_rtc_month</a></div><div class="ttdeci">int() get_rtc_month()</div><div class="ttdef"><b>Definition:</b> rtc.c:35</div></div>
+<div class="ttc" id="artc_8h_html_ae6a2a6637c0d24bcfd4f105b540bfaf5"><div class="ttname"><a href="rtc_8h.html#ae6a2a6637c0d24bcfd4f105b540bfaf5">get_rtc_year</a></div><div class="ttdeci">int() get_rtc_year()</div><div class="ttdef"><b>Definition:</b> rtc.c:39</div></div>
+<div class="ttc" id="artc_8h_html_ae9182afc075d07b93a3f119b372ad183"><div class="ttname"><a href="rtc_8h.html#ae9182afc075d07b93a3f119b372ad183">wait_valid_rtc</a></div><div class="ttdeci">void() wait_valid_rtc()</div><div class="ttdef"><b>Definition:</b> rtc.c:130</div></div>
 <div class="ttc" id="artc__macros_8h_html"><div class="ttname"><a href="rtc__macros_8h.html">rtc_macros.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
