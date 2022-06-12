@@ -91,11 +91,6 @@ int(game_loop)() {
   return 0;
 }
 
-void(rtc_ih)(){
-  read_time();
-  hours = get_rtc_hours();
-  minutes = get_rtc_minutes();
-}
 
 void(game_ih)() {
 
@@ -114,6 +109,7 @@ void(game_ih)() {
   }
 }
 
+
 void (game_leaderboard)(){
   memset(name, 0, sizeof name);
   memset(input_message, 0, sizeof input_message);
@@ -129,10 +125,12 @@ void (game_leaderboard)(){
   game_state = LEADERBOARD;
 }
 
+
 void (game_save_and_display_lb)(){
   addScore(points, name, &LB);
   game_state = LEADERBOARD;
 }
+
 
 void(game_step)() {
   game_update_alien_times();  
@@ -196,6 +194,8 @@ void(game_update_alien_times)() {
   }
 }
 
+
+
 void (kill_other_aliens)(){
   struct ALIEN *alien;
   for (size_t i = 0; i < GAME_HEIGHT_MATRIX; i++) {
@@ -209,6 +209,8 @@ void (kill_other_aliens)(){
     }
   }
 }
+
+
 
 void(game_generate_new_alien)() {
   if (random_alien_counter < random_alien_number) {

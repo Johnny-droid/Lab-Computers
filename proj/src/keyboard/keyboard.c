@@ -105,12 +105,7 @@ void (enable_interrupts)() {
 }
 
 
-/**
- * Handles keyboard interrupts (C implementation)
- * Reads the status register and the output buffer (OB).
- * If there was some error, the byte read from the OB should be discarded.
- * All communication with other code must be done via global variables, static if possible.
- */
+
 void (kbc_ih)(void) {
   if (!kbc_output_buf_full()) return;
   if (!keyboard_check()) return;
@@ -143,12 +138,7 @@ void (keyboard_event_handler)(uint8_t scanCode) {
     game_state = EXIT;
     return;
   }
-  /*
-  if (scanCode == L_MAKE) {
-    game_state = LEADERBOARD;
-    return;
-  }
-  */
+
   switch (game_state) {
     case PLAYING:
       if (scanCode == P_BREAK) game_state = PAUSE;

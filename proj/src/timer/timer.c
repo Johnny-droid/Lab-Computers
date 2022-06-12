@@ -52,18 +52,15 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
-  /* To be implemented by the students */
   *bit_no = timer_hook_id = TIMER0_IRQ;
   return sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &timer_hook_id);
 }
 
 int (timer_unsubscribe_int)() {
-  /* To be implemented by the students */
   return sys_irqrmpolicy(&timer_hook_id);
 }
 
 void (timer_int_handler)() {
-  /* To be implemented by the students */
   timer_global_counter++;
 }
 

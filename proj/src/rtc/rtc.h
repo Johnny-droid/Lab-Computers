@@ -3,11 +3,16 @@
 
 #include <lcom/lcf.h>
 #include <minix/sysutil.h>
+#include <minix/driver.h>
+#include <minix/drivers.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <stdint.h>
-#include "../game.h"
-#include "keyboard/keyboard.h"
 #include "rtc_macros.h"
+#include <time.h> 
+#include "keyboard/keyboard.h"
+#include "../game.h"
+
 
 static  uint8_t g_rtc_seconds;
 static  uint8_t g_rtc_minutes;
@@ -16,6 +21,12 @@ static  uint8_t g_rtc_day;
 static  uint8_t g_rtc_month;
 static  uint8_t g_rtc_year;
 
+/**
+ * @brief Interrupt handler for
+ * the RTC. It updates the hours 
+ * and minutes values
+ */
+void(rtc_ih)();
 
 int (get_rtc_seconds)();
 uint8_t (to_BCD)(uint8_t value);

@@ -1,5 +1,6 @@
 #include "leaderboard.h"
 
+
 void(readSaveFile)(struct leaderboard * LB){
     memset(LB->names, 0, sizeof LB->names);
     FILE *file = fopen("/home/lcom/labs/proj/src/savefile.txt", "r");

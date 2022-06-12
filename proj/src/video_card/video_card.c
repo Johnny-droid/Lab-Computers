@@ -44,6 +44,7 @@ static uint16_t paused_y;
 
 // DRAW FUNCTIONS
 
+
 void (vg_ih)() {
   // CLEAN THE BUFFER
   memset(buffer, 0, h_res * v_res * bytes_per_pixel);
@@ -75,6 +76,7 @@ void (vg_ih)() {
   memcpy(video_mem, buffer, h_res * v_res * bytes_per_pixel);
 }
 
+
 void (vg_draw_game_over)() {
   if(game_over_counter < GAME_OVER_WAIT - 30)
     vg_draw_sprite(game_over, game_over_x, game_over_y, 1);
@@ -84,7 +86,7 @@ void (vg_draw_game_over)() {
   vg_draw_crosshair(1);
 }
 
-// We are probably going to add the name of the game here as well as well as an exit button
+
 void (vg_draw_menu)() {
   vg_draw_game_name();
   vg_draw_play_button();
@@ -93,9 +95,11 @@ void (vg_draw_menu)() {
   vg_draw_crosshair(1);
 }
 
+
 void (vg_draw_paused)() {
   vg_draw_sprite(paused, paused_x, paused_y, 1);
 }
+
 
 void (vg_draw_play_button)() {
   if (mouse_x < play_button_xi || mouse_x > play_button_xf || mouse_y < play_button_yi || mouse_y > play_button_yf) {
@@ -105,6 +109,7 @@ void (vg_draw_play_button)() {
   }
 }
 
+
 void (vg_draw_exit_button)() {
   if (mouse_x < exit_button_xi || mouse_x > exit_button_xf || mouse_y < exit_button_yi || mouse_y > exit_button_yf) {
     vg_draw_sprite(exit_button[1], exit_button_xi, exit_button_yi, 1);
@@ -112,6 +117,7 @@ void (vg_draw_exit_button)() {
     vg_draw_sprite(exit_button[0], exit_button_xi, exit_button_yi, 1);
   }
 }
+
 
 void (vg_draw_game_name)() {
   vg_draw_sprite(game_name, game_name_x, game_name_y, 1);
@@ -123,6 +129,7 @@ void (vg_draw_game)() {
   vg_draw_points();
   vg_draw_crosshair(1);
 }
+
 
 void (vg_draw_aliens)() {
   
@@ -144,6 +151,7 @@ void (vg_draw_aliens)() {
     }
   } 
 }
+
 
 void (vg_draw_killer_alien)() {
   struct SPRITE sprite = killer_alien_sprites[killer_alien.state];
@@ -210,6 +218,7 @@ void (vg_draw_crosshair)(uint8_t buffer_no) {
 
 }
 
+
 void (vg_draw_points)() {
   unsigned int sprite_number, temp_points = points;
   uint16_t x = POINTS_WIDTH_MARGIN;
@@ -226,6 +235,7 @@ void (vg_draw_points)() {
     x -= numbers_sprites[sprite_number].info.width + POINTS_BETWEEN_MARGIN;
   }
 }
+
 
 
 int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffer_no) {
@@ -257,6 +267,7 @@ int (vg_draw_sprite)(struct SPRITE sprite, uint16_t x, uint16_t y, uint8_t buffe
   return 0;
 }
   
+
 void (vg_draw_str)(char * str, int x0, int y0){ 
   int x = x0;
   int y = y0;
@@ -321,12 +332,14 @@ void (vg_draw_str)(char * str, int x0, int y0){
   }
 }
 
+
 void (vg_draw_input_screen)(){
   vg_draw_str(input_message, 100, 100);
   if(name[0]!='\0')
     vg_draw_str(name, 8*letters_sprites[0].info.width+96, letters_sprites[0].info.height+100);
   vg_draw_crosshair(1);
 }
+
 
 void (vg_draw_leadeboard)(){
   vg_draw_sprite(lb_corners[0], 1, 1, 1);
@@ -337,6 +350,7 @@ void (vg_draw_leadeboard)(){
   vg_draw_str("PRESS ENTER TO CONTINUE", 50, 100+12*letters_sprites[0].info.height);
   vg_draw_crosshair(1);
 }
+
 
 void (vg_draw_time_info)() {
   int aux_number;
@@ -385,20 +399,7 @@ void (vg_draw_time_info)() {
 
 }
 
-  /*
-  for (uint16_t i = y; i < v_res && i < y + sprite.info.height; i++, temp_video_mem += row_increment) {
-    //maybe we can try it with void* cast
-    memcpy((void*)temp_video_mem,  temp_sprite, bytes_per_pixel * (sprite.info.width));
-    temp_sprite += sprite.info.width;
-  }
   
-  */
-  
-  
-
-
-
-
 
 
 
@@ -428,6 +429,7 @@ void (vg_draw_time_info)() {
 
 
 // SETUP FUNCTIONS
+
 
 bool (vg_prepareGraphics)(uint16_t mode) {
   vbe_mode_info_t mode_info;
@@ -470,6 +472,7 @@ bool (vg_prepareGraphics)(uint16_t mode) {
   return true;
 } 
 
+
 bool (vg_setGraphics)(uint16_t mode) {
     reg86_t r86;
     memset(&r86, 0, sizeof(r86));
@@ -485,10 +488,12 @@ bool (vg_setGraphics)(uint16_t mode) {
     return true;
 }
 
+
 bool (vg_free)() {
   free(buffer);
   return true;
 }
+
 
 bool (vg_load_sprites)() {
   xpm_image_t alien_appearing_info;

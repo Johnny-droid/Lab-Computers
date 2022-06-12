@@ -33,7 +33,9 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-
+/**
+ * @brief Main function of the program
+ */
 int (proj_main_loop)(int argc, char* agrv[]) {
   if (!vg_prepareGraphics(GAME_GRAPHICS_MODE)) return EXIT_FAILURE;
   if (!vg_load_sprites()) return EXIT_FAILURE;

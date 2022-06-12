@@ -24,15 +24,7 @@ void(mouse_ih)() {
   nbytes++;
   if (nbytes == 3) {
     struct MOUSE_EVENT mouse_event;
-    //p.bytes[0] = arr[0];
-    //p.bytes[1] = arr[1];
-    //p.bytes[2] = arr[2];
-    //p.rb = (arr[0] & RB_MOUSE) >> 1;
-    //p.lb = (arr[0] & LB_MOUSE);
     mouse_event.lbdown = (arr[0] & LB_MOUSE);
-    //p.mb = (arr[0] & MB_MOUSE) >> 2;
-    //p.x_ov = (arr[0] & X_OV_MOUSE) >> 6;
-    //p.y_ov = (arr[0] & Y_OV_MOUSE) >> 7;
     mouse_event.overflow = ((arr[0] & X_OV_MOUSE) >> 6) || ((arr[0] & Y_OV_MOUSE) >> 7);
     int16_t x = (int16_t) arr[1];
     int16_t y = (int16_t) arr[2];
@@ -42,8 +34,6 @@ void(mouse_ih)() {
     // Check if Y is negative
     if (arr[0] & Y_SIGN)
       y = y | 0xFF00;
-    //p.delta_x = x;
-    //p.delta_y = y;
     mouse_event.moveX = x;
     mouse_event.moveY = y;
     mouse_event_handler(mouse_event);
@@ -86,6 +76,7 @@ void (mouse_event_handler)(struct MOUSE_EVENT mouse_event) {
   }
 }
 
+
 void (mouse_check_kill)() {
   int x = (mouse_x - GAME_HORIZONTAL_MARGIN) / ALIEN_WIDTH;
   int y = (mouse_y - GAME_VERTICAL_MARGIN)  / ALIEN_HEIGHT;
@@ -112,6 +103,7 @@ void (mouse_check_play_button)() {
   if (mouse_x < play_button_xi || mouse_x > play_button_xf || mouse_y < play_button_yi || mouse_y > play_button_yf) return; 
   game_state = PLAYING;
 }
+
 
 void (mouse_check_exit_button)() {
   if (mouse_x < exit_button_xi || mouse_x > exit_button_xf || mouse_y < exit_button_yi || mouse_y > exit_button_yf) return; 

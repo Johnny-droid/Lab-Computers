@@ -18,16 +18,38 @@ struct MOUSE_EVENT {
 
 int(mouse_subscribe_int)(uint8_t *bit_no);
 int(mouse_unsubscribe_int)();
-
-
-void (mouse_ih)();
-void (mouse_event_handler)(struct MOUSE_EVENT mouse_event);
-void (mouse_check_kill)();
-void (mouse_check_play_button)();
-void (mouse_check_exit_button)();
 int (read_ACK_byte)();
 int (mouse_disable_data_reporting)(int mode);
 int(_mouse_enable_data_reporting_)();
+
+
+/**
+ * @brief Mouse interrupt handler
+ */
+void (mouse_ih)();
+
+/**
+ * @brief Mouse event handler.
+ * It makes the changes required according to event that it receives
+ */
+void (mouse_event_handler)(struct MOUSE_EVENT mouse_event);
+
+/**
+ * @brief Check for an alien kill
+ */
+void (mouse_check_kill)();
+
+/**
+ * @brief Checks if the play button is pressed
+ */
+void (mouse_check_play_button)();
+
+/**
+ * @brief Checks if the exit button is pressed
+ * 
+ */
+void (mouse_check_exit_button)();
+
 
 
 

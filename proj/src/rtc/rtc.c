@@ -1,9 +1,4 @@
 #include "rtc.h"
-#include <stdio.h>
-#include <minix/driver.h>
-#include <minix/sysutil.h>
-#include <minix/drivers.h>
-#include <time.h> 
 
 
 /* GLOBAL VARIABLES */
@@ -11,7 +6,15 @@
 unsigned char reg_A;
 unsigned char reg_B;
 
-static int g_rtc_hook_id = 8;				/**< @brief  RTC's Hook ID */
+static int g_rtc_hook_id = 8;			
+
+
+void(rtc_ih)(){
+  read_time();
+  hours = get_rtc_hours();
+  minutes = get_rtc_minutes();
+}
+
 
 int (get_rtc_seconds)()
 {

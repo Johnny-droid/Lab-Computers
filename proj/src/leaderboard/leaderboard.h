@@ -21,14 +21,32 @@ struct leaderboard
 };
 
 
+/**
+ * @brief Reads the leaderboard from the file.
+ * If not found creates an empty leaderboard
+ */
 void(readSaveFile)(struct leaderboard* LB);
 
+
+/**
+ * @brief Writes to file the leaderboard
+ */
 void(writeSaveFile)(struct leaderboard* LB);
 
+
+/**
+ * @brief Comparison function for scores
+ */
 int(compareScore)(int score, struct leaderboard LB);
 
+/**
+ * @brief Adds score to leaderboard
+ */
 void(addScore)(int score, char* name, /*char date[10],*/ struct leaderboard* LB);
 
+/**
+ * @brief returns leaderboard
+ */
 char * (getLeaderBoard)(struct leaderboard* LB, char* str);
 
 #endif //LC_LEADERBOARD_H

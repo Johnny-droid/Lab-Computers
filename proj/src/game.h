@@ -133,20 +133,69 @@ struct leaderboard LB;
 uint8_t minutes;
 uint8_t hours;
 
+
+/**
+ * @brief Initializes the game by setting 
+ * the variables necessary for game to run 
+ */
 void (game_initialize)();
+
+/**
+ * @brief The game loop of the game
+ * Subscribes to the interrutps required, 
+ * Enters the loop cycle where the handlers are called
+ * And finally it unsubscribes when the game is over
+ */
 int (game_loop)();
+
+/**
+ * @brief Interrupt handler for the game,
+ * it updates the game model, according to 
+ * the current game state
+ */
 void (game_ih)();
 
-void(rtc_ih)();
 
+/**
+ * @brief Updates the game model while playing
+ */
 void (game_step)();
+
+
+/**
+ * @brief Clears the game matrix with "Empty" state aliens
+ */
 void (game_reset)();
 
+/**
+ * @brief Updates the variable time of all aliens
+ * and checks special conditions like the players death
+ * and changes the alien states at the right time
+ */
 void (game_update_alien_times)();
+
+/**
+ * @brief Handles the spawn rate of 
+ * aliens and generates new aliens
+ */
 void (game_generate_new_alien)();
+
+/**
+ * @brief Kills all the aliens except
+ *  the one that killed the player
+ */
 void (kill_other_aliens)();
 
+
+/**
+ * @brief Prepares the variables required
+ * and changes the game state to leaderboard
+ */
 void (game_leaderboard)();
+
+/**
+ * @brief Saves and displays the leaderboard
+ */
 void (game_save_and_display_lb)();
 
 
