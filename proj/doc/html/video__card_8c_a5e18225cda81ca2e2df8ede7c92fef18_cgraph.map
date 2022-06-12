@@ -1,0 +1,4 @@
+<map id="vg_draw_leadeboard" name="vg_draw_leadeboard">
+<area shape="rect" id="node1" title="Draws the leaderboard screen." alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node2" href="$video__card_8c.html#a02d3e124bc8e00e6565e52d2a163b81b" title="Draws normal sprites." alt="" coords="192,5,299,32"/>
+</map>

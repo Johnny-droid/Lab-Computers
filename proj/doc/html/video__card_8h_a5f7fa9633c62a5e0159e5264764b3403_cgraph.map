@@ -1,0 +1,9 @@
+<map id="vg_draw_menu" name="vg_draw_menu">
+<area shape="rect" id="node1" title="Draws the menu." alt="" coords="5,107,112,133"/>
+<area shape="rect" id="node2" href="$video__card_8c.html#a35fa5d66afa07f4c8dfd3b380181477f" title="Draws the crosshair Special overlapping attetion is required." alt="" coords="169,5,297,32"/>
+<area shape="rect" id="node3" href="$video__card_8c.html#af1326f3798c4973e0106e353fc059ed7" title="Draws the exit button (pressed or unpressed)" alt="" coords="164,56,303,83"/>
+<area shape="rect" id="node5" href="$video__card_8c.html#a1987a826636993e18ab07e8814f5380b" title="Draws the game title." alt="" coords="160,107,307,133"/>
+<area shape="rect" id="node6" href="$video__card_8c.html#a1f4e3c3851ed01ebb5be19c68a7b87bc" title="Draws the play button (pressed or unpressed)" alt="" coords="162,157,305,184"/>
+<area shape="rect" id="node7" href="$video__card_8c.html#af035738fa5e77af395389aca862c3832" title="Draws the time in the menu." alt="" coords="170,208,297,235"/>
+<area shape="rect" id="node4" href="$video__card_8c.html#a02d3e124bc8e00e6565e52d2a163b81b" title="Draws normal sprites." alt="" coords="355,132,461,159"/>
+</map>

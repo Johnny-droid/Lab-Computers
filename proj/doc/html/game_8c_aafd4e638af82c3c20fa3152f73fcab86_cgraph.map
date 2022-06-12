@@ -1,0 +1,6 @@
+<map id="game_step" name="game_step">
+<area shape="rect" id="node1" title="Updates the game model while playing." alt="" coords="5,31,92,57"/>
+<area shape="rect" id="node2" href="$game_8c.html#a1e39fffe92fbbbb4209c090f76811440" title="Handles the spawn rate of aliens and generates new aliens." alt="" coords="140,5,315,32"/>
+<area shape="rect" id="node3" href="$game_8c.html#aa0afc3a2286335408c262a58142e3759" title="Updates the variable time of all aliens and checks special conditions like the players death and chan..." alt="" coords="141,56,314,83"/>
+<area shape="rect" id="node4" href="$game_8c.html#a5f6f90520fc0bc9b07a0972cd3b0bfd7" title="Kills all the aliens except the one that killed the player." alt="" coords="363,56,477,83"/>
+</map>

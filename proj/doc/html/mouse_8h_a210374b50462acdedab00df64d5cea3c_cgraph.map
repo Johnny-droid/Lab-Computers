@@ -1,0 +1,9 @@
+<map id="mouse_ih" name="mouse_ih">
+<area shape="rect" id="node1" title="Mouse interrupt handler." alt="" coords="5,107,84,133"/>
+<area shape="rect" id="node2" href="$keyboard_8c.html#a81e0dd72f861826d1a3b3fa9f3a73009" title=" " alt="" coords="132,5,303,32"/>
+<area shape="rect" id="node4" href="$keyboard_8c.html#ae7791ebf0c69886aab3679f7931a5fdb" title=" " alt="" coords="151,56,284,83"/>
+<area shape="rect" id="node5" href="$keyboard_8c.html#a9b5b2b85e2874688e892417234bc21d8" title=" " alt="" coords="139,107,295,133"/>
+<area shape="rect" id="node6" href="$keyboard_8c.html#a296e7c116c0d332dbd00b09887a5fe43" title=" " alt="" coords="159,157,276,184"/>
+<area shape="rect" id="node7" href="$mouse_8c.html#ae0d3b412f09718fec3afd120513f3756" title="Mouse event handler. It makes the changes required according to event that it receives." alt="" coords="144,208,291,235"/>
+<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title=" " alt="" coords="351,81,441,108"/>
+</map>

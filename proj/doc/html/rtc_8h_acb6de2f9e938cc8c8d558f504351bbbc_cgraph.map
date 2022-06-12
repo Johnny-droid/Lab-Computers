@@ -1,0 +1,6 @@
+<map id="disable_interrupts_rtc" name="disable_interrupts_rtc">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,152,57"/>
+<area shape="rect" id="node2" href="$rtc_8c.html#aabd698c3dd999f44e3600c12b0f9b4a8" title=" " alt="" coords="201,5,289,32"/>
+<area shape="rect" id="node4" href="$rtc_8c.html#a11b4589424f5a88548f3f547eb5304b5" title=" " alt="" coords="200,56,291,83"/>
+<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title=" " alt="" coords="339,5,429,32"/>
+</map>

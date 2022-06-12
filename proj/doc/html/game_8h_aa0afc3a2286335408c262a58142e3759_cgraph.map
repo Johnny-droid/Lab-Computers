@@ -1,0 +1,4 @@
+<map id="game_update_alien_times" name="game_update_alien_times">
+<area shape="rect" id="node1" title="Updates the variable time of all aliens and checks special conditions like the players death and chan..." alt="" coords="5,5,179,32"/>
+<area shape="rect" id="node2" href="$game_8c.html#a5f6f90520fc0bc9b07a0972cd3b0bfd7" title="Kills all the aliens except the one that killed the player." alt="" coords="227,5,341,32"/>
+</map>

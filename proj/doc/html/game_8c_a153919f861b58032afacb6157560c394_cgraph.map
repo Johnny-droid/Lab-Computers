@@ -1,0 +1,4 @@
+<map id="game_leaderboard" name="game_leaderboard">
+<area shape="rect" id="node1" title="Prepares the variables required and changes the game state to leaderboard." alt="" coords="5,5,133,32"/>
+<area shape="rect" id="node2" href="$leaderboard_8c.html#af01dc71e6b2c3f3a62c2b1e1cfd5d6ba" title="Comparison function for scores." alt="" coords="181,5,288,32"/>
+</map>

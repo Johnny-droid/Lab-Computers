@@ -1,0 +1,7 @@
+<map id="vg_draw_game" name="vg_draw_game">
+<area shape="rect" id="node1" title="Draws the game plaing state." alt="" coords="5,56,112,83"/>
+<area shape="rect" id="node2" href="$video__card_8c.html#a5ae6974e9b25b3238268a4462c3c16b9" title="Draws the aliens in the matrix." alt="" coords="169,5,279,32"/>
+<area shape="rect" id="node3" href="$video__card_8c.html#a35fa5d66afa07f4c8dfd3b380181477f" title="Draws the crosshair Special overlapping attetion is required." alt="" coords="160,56,288,83"/>
+<area shape="rect" id="node4" href="$video__card_8c.html#a53745456f63382387bded268f1aa3465" title="Draws the points in the top right corner of the playing game screen." alt="" coords="169,107,279,133"/>
+<area shape="rect" id="node5" href="$video__card_8c.html#a02d3e124bc8e00e6565e52d2a163b81b" title="Draws normal sprites." alt="" coords="336,107,443,133"/>
+</map>

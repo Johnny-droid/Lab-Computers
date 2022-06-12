@@ -1,0 +1,12 @@
+<map id="rtc_ih" name="rtc_ih">
+<area shape="rect" id="node1" title="Interrupt handler for the RTC. It updates the hours and minutes values." alt="" coords="5,56,60,83"/>
+<area shape="rect" id="node2" href="$rtc_8c.html#acb8b5f8bcd848dc310330c98bbc8ddbb" title=" " alt="" coords="115,5,216,32"/>
+<area shape="rect" id="node3" href="$rtc_8c.html#a2012dfb8e2bd5e0513a51a28d98fb413" title=" " alt="" coords="108,56,223,83"/>
+<area shape="rect" id="node4" href="$rtc_8c.html#a072a0e9c4b41fd99807dec8cea0604e9" title=" " alt="" coords="126,107,205,133"/>
+<area shape="rect" id="node5" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title=" " alt="" coords="751,107,841,133"/>
+<area shape="rect" id="node6" href="$rtc_8c.html#ae9182afc075d07b93a3f119b372ad183" title=" " alt="" coords="271,132,369,159"/>
+<area shape="rect" id="node7" href="$rtc_8c.html#acb6de2f9e938cc8c8d558f504351bbbc" title=" " alt="" coords="417,208,564,235"/>
+<area shape="rect" id="node10" href="$rtc_8c.html#a62c48ba2dc93ebcf6c3b11a6bcf7801a" title=" " alt="" coords="419,157,562,184"/>
+<area shape="rect" id="node8" href="$rtc_8c.html#aabd698c3dd999f44e3600c12b0f9b4a8" title=" " alt="" coords="613,157,701,184"/>
+<area shape="rect" id="node9" href="$rtc_8c.html#a11b4589424f5a88548f3f547eb5304b5" title=" " alt="" coords="612,208,703,235"/>
+</map>

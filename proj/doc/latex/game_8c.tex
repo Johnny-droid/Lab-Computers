@@ -1,5 +1,5 @@
-\hypertarget{game_8c}{}\doxysection{C\+:/\+Users/ruben/\+Documents/\+FEUP/2nd year/2nd semester/\+LC/g03/g03/proj/src/game.c File Reference}
-\label{game_8c}\index{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/game.c@{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/game.c}}
+\hypertarget{game_8c}{}\doxysection{game.\+c File Reference}
+\label{game_8c}\index{game.c@{game.c}}
 {\ttfamily \#include \char`\"{}game.\+h\char`\"{}}\newline
 Include dependency graph for game.\+c\+:
 \nopagebreak
@@ -55,6 +55,14 @@ Handles the spawn rate of aliens and generates new aliens.
 
 Interrupt handler for the game, it updates the game model, according to the current game state. 
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_aac455511c0aa59a5ad19dc56ff6cc1c8_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{game_8c_a73f48cfe60dbe2b92281991b723b0a91}\label{game_8c_a73f48cfe60dbe2b92281991b723b0a91}} 
 \index{game.c@{game.c}!game\_initialize@{game\_initialize}}
 \index{game\_initialize@{game\_initialize}!game.c@{game.c}}
@@ -75,6 +83,14 @@ Initializes the game by setting the variables necessary for game to run.
 
 Prepares the variables required and changes the game state to leaderboard. 
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{game_8c_a153919f861b58032afacb6157560c394_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{game_8c_a649a26d3c9953d9f2af863e859e0c40d}\label{game_8c_a649a26d3c9953d9f2af863e859e0c40d}} 
 \index{game.c@{game.c}!game\_loop@{game\_loop}}
 \index{game\_loop@{game\_loop}!game.c@{game.c}}
@@ -85,6 +101,14 @@ Prepares the variables required and changes the game state to leaderboard.
 
 The game loop of the game Subscribes to the interrutps required, Enters the loop cycle where the handlers are called And finally it unsubscribes when the game is over. 
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_a649a26d3c9953d9f2af863e859e0c40d_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{game_8c_ac6a6287dfa97719cf5473e69e5a61403}\label{game_8c_ac6a6287dfa97719cf5473e69e5a61403}} 
 \index{game.c@{game.c}!game\_reset@{game\_reset}}
 \index{game\_reset@{game\_reset}!game.c@{game.c}}
@@ -105,6 +129,14 @@ Clears the game matrix with \char`\"{}\+Empty\char`\"{} state aliens.
 
 Saves and displays the leaderboard. 
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{game_8c_af17dbd0f57919b27039b8cc0fd90b93c_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{game_8c_aafd4e638af82c3c20fa3152f73fcab86}\label{game_8c_aafd4e638af82c3c20fa3152f73fcab86}} 
 \index{game.c@{game.c}!game\_step@{game\_step}}
 \index{game\_step@{game\_step}!game.c@{game.c}}
@@ -115,6 +147,14 @@ Saves and displays the leaderboard.
 
 Updates the game model while playing. 
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_aafd4e638af82c3c20fa3152f73fcab86_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{game_8c_aa0afc3a2286335408c262a58142e3759}\label{game_8c_aa0afc3a2286335408c262a58142e3759}} 
 \index{game.c@{game.c}!game\_update\_alien\_times@{game\_update\_alien\_times}}
 \index{game\_update\_alien\_times@{game\_update\_alien\_times}!game.c@{game.c}}
@@ -125,6 +165,14 @@ Updates the game model while playing.
 
 Updates the variable time of all aliens and checks special conditions like the players death and changes the alien states at the right time. 
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{game_8c_aa0afc3a2286335408c262a58142e3759_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{game_8c_a5f6f90520fc0bc9b07a0972cd3b0bfd7}\label{game_8c_a5f6f90520fc0bc9b07a0972cd3b0bfd7}} 
 \index{game.c@{game.c}!kill\_other\_aliens@{kill\_other\_aliens}}
 \index{kill\_other\_aliens@{kill\_other\_aliens}!game.c@{game.c}}

@@ -1,5 +1,5 @@
-\hypertarget{rtc_8c}{}\doxysection{C\+:/\+Users/ruben/\+Documents/\+FEUP/2nd year/2nd semester/\+LC/g03/g03/proj/src/rtc/rtc.c File Reference}
-\label{rtc_8c}\index{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/rtc/rtc.c@{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/rtc/rtc.c}}
+\hypertarget{rtc_8c}{}\doxysection{rtc.\+c File Reference}
+\label{rtc_8c}\index{rtc.c@{rtc.c}}
 {\ttfamily \#include \char`\"{}rtc.\+h\char`\"{}}\newline
 Include dependency graph for rtc.\+c\+:
 \nopagebreak
@@ -60,12 +60,28 @@ unsigned char \mbox{\hyperlink{rtc_8c_ac5eebdcd55bb86179385c3bd423c438d}{reg\+\_
 \doxysubsubsection{\texorpdfstring{disable\_interrupts\_rtc()}{disable\_interrupts\_rtc()}}
 {\footnotesize\ttfamily void() disable\+\_\+interrupts\+\_\+rtc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_acb6de2f9e938cc8c8d558f504351bbbc_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{rtc_8c_a62c48ba2dc93ebcf6c3b11a6bcf7801a}\label{rtc_8c_a62c48ba2dc93ebcf6c3b11a6bcf7801a}} 
 \index{rtc.c@{rtc.c}!enable\_interrupts\_rtc@{enable\_interrupts\_rtc}}
 \index{enable\_interrupts\_rtc@{enable\_interrupts\_rtc}!rtc.c@{rtc.c}}
 \doxysubsubsection{\texorpdfstring{enable\_interrupts\_rtc()}{enable\_interrupts\_rtc()}}
 {\footnotesize\ttfamily void() enable\+\_\+interrupts\+\_\+rtc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a62c48ba2dc93ebcf6c3b11a6bcf7801a_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{rtc_8c_a19e8a53612977dffe6cd0e1506d12a17}\label{rtc_8c_a19e8a53612977dffe6cd0e1506d12a17}} 
 \index{rtc.c@{rtc.c}!get\_rtc\_day@{get\_rtc\_day}}
 \index{get\_rtc\_day@{get\_rtc\_day}!rtc.c@{rtc.c}}
@@ -108,12 +124,28 @@ unsigned char \mbox{\hyperlink{rtc_8c_ac5eebdcd55bb86179385c3bd423c438d}{reg\+\_
 \doxysubsubsection{\texorpdfstring{read\_reg\_B()}{read\_reg\_B()}}
 {\footnotesize\ttfamily void() read\+\_\+reg\+\_\+B (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{rtc_8c_aabd698c3dd999f44e3600c12b0f9b4a8_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{rtc_8c_a072a0e9c4b41fd99807dec8cea0604e9}\label{rtc_8c_a072a0e9c4b41fd99807dec8cea0604e9}} 
 \index{rtc.c@{rtc.c}!read\_time@{read\_time}}
 \index{read\_time@{read\_time}!rtc.c@{rtc.c}}
 \doxysubsubsection{\texorpdfstring{read\_time()}{read\_time()}}
 {\footnotesize\ttfamily int() read\+\_\+time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a072a0e9c4b41fd99807dec8cea0604e9_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{rtc_8c_a0b9ae809cf571f61e54712a23c65348e}\label{rtc_8c_a0b9ae809cf571f61e54712a23c65348e}} 
 \index{rtc.c@{rtc.c}!rtc\_ih@{rtc\_ih}}
 \index{rtc\_ih@{rtc\_ih}!rtc.c@{rtc.c}}
@@ -124,6 +156,14 @@ unsigned char \mbox{\hyperlink{rtc_8c_ac5eebdcd55bb86179385c3bd423c438d}{reg\+\_
 
 Interrupt handler for the RTC. It updates the hours and minutes values. 
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a0b9ae809cf571f61e54712a23c65348e_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{rtc_8c_a6bbe679f115cec90d36d50eb2aac1b89}\label{rtc_8c_a6bbe679f115cec90d36d50eb2aac1b89}} 
 \index{rtc.c@{rtc.c}!rtc\_subscribe\_int@{rtc\_subscribe\_int}}
 \index{rtc\_subscribe\_int@{rtc\_subscribe\_int}!rtc.c@{rtc.c}}
@@ -148,6 +188,14 @@ Interrupt handler for the RTC. It updates the hours and minutes values.
 \doxysubsubsection{\texorpdfstring{wait\_valid\_rtc()}{wait\_valid\_rtc()}}
 {\footnotesize\ttfamily void() wait\+\_\+valid\+\_\+rtc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_ae9182afc075d07b93a3f119b372ad183_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{rtc_8c_a11b4589424f5a88548f3f547eb5304b5}\label{rtc_8c_a11b4589424f5a88548f3f547eb5304b5}} 
 \index{rtc.c@{rtc.c}!write\_reg\_B@{write\_reg\_B}}
 \index{write\_reg\_B@{write\_reg\_B}!rtc.c@{rtc.c}}

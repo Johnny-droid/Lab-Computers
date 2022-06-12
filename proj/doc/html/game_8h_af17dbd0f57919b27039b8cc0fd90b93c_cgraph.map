@@ -1,0 +1,4 @@
+<map id="game_save_and_display_lb" name="game_save_and_display_lb">
+<area shape="rect" id="node1" title="Saves and displays the leaderboard." alt="" coords="5,5,185,32"/>
+<area shape="rect" id="node2" href="$leaderboard_8c.html#a6a61ad6064d4ace340c98ef26acf58b8" title="Adds score to leaderboard." alt="" coords="233,5,311,32"/>
+</map>

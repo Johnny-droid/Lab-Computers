@@ -1,5 +1,5 @@
-\hypertarget{keyboard_8c}{}\doxysection{C\+:/\+Users/ruben/\+Documents/\+FEUP/2nd year/2nd semester/\+LC/g03/g03/proj/src/keyboard/keyboard.c File Reference}
-\label{keyboard_8c}\index{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/keyboard/keyboard.c@{C:/Users/ruben/Documents/FEUP/2nd year/2nd semester/LC/g03/g03/proj/src/keyboard/keyboard.c}}
+\hypertarget{keyboard_8c}{}\doxysection{keyboard.\+c File Reference}
+\label{keyboard_8c}\index{keyboard.c@{keyboard.c}}
 {\ttfamily \#include \char`\"{}keyboard.\+h\char`\"{}}\newline
 Include dependency graph for keyboard.\+c\+:
 \nopagebreak
@@ -54,13 +54,29 @@ bool \mbox{\hyperlink{keyboard_8c_a7b7e87a36e1caac773cf12c161882d35}{flag2\+Byte
 \doxysubsubsection{\texorpdfstring{enable\_interrupts()}{enable\_interrupts()}}
 {\footnotesize\ttfamily void() enable\+\_\+interrupts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{keyboard_8c_aa9f74ccfbf69e0d4441dbe94994874bf_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{keyboard_8c_a81e0dd72f861826d1a3b3fa9f3a73009}\label{keyboard_8c_a81e0dd72f861826d1a3b3fa9f3a73009}} 
 \index{keyboard.c@{keyboard.c}!kbc\_communication\_error@{kbc\_communication\_error}}
 \index{kbc\_communication\_error@{kbc\_communication\_error}!keyboard.c@{keyboard.c}}
 \doxysubsubsection{\texorpdfstring{kbc\_communication\_error()}{kbc\_communication\_error()}}
 {\footnotesize\ttfamily bool() kbc\+\_\+communication\+\_\+error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Prints the input scancode. (Already implemented in the LCF) Parameters make Whether this is a make or a break code size Size in bytes of the scancode bytes Array with size elements, with the scancode bytes \mbox{\Hypertarget{keyboard_8c_a5761bd4aad91ac1d68916ad88f583d9f}\label{keyboard_8c_a5761bd4aad91ac1d68916ad88f583d9f}} 
+Prints the input scancode. (Already implemented in the LCF) Parameters make Whether this is a make or a break code size Size in bytes of the scancode bytes Array with size elements, with the scancode bytes Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{keyboard_8c_a81e0dd72f861826d1a3b3fa9f3a73009_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{keyboard_8c_a5761bd4aad91ac1d68916ad88f583d9f}\label{keyboard_8c_a5761bd4aad91ac1d68916ad88f583d9f}} 
 \index{keyboard.c@{keyboard.c}!kbc\_ih@{kbc\_ih}}
 \index{kbc\_ih@{kbc\_ih}!keyboard.c@{keyboard.c}}
 \doxysubsubsection{\texorpdfstring{kbc\_ih()}{kbc\_ih()}}
@@ -70,24 +86,56 @@ Prints the input scancode. (Already implemented in the LCF) Parameters make Whet
 
 Handles keyboard interrupts Reads the status register and the output buffer (OB). If there was some error, the byte read from the OB is be discarded. 
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{keyboard_8c_a5761bd4aad91ac1d68916ad88f583d9f_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{keyboard_8c_a9857b46ef297d9764c21dbbca19790db}\label{keyboard_8c_a9857b46ef297d9764c21dbbca19790db}} 
 \index{keyboard.c@{keyboard.c}!kbc\_input\_buf\_full@{kbc\_input\_buf\_full}}
 \index{kbc\_input\_buf\_full@{kbc\_input\_buf\_full}!keyboard.c@{keyboard.c}}
 \doxysubsubsection{\texorpdfstring{kbc\_input\_buf\_full()}{kbc\_input\_buf\_full()}}
 {\footnotesize\ttfamily bool() kbc\+\_\+input\+\_\+buf\+\_\+full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{keyboard_8c_a9857b46ef297d9764c21dbbca19790db_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{keyboard_8c_ae7791ebf0c69886aab3679f7931a5fdb}\label{keyboard_8c_ae7791ebf0c69886aab3679f7931a5fdb}} 
 \index{keyboard.c@{keyboard.c}!kbc\_output\_buf\_full@{kbc\_output\_buf\_full}}
 \index{kbc\_output\_buf\_full@{kbc\_output\_buf\_full}!keyboard.c@{keyboard.c}}
 \doxysubsubsection{\texorpdfstring{kbc\_output\_buf\_full()}{kbc\_output\_buf\_full()}}
 {\footnotesize\ttfamily bool() kbc\+\_\+output\+\_\+buf\+\_\+full (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{keyboard_8c_ae7791ebf0c69886aab3679f7931a5fdb_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{keyboard_8c_a9b5b2b85e2874688e892417234bc21d8}\label{keyboard_8c_a9b5b2b85e2874688e892417234bc21d8}} 
 \index{keyboard.c@{keyboard.c}!kbc\_read\_output\_buffer@{kbc\_read\_output\_buffer}}
 \index{kbc\_read\_output\_buffer@{kbc\_read\_output\_buffer}!keyboard.c@{keyboard.c}}
 \doxysubsubsection{\texorpdfstring{kbc\_read\_output\_buffer()}{kbc\_read\_output\_buffer()}}
 {\footnotesize\ttfamily uint8\+\_\+t() kbc\+\_\+read\+\_\+output\+\_\+buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{keyboard_8c_a9b5b2b85e2874688e892417234bc21d8_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{keyboard_8c_a02884ada1971dbade466081413210b18}\label{keyboard_8c_a02884ada1971dbade466081413210b18}} 
 \index{keyboard.c@{keyboard.c}!kbc\_subscribe\_int@{kbc\_subscribe\_int}}
 \index{kbc\_subscribe\_int@{kbc\_subscribe\_int}!keyboard.c@{keyboard.c}}
@@ -106,6 +154,14 @@ Handles keyboard interrupts Reads the status register and the output buffer (OB)
 \doxysubsubsection{\texorpdfstring{keyboard\_check()}{keyboard\_check()}}
 {\footnotesize\ttfamily bool() keyboard\+\_\+check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{keyboard_8c_a296e7c116c0d332dbd00b09887a5fe43_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{keyboard_8c_ad5f3d22aa193025ad9761f6d839af186}\label{keyboard_8c_ad5f3d22aa193025ad9761f6d839af186}} 
 \index{keyboard.c@{keyboard.c}!keyboard\_event\_handler@{keyboard\_event\_handler}}
 \index{keyboard\_event\_handler@{keyboard\_event\_handler}!keyboard.c@{keyboard.c}}
@@ -116,18 +172,42 @@ Handles keyboard interrupts Reads the status register and the output buffer (OB)
 
 Handles the events generated by the interrupt handler Decides which action to take according to the game state. 
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{keyboard_8c_ad5f3d22aa193025ad9761f6d839af186_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{keyboard_8c_ae5f3493b33b14eaf88a7b7f8a4fa8ed2}\label{keyboard_8c_ae5f3493b33b14eaf88a7b7f8a4fa8ed2}} 
 \index{keyboard.c@{keyboard.c}!read\_command\_byte@{read\_command\_byte}}
 \index{read\_command\_byte@{read\_command\_byte}!keyboard.c@{keyboard.c}}
 \doxysubsubsection{\texorpdfstring{read\_command\_byte()}{read\_command\_byte()}}
 {\footnotesize\ttfamily uint8\+\_\+t() read\+\_\+command\+\_\+byte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{keyboard_8c_ae5f3493b33b14eaf88a7b7f8a4fa8ed2_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{keyboard_8c_aad26ab45170d77851bd43452220e19ec}\label{keyboard_8c_aad26ab45170d77851bd43452220e19ec}} 
 \index{keyboard.c@{keyboard.c}!write\_command\_byte@{write\_command\_byte}}
 \index{write\_command\_byte@{write\_command\_byte}!keyboard.c@{keyboard.c}}
 \doxysubsubsection{\texorpdfstring{write\_command\_byte()}{write\_command\_byte()}}
 {\footnotesize\ttfamily void() write\+\_\+command\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command\+\_\+byte }\end{DoxyParamCaption})}
 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{keyboard_8c_aad26ab45170d77851bd43452220e19ec_cgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Variable Documentation}

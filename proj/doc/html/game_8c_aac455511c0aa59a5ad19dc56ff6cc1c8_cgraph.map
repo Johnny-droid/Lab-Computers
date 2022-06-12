@@ -1,0 +1,9 @@
+<map id="game_ih" name="game_ih">
+<area shape="rect" id="node1" title="Interrupt handler for the game, it updates the game model, according to the current game state." alt="" coords="5,56,76,83"/>
+<area shape="rect" id="node2" href="$game_8c.html#a153919f861b58032afacb6157560c394" title="Prepares the variables required and changes the game state to leaderboard." alt="" coords="124,5,252,32"/>
+<area shape="rect" id="node4" href="$game_8c.html#aafd4e638af82c3c20fa3152f73fcab86" title="Updates the game model while playing." alt="" coords="145,56,231,83"/>
+<area shape="rect" id="node6" href="$game_8c.html#aa0afc3a2286335408c262a58142e3759" title="Updates the variable time of all aliens and checks special conditions like the players death and chan..." alt="" coords="301,107,474,133"/>
+<area shape="rect" id="node3" href="$leaderboard_8c.html#af01dc71e6b2c3f3a62c2b1e1cfd5d6ba" title="Comparison function for scores." alt="" coords="334,5,441,32"/>
+<area shape="rect" id="node5" href="$game_8c.html#a1e39fffe92fbbbb4209c090f76811440" title="Handles the spawn rate of aliens and generates new aliens." alt="" coords="300,56,475,83"/>
+<area shape="rect" id="node7" href="$game_8c.html#a5f6f90520fc0bc9b07a0972cd3b0bfd7" title="Kills all the aliens except the one that killed the player." alt="" coords="523,107,637,133"/>
+</map>
